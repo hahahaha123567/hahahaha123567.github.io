@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>c语言的链接环节 · Yazawa's Home</title><meta name="description" content="c程序编译流程c语言程序从源代码到可执行文件经过四个步骤
+
+编译预处理
+
+编译
+
+汇编
+
+链接
+
+
+见 Linux GCC常用命令 - ggjucheng - 博客园 的解释
+# include 我们的代码中的#include &amp;lt;stdio.h&amp;gt;的作用是将该头文件中函数的声明(decla"><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h3 title=""><a href="/">Yazawa's Home</a></h3><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>c语言的链接环节</a></h3></div><div class="post-content"><h1 id="c程序编译流程"><a href="#c程序编译流程" class="headerlink" title="c程序编译流程"></a>c程序编译流程</h1><p>c语言程序从源代码到可执行文件经过四个步骤</p>
+<ol>
+<li><p>编译预处理</p>
+</li>
+<li><p>编译</p>
+</li>
+<li><p>汇编</p>
+</li>
+<li><p>链接</p>
+</li>
+</ol>
+<p>见 <a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2287738.html#_Toc311642841" target="_blank" rel="external">Linux GCC常用命令 - ggjucheng - 博客园</a> 的解释</p>
+<h1 id="include"><a href="#include" class="headerlink" title="# include "></a># include <stdio.h></stdio.h></h1><p>我们的代码中的<code>#include &lt;stdio.h&gt;</code>的作用是将该头文件中函数的<strong>声明(declaration)</strong>拷贝过来，使程序通过编译</p>
+<p>此时，编译生成的.s文件中并没有实现函数功能的代码，程序只知道去调用一个叫做<code>printf()</code>的函数，而不知道这个函数在哪</p>
+<p>要到第四步链接(link)时，程序才能找到<code>printf()</code>的实现</p>
+<p>但是我们链接时只需要执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc test.o -o test    # no other lib</div></pre></td></tr></table></figure>
+<p>就能生成包含输入输出功能的可执行文件，这是因为编译器悄悄地帮你链接了<code>libc</code>库</p>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>以Linux环境下的gcc为例</p>
+<p>Linux环境下，静态链接库文件后缀<code>.a</code>，动态链接库文件后缀<code>.so</code></p>
+<h2 id="链接指令"><a href="#链接指令" class="headerlink" title="链接指令"></a>链接指令</h2><p>经过汇编后产生的<code>.o</code>二进制文件需要与代码中include的对应的库文件链接后才能生成最后的可执行文件。例如，多线程编程用到了<code>libpthread.a</code>和<code>libphread.so</code>库文件，在链接时就要指明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc test.o /usr/lib/i386-linux-gun/libpthread.so -o test</div></pre></td></tr></table></figure>
+<p>为了防止每次都要输入库文件的绝对路径，Linux的环境变量</p>
+<p><code>LIBRARY_PATH</code>用来指示默认的静态库路径</p>
+<p><code>LD_LIBRARY_PATH</code>用来指示默认的动态库路径</p>
+<h2 id="静态库链接时搜索路径顺序："><a href="#静态库链接时搜索路径顺序：" class="headerlink" title="静态库链接时搜索路径顺序："></a>静态库链接时搜索路径顺序：</h2><ol>
+<li>ld会去找gcc命令中的参数-L后的绝对路径</li>
+</ol>
+<p>根据-l后的文件相对名称（无前缀lib与后缀文件格式）去</p>
+<ol>
+<li><p><code>LIBRARY_PATH</code></p>
+</li>
+<li><p><code>/lib</code> <code>/usr/lib</code> <code>/usr/local/lib</code> (这是当初compile gcc时写在程序内的) </p>
+</li>
+</ol>
+<p>中找</p>
+<h2 id="动态链接时、执行时搜索路径顺序"><a href="#动态链接时、执行时搜索路径顺序" class="headerlink" title="动态链接时、执行时搜索路径顺序:"></a>动态链接时、执行时搜索路径顺序:</h2><ol>
+<li>ld会去找gcc命令中的参数-L后的绝对路径</li>
+</ol>
+<p>根据-l后的文件相对名称（无前缀lib与后缀文件格式）去</p>
+<ol>
+<li><p><code>LD_LIBRARY_PATH</code></p>
+</li>
+<li><p>配置文件<code>/etc/ld.so.conf</code>中指定的动态库搜索路径</p>
+</li>
+<li><p><code>/lib</code> <code>/usr/lib</code></p>
+</li>
+</ol>
+<p>中找</p>
+<h2 id="链接实现"><a href="#链接实现" class="headerlink" title="链接实现"></a>链接实现</h2><p>静态链接：将静态库的二进制代码链接到源.o文件中，以后可以独立运行</p>
+<p>动态链接：将动态库的信息链接到源.o文件中，运行时到相关位置去寻找二进制代码</p>
+<h2 id="libc"><a href="#libc" class="headerlink" title="libc"></a>libc</h2><p>libc(libc.a, libc.so) 是 <a href="https://en.wikipedia.org/wiki/C_standard_library" target="_blank" rel="external">C stand library </a> 的实现，包括<code>stdio.h</code> <code>string.h</code> <code>stdlib.h</code>的头文件的实现，编译器默认自动链接，这就是为什么链接时我们不需要手动指定<code>stdio.h</code>的库</p>
+<p>libc实现了<code>math.h</code>，但在一些平台下依然需要手动指定<code>libm</code></p>
+<hr>
+<p>大一开始学C，现在才赶在学编译原理之前弄懂完整的编译流程，丢人的，褪裙吧</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-27</span><i class="fa fa-tag"></i><a href="/tags/c语言/" title="c语言" class="tag">c语言 </a><a href="/tags/linux/" title="linux" class="tag">linux </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2017/10/27/2017-10-27-c语言的链接环节/,Yazawa's Home,c语言的链接环节,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/10/27/2017-10-27-理解openGL中的矩阵操作/" title="理解openGL中的矩阵操作(to be done)" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/10/20/2017-10-20-第一次用Java写OOP遇到的问题/" title="第一次用Java写OOP遇到的问题(to be done)" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

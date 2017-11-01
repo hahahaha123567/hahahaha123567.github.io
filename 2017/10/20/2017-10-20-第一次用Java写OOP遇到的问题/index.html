@@ -8,6 +8,12 @@
 <h1 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h1><p>没有系统地了解反射的机制，当前只是会用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c = Class.forName(Data.getType(word, inList));</div><div class="line">Constructor cc = c.getDeclaredConstructor(new Class[]&#123;String.class&#125;);</div><div class="line">cc.setAccessible(true);</div><div class="line">data = (Data) cc.newInstance(new Object[]&#123;word&#125;);</div></pre></td></tr></table></figure>
 <p>进行运行时(runtime)对象的类型判断与实例化</p>
+<h1 id="IntelliJ提示的改进"><a href="#IntelliJ提示的改进" class="headerlink" title="IntelliJ提示的改进"></a>IntelliJ提示的改进</h1><p>尽可能使用private作用域</p>
+<p>时刻注意检查对象是否为null</p>
+<p>函数内进行局部变量初始化有时是redundant</p>
+<p>使用collection时用generic指明元素的类</p>
+<p>loop中不要String对象+=，要用StringBuffer</p>
+<p>diamond operator: a little like “auto” in cpp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// instead of </div><div class="line">Map&lt;String, List&lt;String&gt;&gt; anagrams = new HashMap&lt;String, List&lt;String&gt;&gt;();</div><div class="line">// you can write </div><div class="line">Map&lt;String, List&lt;String&gt;&gt; anagrams = new HashMap&lt;&gt;();</div></pre></td></tr></table></figure></p>
 <h1 id="几个debug了好久的坑"><a href="#几个debug了好久的坑" class="headerlink" title="几个debug了好久的坑"></a>几个debug了好久的坑</h1><h2 id="euqals-instead-of"><a href="#euqals-instead-of" class="headerlink" title="euqals() instead of =="></a>euqals() instead of ==</h2><p>比较对象时永远用<code>equals()</code></p>
 <p>无法像c++那样重载运算符(operator overload)，类的标准比较成了<code>equals()</code>的重载</p>
 <h2 id="NullPointerException"><a href="#NullPointerException" class="headerlink" title="NullPointerException"></a>NullPointerException</h2><p>NullPointerException只有在试图用指向null的对象进行操作时才会throw，单纯的对象赋值并不会throw，还需要手动判断</p>

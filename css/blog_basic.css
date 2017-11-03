@@ -20,7 +20,7 @@
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  color: #fff;
+  color: #f8f8f8;
   font-size: 14px;
   line-height: 20px;
   font-weight: bold;
@@ -224,30 +224,33 @@ html {
         margin: 2rem 0; }
 
         h1 {
-          font-size: 2.1rem;
+          font-weight: bolder;
+          font-size: 1.9rem;
           line-height: 1.2em; }
 
           h2 {
-            font-size: 1.9rem;
-            line-height: 1.2em; }
+            font-weight: bold;
+            font-size: 1.4rem;
+            line-height: 1.1em; }
 
             h3 {
-              font-size: 1.75rem; }
+              font-weight: bold;
+              font-size: 1.0rem; }
 
               h4 {
-                font-size: 1.3rem; }
+                font-size: 1.0rem; }
 
                 h5 {
-                  font-size: 1.3rem; }
+                  font-size: 1.0rem; }
 
                   h6 {
-                    font-size: 1.3rem; }
+                    font-size: 1.0rem; }
 
                     img {
                       max-width: 100%;
                       height: auto; }
 
-                      p, ul, ol, dl {
+                      p, ul, ol, dl, li {
                         margin: 1em 0; }
 
                         ol ol, ul ul, ul ol, ol ul {
@@ -280,7 +283,7 @@ dl dt {
       display: block;
       height: 1px;
       border: 0;
-      border-top: 1px solid #efefef;
+      border-top: 1px solid #c0c0c0;
       margin: 3.2em 0;
       padding: 0; }
 

@@ -1,23 +1,71 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>理解openGL中的矩阵操作(to be done) · Yazawa's Home</title><meta name="description" content="WhatopenGL中的矩阵是一组提供了接口的二维数组，用以表示图形的变换
-How空间中点的坐标由一维数组(vector)表示，用矩阵表示点将要进行的变换，相乘后即得到变换后的坐标
-Function
-glTranslate(x, y, z)
-
-glRotate(rad, vx, vy, vz)
-
-g"><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h3 title=""><a href="/">Yazawa's Home</a></h3><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>理解openGL中的矩阵操作(to be done)</a></h3></div><div class="post-content"><h1 id="What"><a href="#What" class="headerlink" title="What"></a>What</h1><p>openGL中的矩阵是一组提供了接口的二维数组，用以表示图形的变换</p>
-<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>空间中点的坐标由一维数组(vector)表示，用矩阵表示点将要进行的变换，相乘后即得到变换后的坐标</p>
-<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul>
-<li><p>glTranslate(x, y, z)</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>理解openGL中的矩阵操作 · Yazawa's Home</title><meta name="description" content="WhatopenGL中的矩阵是一组提供了接口的二维数组，用来表示图形的变换
+空间中点的坐标由一维数组(vector)表示，用矩阵表示点将要进行的变换，相乘后即得到变换后的坐标
+从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)点的坐"><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h3 title=""><a href="/">Yazawa's Home</a></h3><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>理解openGL中的矩阵操作</a></h3></div><div class="post-content"><h1 id="What"><a href="#What" class="headerlink" title="What"></a>What</h1><p>openGL中的矩阵是一组提供了接口的二维数组，用来表示图形的变换</p>
+<p>空间中点的坐标由一维数组(vector)表示，用矩阵表示点将要进行的变换，相乘后即得到变换后的坐标</p>
+<h3 id="从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates"><a href="#从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates" class="headerlink" title="从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)"></a>从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)</h3><p>点的坐标可以用一个三维vector表示，进行rotate和scale变换时乘对应的矩阵(3 * 3)即可完成变换。但对translate变换，乘一个3 * 3的矩阵并不能直接完成，因此为了将所有变换的实现都统一到矩阵的乘法，在进行变换时将点的坐标扩展到四维，对应的矩阵也用4 * 4实现，因此openGL中用到的矩阵是4 * 4的</p>
+<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>openGL中将3D坐标投影到2D屏幕坐标的步骤：</p>
+<ol>
+<li>model-view transform</li>
+<li>projection transform</li>
+<li>apply</li>
+<li>viewport transform</li>
+</ol>
+<p>以下分别进行说明</p>
+<h2 id="Model-View-Transform"><a href="#Model-View-Transform" class="headerlink" title="Model-View Transform"></a>Model-View Transform</h2><p>model指要绘制的物体，view指观察者的位置</p>
+<p>这一阶段包括</p>
+<ol>
+<li>物体在场景中的平移、旋转、缩放</li>
+<li>将场景放在观察者面前</li>
+</ol>
+<p>因为观察者和物体是相对的，观察者的移动相当于物体往相反方向移动，因此两者可以统一为model-view transform</p>
+<p>相关函数</p>
+<ul>
+<li>glTranslate(x, y, z)</li>
+<li>glRotate(rad, vx, vy, vz)</li>
+<li>glScale(x, y, z)</li>
+</ul>
+<h2 id="Projection-Transform"><a href="#Projection-Transform" class="headerlink" title="Projection Transform"></a>Projection Transform</h2><p>在model-view transform中完成了建模后，就需要开始将模型投影到观察者眼中</p>
+<p>投影变换(projection transform)分为两种，透视投影(perspective projection)和正交投影(orthographic projection)</p>
+<h3 id="Perspective-projection"><a href="#Perspective-projection" class="headerlink" title="Perspective projection"></a>Perspective projection</h3><p>透视投影即近小远大的观察方式</p>
+<p>这一步首先要继续对场景进行裁剪(clip)，通过上、下、左、右、近平面、远平面将能显示的部分裁剪成平截椎体(frustum)</p>
+<p>相关函数</p>
+<ul>
+<li><p>gluPerspective(fovy, aspect, zNear, zFar)</p>
 </li>
-<li><p>glRotate(rad, vx, vy, vz)</p>
-</li>
-<li><p>glScale(x, y, z)</p>
+<li><p>gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz)</p>
 </li>
 </ul>
+<h3 id="Orthographic-Projection"><a href="#Orthographic-Projection" class="headerlink" title="Orthographic Projection"></a>Orthographic Projection</h3><p>正交投影即远近一样大的观察方式</p>
+<p>同样进行裁剪</p>
+<p>相关函数</p>
+<ul>
+<li>glOrtho(left, right, bottom, top, near, far)</li>
+</ul>
+<h2 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h2><p>openGL根据前面的变换得到的矩阵进行计算</p>
+<h2 id="Viewport-Transform"><a href="#Viewport-Transform" class="headerlink" title="Viewport Transform"></a>Viewport Transform</h2><p>Apply结束后就得到了2D的投影视图，我们可以根据需要把它放置到当前窗口(window)的指定位置</p>
+<p>相关函数</p>
+<ul>
+<li>glViewport(x, y, width, height)</li>
+</ul>
 <hr>
-<p>看似稳得一批，矢泽慌得一比</p>
-<p>为什么<code>gluOrth2D()</code>这种函数也会改变当前矩阵的值啊？</p>
-<p>到底什么时候用<code>GL_MODELVIEW</code>什么时候用<code>GL_PROJECTION</code>啊？</p>
-<p>等上课讲了这部分(也许会讲？)再来填坑</p>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-27</span><i class="fa fa-tag"></i><a href="/tags/计算机图形学/" title="计算机图形学" class="tag">计算机图形学 </a><a href="/tags/openGL/" title="openGL" class="tag">openGL </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/,Yazawa's Home,理解openGL中的矩阵操作(to be done),;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/10/27/2017-10-27-c语言的链接环节/" title="c语言的链接环节" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<p>本文对openGL中视图变换的流程做了一个总结，理解后一些初学者常见的问题就会迎刃而解，比如</p>
+<ul>
+<li><p><code>GL_MODELVIEW</code>与<code>GL_PROJECTION</code>的区别</p>
+</li>
+<li><p><code>gluOrth2D()</code>与<code>glViewport()</code>的区别</p>
+</li>
+</ul>
+<p>也只有理解了原理才能正确运用</p>
+<ul>
+<li><p>glLoadIdentity()</p>
+</li>
+<li><p>glPushMatrix()</p>
+</li>
+<li><p>glPopMatrix()</p>
+</li>
+</ul>
+<p>等矩阵相关的函数</p>
+<hr>
+<p>参考资料</p>
+<p>《OpenGL编程指南》第5章</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-27</span><i class="fa fa-tag"></i><a href="/tags/计算机图形学/" title="计算机图形学" class="tag">计算机图形学 </a><a href="/tags/openGL/" title="openGL" class="tag">openGL </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/,Yazawa's Home,理解openGL中的矩阵操作,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/10/27/2017-10-27-c语言的链接环节/" title="c语言的链接环节" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

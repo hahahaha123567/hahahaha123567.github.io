@@ -23,6 +23,7 @@
 <li>glTranslate(x, y, z)</li>
 <li>glRotate(rad, vx, vy, vz)</li>
 <li>glScale(x, y, z)</li>
+<li>gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz)</li>
 </ul>
 <h2 id="Projection-Transform"><a href="#Projection-Transform" class="headerlink" title="Projection Transform"></a>Projection Transform</h2><p>在model-view transform中完成了建模后，就需要开始将模型投影到观察者眼中</p>
 <p>投影变换(projection transform)分为两种，透视投影(perspective projection)和正交投影(orthographic projection)</p>
@@ -30,10 +31,7 @@
 <p>这一步首先要继续对场景进行裁剪(clip)，通过上、下、左、右、近平面、远平面将能显示的部分裁剪成平截椎体(frustum)</p>
 <p>相关函数</p>
 <ul>
-<li><p>gluPerspective(fovy, aspect, zNear, zFar)</p>
-</li>
-<li><p>gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz)</p>
-</li>
+<li>gluPerspective(fovy, aspect, zNear, zFar)</li>
 </ul>
 <h3 id="Orthographic-Projection"><a href="#Orthographic-Projection" class="headerlink" title="Orthographic Projection"></a>Orthographic Projection</h3><p>正交投影即远近一样大的观察方式</p>
 <p>同样进行裁剪</p>
@@ -48,24 +46,13 @@
 <li>glViewport(x, y, width, height)</li>
 </ul>
 <hr>
-<p>本文对openGL中视图变换的流程做了一个总结，理解后一些初学者常见的问题就会迎刃而解，比如</p>
-<ul>
-<li><p><code>GL_MODELVIEW</code>与<code>GL_PROJECTION</code>的区别</p>
-</li>
-<li><p><code>gluOrth2D()</code>与<code>glViewport()</code>的区别</p>
-</li>
-</ul>
-<p>也只有理解了原理才能正确运用</p>
-<ul>
-<li><p>glLoadIdentity()</p>
-</li>
-<li><p>glPushMatrix()</p>
-</li>
-<li><p>glPopMatrix()</p>
-</li>
-</ul>
-<p>等矩阵相关的函数</p>
+<h1 id="Programing"><a href="#Programing" class="headerlink" title="Programing"></a>Programing</h1><p>代码参考 <a href="https://github.com/hahahaha123567/hello-world/blob/master/Computer%20Graphics/projection.c" target="_blank" rel="external">projection.c</a></p>
+<p>Perspective projection:</p>
+<p>glLookAt()先指定观察者的位置、视线的方向、视线的上方，然后glPerspective()/glOrtho()进行剪切，留下可见的部分</p>
+<p>需要注意，<strong>glTranslate()/glRotate()等函数在对物体变换的同时也会对坐标系进行变换</strong>。例如，先glTranslate(1, 0, 0)再glRotate(angle, 0, 1, 0)，最终物体不是绕着(0, 0, 0)-&gt;(0, 1, 0)的轴旋转，而是绕着平移后的坐标轴的原点(1, 0, 0)-&gt;(1, 1, 0)的轴旋转，坐标轴改变后同样会影响之后的gluLookAt()等函数的设置，因此一般最后再进行平移旋转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">glMatrixMode(GL_PROJECTION);</div><div class="line">glLoadIdentity();</div><div class="line">glPerspective(forv, aspect, near, far); / glOrtho(left, right, bottom, top, near, far);</div><div class="line"></div><div class="line">glMatrixMode(GL_MODELVIEW);</div><div class="line">glLoadIdentity();</div><div class="line">gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, up_x, up_y, up_z);</div><div class="line">glTranslate(x, y, z);</div><div class="line">glRotate(angle, x, y, z);</div><div class="line">glScale(x, y, z);</div><div class="line">draw();</div></pre></td></tr></table></figure>
 <hr>
 <p>参考资料</p>
 <p>《OpenGL编程指南》第5章</p>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-27</span><i class="fa fa-tag"></i><a href="/tags/计算机图形学/" title="计算机图形学" class="tag">计算机图形学 </a><a href="/tags/openGL/" title="openGL" class="tag">openGL </a></div></div></div></div><div class="share"><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/,Yazawa's Home,理解openGL中的矩阵操作,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/10/27/2017-10-27-c语言的链接环节/" title="c语言的链接环节" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<hr>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-27</span><i class="fa fa-tag"></i><a href="/tags/计算机图形学/" title="计算机图形学" class="tag">计算机图形学 </a><a href="/tags/openGL/" title="openGL" class="tag">openGL </a></div></div></div></div><div class="share"><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/,Yazawa's Home,理解openGL中的矩阵操作,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/11/04/2017-11-04-OpenGL中的光照相关/" title="OpenGL中的光照相关" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/10/27/2017-10-27-c语言的链接环节/" title="c语言的链接环节" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

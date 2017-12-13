@@ -21,17 +21,17 @@
 <li><p>链接</p>
 </li>
 </ol>
-<p>见 <a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2287738.html#_Toc311642841" target="_blank" rel="external">Linux GCC常用命令 - ggjucheng - 博客园</a> 的解释</p>
+<p>见 <a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2287738.html#_Toc311642841" target="_blank" rel="noopener">Linux GCC常用命令 - ggjucheng - 博客园</a> 的解释</p>
 <h1 id="include"><a href="#include" class="headerlink" title="# include "></a># include <stdio.h></stdio.h></h1><p>我们的代码中的<code>#include &lt;stdio.h&gt;</code>的作用是将该头文件中函数的<strong>声明(declaration)</strong>拷贝过来，使程序通过编译</p>
 <p>此时，编译生成的.s文件中并没有实现函数功能的代码，程序只知道去调用一个叫做<code>printf()</code>的函数，而不知道这个函数在哪</p>
 <p>要到第四步链接(link)时，程序才能找到<code>printf()</code>的实现</p>
 <p>但是我们链接时只需要执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc test.o -o test    # no other lib</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.o -o test    # no other lib</span><br></pre></td></tr></table></figure>
 <p>就能生成包含输入输出功能的可执行文件，这是因为编译器悄悄地帮你链接了<code>libc</code>库</p>
 <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>以Linux环境下的gcc为例</p>
 <p>Linux环境下，静态链接库文件后缀<code>.a</code>，动态链接库文件后缀<code>.so</code></p>
 <h2 id="链接指令"><a href="#链接指令" class="headerlink" title="链接指令"></a>链接指令</h2><p>经过汇编后产生的<code>.o</code>二进制文件需要与代码中include的对应的库文件链接后才能生成最后的可执行文件。例如，多线程编程用到了<code>libpthread.a</code>和<code>libphread.so</code>库文件，在链接时就要指明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc test.o /usr/lib/i386-linux-gun/libpthread.so -o test</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.o /usr/lib/i386-linux-gun/libpthread.so -o test</span><br></pre></td></tr></table></figure>
 <p>为了防止每次都要输入库文件的绝对路径，Linux的环境变量</p>
 <p><code>LIBRARY_PATH</code>用来指示默认的静态库路径</p>
 <p><code>LD_LIBRARY_PATH</code>用来指示默认的动态库路径</p>
@@ -61,7 +61,7 @@
 <p>中找</p>
 <h2 id="链接实现"><a href="#链接实现" class="headerlink" title="链接实现"></a>链接实现</h2><p>静态链接：将静态库的二进制代码链接到源.o文件中，以后可以独立运行</p>
 <p>动态链接：将动态库的信息链接到源.o文件中，运行时到相关位置去寻找二进制代码</p>
-<h2 id="libc"><a href="#libc" class="headerlink" title="libc"></a>libc</h2><p>libc(libc.a, libc.so) 是 <a href="https://en.wikipedia.org/wiki/C_standard_library" target="_blank" rel="external">C stand library </a> 的实现，包括<code>stdio.h</code> <code>string.h</code> <code>stdlib.h</code>的头文件的实现，编译器默认自动链接，这就是为什么链接时我们不需要手动指定<code>stdio.h</code>的库</p>
+<h2 id="libc"><a href="#libc" class="headerlink" title="libc"></a>libc</h2><p>libc(libc.a, libc.so) 是 <a href="https://en.wikipedia.org/wiki/C_standard_library" target="_blank" rel="noopener">C stand library </a> 的实现，包括<code>stdio.h</code> <code>string.h</code> <code>stdlib.h</code>的头文件的实现，编译器默认自动链接，这就是为什么链接时我们不需要手动指定<code>stdio.h</code>的库</p>
 <p>libc实现了<code>math.h</code>，但在一些平台下依然需要手动指定<code>libm</code></p>
 <hr>
 <p>大一开始学C，现在才赶在学编译原理之前弄懂完整的编译流程，丢人的，褪裙吧</p>

@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>Java考试错题 · Yazawa's Home</title><meta name="description" content="判断题1-1 JLable can contain other components.
+​    false
+1-2 A local class or anonymous class cannot access all local variables from the enclosing metho"><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h1 title=""><a href="/">Yazawa's Home</a></h1><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h1><a>Java考试错题</a></h1></div><div class="post-content"><h1 id="判断题"><a href="#判断题" class="headerlink" title="判断题"></a>判断题</h1><p>1-1 <code>JLable</code> can contain other components.</p>
+<p>​    false</p>
+<p>1-2 A local class or anonymous class cannot access all local variables from the enclosing method.</p>
+<p>​    true</p>
+<p>1-3 Using <code>JPanel p = new JPanel(); BoxLayout b1 = new BoxLayout(p, BoxLayout.X_AXIS);</code> can set the BoxLayout for Panel p.</p>
+<p>​    false</p>
+<h1 id="单选题"><a href="#单选题" class="headerlink" title="单选题"></a>单选题</h1><p>2-1 Which one below is the correct signature of <code>InputStream.read()</code>?</p>
+<ul>
+<li><p>byte read()</p>
+</li>
+<li><p>char read()</p>
+</li>
+<li><p>int read()</p>
+</li>
+<li><p>long read()</p>
+<p>C</p>
+</li>
+</ul>
+<p>2-2  Which of these methods will make a thread leave the running state, and the method is not static?</p>
+<ul>
+<li><p>notify()</p>
+</li>
+<li><p>Thread.KillThread()</p>
+</li>
+<li><p>yield()</p>
+</li>
+<li><p>wait()</p>
+<p>D</p>
+</li>
+</ul>
+<p>2-3 Which one below is NOT a valid Java identifier?</p>
+<ul>
+<li><p>const</p>
+</li>
+<li><p>$2</p>
+</li>
+<li><p>Double</p>
+</li>
+<li><p>名字</p>
+<p>A</p>
+</li>
+</ul>
+<p>2-4 Choose the best fill in the blanks.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello2017</span></span></span><br><span class="line"><span class="class"></span>&#123;	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		(__<span class="comment">//put the best here__);</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Century</span> <span class="keyword">extends</span> <span class="title">Thread</span></span></span><br><span class="line"><span class="class"></span>&#123;	String m=”Hello”;</span><br><span class="line">	Century(String m)&#123;</span><br><span class="line">		<span class="keyword">this</span>.m=m;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>new Century(“Hello”).start();</p>
+</li>
+<li><p>new Thread(“Hello”).start();</p>
+</li>
+<li><p>new Century(new Thread()).start();</p>
+</li>
+<li><p>new Thread(new Century()).start();</p>
+<p>A</p>
+</li>
+</ul>
+<p>2-5 For object <code>o</code> and class <code>C</code>, which expression below is the right way to test if <code>o</code> is an object of <code>C</code>?</p>
+<ul>
+<li><p><code>C.isInstance(o)</code></p>
+</li>
+<li><p><code>o.class == C</code></p>
+</li>
+<li><p><code>o instanceof C</code></p>
+</li>
+<li><p><code>o.getClass() == C</code></p>
+<p>not D</p>
+</li>
+</ul>
+<p>2-6 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x=<span class="number">0x80000000</span>;</span><br><span class="line"><span class="keyword">if</span> (x==-x) </span><br><span class="line">	System.out.println(<span class="string">"OK"</span>);</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">	System.out.println(<span class="string">"NOT"</span>);</span><br></pre></td></tr></table></figure>
+<p>output:</p>
+<ul>
+<li><p>OK</p>
+</li>
+<li><p>NOT</p>
+</li>
+<li><p>overflow</p>
+</li>
+<li><p>error ( compilation or run-time)</p>
+<p>A</p>
+</li>
+</ul>
+<p>2-7 Which of the following is NOT correct?</p>
+<ul>
+<li><p>A Generic Type Parameter of a Class Is Not Allowed in a Static Context</p>
+</li>
+<li><p>Cannot Create an Instance of a Generic Type. (i.e., new E()).</p>
+</li>
+<li><p>Generic Array Creation is Not Allowed. (i.e., new E[100]).</p>
+</li>
+<li><p>Exception Classes Can be Generic.</p>
+<p>not C</p>
+</li>
+</ul>
+<p>2-8 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Double&gt; ls = <span class="keyword">new</span> ArrayList&lt;Double&gt;(); </span><br><span class="line">List&lt;?&gt; lo = ls; </span><br><span class="line">lo.add(<span class="keyword">new</span> Object()); </span><br><span class="line">String s = ls.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>It compiles but exception raises at line 3</p>
+</li>
+<li><p>It does not compile</p>
+</li>
+<li><p>It compiles but exception raises at line 2</p>
+</li>
+<li><p>It compiles but exception raises at line 4</p>
+<p>B</p>
+</li>
+</ul>
+<h1 id="填空题"><a href="#填空题" class="headerlink" title="填空题"></a>填空题</h1><p>3-1 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;		</span><br><span class="line">		CloneT c = <span class="keyword">new</span> CloneT();		</span><br><span class="line">		CloneT t = (CloneT)c.clone();</span><br><span class="line">		t.str = <span class="string">"t"</span>;</span><br><span class="line">		t.b.setA(<span class="number">3</span>);</span><br><span class="line">		System.out.println(t==c);</span><br><span class="line">		System.out.println(t.b==c.b);</span><br><span class="line">		System.out.println(c.toString()+t.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> String.valueOf(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.a = a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CloneT</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">transient</span> <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pi = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    String str = <span class="string">"c"</span>;</span><br><span class="line">    Base b = <span class="keyword">new</span> Base();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CloneT</span><span class="params">()</span></span>&#123;</span><br><span class="line">        num++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	<span class="keyword">try</span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">    	&#125;<span class="keyword">catch</span>(CloneNotSupportedException e)&#123;</span><br><span class="line">    		System.out.println(<span class="string">"clone not supported!"</span>);</span><br><span class="line">    		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> String.valueOf(i) + String.valueOf(pi) + String.valueOf(num) + str + String.valueOf(b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    false</p>
+<p>​    true</p>
+<p>​    111c3111t3</p>
+<p>3-2 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IntStream.range(<span class="number">2</span>, <span class="number">10</span>).</span><br><span class="line">	filter(x-&gt;IntStream.range(<span class="number">2</span>, x).filter(k-&gt;x%k==<span class="number">0</span>).sum()&gt;<span class="number">0</span>).</span><br><span class="line">	sum()</span><br></pre></td></tr></table></figure>
+<p>​    27</p>
+<p>3-3</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> data=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> pd = <span class="number">2</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; </span><br><span class="line">		System.out.println(data+pd);</span><br><span class="line">		f();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> data=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> pd = <span class="number">4</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.print();</span><br><span class="line">		System.out.println(data+pd);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestAB</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		A a = <span class="keyword">new</span> B();</span><br><span class="line">		a.print();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    3</p>
+<p>​    2</p>
+<p>​    7</p>
+<p>3-4 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Integer a = <span class="keyword">new</span> Integer(<span class="number">127</span>);</span><br><span class="line">		Integer b = <span class="number">127</span>;</span><br><span class="line">		Integer c = Integer.valueOf(<span class="string">"127"</span>);</span><br><span class="line">		</span><br><span class="line">		System.out.println(a==b);  <span class="comment">//1</span></span><br><span class="line">		System.out.println(a==c);  <span class="comment">//2 </span></span><br><span class="line">		System.out.println(b==c); <span class="comment">//3</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    false</p>
+<p>​    false</p>
+<p>​    true</p>
+<hr>
+<p>to be done:</p>
+<p>解释</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-01-25</span><i class="fa fa-tag"></i><a href="/tags/Java/" title="Java" class="tag">Java </a></div></div></div></div><div class="share"><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2018/01/25/2018-01-25-Java考试错题/,Yazawa's Home,Java考试错题,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2018/01/25/2018-01-25-Encoding/" title="Encoding" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/12/19/2017-12-19-Java中的数组和for-each/" title="Java中的数组和for-each" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

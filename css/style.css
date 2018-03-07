@@ -1,6 +1,6 @@
 @charset "UTF-8";
 html {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -10,7 +10,7 @@ body {
   font-size: 14px;
   width: 100%;
   margin: 0 auto 30px auto;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 p {
@@ -120,7 +120,7 @@ a:hover, a:active {
   position: fixed;
   right: 0;
   z-index: 3;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   height: 60px;
   border-bottom: 1px solid #f9f9f9;
 }
@@ -173,7 +173,7 @@ a:hover, a:active {
   width: 40%;
   -webkit-background-size: cover;
   background-size: cover;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   height: 100%;
   transition: 0.8s;
   top: 0;
@@ -229,14 +229,14 @@ a:hover, a:active {
 }
 
 .post {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   margin: 30px;
 }
 .post .post-title h1 {
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 24px;
   letter-spacing: 5px;
-  line-height: 1;
+  line-height: 0;
 }
 .post .post-title h2 {
   text-transform: uppercase;
@@ -323,7 +323,7 @@ a:hover, a:active {
 .pagination {
   margin: 30px;
   padding: 0px 0 56px 0;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid #ffffff;
 }
 .pagination ul {
   list-style: none;
@@ -380,7 +380,7 @@ a:hover, a:active {
   position: absolute;
   width: 100%;
   padding-bottom: 20px;
-  background: #f9f9f9;
+  background: #ffffff;
 }
 .footer a {
   color: #A6A6A6;

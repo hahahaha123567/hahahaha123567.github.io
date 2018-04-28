@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>Java并发基本概念 · Yazawa's Home</title><meta name="description" content="Java的多线程几个常识从JDK1.2之后，Java的线程模型就由OS的原生线程模型实现
+Java使用抢占式调度多线程系统，由系统分配执行时间
+设置线程的优先级不是很靠谱，因为有的OS线程模型本身的优先级不够多
+线程状态
+New
+Runnable: running / ready
+Waiting: "><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h1 title=""><a href="/">Yazawa's Home</a></h1><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h1><a>Java并发基本概念</a></h1></div><div class="post-content"><h1 id="Java的多线程"><a href="#Java的多线程" class="headerlink" title="Java的多线程"></a>Java的多线程</h1><h3 id="几个常识"><a href="#几个常识" class="headerlink" title="几个常识"></a>几个常识</h3><p>从JDK1.2之后，Java的线程模型就由OS的原生线程模型实现</p>
+<p>Java使用抢占式调度多线程系统，由系统分配执行时间</p>
+<p>设置线程的优先级不是很靠谱，因为有的OS线程模型本身的优先级不够多</p>
+<h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><ol>
+<li>New</li>
+<li>Runnable: running / ready</li>
+<li>Waiting: 无限等待直到被其他线程显式唤醒</li>
+<li>Timed waiting: 等待被系统自动唤醒</li>
+<li>Blocked: 等其他线程解锁</li>
+<li>Terminated</li>
+</ol>
+<h3 id="状态转换"><a href="#状态转换" class="headerlink" title="状态转换"></a>状态转换</h3><p>Object.wait() -&gt; Waiting</p>
+<p>Object.wait(time) -&gt; Timed waiting</p>
+<p>Object.notify() -&gt; Runnable </p>
+<p>Thread.join() -&gt; Waiting</p>
+<p>Thread.join(time) -&gt; Timed waiting</p>
+<p>Thread.sleep() -&gt; Timed waiting</p>
+<h1 id="Java-Memory-Model"><a href="#Java-Memory-Model" class="headerlink" title="Java Memory Model"></a>Java Memory Model</h1><h3 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h3><ol>
+<li>main memory</li>
+<li>Working memory</li>
+<li>Java thread</li>
+</ol>
+<h3 id="交互操作"><a href="#交互操作" class="headerlink" title="交互操作"></a>交互操作</h3><p>以下操作可以认为是满足原子性的</p>
+<ol>
+<li>lock</li>
+<li>unlock</li>
+<li>read</li>
+<li>load</li>
+<li>use</li>
+<li>assign</li>
+<li>store</li>
+<li>write</li>
+</ol>
+<h1 id="原子性、可见性、有序性"><a href="#原子性、可见性、有序性" class="headerlink" title="原子性、可见性、有序性"></a>原子性、可见性、有序性</h1><h3 id="Atomicity"><a href="#Atomicity" class="headerlink" title="Atomicity"></a>Atomicity</h3><p>synchronized 调用字节码指令 monitorenter 和 monitorexit，使用JMM的lock, unlock实现</p>
+<h3 id="Visibility"><a href="#Visibility" class="headerlink" title="Visibility"></a>Visibility</h3><p>通过主内存传输，volatile保证新值能立即同步到主内存</p>
+<p>synchronized 和 final 也可以实现</p>
+<h3 id="Ordering"><a href="#Ordering" class="headerlink" title="Ordering"></a>Ordering</h3><p>线程内有序，线程间无序（指令重排序，工作内存和主内存同步有延迟）</p>
+<p>volatile 禁止指令重排序</p>
+<p>synchronized 也可以实现</p>
+<h1 id="Happens-before"><a href="#Happens-before" class="headerlink" title="Happens-before"></a>Happens-before</h1><p>先行发生原则</p>
+<p>逻辑顺序，不是时间顺序</p>
+<hr>
+<p>参考资料</p>
+<p>《深入理解Java虚拟机》第12章，第13章</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-04-28</span><i class="fa fa-tag"></i><a href="/tags/Java/" title="Java" class="tag">Java </a></div></div></div></div><div class="share"><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2018/04/28/2018-04-28-Java并发基本概念/,Yazawa's Home,Java并发基本概念,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2018/04/29/2018-04-29-Java线程安全/" title="Java线程安全" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2018/04/26/2018-04-26-《机器学习》ch2-模型评估与选择/" title="《机器学习》ch2.模型评估与选择" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

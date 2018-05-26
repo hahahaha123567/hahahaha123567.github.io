@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>Spring入门 · Yazawa's Home</title><meta name="description" content="配置添加 maven 依赖
+12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;    "><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h1 title=""><a href="/">Yazawa's Home</a></h1><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h1><a>Spring入门</a></h1></div><div class="post-content"><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>添加 maven 依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.6.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Ioc容器"><a href="#Ioc容器" class="headerlink" title="Ioc容器"></a>Ioc容器</h1><p>Spring 的 <strong>ApplicationContext</strong> 容器</p>
+<p>最常被使用的 <strong>ApplicationContext</strong> 接口实现：</p>
+<ul>
+<li><strong>FileSystemXmlApplicationContext</strong>：该容器从 XML 文件中加载已被定义的 bean。在这里，你需要提供给构造器 XML 文件的完整路径</li>
+<li><strong>ClassPathXmlApplicationContext</strong>：该容器从 XML 文件中加载已被定义的 bean。在这里，你不需要提供 XML 文件的完整路径，只需正确配置 CLASSPATH 环境变量即可，因为，容器会从 CLASSPATH 中搜索 bean 配置文件。</li>
+<li><strong>WebXmlApplicationContext</strong>：该容器会在一个 web 应用程序的范围内加载在 XML 文件中已被定义的 bean。</li>
+</ul>
+<h1 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h1><h3 id="Bean的属性"><a href="#Bean的属性" class="headerlink" title="Bean的属性"></a>Bean的属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td>这个属性是强制性的，并且指定用来创建 bean 的 bean 类。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>这个属性指定唯一的 bean 标识符。在基于 XML 的配置元数据中，你可以使用 ID 和/或 name 属性来指定 bean 标识符。</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>singleton / prototype</td>
+</tr>
+<tr>
+<td>constructor-arg</td>
+<td>注入依赖关系</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>注入依赖关系</td>
+</tr>
+<tr>
+<td>autowiring mode</td>
+<td>byType / byName</td>
+</tr>
+<tr>
+<td>lazy-initialization mode</td>
+<td>延迟初始化的 bean 告诉 IoC 容器在它第一次被请求时，而不是在启动时去创建一个 bean 实例。</td>
+</tr>
+<tr>
+<td>initialization 方法</td>
+<td>在 bean 的所有必需的属性被容器设置之后，调用回调方法</td>
+</tr>
+<tr>
+<td>destruction 方法</td>
+<td>当包含该 bean 的容器被销毁时，使用回调方法</td>
+</tr>
+</tbody>
+</table>
+<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>实现 BeanPostProcessor 接口</p>
+<p>调用顺序：</p>
+<ol>
+<li>BeanPostProcessor.postProcessBeforeInitialization</li>
+<li>init-method</li>
+<li>BeanPostProcessor.postProcessAfterInitialization</li>
+</ol>
+<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>强制</p>
+<h3 id="setter函数"><a href="#setter函数" class="headerlink" title="setter函数"></a>setter函数</h3><p>非强制</p>
+<h1 id="配置方法：注解"><a href="#配置方法：注解" class="headerlink" title="配置方法：注解"></a>配置方法：注解</h1><p>xml 文件中添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:annotation-config</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Required"><a href="#Required" class="headerlink" title="@Required"></a>@Required</h3><ul>
+<li>修饰setter方法<br>表示该属性必须设置</li>
+</ul>
+<h3 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h3><ul>
+<li><p>修饰setter方法</p>
+<p>执行 byType 自动连接</p>
+</li>
+<li><p>修饰属性</p>
+<p>省略该属性的setter函数，执行 byType 自动连接</p>
+</li>
+<li><p>修饰构造函数</p>
+<p>执行 constructor 自动连接</p>
+</li>
+</ul>
+<p>默认 @Autowired 包括 @Required ，可以使用 @Autowired (required = false) 取消</p>
+<h3 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h3><ul>
+<li><p>修饰属性</p>
+<p>在有多个相同类型的 Bean 的情况下，指定装配 id 的那个</p>
+</li>
+</ul>
+<h3 id="PostConstruct-PreDestroy"><a href="#PostConstruct-PreDestroy" class="headerlink" title="@PostConstruct @PreDestroy"></a>@PostConstruct @PreDestroy</h3><ul>
+<li><p>修饰方法</p>
+<p>声明 <strong>init-method</strong> 和 <strong>destroy-method</strong> 方法</p>
+</li>
+</ul>
+<h1 id="配置方法：Java"><a href="#配置方法：Java" class="headerlink" title="配置方法：Java"></a>配置方法：Java</h1><h3 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h3><ul>
+<li><p>修饰类</p>
+<p>声明该类是配置类</p>
+</li>
+</ul>
+<h3 id="Bean-1"><a href="#Bean-1" class="headerlink" title="@Bean"></a>@Bean</h3><ul>
+<li><p>修饰方法</p>
+<p>表明该方法返回一个Bean</p>
+</li>
+</ul>
+<p>Java 配置方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldConfig</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Bean</span> <span class="comment">// 方法名就是Bean的id</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> HelloWorld <span class="title">helloWorld</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> HelloWorld();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于对应的 xml 配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"helloWorld"</span> <span class="attr">class</span>=<span class="string">"HelloWorld"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>进行调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">   AnnotationConfigApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext();</span><br><span class="line">   ctx.register(AppConfig.class, OtherConfig.class);</span><br><span class="line">   ctx.refresh();</span><br><span class="line">   MyService myService = ctx.getBean(MyService.class);</span><br><span class="line">   myService.doStuff();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h3><ul>
+<li><p>修饰配置类</p>
+<p>导入所需的其他Bean的配置类</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ConfigA.java</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigA</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> A <span class="title">a</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> A(); </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ConfigB.java</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import</span>(ConfigA.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigB</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> B <span class="title">a</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> A(); </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// App.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">   ApplicationContext ctx = </span><br><span class="line">   <span class="keyword">new</span> AnnotationConfigApplicationContext(ConfigB.class);</span><br><span class="line">   <span class="comment">// now both beans A and B will be available...</span></span><br><span class="line">   A a = ctx.getBean(A.class);</span><br><span class="line">   B b = ctx.getBean(B.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h3><ul>
+<li><p>修饰返回Bean的方法</p>
+<p>和 xml 中作用相同</p>
+</li>
+</ul>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>通过 <strong>ApplicationEvent</strong> 类和 <strong>ApplicationListener</strong> 接口来提供在 <strong>ApplicationContext</strong> 中处理事件。 </p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>Spring 内置事件 &amp; 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>ContextRefreshedEvent*</strong>ApplicationContext<em> 被初始化或刷新时，该事件被发布。这也可以在 </em>ConfigurableApplicationContext*接口中使用 refresh() 方法来发生。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>ContextStartedEvent</strong>当使用 <em>ConfigurableApplicationContext</em> 接口中的 start() 方法启动 <em>ApplicationContext</em> 时，该事件被发布。你可以调查你的数据库，或者你可以在接受到这个事件后重启任何停止的应用程序。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>ContextStoppedEvent</strong>当使用 <em>ConfigurableApplicationContext</em> 接口中的 stop() 方法停止 <em>ApplicationContext</em> 时，发布这个事件。你可以在接受到这个事件后做必要的清理的工作。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>ContextClosedEvent</strong>当使用 <em>ConfigurableApplicationContext</em> 接口中的 close() 方法关闭 <em>ApplicationContext</em> 时，该事件被发布。一个已关闭的上下文到达生命周期末端；它不能被刷新或重启。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>RequestHandledEvent</strong>这是一个 web-specific 事件，告诉所有 bean HTTP 请求已经被服务。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MainApp.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApp</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      ConfigurableApplicationContext context = </span><br><span class="line">      <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"Beans.xml"</span>);</span><br><span class="line"></span><br><span class="line">      context.start();</span><br><span class="line"></span><br><span class="line">      HelloWorld obj = (HelloWorld) context.getBean(<span class="string">"helloWorld"</span>);</span><br><span class="line">      obj.getMessage();</span><br><span class="line"></span><br><span class="line">      context.stop();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// CStartEventHandler</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CStartEventHandler</span> </span></span><br><span class="line"><span class="class">   <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">ContextStartedEvent</span>&gt;</span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ContextStartedEvent event)</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"ContextStartedEvent Received"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考资料</p>
+<p><a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html" target="_blank" rel="noopener">Core Technologies</a> 这是官网的官方文档，找了好久才找到ORZ：<a href="https://spring.io" target="_blank" rel="noopener">https://spring.io</a> -&gt; projects -&gt; spring framework -&gt; features -&gt; core technologies，看来官方已经默认没有noob会从官网开始学习spring了</p>
+<p><a href="http://wiki.jikexueyuan.com/project/spring" target="_blank" rel="noopener">Spring教程_极客学院Wiki</a></p>
+<p><a href="https://www.tutorialspoint.com/spring/index.htm" target="_blank" rel="noopener">Spring Tutorial</a></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-23</span><i class="fa fa-tag"></i><a href="/tags/Java/" title="Java" class="tag">Java </a><a href="/tags/Spring/" title="Spring" class="tag">Spring </a></div></div></div></div><div class="share"><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2018/05/23/2018-05-23-Spring入门/,Yazawa's Home,Spring入门,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2018/05/14/2018-05-14-《机器学习》ch5-神经网络/" title="《机器学习》ch5-神经网络" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

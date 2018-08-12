@@ -1,6 +1,320 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="hahahaha123567, hahahaha123567@qq.com"><title>glut的回调函数 · Yazawa's Blog</title><meta name="description" content="Callback Function从行为上概括，回调函数就是用函数指针去调用函数。这样起到的作用与直接调用函数相似，但是灵活性大大增加。
-平时函数的参数是变量的值或变量的指针，调用者就只能传递这个有限的信息；而如果函数的参数可以是其他函数的指针，调用者就向被调用者传递了一个动作。
-举个我们最熟悉的例"><meta name="keywords" content="ZJU, Java"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/snowman.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/yazawa.jpeg" style="width:300px;"><h1 title=""><a href="/">Yazawa's Blog</a></h1><div class="description"><p>niconiconi</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/hahahaha123567"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/hahahaha123567"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/snowman.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h1><a>glut的回调函数</a></h1></div><div class="post-content"><h1 id="Callback-Function"><a href="#Callback-Function" class="headerlink" title="Callback Function"></a>Callback Function</h1><p>从行为上概括，回调函数就是用函数指针去调用函数。这样起到的作用与直接调用函数相似，但是灵活性大大增加。</p>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机图形学,openGL," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
+<meta name="keywords" content="计算机图形学,openGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="glut的回调函数">
+<meta property="og:url" content="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/index.html">
+<meta property="og:site_name" content="Yazawa&#39;s Blog">
+<meta property="og:description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-12T13:58:53.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="glut的回调函数">
+<meta name="twitter:description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/"/>
+
+
+
+
+
+  <title>glut的回调函数 | Yazawa's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yazawa's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/snowman.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yazawa's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">glut的回调函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:56:29+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Callback-Function"><a href="#Callback-Function" class="headerlink" title="Callback Function"></a>Callback Function</h1><p>从行为上概括，回调函数就是用函数指针去调用函数。这样起到的作用与直接调用函数相似，但是灵活性大大增加。</p>
 <p>平时函数的参数是变量的值或变量的指针，调用者就只能传递这个有限的信息；而如果函数的参数可以是其他函数的指针，调用者就向被调用者传递了一个动作。</p>
 <p>举个我们最熟悉的例子，C语言的stdlib.h中的qsort函数的原型是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void qsort (void* base, size_t num, size_t width, int(__cdecl* compare)(const void*, const void*));</span><br></pre></td></tr></table></figure></p>
 <p>在我们调用qsort的时候，不仅可以传递数组的基地址、数组的元素个数、每个元素占用的字节数这些基本信息，还可以传递“比较”这个动作。</p>
@@ -67,4 +381,437 @@
 <p><a href="http://www.lighthouse3d.com/tutorials/glut-tutorial/" target="_blank" rel="noopener">按功能介绍GLUT</a></p>
 <p><a href="http://www.cnblogs.com/live41/tag/%E6%B8%B8%E6%88%8F/default.html?page=2" target="_blank" rel="noopener">按功能介绍GLUT_个人翻译版</a></p>
 <hr>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-18</span><i class="fa fa-tag"></i><a href="/tags/计算机图形学/" title="计算机图形学" class="tag">计算机图形学 </a><a href="/tags/openGL/" title="openGL" class="tag">openGL </a></div></div></div></div><div class="share"><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/,Yazawa's Blog,glut的回调函数,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/10/20/2017-10-20-初学Java/" title="初学Java" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/10/17/2017-10-17-学习使用packet tracer/" title="学习使用packet tracer" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机图形学/" rel="tag"># 计算机图形学</a>
+          
+            <a href="/tags/openGL/" rel="tag"># openGL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/17/2017-10-17-学习使用packet tracer/" rel="next" title="学习使用packet tracer">
+                <i class="fa fa-chevron-left"></i> 学习使用packet tracer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/20/2017-10-20-初学Java/" rel="prev" title="初学Java">
+                初学Java <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/snowman.jpg"
+                alt="hahahaha123567" />
+            
+              <p class="site-author-name" itemprop="name">hahahaha123567</p>
+              <p class="site-description motion-element" itemprop="description">niconiconi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function"><span class="nav-number">1.</span> <span class="nav-text">Callback Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">1.0.1.</span> <span class="nav-text">意义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function-in-GLUT"><span class="nav-number">2.</span> <span class="nav-text">Callback Function in GLUT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Format"><span class="nav-number">2.1.</span> <span class="nav-text">Program Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-of-Execution"><span class="nav-number">2.2.</span> <span class="nav-text">Process of Execution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">3.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#glutKeyboardFunc"><span class="nav-number">3.1.</span> <span class="nav-text">glutKeyboardFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">3.1.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called"><span class="nav-number">3.1.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter"><span class="nav-number">3.1.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutSpecialFunc"><span class="nav-number">3.2.</span> <span class="nav-text">glutSpecialFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMouseFunc"><span class="nav-number">3.3.</span> <span class="nav-text">glutMouseFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMotionFunc-glutPassiveMotionFunc"><span class="nav-number">3.4.</span> <span class="nav-text">glutMotionFunc(), glutPassiveMotionFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-3"><span class="nav-number">3.4.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">3.4.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutTimerFunc"><span class="nav-number">3.5.</span> <span class="nav-text">glutTimerFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-4"><span class="nav-number">3.5.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">3.5.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutIdleFunc"><span class="nav-number">3.6.</span> <span class="nav-text">glutIdleFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">3.6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-Part"><span class="nav-number">3.7.</span> <span class="nav-text">Public Part</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Program"><span class="nav-number">3.8.</span> <span class="nav-text">Complete Program</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

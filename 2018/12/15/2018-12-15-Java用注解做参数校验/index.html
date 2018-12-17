@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java, noob" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="niconiconi">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yazawa&#39;s Blog">
-<meta property="og:url" content="https://hahahaha123567.github.io/archives/2016/08/index.html">
+<meta name="description" content="介绍几种常见的 @NotNull 注解">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java用注解做参数校验">
+<meta property="og:url" content="https://hahahaha123567.github.io/2018/12/15/2018-12-15-Java用注解做参数校验/index.html">
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
-<meta property="og:description" content="niconiconi">
+<meta property="og:description" content="介绍几种常见的 @NotNull 注解">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-17T17:53:25.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yazawa&#39;s Blog">
-<meta name="twitter:description" content="niconiconi">
+<meta name="twitter:title" content="Java用注解做参数校验">
+<meta name="twitter:description" content="介绍几种常见的 @NotNull 注解">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/archives/2016/08/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/12/15/2018-12-15-Java用注解做参数校验/"/>
 
 
 
 
 
-  <title>归档 | Yazawa's Blog</title>
+  <title>Java用注解做参数校验 | Yazawa's Blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,73 +229,176 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 34 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2016">2016</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2018/12/15/2018-12-15-Java用注解做参数校验/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/snowman.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yazawa's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2016/08/06/2016-08-06-我又创造了这个世界/" itemprop="url">
-              
-                <span itemprop="name">我又创造了这个世界</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java用注解做参数校验</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-06T23:46:02+08:00"
-              content="2016-08-06" >
-          08-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-15T01:32:08+08:00">
+                2018-12-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  介绍几种常见的 @NotNull 注解
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="JSR-303-Bean-Validation"><a href="#JSR-303-Bean-Validation" class="headerlink" title="JSR 303 Bean Validation"></a>JSR 303 Bean Validation</h1><p><code>javax.validation.constraints</code></p>
+<ul>
+<li>NotNull</li>
+<li>NotEmpty</li>
+<li>NotBlank</li>
+<li>…</li>
+</ul>
+<p>常用 Hibernate Validator 实现, 在 controller 层用 @Validated 开启, 在运行时校验不通过则报错</p>
+<h1 id="JSR-305-Annotations-for-Software-Defect-Detection"><a href="#JSR-305-Annotations-for-Software-Defect-Detection" class="headerlink" title="JSR 305 Annotations for Software Defect Detection"></a>JSR 305 Annotations for Software Defect Detection</h1><p><code>org.springframework.lang</code></p>
+<ul>
+<li>NonNull</li>
+<li>Nullable</li>
+</ul>
+<p>提供给ide做判断提示, 在运行时不起作用</p>
+<h1 id="Jetbrains-家的注解"><a href="#Jetbrains-家的注解" class="headerlink" title="Jetbrains 家的注解"></a>Jetbrains 家的注解</h1><p>涵盖了 JSR 305 的规范, 还有额外的 @Contract @TestOnly 等</p>
+<p><a href="https://www.jetbrains.com/help/idea/annotating-source-code.html" target="_blank" rel="noopener">官网英文文档</a><br>(Jetbrains 家的文档是真的好)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/24778947" target="_blank" rel="noopener">中文文档(不)</a></p>
+<h1 id="几个常识"><a href="#几个常识" class="headerlink" title="几个常识"></a>几个常识</h1><h3 id="JCP"><a href="#JCP" class="headerlink" title="JCP"></a>JCP</h3><p>Java Community Process, 由Sun创建, 用来发展和更新Java技术规范, 参考实现(RI), 技术兼容包(TCK)</p>
+<h3 id="JSR"><a href="#JSR" class="headerlink" title="JSR"></a>JSR</h3><p>Java Specification Requests, JCP 成员向委员会提交的 Java 发展议案，经过一系列流程后，如果通过会成为 JEP</p>
+<h3 id="JEP"><a href="#JEP" class="headerlink" title="JEP"></a>JEP</h3><p>JDK Enhancement Proposals, JDK的版本变化将从这些提案中选取</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.oschina.net/question/3838659_2278450" target="_blank" rel="noopener">JAVA中@NotNull和@Nonnull有什么区别？ - 开源中国</a></p>
+<p><a href="https://www.jianshu.com/p/31433bcaa1a5" target="_blank" rel="noopener">JDK 版本变化 - 简书</a></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/2018-08-13-java-util-concurrent/" rel="next" title="java.util.concurrent">
+                <i class="fa fa-chevron-left"></i> java.util.concurrent
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/16/2018-12-16-用字符串加锁/" rel="prev" title="用字符串加锁">
+                用字符串加锁 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -301,6 +406,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -321,8 +430,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -419,6 +537,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSR-303-Bean-Validation"><span class="nav-number">1.</span> <span class="nav-text">JSR 303 Bean Validation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSR-305-Annotations-for-Software-Defect-Detection"><span class="nav-number">2.</span> <span class="nav-text">JSR 305 Annotations for Software Defect Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jetbrains-家的注解"><span class="nav-number">3.</span> <span class="nav-text">Jetbrains 家的注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几个常识"><span class="nav-number">4.</span> <span class="nav-text">几个常识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JCP"><span class="nav-number">4.0.1.</span> <span class="nav-text">JCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSR"><span class="nav-number">4.0.2.</span> <span class="nav-text">JSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JEP"><span class="nav-number">4.0.3.</span> <span class="nav-text">JEP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -566,6 +700,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机图形学,openGL," />
+  <meta name="keywords" content="Docker," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="课本介绍矩阵操作直接塞了几个函数，看完之后对几个不同矩阵的概念还是很模糊= = 在这里做个学习过程中理解的整理，最后用例子尽力解释清楚">
-<meta name="keywords" content="计算机图形学,openGL">
+<meta name="description" content="在 linux 容器上写应用的 Dockerfile">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解openGL中的矩阵操作">
-<meta property="og:url" content="https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/index.html">
+<meta property="og:title" content="写Dockerfile中遇到的问题">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019/02/21/2019-02-21-写Dockerfile中遇到的问题/index.html">
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
-<meta property="og:description" content="课本介绍矩阵操作直接塞了几个函数，看完之后对几个不同矩阵的概念还是很模糊= = 在这里做个学习过程中理解的整理，最后用例子尽力解释清楚">
+<meta property="og:description" content="在 linux 容器上写应用的 Dockerfile">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:25.615Z">
+<meta property="og:updated_time" content="2019-02-20T18:34:18.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解openGL中的矩阵操作">
-<meta name="twitter:description" content="课本介绍矩阵操作直接塞了几个函数，看完之后对几个不同矩阵的概念还是很模糊= = 在这里做个学习过程中理解的整理，最后用例子尽力解释清楚">
+<meta name="twitter:title" content="写Dockerfile中遇到的问题">
+<meta name="twitter:description" content="在 linux 容器上写应用的 Dockerfile">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/02/21/2019-02-21-写Dockerfile中遇到的问题/"/>
 
 
 
 
 
-  <title>理解openGL中的矩阵操作 | Yazawa's Blog</title>
+  <title>写Dockerfile中遇到的问题 | Yazawa's Blog</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019/02/21/2019-02-21-写Dockerfile中遇到的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">理解openGL中的矩阵操作</h1>
+          <h1 class="post-title" itemprop="name headline">写Dockerfile中遇到的问题</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-27T17:13:19+08:00">
-                2017-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T02:32:37+08:00">
+                2019-02-21
               </time>
             
 
@@ -297,7 +297,7 @@
 
           
               <div class="post-description">
-                  课本介绍矩阵操作直接塞了几个函数，看完之后对几个不同矩阵的概念还是很模糊= = 在这里做个学习过程中理解的整理，最后用例子尽力解释清楚
+                  在 linux 容器上写应用的 Dockerfile
               </div>
           
 
@@ -314,61 +314,33 @@
       
 
       
-        <h1 id="What"><a href="#What" class="headerlink" title="What"></a>What</h1><p>openGL中的矩阵是一组提供了接口的二维数组，用来表示图形的变换</p>
-<p>空间中点的坐标由一维数组(vector)表示，用矩阵表示点将要进行的变换，相乘后即得到变换后的坐标</p>
-<h3 id="从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates"><a href="#从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates" class="headerlink" title="从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)"></a>从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)</h3><p>点的坐标可以用一个三维vector表示，进行rotate和scale变换时乘对应的矩阵(3 * 3)即可完成变换。但对translate变换，乘一个3 * 3的矩阵并不能直接完成，因此为了将所有变换的实现都统一到矩阵的乘法，在进行变换时将点的坐标扩展到四维，对应的矩阵也用4 * 4实现，因此openGL中用到的矩阵是4 * 4的</p>
-<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>openGL中将3D坐标投影到2D屏幕坐标的步骤：</p>
-<ol>
-<li>model-view transform</li>
-<li>projection transform</li>
-<li>apply</li>
-<li>viewport transform</li>
-</ol>
-<p>以下分别进行说明</p>
-<h2 id="Model-View-Transform"><a href="#Model-View-Transform" class="headerlink" title="Model-View Transform"></a>Model-View Transform</h2><p>model指要绘制的物体，view指观察者的位置</p>
-<p>这一阶段包括</p>
-<ol>
-<li>物体在场景中的平移、旋转、缩放</li>
-<li>将场景放在观察者面前</li>
-</ol>
-<p>因为观察者和物体是相对的，观察者的移动相当于物体往相反方向移动，因此两者可以统一为model-view transform</p>
-<p>相关函数</p>
+        <h1 id="文件映射"><a href="#文件映射" class="headerlink" title="文件映射"></a>文件映射</h1><p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Use volumes | Docker Documentation</a></p>
+<p><a href="http://dockone.io/article/128" target="_blank" rel="noopener">深入理解Docker Volume（一） - DockOne.io</a></p>
+<p><a href="http://dockone.io/article/129" target="_blank" rel="noopener">深入理解Docker Volume（二） - DockOne.io</a></p>
+<h2 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 运行时指定</span></span><br><span class="line">docker <span class="keyword">run</span> -v /container/data hello</span><br><span class="line"></span><br><span class="line"># 2. Dockerfile中指定</span><br><span class="line">VOLUME /container/data</span><br></pre></td></tr></table></figure>
+<p>docker 会在 host 上创建一个目录并挂载到 container 的 <code>/container/data</code></p>
+<p>创建的目录默认路径在 <code>/var/lib/docker</code></p>
+<h2 id="bind-mount"><a href="#bind-mount" class="headerlink" title="bind-mount"></a>bind-mount</h2><p><code>docker run -v /host/data:/container/data hello</code> </p>
+<p>将 <code>host</code> 的 <code>/host/data</code> 目录挂载到了 <code>container</code> 的 <code>/container/data</code> 目录下</p>
+<h2 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h2><p>因为是“挂载”, host 的目录内容会覆盖 container 的目录:</p>
 <ul>
-<li>glTranslate(x, y, z)</li>
-<li>glRotate(rad, vx, vy, vz)</li>
-<li>glScale(x, y, z)</li>
-<li>gluLookAt(eyex, eyey, eyez, centerx, centery, centerz, upx, upy, upz)</li>
+<li>如果是普通 mount 则 container 内的目录一定会被覆盖为空</li>
+<li>如果是 bind-mount, 但指定的 host 目录原本不存在, 则 container 目录也会被覆盖为空</li>
 </ul>
-<h2 id="Projection-Transform"><a href="#Projection-Transform" class="headerlink" title="Projection Transform"></a>Projection Transform</h2><p>在model-view transform中完成了建模后，就需要开始将模型投影到观察者眼中</p>
-<p>投影变换(projection transform)分为两种，透视投影(perspective projection)和正交投影(orthographic projection)</p>
-<h3 id="Perspective-projection"><a href="#Perspective-projection" class="headerlink" title="Perspective projection"></a>Perspective projection</h3><p>透视投影即近小远大的观察方式</p>
-<p>这一步首先要继续对场景进行裁剪(clip)，通过上、下、左、右、近平面、远平面将能显示的部分裁剪成平截椎体(frustum)</p>
-<p>相关函数</p>
-<ul>
-<li>gluPerspective(fovy, aspect, zNear, zFar)</li>
-</ul>
-<h3 id="Orthographic-Projection"><a href="#Orthographic-Projection" class="headerlink" title="Orthographic Projection"></a>Orthographic Projection</h3><p>正交投影即远近一样大的观察方式</p>
-<p>同样进行裁剪</p>
-<p>相关函数</p>
-<ul>
-<li>glOrtho(left, right, bottom, top, near, far)</li>
-</ul>
-<h2 id="Apply"><a href="#Apply" class="headerlink" title="Apply"></a>Apply</h2><p>openGL根据前面的变换得到的矩阵进行计算</p>
-<h2 id="Viewport-Transform"><a href="#Viewport-Transform" class="headerlink" title="Viewport Transform"></a>Viewport Transform</h2><p>Apply结束后就得到了2D的投影视图，我们可以根据需要把它放置到当前窗口(window)的指定位置</p>
-<p>相关函数</p>
-<ul>
-<li>glViewport(x, y, width, height)</li>
-</ul>
-<hr>
-<h1 id="Programing"><a href="#Programing" class="headerlink" title="Programing"></a>Programing</h1><p>代码参考 <a href="https://github.com/hahahaha123567/hello-world/blob/master/Computer%20Graphics/projection.c" target="_blank" rel="noopener">projection.c</a></p>
-<p>Perspective projection:</p>
-<p>glLookAt()先指定观察者的位置、视线的方向、视线的上方，然后glPerspective()/glOrtho()进行剪切，留下可见的部分</p>
-<p>需要注意，<strong>glTranslate()/glRotate()等函数在对物体变换的同时也会对坐标系进行变换</strong>。例如，先glTranslate(1, 0, 0)再glRotate(angle, 0, 1, 0)，最终物体不是绕着(0, 0, 0)-&gt;(0, 1, 0)的轴旋转，而是绕着平移后的坐标轴的原点(1, 0, 0)-&gt;(1, 1, 0)的轴旋转，坐标轴改变后同样会影响之后的gluLookAt()等函数的设置，因此一般最后再进行平移旋转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glMatrixMode(GL_PROJECTION);</span><br><span class="line">glLoadIdentity();</span><br><span class="line">glPerspective(forv, aspect, near, far); / glOrtho(left, right, bottom, top, near, far);</span><br><span class="line"></span><br><span class="line">glMatrixMode(GL_MODELVIEW);</span><br><span class="line">glLoadIdentity();</span><br><span class="line">gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, up_x, up_y, up_z);</span><br><span class="line">glTranslate(x, y, z);</span><br><span class="line">glRotate(angle, x, y, z);</span><br><span class="line">glScale(x, y, z);</span><br><span class="line">draw();</span><br></pre></td></tr></table></figure>
-<hr>
-<p>参考资料</p>
-<p>《OpenGL编程指南》第5章</p>
-<hr>
+<p>todo: volume 的顺序是否会影响文件是否被覆盖</p>
+<p><a href="https://segmentfault.com/a/1190000015684472" target="_blank" rel="noopener">Docker volume 挂载时文件或文件夹不存在 - Keep Coding - SegmentFault 思否</a></p>
+<h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><h2 id="终端打印彩色字体"><a href="#终端打印彩色字体" class="headerlink" title="终端打印彩色字体"></a>终端打印彩色字体</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">"\033[31m 我是红色 \033[0m"</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell的比较选项"><a href="#shell的比较选项" class="headerlink" title="shell的比较选项"></a>shell的比较选项</h2><p><a href="https://www.ibm.com/developerworks/cn/linux/l-bash-test.html" target="_blank" rel="noopener">Linux 技巧: Bash 测试和比较函数</a></p>
+<h2 id="shell读参数"><a href="#shell读参数" class="headerlink" title="shell读参数"></a>shell读参数</h2><p><a href="http://billie66.github.io/TLCL/book/chap33.html" target="_blank" rel="noopener">位置参数 - TLCL</a></p>
+<h2 id="星际选手"><a href="#星际选手" class="headerlink" title="星际选手"></a>星际选手</h2><p><code>sed</code> 写成了 <code>set</code>, 两个单词高亮一样, 查了几个小时, 一直以为是脚本没执行, 最后才发现是命令写错了</p>
+<h1 id="持续运行"><a href="#持续运行" class="headerlink" title="持续运行"></a>持续运行</h1><p>docker 执行完脚本后就会自动停止</p>
+<p>为了使其正常工作, 一般用 <code>CMD [&quot;...&quot;]</code> 显式使其执行命令, 或者使用 tailf 查看日志等</p>
+<h1 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h1><h2 id="容器运行时"><a href="#容器运行时" class="headerlink" title="容器运行时"></a>容器运行时</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器内部查看程序的日志</span></span><br><span class="line">docker <span class="built_in">exec</span> -it hello bash</span><br></pre></td></tr></table></figure>
+<h2 id="容器停止后"><a href="#容器停止后" class="headerlink" title="容器停止后"></a>容器停止后</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 host 上查看 hello 输出的日志, 即 hello 内部打印到 bash 的信息</span></span><br><span class="line">docker logs hello</span><br></pre></td></tr></table></figure>
+<h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="document"><a href="#document" class="headerlink" title="document"></a>document</h2><p><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_blank" rel="noopener">Best practices for writing Dockerfiles | Docker Documentation</a></p>
+<p><a href="https://yeasy.gitbooks.io/docker_practice/appendix/best_practices.html" target="_blank" rel="noopener">附录四：Dockerfile 最佳实践 · Docker —— 从入门到实践</a></p>
+<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p><a href="https://hub.docker.com/_/redis" target="_blank" rel="noopener">redis - Docker Hub</a></p>
+<p><a href="https://hub.docker.com/_/nginx" target="_blank" rel="noopener">nginx - Docker Hub</a></p>
 
       
     </div>
@@ -386,9 +358,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机图形学/" rel="tag"># 计算机图形学</a>
-          
-            <a href="/tags/openGL/" rel="tag"># openGL</a>
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
           
         </div>
       
@@ -401,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/27/2017-10-27-c语言的链接环节/" rel="next" title="c语言的链接环节">
-                <i class="fa fa-chevron-left"></i> c语言的链接环节
+              <a href="/2019/02/21/2019-02-21-Java中的字符串替换/" rel="next" title="Java中的字符串替换">
+                <i class="fa fa-chevron-left"></i> Java中的字符串替换
               </a>
             
           </div>
@@ -410,10 +380,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/04/2017-11-04-OpenGL中的光照相关/" rel="prev" title="OpenGL中的光照相关">
-                OpenGL中的光照相关 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -582,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates"><span class="nav-number">1.0.1.</span> <span class="nav-text">从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How"><span class="nav-number">2.</span> <span class="nav-text">How</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-View-Transform"><span class="nav-number">2.1.</span> <span class="nav-text">Model-View Transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Projection-Transform"><span class="nav-number">2.2.</span> <span class="nav-text">Projection Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perspective-projection"><span class="nav-number">2.2.1.</span> <span class="nav-text">Perspective projection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Orthographic-Projection"><span class="nav-number">2.2.2.</span> <span class="nav-text">Orthographic Projection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apply"><span class="nav-number">2.3.</span> <span class="nav-text">Apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewport-Transform"><span class="nav-number">2.4.</span> <span class="nav-text">Viewport Transform</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Programing"><span class="nav-number">3.</span> <span class="nav-text">Programing</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件映射"><span class="nav-number">1.</span> <span class="nav-text">文件映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mount"><span class="nav-number">1.1.</span> <span class="nav-text">mount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind-mount"><span class="nav-number">1.2.</span> <span class="nav-text">bind-mount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖"><span class="nav-number">1.3.</span> <span class="nav-text">覆盖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell脚本"><span class="nav-number">2.</span> <span class="nav-text">shell脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#终端打印彩色字体"><span class="nav-number">2.1.</span> <span class="nav-text">终端打印彩色字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell的比较选项"><span class="nav-number">2.2.</span> <span class="nav-text">shell的比较选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell读参数"><span class="nav-number">2.3.</span> <span class="nav-text">shell读参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#星际选手"><span class="nav-number">2.4.</span> <span class="nav-text">星际选手</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持续运行"><span class="nav-number">3.</span> <span class="nav-text">持续运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看日志"><span class="nav-number">4.</span> <span class="nav-text">查看日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器运行时"><span class="nav-number">4.1.</span> <span class="nav-text">容器运行时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器停止后"><span class="nav-number">4.2.</span> <span class="nav-text">容器停止后</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最佳实践"><span class="nav-number">5.</span> <span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document"><span class="nav-number">5.1.</span> <span class="nav-text">document</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#example"><span class="nav-number">5.2.</span> <span class="nav-text">example</span></a></li></ol></li></ol></div>
             
 
           </div>

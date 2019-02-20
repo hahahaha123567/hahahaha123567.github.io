@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="在 linux 容器上写应用的 Dockerfile">
+<meta name="description" content="大部分都是一些之前不知道的常识">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写Dockerfile中遇到的问题">
 <meta property="og:url" content="https://hahahaha123567.github.io/2019/02/21/2019-02-21-写Dockerfile中遇到的问题/index.html">
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
-<meta property="og:description" content="在 linux 容器上写应用的 Dockerfile">
+<meta property="og:description" content="大部分都是一些之前不知道的常识">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-20T18:34:18.706Z">
+<meta property="og:updated_time" content="2019-02-20T18:45:29.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写Dockerfile中遇到的问题">
-<meta name="twitter:description" content="在 linux 容器上写应用的 Dockerfile">
+<meta name="twitter:description" content="大部分都是一些之前不知道的常识">
 
 
 
@@ -297,7 +297,7 @@
 
           
               <div class="post-description">
-                  在 linux 容器上写应用的 Dockerfile
+                  大部分都是一些之前不知道的常识
               </div>
           
 
@@ -317,7 +317,7 @@
         <h1 id="文件映射"><a href="#文件映射" class="headerlink" title="文件映射"></a>文件映射</h1><p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Use volumes | Docker Documentation</a></p>
 <p><a href="http://dockone.io/article/128" target="_blank" rel="noopener">深入理解Docker Volume（一） - DockOne.io</a></p>
 <p><a href="http://dockone.io/article/129" target="_blank" rel="noopener">深入理解Docker Volume（二） - DockOne.io</a></p>
-<h2 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 运行时指定</span></span><br><span class="line">docker <span class="keyword">run</span> -v /container/data hello</span><br><span class="line"></span><br><span class="line"># 2. Dockerfile中指定</span><br><span class="line">VOLUME /container/data</span><br></pre></td></tr></table></figure>
+<h2 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 运行时指定</span></span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> -v /container/data hello</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 2. Dockerfile中指定</span></span></span><br><span class="line"><span class="bash">VOLUME /container/data</span></span><br></pre></td></tr></table></figure>
 <p>docker 会在 host 上创建一个目录并挂载到 container 的 <code>/container/data</code></p>
 <p>创建的目录默认路径在 <code>/var/lib/docker</code></p>
 <h2 id="bind-mount"><a href="#bind-mount" class="headerlink" title="bind-mount"></a>bind-mount</h2><p><code>docker run -v /host/data:/container/data hello</code> </p>
@@ -473,7 +473,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

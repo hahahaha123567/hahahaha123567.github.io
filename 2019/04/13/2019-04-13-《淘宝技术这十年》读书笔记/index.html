@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="讲了阿里03-13年间后端技术的演变, 可以说代表了一个典型的互联网应用从简单到复杂的迭代过程, 很适合我这种小白了解&quot;计算机技术&quot;专业的人毕业后应该做什么">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《淘宝技术这十年》读书笔记">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019/04/13/2019-04-13-《淘宝技术这十年》读书笔记/index.html">
+<meta property="og:site_name" content="Yazawa&#39;s Blog">
+<meta property="og:description" content="讲了阿里03-13年间后端技术的演变, 可以说代表了一个典型的互联网应用从简单到复杂的迭代过程, 很适合我这种小白了解&quot;计算机技术&quot;专业的人毕业后应该做什么">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-15T01:55:30.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《淘宝技术这十年》读书笔记">
+<meta name="twitter:description" content="讲了阿里03-13年间后端技术的演变, 可以说代表了一个典型的互联网应用从简单到复杂的迭代过程, 很适合我这种小白了解&quot;计算机技术&quot;专业的人毕业后应该做什么">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/04/13/2019-04-13-《淘宝技术这十年》读书笔记/"/>
+
+
+
+
+
+  <title>《淘宝技术这十年》读书笔记 | Yazawa's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yazawa's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019/04/13/2019-04-13-《淘宝技术这十年》读书笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/nicoumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yazawa's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《淘宝技术这十年》读书笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-13T23:50:37+08:00">
+                2019-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  讲了阿里03-13年间后端技术的演变, 可以说代表了一个典型的互联网应用从简单到复杂的迭代过程, 很适合我这种小白了解"计算机技术"专业的人毕业后应该做什么
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="技术演变"><a href="#技术演变" class="headerlink" title="技术演变"></a>技术演变</h1><h2 id="个人网站-2003-05-2003-12"><a href="#个人网站-2003-05-2003-12" class="headerlink" title="个人网站 2003/05-2003/12"></a>个人网站 2003/05-2003/12</h2><h3 id="LAMP"><a href="#LAMP" class="headerlink" title="LAMP"></a>LAMP</h3><p>linux + apache + mysql + php</p>
+<h3 id="分库"><a href="#分库" class="headerlink" title="分库"></a>分库</h3><p>读写分离, 备份</p>
+<h2 id="个人网站的升级-2004-01-2004-05"><a href="#个人网站的升级-2004-01-2004-05" class="headerlink" title="个人网站的升级 2004/01-2004/05"></a>个人网站的升级 2004/01-2004/05</h2><h3 id="mysql-gt-Oracle"><a href="#mysql-gt-Oracle" class="headerlink" title="mysql-&gt;Oracle"></a>mysql-&gt;Oracle</h3><p>myISAM write的时候要lock整个表</p>
+<h2 id="企业级Java网站-2004-06-2006-12"><a href="#企业级Java网站-2004-06-2006-12" class="headerlink" title="企业级Java网站 2004/06-2006/12"></a>企业级Java网站 2004/06-2006/12</h2><h3 id="php-gt-Java"><a href="#php-gt-Java" class="headerlink" title="php-&gt;Java"></a>php-&gt;Java</h3><p>php的sql relay会死锁</p>
+<p>分模块同步开发, 开发完后分模块替换</p>
+<h3 id="Java-MVC框架"><a href="#Java-MVC框架" class="headerlink" title="Java MVC框架"></a>Java MVC框架</h3><p>struts1.x-&gt;WebX</p>
+<h3 id="iSearch"><a href="#iSearch" class="headerlink" title="iSearch"></a>iSearch</h3><h3 id="分库-1"><a href="#分库-1" class="headerlink" title="分库"></a>分库</h3><p>DBRoute</p>
+<h3 id="缓存TBStore"><a href="#缓存TBStore" class="headerlink" title="缓存TBStore"></a>缓存TBStore</h3><p>Berkeley DB</p>
+<p>key-&gt;hashed key-&gt;mod-&gt;server</p>
+<p>缓存变动较少的信息</p>
+<p>更新数据库的时候要同步更新缓存</p>
+<h3 id="大字段存储位置"><a href="#大字段存储位置" class="headerlink" title="大字段存储位置"></a>大字段存储位置</h3><p>db -&gt; cache -&gt; fs</p>
+<h3 id="CDN网络"><a href="#CDN网络" class="headerlink" title="CDN网络"></a>CDN网络</h3><h2 id="创造技术-2007-01-2007-12"><a href="#创造技术-2007-01-2007-12" class="headerlink" title="创造技术 2007/01-2007/12"></a>创造技术 2007/01-2007/12</h2><h3 id="文件系统TFS"><a href="#文件系统TFS" class="headerlink" title="文件系统TFS"></a>文件系统TFS</h3><p>针对小文件</p>
+<p>图片处理在nginx上进行</p>
+<p>图片读取多级缓存</p>
+<h3 id="缓存Tair"><a href="#缓存Tair" class="headerlink" title="缓存Tair"></a>缓存Tair</h3><p>TBStore, TDBM</p>
+<p>分布式, config server, data server</p>
+<h3 id="iSearch-1"><a href="#iSearch-1" class="headerlink" title="iSearch"></a>iSearch</h3><p>多份相同数据, 单行-&gt;矩阵</p>
+<h2 id="分布式电子商务操作系统-2008-01-2012-12"><a href="#分布式电子商务操作系统-2008-01-2012-12" class="headerlink" title="分布式电子商务操作系统 2008/01-2012/12"></a>分布式电子商务操作系统 2008/01-2012/12</h2><h3 id="服务化"><a href="#服务化" class="headerlink" title="服务化"></a>服务化</h3><p>标签服务/属性服务/用户信息服务/交易服务 -&gt; 模块化</p>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><h4 id="服务注册-HSF"><a href="#服务注册-HSF" class="headerlink" title="服务注册 HSF"></a>服务注册 HSF</h4><p>RPC(TCP/IP)</p>
+<p>OSGI</p>
+<h4 id="消息-notify"><a href="#消息-notify" class="headerlink" title="消息 notify"></a>消息 notify</h4><p>异步</p>
+<p>服务注册等</p>
+<h4 id="分布式数据访问-TDDL"><a href="#分布式数据访问-TDDL" class="headerlink" title="分布式数据访问 TDDL"></a>分布式数据访问 TDDL</h4><p>分布式存储</p>
+<p>访问路由</p>
+<p>多向非对称复制</p>
+<p>存储扩展</p>
+<p>CommonDAO -&gt; TDDL -&gt; 愚公数据迁移, 精卫数据复制 </p>
+<h3 id="session框架"><a href="#session框架" class="headerlink" title="session框架"></a>session框架</h3><h3 id="开放平台"><a href="#开放平台" class="headerlink" title="开放平台"></a>开放平台</h3><p>memcached</p>
+<p>hadoop</p>
+<h1 id="大牛的话"><a href="#大牛的话" class="headerlink" title="大牛的话"></a>大牛的话</h1><h2 id="正明"><a href="#正明" class="headerlink" title="正明"></a>正明</h2><p>找到自己感兴趣的, 花时间投进去, 通过实践后的知识积累比只看书本有用得多. 我看过一本操作系统方面的英文书, 其中引用了一段中国人的格言:”I hear and I forget. I see and I remember. I do and I understand.” 荀子说”不闻不若闻之, 闻之不若见之, 见之不若知之, 知之不若行之.”</p>
+<h2 id="正祥"><a href="#正祥" class="headerlink" title="正祥"></a>正祥</h2><p>一个人如果把做成事作为目标, 该他得到的东西一定会顺理成章得到. 但是如果把上升作为主要目标, 做同样的事, 结果就会完全不一样. 你的心态会最终决定你的成就.</p>
+<h2 id="毕玄"><a href="#毕玄" class="headerlink" title="毕玄"></a>毕玄</h2><p>现在如果没有什么特殊情况的话, 我会花很多时间看技术方面的文章或者图书, 写代码的时间可能每天只有两三个小时. 每隔一段时间回去想一想将来干什么比较好, 因为写代码时间会过的很快, 要经常跳出来想一想.</p>
+<p>至于晋升, 重要的是在这个过程中你回顾了你一年做了什么事情, 对公司有什么贡献, 技术上有哪些成长. 我们要看技术方面的专业性, 然后看你的技术对公司的业务发展有多少贡献. 还有一点, 我比较看中的是, 也许你不在其位, 但能够跳出自己的范围, 想到公司未来会面临什么问题, 怎么解决, 如果能落实就最好了, 不管你落实的技术含量有多高, 关键是你解决了什么样的问题. 如果你能做到这些, 你这个人对公司就非常重要.</p>
+<p>在校招的时候, 我比较欣赏的学生往往是那些”不务正业”类型的. 我经常会问他们, 你有没有利用业余时间处于自己的技术兴趣做的一些小东西. 这样的学生我们通常会比较感兴趣, 我认为这样的学生是真正喜欢技术. 聪明程度一般就可以的, 他能够进入这些不错的学校, 智商是不会有什么问题的.</p>
+<h2 id="放翁"><a href="#放翁" class="headerlink" title="放翁"></a>放翁</h2><p>第一个是做事要自己思考后再去问别人, 而不是一遇到问题就找人求助. 第二个是不断地打破自己的一些想法, 你不要担心自己今天已经做了50%的工作, 要是推导重来, 前面的事情都白干了. 我现在带的两个新人成长很快, 但是都有类似的经历, 就是一个东西被我反复推翻重做, 在这个过程中就是不断地成长, 要思考我为什么让你推倒重做, 若想不清楚, 下次重做的概率会更大, 这样慢慢地就学会了思考.</p>
+<h2 id="吴翰清"><a href="#吴翰清" class="headerlink" title="吴翰清"></a>吴翰清</h2><p>从基本功做起, 研究常见的漏洞, 把它查出来, 并去分析它, 不要用它来做坏事. 另外, 去看看公开的漏洞, 研究一下漏洞的利用技巧.</p>
+<h2 id="云铮"><a href="#云铮" class="headerlink" title="云铮"></a>云铮</h2><p>兴趣是最好的老师, 坚持是达到梦想的唯一途径, 当然, 在个人发展的不同阶段寻找到合适的导师很重要, 看准方向会事半功倍. 在刚刚参加工作还没有形成自己的判断时, 方向有两个来源, 一个是个人的兴趣, 一个是找一个你非常佩服且能掌握未来方向的人. 当然, 如果这两者正好重合, 那么剩下的就是脚踏实地坚持.</p>
+<h2 id="多隆"><a href="#多隆" class="headerlink" title="多隆"></a>多隆</h2><p>发现问题, 解决问题, 不要绕开问题的本身; 多做事情, 不会吃亏, 即使不是你的事情.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/23/2019-03-23-基于freeswitch的unimrcp的demo/" rel="next" title="基于freeswitch的unimrcp的demo">
+                <i class="fa fa-chevron-left"></i> 基于freeswitch的unimrcp的demo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/nicoumi.jpg"
+                alt="hahahaha123567" />
+            
+              <p class="site-author-name" itemprop="name">hahahaha123567</p>
+              <p class="site-description motion-element" itemprop="description">niconiconi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#技术演变"><span class="nav-number">1.</span> <span class="nav-text">技术演变</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#个人网站-2003-05-2003-12"><span class="nav-number">1.1.</span> <span class="nav-text">个人网站 2003/05-2003/12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LAMP"><span class="nav-number">1.1.1.</span> <span class="nav-text">LAMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分库"><span class="nav-number">1.1.2.</span> <span class="nav-text">分库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人网站的升级-2004-01-2004-05"><span class="nav-number">1.2.</span> <span class="nav-text">个人网站的升级 2004/01-2004/05</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-gt-Oracle"><span class="nav-number">1.2.1.</span> <span class="nav-text">mysql->Oracle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#企业级Java网站-2004-06-2006-12"><span class="nav-number">1.3.</span> <span class="nav-text">企业级Java网站 2004/06-2006/12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#php-gt-Java"><span class="nav-number">1.3.1.</span> <span class="nav-text">php->Java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-MVC框架"><span class="nav-number">1.3.2.</span> <span class="nav-text">Java MVC框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iSearch"><span class="nav-number">1.3.3.</span> <span class="nav-text">iSearch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分库-1"><span class="nav-number">1.3.4.</span> <span class="nav-text">分库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存TBStore"><span class="nav-number">1.3.5.</span> <span class="nav-text">缓存TBStore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大字段存储位置"><span class="nav-number">1.3.6.</span> <span class="nav-text">大字段存储位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDN网络"><span class="nav-number">1.3.7.</span> <span class="nav-text">CDN网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创造技术-2007-01-2007-12"><span class="nav-number">1.4.</span> <span class="nav-text">创造技术 2007/01-2007/12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统TFS"><span class="nav-number">1.4.1.</span> <span class="nav-text">文件系统TFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存Tair"><span class="nav-number">1.4.2.</span> <span class="nav-text">缓存Tair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iSearch-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">iSearch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式电子商务操作系统-2008-01-2012-12"><span class="nav-number">1.5.</span> <span class="nav-text">分布式电子商务操作系统 2008/01-2012/12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务化"><span class="nav-number">1.5.1.</span> <span class="nav-text">服务化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件"><span class="nav-number">1.5.2.</span> <span class="nav-text">中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务注册-HSF"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">服务注册 HSF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息-notify"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">消息 notify</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式数据访问-TDDL"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">分布式数据访问 TDDL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session框架"><span class="nav-number">1.5.3.</span> <span class="nav-text">session框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放平台"><span class="nav-number">1.5.4.</span> <span class="nav-text">开放平台</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#大牛的话"><span class="nav-number">2.</span> <span class="nav-text">大牛的话</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正明"><span class="nav-number">2.1.</span> <span class="nav-text">正明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正祥"><span class="nav-number">2.2.</span> <span class="nav-text">正祥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#毕玄"><span class="nav-number">2.3.</span> <span class="nav-text">毕玄</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放翁"><span class="nav-number">2.4.</span> <span class="nav-text">放翁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#吴翰清"><span class="nav-number">2.5.</span> <span class="nav-text">吴翰清</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云铮"><span class="nav-number">2.6.</span> <span class="nav-text">云铮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多隆"><span class="nav-number">2.7.</span> <span class="nav-text">多隆</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

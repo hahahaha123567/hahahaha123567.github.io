@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="freeswitch," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="其实就是按照别人的教程实现了一个demo">
+<meta name="keywords" content="freeswitch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于freeswitch的unimrcp的demo">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019/03/23/2019-03-23-基于freeswitch的unimrcp的demo/index.html">
+<meta property="og:site_name" content="Yazawa&#39;s Blog">
+<meta property="og:description" content="其实就是按照别人的教程实现了一个demo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-15T01:59:44.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于freeswitch的unimrcp的demo">
+<meta name="twitter:description" content="其实就是按照别人的教程实现了一个demo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/03/23/2019-03-23-基于freeswitch的unimrcp的demo/"/>
+
+
+
+
+
+  <title>基于freeswitch的unimrcp的demo | Yazawa's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yazawa's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019/03/23/2019-03-23-基于freeswitch的unimrcp的demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/nicoumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yazawa's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于freeswitch的unimrcp的demo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T23:50:37+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  其实就是按照别人的教程实现了一个demo
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="unimrcp"><a href="#unimrcp" class="headerlink" title="unimrcp"></a>unimrcp</h1><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><a href="http://www.unimrcp.org/" target="_blank" rel="noopener">unimrcp</a> 是一个开源的mrcp实现库</p>
+<p>将业务代码以 <a href="http://www.unimrcp.org/manuals/html/PluginImplementationManual.html" target="_blank" rel="noopener">plugin</a> 的形式插入到unimrcp中执行, 完成后编译, 运行/usr/bin/unimrcp/下的脚本即可启动mrcp服务器</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件 <code>/usr/bin/unimrcp/conf/unimrcpserver.xml</code></p>
+<p>实现mrcpv2需要的基本配置:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">unimrcpserver</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">xsi:noNamespaceSchemaLocation</span>=<span class="string">"unimrcpserver.xsd"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ip</span>&gt;</span>172.19.**.171<span class="tag">&lt;/<span class="name">ip</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">components</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resource-factory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span> <span class="attr">id</span>=<span class="string">"speechsynth"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span> <span class="attr">id</span>=<span class="string">"speechrecog"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span> <span class="attr">id</span>=<span class="string">"recorder"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span> <span class="attr">id</span>=<span class="string">"speakverify"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resource-factory</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">sip-uas</span> <span class="attr">id</span>=<span class="string">"SIP-Agent-1"</span> <span class="attr">type</span>=<span class="string">"SofiaSIP"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sip-port</span>&gt;</span>8060<span class="tag">&lt;/<span class="name">sip-port</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sip-transport</span>&gt;</span>udp,tcp<span class="tag">&lt;/<span class="name">sip-transport</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ua-name</span>&gt;</span>UniMRCP SofiaSIP<span class="tag">&lt;/<span class="name">ua-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sdp-origin</span>&gt;</span>UniMRCPServer<span class="tag">&lt;/<span class="name">sdp-origin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sip-session-expires</span>&gt;</span>600<span class="tag">&lt;/<span class="name">sip-session-expires</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sip-min-session-expires</span>&gt;</span>120<span class="tag">&lt;/<span class="name">sip-min-session-expires</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sip-uas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mrcpv2-uas</span> <span class="attr">id</span>=<span class="string">"MRCPv2-Agent-1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mrcp-port</span>&gt;</span>1544<span class="tag">&lt;/<span class="name">mrcp-port</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">max-connection-count</span>&gt;</span>100<span class="tag">&lt;/<span class="name">max-connection-count</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">max-shared-use-count</span>&gt;</span>100<span class="tag">&lt;/<span class="name">max-shared-use-count</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">force-new-connection</span>&gt;</span>false<span class="tag">&lt;/<span class="name">force-new-connection</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rx-buffer-size</span>&gt;</span>1024<span class="tag">&lt;/<span class="name">rx-buffer-size</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tx-buffer-size</span>&gt;</span>1024<span class="tag">&lt;/<span class="name">tx-buffer-size</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">inactivity-timeout</span>&gt;</span>600<span class="tag">&lt;/<span class="name">inactivity-timeout</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">termination-timeout</span>&gt;</span>3<span class="tag">&lt;/<span class="name">termination-timeout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mrcpv2-uas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">media-engine</span> <span class="attr">id</span>=<span class="string">"Media-Engine-1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">realtime-rate</span>&gt;</span>1<span class="tag">&lt;/<span class="name">realtime-rate</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">media-engine</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">rtp-factory</span> <span class="attr">id</span>=<span class="string">"RTP-Factory-1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rtp-port-min</span>&gt;</span>5000<span class="tag">&lt;/<span class="name">rtp-port-min</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rtp-port-max</span>&gt;</span>6000<span class="tag">&lt;/<span class="name">rtp-port-max</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rtp-factory</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin-factory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">engine</span> <span class="attr">id</span>=<span class="string">"Demo-Synth-1"</span> <span class="attr">name</span>=<span class="string">"demosynth"</span> <span class="attr">enable</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">engine</span> <span class="attr">id</span>=<span class="string">"my-Synth-1"</span> <span class="attr">name</span>=<span class="string">"my-synth"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">engine</span> <span class="attr">id</span>=<span class="string">"Demo-Recog-1"</span> <span class="attr">name</span>=<span class="string">"demorecog"</span> <span class="attr">enable</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">engine</span> <span class="attr">id</span>=<span class="string">"my-Recog-1"</span> <span class="attr">name</span>=<span class="string">"my-recog"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">engine</span> <span class="attr">id</span>=<span class="string">"Demo-Verifier-1"</span> <span class="attr">name</span>=<span class="string">"demoverifier"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">engine</span> <span class="attr">id</span>=<span class="string">"Recorder-1"</span> <span class="attr">name</span>=<span class="string">"mrcprecorder"</span> <span class="attr">enable</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin-factory</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">components</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rtp-settings</span> <span class="attr">id</span>=<span class="string">"RTP-Settings-1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">jitter-buffer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">adaptive</span>&gt;</span>1<span class="tag">&lt;/<span class="name">adaptive</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">playout-delay</span>&gt;</span>50<span class="tag">&lt;/<span class="name">playout-delay</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">max-playout-delay</span>&gt;</span>600<span class="tag">&lt;/<span class="name">max-playout-delay</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">time-skew-detection</span>&gt;</span>1<span class="tag">&lt;/<span class="name">time-skew-detection</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">jitter-buffer</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ptime</span>&gt;</span>20<span class="tag">&lt;/<span class="name">ptime</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">codecs</span> <span class="attr">own-preference</span>=<span class="string">"false"</span>&gt;</span>PCMU PCMA L16/96/8000 telephone-event/101/8000<span class="tag">&lt;/<span class="name">codecs</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rtcp</span> <span class="attr">enable</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rtcp-bye</span>&gt;</span>1<span class="tag">&lt;/<span class="name">rtcp-bye</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx-interval</span>&gt;</span>5000<span class="tag">&lt;/<span class="name">tx-interval</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rx-resolution</span>&gt;</span>1000<span class="tag">&lt;/<span class="name">rx-resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rtcp</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rtp-settings</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mrcpv2-profile</span> <span class="attr">id</span>=<span class="string">"uni2"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sip-uas</span>&gt;</span>SIP-Agent-1<span class="tag">&lt;/<span class="name">sip-uas</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mrcpv2-uas</span>&gt;</span>MRCPv2-Agent-1<span class="tag">&lt;/<span class="name">mrcpv2-uas</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">media-engine</span>&gt;</span>Media-Engine-1<span class="tag">&lt;/<span class="name">media-engine</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rtp-factory</span>&gt;</span>RTP-Factory-1<span class="tag">&lt;/<span class="name">rtp-factory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rtp-settings</span>&gt;</span>RTP-Settings-1<span class="tag">&lt;/<span class="name">rtp-settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mrcpv2-profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">unimrcpserver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到, 最后的profile分别指定了各参数使用的子配置; 基本上, 默认的配置修改了ip即可正常运行</p>
+<p>注意: </p>
+<ol>
+<li><code>plugin-factory</code> 中添加自己的plugin, 禁用默认的相同功能的plugin</li>
+<li>区分各端口的作用, 默认的8060是sip通信的端口, 1544是mrcp通信的端口, 5000-6000是rtp通信的端口; 另外默认1554为rtsp的端口, 是mrcpv1使用的</li>
+</ol>
+<h1 id="freeswitch"><a href="#freeswitch" class="headerlink" title="freeswitch"></a>freeswitch</h1><h2 id="安装unimrcp模块"><a href="#安装unimrcp模块" class="headerlink" title="安装unimrcp模块"></a>安装unimrcp模块</h2><p>源码路径/modules.xml取消mod_unimrcp的注释</p>
+<p>make mod_unimrcp-install</p>
+<p>设置fs启动时自动加载该模块: 取消/usr/local/freeswitch/conf/autoload_configs/modules.conf.xml中mod_unimrcp的注释</p>
+<h2 id="配置一份mrcp"><a href="#配置一份mrcp" class="headerlink" title="配置一份mrcp"></a>配置一份mrcp</h2><p>运行路径/conf/mrcp_profiles/下新增unimrcpserver-mrcp-v2.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">include</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span> <span class="attr">name</span>=<span class="string">"unimrcpserver-mrcp2"</span> <span class="attr">version</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- MRCP 服务器地址 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"server-ip"</span> <span class="attr">value</span>=<span class="string">"8"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- MRCP SIP 端口号 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"server-port"</span> <span class="attr">value</span>=<span class="string">"8060"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"resource-location"</span> <span class="attr">value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- FreeSWITCH IP, 端口以及 SIP 传输方式 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"client-ip"</span> <span class="attr">value</span>=<span class="string">"172.19.**.171"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"client-port"</span> <span class="attr">value</span>=<span class="string">"5069"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"sip-transport"</span> <span class="attr">value</span>=<span class="string">"udp"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"speechsynth"</span> <span class="attr">value</span>=<span class="string">"speechsynthesizer"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"speechrecog"</span> <span class="attr">value</span>=<span class="string">"speechrecognizer"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"rtp-ip"</span> <span class="attr">value</span>=<span class="string">"172.19.46.171"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"rtp-port-min"</span> <span class="attr">value</span>=<span class="string">"4000"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"rtp-port-max"</span> <span class="attr">value</span>=<span class="string">"5000"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"codecs"</span> <span class="attr">value</span>=<span class="string">"PCMU PCMA L16/96/8000"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- Add any default MRCP params for SPEAK requests here --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">synthparams</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">synthparams</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!-- Add any default MRCP params for RECOGNIZE requests here --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">recogparams</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--param name="start-input-timers" value="false"/--&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">recogparams</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意: </p>
+<ol>
+<li>mrcp服务器的端口是提供sip通信的端口</li>
+<li>指定的fs的端口是专门用来和mrcp服务器交换的, 和fs自己的internal/external端口都不能相同</li>
+</ol>
+<h2 id="指定默认使用该mrcp配置"><a href="#指定默认使用该mrcp配置" class="headerlink" title="指定默认使用该mrcp配置"></a>指定默认使用该mrcp配置</h2><p>运行路径/conf/autoload_configs/unimrcp.conf.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">name</span>=<span class="string">"unimrcp.conf"</span> <span class="attr">description</span>=<span class="string">"UniMRCP Client"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"default-tts-profile"</span> <span class="attr">value</span>=<span class="string">"unimrcpserver-mrcp2"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"default-asr-profile"</span> <span class="attr">value</span>=<span class="string">"unimrcpserver-mrcp2"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"log-level"</span> <span class="attr">value</span>=<span class="string">"DEBUG"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"enable-profile-events"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"max-connection-count"</span> <span class="attr">value</span>=<span class="string">"100"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"offer-new-connection"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"request-timeout"</span> <span class="attr">value</span>=<span class="string">"3000"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">X-PRE-PROCESS</span> <span class="attr">cmd</span>=<span class="string">"include"</span> <span class="attr">data</span>=<span class="string">"../mrcp_profiles/*.xml"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="写语法文件和脚本"><a href="#写语法文件和脚本" class="headerlink" title="写语法文件和脚本"></a>写语法文件和脚本</h2><p>略</p>
+<p>总之, 要分清fs服务器和mrcp服务器, 清楚每个端口的区别</p>
+<hr>
+<p>参考资料</p>
+<ol>
+<li><a href="https://cotin.tech/AI/FreeswitchSetting/" target="_blank" rel="noopener">构建简单的智能客服系统（一）——FreeSWITCH 搭建与配置 | Cotin’s Homepage</a></li>
+<li><a href="https://cotin.tech/AI/UniMRCPASR/" target="_blank" rel="noopener">构建简单的智能客服系统（二）——基于 UniMRCP 实现讯飞 ASR MRCP Server | Cotin’s Homepage</a></li>
+<li><a href="https://cotin.tech/AI/UniMRCPTTS/" target="_blank" rel="noopener">构建简单的智能客服系统（三）——基于 UniMRCP 实现讯飞 TTS MRCP Server | Cotin’s Homepage</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/freeswitch/" rel="tag"># freeswitch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/18/2019-03-18-Linux的init整理/" rel="next" title="Linux的init整理">
+                <i class="fa fa-chevron-left"></i> Linux的init整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/13/2019-04-13-《淘宝技术这十年》读书笔记/" rel="prev" title="《淘宝技术这十年》读书笔记">
+                《淘宝技术这十年》读书笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/nicoumi.jpg"
+                alt="hahahaha123567" />
+            
+              <p class="site-author-name" itemprop="name">hahahaha123567</p>
+              <p class="site-description motion-element" itemprop="description">niconiconi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#unimrcp"><span class="nav-number">1.</span> <span class="nav-text">unimrcp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">1.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.2.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#freeswitch"><span class="nav-number">2.</span> <span class="nav-text">freeswitch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装unimrcp模块"><span class="nav-number">2.1.</span> <span class="nav-text">安装unimrcp模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置一份mrcp"><span class="nav-number">2.2.</span> <span class="nav-text">配置一份mrcp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定默认使用该mrcp配置"><span class="nav-number">2.3.</span> <span class="nav-text">指定默认使用该mrcp配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写语法文件和脚本"><span class="nav-number">2.4.</span> <span class="nav-text">写语法文件和脚本</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="javascript," />
+  <meta name="keywords" content="随笔," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="解释几个例子">
-<meta name="keywords" content="javascript">
+<meta name="description" content="喜欢谈论政治是男性变得油腻的表现吗">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js中的this">
-<meta property="og:url" content="https://hahahaha123567.github.io/2018/07/09/2018-07-09-js中的this/index.html">
+<meta property="og:title" content="看完天安门纪录片的一点感受">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019/04/21/2019-04-21-看完天安门纪录片的一点感受/index.html">
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
-<meta property="og:description" content="解释几个例子">
+<meta property="og:description" content="喜欢谈论政治是男性变得油腻的表现吗">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:09.034Z">
+<meta property="og:updated_time" content="2019-04-21T04:59:40.399Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js中的this">
-<meta name="twitter:description" content="解释几个例子">
+<meta name="twitter:title" content="看完天安门纪录片的一点感受">
+<meta name="twitter:description" content="喜欢谈论政治是男性变得油腻的表现吗">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/07/09/2018-07-09-js中的this/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/04/21/2019-04-21-看完天安门纪录片的一点感受/"/>
 
 
 
 
 
-  <title>js中的this | Yazawa's Blog</title>
+  <title>看完天安门纪录片的一点感受 | Yazawa's Blog</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2018/07/09/2018-07-09-js中的this/">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019/04/21/2019-04-21-看完天安门纪录片的一点感受/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js中的this</h1>
+          <h1 class="post-title" itemprop="name headline">看完天安门纪录片的一点感受</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-09T21:28:00+08:00">
-                2018-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T12:50:37+08:00">
+                2019-04-21
               </time>
             
 
@@ -297,7 +297,7 @@
 
           
               <div class="post-description">
-                  解释几个例子
+                  喜欢谈论政治是男性变得油腻的表现吗
               </div>
           
 
@@ -314,26 +314,48 @@
       
 
       
-        <h1 id="常识"><a href="#常识" class="headerlink" title="常识"></a>常识</h1><p>this 的 scope 由函数/类分隔</p>
-<h1 id="普通函数"><a href="#普通函数" class="headerlink" title="普通函数"></a>普通函数</h1><p>普通函数即用 函数声明 或 函数表达式 定义的函数</p>
-<p>把所有函数调用都转换成显式的 <code>call()</code> 调用</p>
-<h3 id="Function-Invocation-Pattern"><a href="#Function-Invocation-Pattern" class="headerlink" title="Function Invocation Pattern"></a>Function Invocation Pattern</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo(); <span class="comment">// foo.call(undefined);</span></span><br></pre></td></tr></table></figure>
-<p>在<strong>默认模式</strong>下当你传的 context 为 undefined 时，默认的 context为Global对象，在<strong>浏览器</strong>中就是window对象</p>
-<p>在<strong>strict模式</strong>下此时 this 即为 undefined</p>
-<h3 id="Method-Invocation-Pattern"><a href="#Method-Invocation-Pattern" class="headerlink" title="Method Invocation Pattern"></a>Method Invocation Pattern</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.foo(); <span class="comment">// obj.foo.call(obj)</span></span><br></pre></td></tr></table></figure>
-<h3 id="Constructor-Pattern"><a href="#Constructor-Pattern" class="headerlink" title="Constructor Pattern"></a>Constructor Pattern</h3><p>foo函数内部的this永远是new foo()返回的对象 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">    foo () &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">c.foo(); <span class="comment">// c.foo5.call(c);</span></span><br></pre></td></tr></table></figure>
-<h3 id="Apply-Pattern"><a href="#Apply-Pattern" class="headerlink" title="Apply Pattern"></a>Apply Pattern</h3><p>call() 方法的作用和 apply() 方法类似，只有一个区别，就是 call() 方法接受的是若干个<strong>参数的列表</strong>，而 apply() 方法接受的是一个包含多个<strong>参数的数组</strong></p>
-<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>在箭头函数出现之前，每个新定义的函数都有它自己的 <code>this</code> 值，<code>this</code> 被证明是令人厌烦的面向对象风格的编程</p>
-<p>在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">箭头函数</a> 中，<code>this</code> 与封闭词法上下文的 <code>this</code> 保持一致。 </p>
-<p>箭头函数在设计中使用的是Lexical this，即这个函数被创建时的 <code>this</code> 就是函数内部的 <code>this</code></p>
-<p>需要注意的是，函数创建时并不是读代码的人第一次肉眼能看到这个函数的时候</p>
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> foo1 = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">let</span> foo2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;;</span><br><span class="line">    foo1();</span><br><span class="line">    foo2();</span><br><span class="line">&#125;</span><br><span class="line">a();</span><br><span class="line"><span class="comment">// undefined, undefined</span></span><br><span class="line">a.call(<span class="string">'nico'</span>);</span><br><span class="line"><span class="comment">// nico, undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    foo3: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>),</span><br><span class="line">    foo4: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">b.foo3();</span><br><span class="line"><span class="comment">// Window &#123;...&#125;</span></span><br><span class="line">b.foo4();</span><br><span class="line"><span class="comment">// &#123; foo3: f, foo4, f&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">    foo5 () &#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line">c.foo5();</span><br><span class="line"><span class="comment">// &#123; &#125;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>参考资料</strong></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">this - JavaScript | MDN</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">箭头函数 - JavaScript | MDN</a></p>
-<p><a href="https://www.zhihu.com/question/19636194" target="_blank" rel="noopener">如何理解 JavaScript 中的 this 关键字？ - 知乎</a></p>
+        <h1 id="最大感受"><a href="#最大感受" class="headerlink" title="最大感受"></a>最大感受</h1><p>对人类来说, 是一场残酷又真实的大型社会学实验</p>
+<p>邓小平真的是”实干家”, 心狠手辣, 学运带来的阻力比起赵家内部的阻力恐怕还是小很多</p>
+<p>我的观点和片子里的吴国光(前政府官员)梁晓燕(教师)差不多</p>
+<p>但是假如我处于那个环境肯定也会前赴后继地假如(然后在清理的前几天跑路?是真的怂)</p>
+<h1 id="负面情绪"><a href="#负面情绪" class="headerlink" title="负面情绪"></a>负面情绪</h1><h2 id="修宪"><a href="#修宪" class="headerlink" title="修宪"></a>修宪</h2><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>中国官方舆论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017-5-3</td>
+<td>安倍晋三宣布将在2020年修宪</td>
+<td><a href="http://world.people.com.cn/n1/2017/0708/c1002-29391510.html" target="_blank" rel="noopener">铭记历史，防止悲剧重演–国际–人民网</a></td>
+</tr>
+<tr>
+<td>2018-3-9</td>
+<td>第十三届全国人民代表大会《宪法修正案》通过</td>
+<td><a href="http://lianghui.people.com.cn/2018npc/n1/2018/0317/c417507-29872934.html" target="_blank" rel="noopener">让宪法之树常青–中国人大新闻–人民网</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="舆论"><a href="#舆论" class="headerlink" title="舆论"></a>舆论</h2><p>在1989年的中国, 对于掌握了舆论渠道的国家权力来说, 几万几十万个人的静坐/绝食可以被轻易抹消掉</p>
+<p>假如发生在现在, 2019年, 互联网普及的时代, 又会是什么样子?</p>
+<h2 id="大学生"><a href="#大学生" class="headerlink" title="大学生"></a>大学生</h2><p>不要真的相信宪法上的话, 要看实际发生的事</p>
+<p>学生真的把自己当成了国家的主人, 采取的行动就显得过于天真</p>
+<p>你是人民还是人民的敌人, 不是你说了算(实际上你做的事对这个国家的发展有没有利还真不一定)</p>
+<p>这件事也许是最后一根稻草, 让顶尖大学的学生们失去了改造国家的志向</p>
+<p>精致利己被骂就被骂吧, 总比上街丢了命好</p>
+<h2 id="政治改革"><a href="#政治改革" class="headerlink" title="政治改革"></a>政治改革</h2><h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><p>为什么(那个年代)说”中国人的概念里革命是正面的但改革不一定”</p>
+<p>任何改革的阻力都是既得利益者, 经济改革初期工人利益受损, 但改革并不需要工人的支持, 先富带动后富, 有能力推动改革的都是有能力先富的人; 政治改革则相反, 有能力推动改革的往往是既得利益者, 例如能够一人修宪的人</p>
+<p>邓/江/胡重心在经济改革, 政治改革的优先级在之下; 到了维尼, 高度集权的政府似乎对其很反感</p>
+<h3 id="改革"><a href="#改革" class="headerlink" title="改革?"></a>改革?</h3><p>所谓的政治改革, 改成什么样子才最好呢?</p>
+<p>我不想要一个乌合之众的政体, 更不想要一个最高权力者随意修宪的政体——存在吗?</p>
+<h1 id="正面想法"><a href="#正面想法" class="headerlink" title="正面想法"></a>正面想法</h1><p>权力会使人变质</p>
+<p>任何时候都要知道自己在做什么, 自己的目的是什么, 别人期望你做什么, 他的逻辑是否严密</p>
+<p>多换位思考, 如果你是对方, 你需要什么, 你可以提供什么</p>
+<p>想要对政治事件有比较客观的认识, 还是要多综合各方面的观点, 再加上自己的三观(和自己的屁股)(不知道我查的相关资料够不够全面, 但应该不会和事实偏差太多)</p>
+<h1 id="null"><a href="#null" class="headerlink" title="null"></a>null</h1><p>当年的柴玲有点黑版桂纶镁的意思(可惜后来变成坦克了)</p>
 
       
     </div>
@@ -351,7 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/tags/随笔/" rel="tag"># 随笔</a>
           
         </div>
       
@@ -364,8 +386,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/25/2018-06-25-IDEA中对使用Maven的工程打包/" rel="next" title="IDEA中对使用Maven的工程打包">
-                <i class="fa fa-chevron-left"></i> IDEA中对使用Maven的工程打包
+              <a href="/2019/04/13/2019-04-13-《淘宝技术这十年》读书笔记/" rel="next" title="《淘宝技术这十年》读书笔记">
+                <i class="fa fa-chevron-left"></i> 《淘宝技术这十年》读书笔记
               </a>
             
           </div>
@@ -373,10 +395,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/07/2018-08-07-Java stream 基本操作/" rel="prev" title="Java stream 基本操作">
-                Java stream 基本操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -545,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常识"><span class="nav-number">1.</span> <span class="nav-text">常识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通函数"><span class="nav-number">2.</span> <span class="nav-text">普通函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-Invocation-Pattern"><span class="nav-number">2.0.1.</span> <span class="nav-text">Function Invocation Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">2.0.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">2.0.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply-Pattern"><span class="nav-number">2.0.4.</span> <span class="nav-text">Apply Pattern</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">4.</span> <span class="nav-text">例子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最大感受"><span class="nav-number">1.</span> <span class="nav-text">最大感受</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#负面情绪"><span class="nav-number">2.</span> <span class="nav-text">负面情绪</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修宪"><span class="nav-number">2.1.</span> <span class="nav-text">修宪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#舆论"><span class="nav-number">2.2.</span> <span class="nav-text">舆论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大学生"><span class="nav-number">2.3.</span> <span class="nav-text">大学生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#政治改革"><span class="nav-number">2.4.</span> <span class="nav-text">政治改革</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#现状"><span class="nav-number">2.4.1.</span> <span class="nav-text">现状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改革"><span class="nav-number">2.4.2.</span> <span class="nav-text">改革?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正面想法"><span class="nav-number">3.</span> <span class="nav-text">正面想法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">null</span></a></li></ol></div>
             
 
           </div>

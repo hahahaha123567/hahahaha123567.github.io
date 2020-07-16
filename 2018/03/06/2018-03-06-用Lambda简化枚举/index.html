@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Java,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="写解释器的时候进行的优化">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:38.655Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Lambda简化枚举">
 <meta name="twitter:description" content="写解释器的时候进行的优化">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/03/06/2018-03-06-用Lambda简化枚举/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/03/06/2018-03-06-用Lambda简化枚举/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -316,9 +316,12 @@
       
         <h1 id="需求场景"><a href="#需求场景" class="headerlink" title="需求场景"></a>需求场景</h1><p>解释器需要能够解释执行一些预设的指令，为了避免字符串判断+switch/case的丑陋写法，选择使用枚举类实现</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Operation.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation &#123;</span><br><span class="line">  op1 (<span class="string">"op1"</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  op2 (<span class="string">"op2"</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span> String type;</span><br><span class="line">  Operation(String type) &#123; <span class="keyword">this</span>.type = type; &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">abstract</span> <span class="keyword">public</span> Data <span class="title">exec</span> <span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="用Lambda改写"><a href="#用Lambda改写" class="headerlink" title="用Lambda改写"></a>用Lambda改写</h1><p>使用Lambda需要一个只有一个抽象函数的接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Executable.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Executable</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">exec</span> <span class="params">(Parser parser)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MOperation.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> MOperation implements Executable &#123;</span><br><span class="line">  op1(<span class="string">"op1"</span>, (Parser parser) -&gt; &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;),</span><br><span class="line">  op2(<span class="string">"op2"</span>, (Parser parser) -&gt; &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String type;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Executable executor;</span><br><span class="line">  MOperation(String type, Executable executor) &#123;</span><br><span class="line">    <span class="keyword">this</span>.type = type;</span><br><span class="line">    <span class="keyword">this</span>.executor = executor;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Token <span class="title">exec</span> <span class="params">(Parser parser)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> executor.exec(parser);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>改写之后，不仅枚举部分的代码更简洁直观，而且可以通过<code>executor</code>传参，比之前更灵活</p>
 <hr>
 <p>参考资料</p>
@@ -431,9 +434,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -446,7 +447,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -554,7 +555,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

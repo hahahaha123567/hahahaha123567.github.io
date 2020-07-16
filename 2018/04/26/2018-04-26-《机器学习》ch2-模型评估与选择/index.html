@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="AI,Machine Learning," />
+  <meta name="keywords" content="AI,Machine Learning,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="评估方法、性能度量、统计假设检验">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:56.710Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》ch2.模型评估与选择">
 <meta name="twitter:description" content="评估方法、性能度量、统计假设检验">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/04/26/2018-04-26-《机器学习》ch2-模型评估与选择/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/04/26/2018-04-26-《机器学习》ch2-模型评估与选择/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -443,9 +443,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -458,7 +456,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#评估方法"><span class="nav-number">1.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#留出法"><span class="nav-number">1.0.1.</span> <span class="nav-text">留出法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证"><span class="nav-number">1.0.2.</span> <span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自助法"><span class="nav-number">1.0.3.</span> <span class="nav-text">自助法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能度量"><span class="nav-number">2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回归"><span class="nav-number">2.0.1.</span> <span class="nav-text">回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">2.0.2.</span> <span class="nav-text">分类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计假设检验"><span class="nav-number">3.</span> <span class="nav-text">统计假设检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二项检验、t分布检验"><span class="nav-number">3.0.1.</span> <span class="nav-text">二项检验、t分布检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证t检验"><span class="nav-number">3.0.2.</span> <span class="nav-text">交叉验证t检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#McNemar检验"><span class="nav-number">3.0.3.</span> <span class="nav-text">McNemar检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Friedman检验、Nemenyi检验"><span class="nav-number">3.0.4.</span> <span class="nav-text">Friedman检验、Nemenyi检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差、方差"><span class="nav-number">3.0.5.</span> <span class="nav-text">偏差、方差</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#评估方法"><span class="nav-number">1.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#留出法"><span class="nav-number">1.0.1.</span> <span class="nav-text">留出法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证"><span class="nav-number">1.0.2.</span> <span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自助法"><span class="nav-number">1.0.3.</span> <span class="nav-text">自助法</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#性能度量"><span class="nav-number">2.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回归"><span class="nav-number">2.0.1.</span> <span class="nav-text">回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">2.0.2.</span> <span class="nav-text">分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计假设检验"><span class="nav-number">3.</span> <span class="nav-text">统计假设检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二项检验、t分布检验"><span class="nav-number">3.0.1.</span> <span class="nav-text">二项检验、t分布检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证t检验"><span class="nav-number">3.0.2.</span> <span class="nav-text">交叉验证t检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#McNemar检验"><span class="nav-number">3.0.3.</span> <span class="nav-text">McNemar检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Friedman检验、Nemenyi检验"><span class="nav-number">3.0.4.</span> <span class="nav-text">Friedman检验、Nemenyi检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏差、方差"><span class="nav-number">3.0.5.</span> <span class="nav-text">偏差、方差</span></a></li></ol></li></div>
             
 
           </div>
@@ -566,7 +564,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

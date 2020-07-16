@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,多线程," />
+  <meta name="keywords" content="Java,多线程,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="第一次发现并独立解决多线程问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T09:39:55.825Z">
+<meta property="og:updated_time" content="2019-03-18T09:39:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logback的AsyncAppender产生的线程问题">
 <meta name="twitter:description" content="第一次发现并独立解决多线程问题">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2019/03/18/2019-03-18-logback的AsyncAppender产生的线程问题/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/03/18/2019-03-18-logback的AsyncAppender产生的线程问题/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -314,9 +314,10 @@
       
 
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>项目里使用 logback+log4j 作为日志框架, 之前写了个mybatis插件处理日志, <a href="https://hahahaha123567.github.io/2019/03/18/2019-03-18-mybatis日志问号替换/">logback的AsyncAppender产生的线程问题 | Yazawa’s Blog</a></p>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>项目里使用 logback+log4j 作为日志框架, 之前写了个mybatis插件处理日志, <a href="https://hahahaha123567.github.io/2019/03/18/2019-03-18-mybatis%E6%97%A5%E5%BF%97%E9%97%AE%E5%8F%B7%E6%9B%BF%E6%8D%A2/">logback的AsyncAppender产生的线程问题 | Yazawa’s Blog</a></p>
 <p>输出自定义日志后, 需要把框架默认的日志过滤掉, 原 <code>logback.xml</code> 如下</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"rollingFileAppender"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.core.rolling.RollingFileAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"com.yiwise.core.log.MybatisFilter"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"asyncRollingFileAppender"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.classic.AsyncAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">discardingThreshold</span>&gt;</span>0<span class="tag">&lt;/<span class="name">discardingThreshold</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">queueSize</span>&gt;</span>512<span class="tag">&lt;/<span class="name">queueSize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"rollingFileAppender"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"console"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.core.ConsoleAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"com.yiwise.core.log.MybatisFilter"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>有console, rollingFileAppender, asyncRollingFileAppender三个appender, 最后生效的分别是console和日志文件asyncRollingFileAppender三个appender</p>
 <p>在mybatis插件中, 因为担心字段映射出错抛异常的时候, 不显示自定义sql, 此时框架默认sql也被我过滤导致看不到sql情况, 所以在异常的try-catch中使用MDC控制MybatisFilter这个过滤器的开关(即出现异常时关闭这个filter显示框架默认日志)</p>
 <p>但在测试时, ide里运行, console中日志被正常过滤, 但生成的日志文件里过滤却失败, 明明filter配置相同结果却不同, 花了很久才找到原因</p>
@@ -435,9 +436,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -450,7 +449,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -558,7 +557,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

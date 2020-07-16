@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机图形学,openGL," />
+  <meta name="keywords" content="计算机图形学,openGL,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="课本介绍矩阵操作直接塞了几个函数，看完之后对几个不同矩阵的概念还是很模糊= = 在这里做个学习过程中理解的整理，最后用例子尽力解释清楚">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:25.615Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解openGL中的矩阵操作">
 <meta name="twitter:description" content="课本介绍矩阵操作直接塞了几个函数，看完之后对几个不同矩阵的概念还是很模糊= = 在这里做个学习过程中理解的整理，最后用例子尽力解释清楚">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/27/2017-10-27-理解openGL中的矩阵操作/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -363,8 +363,9 @@
 <h1 id="Programing"><a href="#Programing" class="headerlink" title="Programing"></a>Programing</h1><p>代码参考 <a href="https://github.com/hahahaha123567/hello-world/blob/master/Computer%20Graphics/projection.c" target="_blank" rel="noopener">projection.c</a></p>
 <p>Perspective projection:</p>
 <p>glLookAt()先指定观察者的位置、视线的方向、视线的上方，然后glPerspective()/glOrtho()进行剪切，留下可见的部分</p>
-<p>需要注意，<strong>glTranslate()/glRotate()等函数在对物体变换的同时也会对坐标系进行变换</strong>。例如，先glTranslate(1, 0, 0)再glRotate(angle, 0, 1, 0)，最终物体不是绕着(0, 0, 0)-&gt;(0, 1, 0)的轴旋转，而是绕着平移后的坐标轴的原点(1, 0, 0)-&gt;(1, 1, 0)的轴旋转，坐标轴改变后同样会影响之后的gluLookAt()等函数的设置，因此一般最后再进行平移旋转</p>
+<p>需要注意，__glTranslate()/glRotate()等函数在对物体变换的同时也会对坐标系进行变换__。例如，先glTranslate(1, 0, 0)再glRotate(angle, 0, 1, 0)，最终物体不是绕着(0, 0, 0)-&gt;(0, 1, 0)的轴旋转，而是绕着平移后的坐标轴的原点(1, 0, 0)-&gt;(1, 1, 0)的轴旋转，坐标轴改变后同样会影响之后的gluLookAt()等函数的设置，因此一般最后再进行平移旋转</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glMatrixMode(GL_PROJECTION);</span><br><span class="line">glLoadIdentity();</span><br><span class="line">glPerspective(forv, aspect, near, far); / glOrtho(left, right, bottom, top, near, far);</span><br><span class="line"></span><br><span class="line">glMatrixMode(GL_MODELVIEW);</span><br><span class="line">glLoadIdentity();</span><br><span class="line">gluLookAt(eye_x, eye_y, eye_z, look_x, look_y, look_z, up_x, up_y, up_z);</span><br><span class="line">glTranslate(x, y, z);</span><br><span class="line">glRotate(angle, x, y, z);</span><br><span class="line">glScale(x, y, z);</span><br><span class="line">draw();</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>参考资料</p>
 <p>《OpenGL编程指南》第5章</p>
@@ -479,9 +480,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -494,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -582,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates"><span class="nav-number">1.0.1.</span> <span class="nav-text">从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How"><span class="nav-number">2.</span> <span class="nav-text">How</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-View-Transform"><span class="nav-number">2.1.</span> <span class="nav-text">Model-View Transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Projection-Transform"><span class="nav-number">2.2.</span> <span class="nav-text">Projection Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perspective-projection"><span class="nav-number">2.2.1.</span> <span class="nav-text">Perspective projection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Orthographic-Projection"><span class="nav-number">2.2.2.</span> <span class="nav-text">Orthographic Projection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apply"><span class="nav-number">2.3.</span> <span class="nav-text">Apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewport-Transform"><span class="nav-number">2.4.</span> <span class="nav-text">Viewport Transform</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Programing"><span class="nav-number">3.</span> <span class="nav-text">Programing</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从笛卡尔坐标-Cartesian-Coordinates-到齐次坐标-Homogeneous-Coordinates"><span class="nav-number">1.0.1.</span> <span class="nav-text">从笛卡尔坐标(Cartesian Coordinates)到齐次坐标(Homogeneous Coordinates)</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#How"><span class="nav-number">2.</span> <span class="nav-text">How</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-View-Transform"><span class="nav-number">2.1.</span> <span class="nav-text">Model-View Transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Projection-Transform"><span class="nav-number">2.2.</span> <span class="nav-text">Projection Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perspective-projection"><span class="nav-number">2.2.1.</span> <span class="nav-text">Perspective projection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Orthographic-Projection"><span class="nav-number">2.2.2.</span> <span class="nav-text">Orthographic Projection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apply"><span class="nav-number">2.3.</span> <span class="nav-text">Apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Viewport-Transform"><span class="nav-number">2.4.</span> <span class="nav-text">Viewport Transform</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Programing"><span class="nav-number">3.</span> <span class="nav-text">Programing</span></a></li></div>
             
 
           </div>
@@ -602,7 +601,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

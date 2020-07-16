@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,JavaFX," />
+  <meta name="keywords" content="Java,JavaFX,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="官方文档只介绍了固定属性的情况">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:37.248Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaFX中的table相关">
 <meta name="twitter:description" content="官方文档只介绍了固定属性的情况">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/03/07/2018-03-07-JavaFX中的table相关/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/03/07/2018-03-07-JavaFX中的table相关/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -321,15 +321,18 @@
 <p>setCellFactory的意图是在创建这列的时候要做的事情，你可以改变TableCell的任何内容，包括UI和Value，而setCellValueFactory呢，它的重点是关联属性，从你传递给它的Model中通过对应属性的getter来获取值。在setCellFactory中的TableCell有个回调，叫<code>updateItem</code>，它可以获取到你设置到此Cell的值，这个值是跟setCellValueFactory所关联的属性有关。</p>
 </blockquote>
 <h1 id="固定属性"><a href="#固定属性" class="headerlink" title="固定属性"></a>固定属性</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Data</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> SimpleStringProperty p1;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> SimpleStringProperty p2;</span><br><span class="line">  Data (String s1, String s2) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">TableView table = <span class="keyword">new</span> TableView();</span><br><span class="line">TableColumn column1 = <span class="keyword">new</span> TableColumn(<span class="string">"c1"</span>);</span><br><span class="line">TableColumn column2 = <span class="keyword">new</span> TableColumn(<span class="string">"c2"</span>);</span><br><span class="line">table.getColumns().addAll(column1, column2);</span><br><span class="line"></span><br><span class="line">column1.setCellValueFactory(<span class="keyword">new</span> PropertyValueFactory&lt;Data, String&gt;(<span class="string">"p1"</span>));</span><br><span class="line">column2.setCellValueFactory(<span class="keyword">new</span> PropertyValueFactory&lt;Data, String&gt;(<span class="string">"p2"</span>));</span><br><span class="line"></span><br><span class="line">ObservableList&lt;Person&gt; dataList = FXCollections.observableArrayList(</span><br><span class="line">  <span class="keyword">new</span> Data(<span class="string">"Nico"</span>, <span class="string">"Maki"</span>),</span><br><span class="line">  <span class="keyword">new</span> Data(<span class="string">"haha"</span>, <span class="string">"hoho"</span>)</span><br><span class="line">);</span><br><span class="line">table.setItems(dataList);</span><br></pre></td></tr></table></figure>
+
 <h1 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a>动态属性</h1><p>在写 <a href="https://github.com/hahahaha123567/csv-editor" target="_blank" rel="noopener">CSV editor</a> 时，显然table的行列数都是不确定的，因此不能按照上述步骤。TableColumn可以根据需要创建，但是绑定column和数据需要进行改动</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column.setCellValueFactory(param -&gt; param.getValue().get(ii));</span><br></pre></td></tr></table></figure>
+
 <p>这里的参数不能继续使用PropertyValueFactory的对象，而应该用index去获取ObservableList的值</p>
 <p>应用可以参考 <a href="https://github.com/hahahaha123567/csv-editor/blob/master/src/csv/Controller.java" target="_blank" rel="noopener">这段代码</a> 的showData()函数</p>
 <hr>
 <p>参考资料</p>
 <p><a href="http://cmlanche.com/2017/06/08/JavaFx-TableView%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">JavaFx TableView疑难详解 | cmlanche</a></p>
-<p><a href="https://community.oracle.com/thread/2474328" target="_blank" rel="noopener">Creating columns dynamically | Oracle Community</a></p>
+<p><a href="https://community.oracle.com/thread/2474328" target="_blank" rel="noopener">Creating columns dynamically | Oracle Community</a></p>
 <p><a href="https://stackoverflow.com/questions/10519534/cell-factory-in-javafx" target="_blank" rel="noopener">tableview - Cell factory in javafx - Stack Overflow</a></p>
 
       
@@ -441,9 +444,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -456,7 +457,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +565,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

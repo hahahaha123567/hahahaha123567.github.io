@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Java,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="线程安全的定义、程度、实现">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:52.882Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java线程安全">
 <meta name="twitter:description" content="线程安全的定义、程度、实现">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/04/29/2018-04-29-Java线程安全/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/04/29/2018-04-29-Java线程安全/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -318,6 +318,7 @@
 <h1 id="程度"><a href="#程度" class="headerlink" title="程度"></a>程度</h1><h3 id="不可变"><a href="#不可变" class="headerlink" title="不可变"></a>不可变</h3><p>immutable 的对象一定是线程安全的，例如 String</p>
 <h3 id="绝对的线程安全"><a href="#绝对的线程安全" class="headerlink" title="绝对的线程安全"></a>绝对的线程安全</h3><p>不存在</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 即使是 Vector 也会无法同步，如果要保证线程安全需要在 run() 中加入 synchronized</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Vector&lt;Integer&gt; vector = <span class="keyword">new</span> Vector&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> hoho = <span class="number">0</span>; hoho &lt; <span class="number">50</span>; ++hoho) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">                vector.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">            Thread removeThread = <span class="keyword">new</span> Thread (() -&gt; &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector.size(); ++i) &#123;</span><br><span class="line">                    vector.remove(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            Thread printThread = <span class="keyword">new</span> Thread (() -&gt; &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector.size(); ++i) &#123;</span><br><span class="line">                    System.out.print(vector.get(i));</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println();</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            removeThread.start();</span><br><span class="line">            printThread.start();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (Thread.activeCount() &gt; <span class="number">20</span>) ;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="相对的线程安全"><a href="#相对的线程安全" class="headerlink" title="相对的线程安全"></a>相对的线程安全</h3><p>Vector, HashTable</p>
 <h3 id="线程兼容"><a href="#线程兼容" class="headerlink" title="线程兼容"></a>线程兼容</h3><p>需要调用方手动实现线程安全，大部分类</p>
 <h3 id="线程对立"><a href="#线程对立" class="headerlink" title="线程对立"></a>线程对立</h3><p>Thread.suspend() 和 Thread.resume() ，已被废弃</p>
@@ -454,9 +455,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -469,7 +468,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程度"><span class="nav-number">2.</span> <span class="nav-text">程度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不可变"><span class="nav-number">2.0.1.</span> <span class="nav-text">不可变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对的线程安全"><span class="nav-number">2.0.2.</span> <span class="nav-text">绝对的线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对的线程安全"><span class="nav-number">2.0.3.</span> <span class="nav-text">相对的线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程兼容"><span class="nav-number">2.0.4.</span> <span class="nav-text">线程兼容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程对立"><span class="nav-number">2.0.5.</span> <span class="nav-text">线程对立</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥同步-Mutual-Exclusion-amp-Blocking-Synchronization"><span class="nav-number">3.0.1.</span> <span class="nav-text">互斥同步 Mutual Exclusion & Blocking Synchronization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞同步-Non-Blocking-Synchronization"><span class="nav-number">3.0.2.</span> <span class="nav-text">非阻塞同步 Non-Blocking Synchronization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无同步方案"><span class="nav-number">3.0.3.</span> <span class="nav-text">无同步方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Volatile"><span class="nav-number">4.</span> <span class="nav-text">Volatile</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程度"><span class="nav-number">2.</span> <span class="nav-text">程度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不可变"><span class="nav-number">2.0.1.</span> <span class="nav-text">不可变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绝对的线程安全"><span class="nav-number">2.0.2.</span> <span class="nav-text">绝对的线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对的线程安全"><span class="nav-number">2.0.3.</span> <span class="nav-text">相对的线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程兼容"><span class="nav-number">2.0.4.</span> <span class="nav-text">线程兼容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程对立"><span class="nav-number">2.0.5.</span> <span class="nav-text">线程对立</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥同步-Mutual-Exclusion-amp-Blocking-Synchronization"><span class="nav-number">3.0.1.</span> <span class="nav-text">互斥同步 Mutual Exclusion &amp; Blocking Synchronization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞同步-Non-Blocking-Synchronization"><span class="nav-number">3.0.2.</span> <span class="nav-text">非阻塞同步 Non-Blocking Synchronization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无同步方案"><span class="nav-number">3.0.3.</span> <span class="nav-text">无同步方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Volatile"><span class="nav-number">4.</span> <span class="nav-text">Volatile</span></a></li></div>
             
 
           </div>
@@ -577,7 +576,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

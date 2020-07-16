@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="javascript," />
+  <meta name="keywords" content="javascript,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="解释几个例子">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:09.034Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中的this">
 <meta name="twitter:description" content="解释几个例子">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/07/09/2018-07-09-js中的this/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/07/09/2018-07-09-js中的this/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -318,17 +318,21 @@
 <h1 id="普通函数"><a href="#普通函数" class="headerlink" title="普通函数"></a>普通函数</h1><p>普通函数即用 函数声明 或 函数表达式 定义的函数</p>
 <p>把所有函数调用都转换成显式的 <code>call()</code> 调用</p>
 <h3 id="Function-Invocation-Pattern"><a href="#Function-Invocation-Pattern" class="headerlink" title="Function Invocation Pattern"></a>Function Invocation Pattern</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo(); <span class="comment">// foo.call(undefined);</span></span><br></pre></td></tr></table></figure>
+
 <p>在<strong>默认模式</strong>下当你传的 context 为 undefined 时，默认的 context为Global对象，在<strong>浏览器</strong>中就是window对象</p>
 <p>在<strong>strict模式</strong>下此时 this 即为 undefined</p>
 <h3 id="Method-Invocation-Pattern"><a href="#Method-Invocation-Pattern" class="headerlink" title="Method Invocation Pattern"></a>Method Invocation Pattern</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.foo(); <span class="comment">// obj.foo.call(obj)</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="Constructor-Pattern"><a href="#Constructor-Pattern" class="headerlink" title="Constructor Pattern"></a>Constructor Pattern</h3><p>foo函数内部的this永远是new foo()返回的对象 </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">    foo () &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">c.foo(); <span class="comment">// c.foo5.call(c);</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="Apply-Pattern"><a href="#Apply-Pattern" class="headerlink" title="Apply Pattern"></a>Apply Pattern</h3><p>call() 方法的作用和 apply() 方法类似，只有一个区别，就是 call() 方法接受的是若干个<strong>参数的列表</strong>，而 apply() 方法接受的是一个包含多个<strong>参数的数组</strong></p>
-<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>在箭头函数出现之前，每个新定义的函数都有它自己的 <code>this</code> 值，<code>this</code> 被证明是令人厌烦的面向对象风格的编程</p>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>在箭头函数出现之前，每个新定义的函数都有它自己的 <code>this</code> 值，<code>this</code> 被证明是令人厌烦的面向对象风格的编程</p>
 <p>在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">箭头函数</a> 中，<code>this</code> 与封闭词法上下文的 <code>this</code> 保持一致。 </p>
 <p>箭头函数在设计中使用的是Lexical this，即这个函数被创建时的 <code>this</code> 就是函数内部的 <code>this</code></p>
 <p>需要注意的是，函数创建时并不是读代码的人第一次肉眼能看到这个函数的时候</p>
 <h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> foo1 = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">let</span> foo2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;;</span><br><span class="line">    foo1();</span><br><span class="line">    foo2();</span><br><span class="line">&#125;</span><br><span class="line">a();</span><br><span class="line"><span class="comment">// undefined, undefined</span></span><br><span class="line">a.call(<span class="string">'nico'</span>);</span><br><span class="line"><span class="comment">// nico, undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    foo3: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>),</span><br><span class="line">    foo4: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">b.foo3();</span><br><span class="line"><span class="comment">// Window &#123;...&#125;</span></span><br><span class="line">b.foo4();</span><br><span class="line"><span class="comment">// &#123; foo3: f, foo4, f&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">    foo5 () &#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line">c.foo5();</span><br><span class="line"><span class="comment">// &#123; &#125;</span></span><br></pre></td></tr></table></figure>
+
 <hr>
 <p><strong>参考资料</strong></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener">this - JavaScript | MDN</a></p>
@@ -442,9 +446,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -457,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -545,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常识"><span class="nav-number">1.</span> <span class="nav-text">常识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通函数"><span class="nav-number">2.</span> <span class="nav-text">普通函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-Invocation-Pattern"><span class="nav-number">2.0.1.</span> <span class="nav-text">Function Invocation Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">2.0.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">2.0.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply-Pattern"><span class="nav-number">2.0.4.</span> <span class="nav-text">Apply Pattern</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">4.</span> <span class="nav-text">例子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常识"><span class="nav-number">1.</span> <span class="nav-text">常识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通函数"><span class="nav-number">2.</span> <span class="nav-text">普通函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-Invocation-Pattern"><span class="nav-number">2.0.1.</span> <span class="nav-text">Function Invocation Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-Invocation-Pattern"><span class="nav-number">2.0.2.</span> <span class="nav-text">Method Invocation Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor-Pattern"><span class="nav-number">2.0.3.</span> <span class="nav-text">Constructor Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply-Pattern"><span class="nav-number">2.0.4.</span> <span class="nav-text">Apply Pattern</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">4.</span> <span class="nav-text">例子</span></a></li></div>
             
 
           </div>
@@ -565,7 +567,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

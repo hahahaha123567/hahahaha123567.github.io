@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,JavaFX," />
+  <meta name="keywords" content="Java,JavaFX,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="一个不会被用来做GUI的语言的GUI库的介绍">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:35.600Z">
+<meta property="og:updated_time" content="2018-08-12T13:59:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaFX入门">
 <meta name="twitter:description" content="一个不会被用来做GUI的语言的GUI库的介绍">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/03/07/2018-03-07-JavaFX介绍/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2018/03/07/2018-03-07-JavaFX介绍/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -317,14 +317,20 @@
         <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>如果使用IntelliJ IDEA创建一个JavaFX项目，会默认创建 <code>Main.java</code> <code>Controller.java</code> <code>sample.fxml</code> ，这也是JavaFX一个明显的特性：可以使用fxml文件与css文件编辑界面</p>
 <h1 id="编辑界面"><a href="#编辑界面" class="headerlink" title="编辑界面"></a>编辑界面</h1><p>在 <code>sample.fxml</code> 中使用xml语言编辑界面，可使用 <code>javafx.scene.layout</code> 库中的所有元素，参考 <a href="https://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html" target="_blank" rel="noopener">Introduction to FXML | JavaFX 2.2</a> </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?import javafx.scene.control.Button?&gt;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">VBox</span> <span class="attr">fx:id</span>=<span class="string">"body"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">fx:controller</span>=<span class="string">"miniCAD.Controller"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:fx</span>=<span class="string">"http://javafx.com/fxml"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MenuBar</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Menu</span> <span class="attr">fx:id</span>=<span class="string">"menuFile"</span> <span class="attr">text</span>=<span class="string">"File"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">MenuItem</span> <span class="attr">fx:id</span>=<span class="string">"itemOpen"</span> <span class="attr">text</span>=<span class="string">"Open"</span> <span class="attr">onAction</span>=<span class="string">"#itemOpenClicked"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">MenuItem</span> <span class="attr">fx:id</span>=<span class="string">"itemSave"</span> <span class="attr">text</span>=<span class="string">"Save"</span> <span class="attr">onAction</span>=<span class="string">"#itemSaveClicked"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Menu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">MenuBar</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">HBox</span> <span class="attr">fx:id</span>=<span class="string">"toolBox"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">FlowPane</span> <span class="attr">fx:id</span>=<span class="string">"shape"</span> <span class="attr">styleClass</span>=<span class="string">"tool"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">fx:id</span>=<span class="string">"buttonLine"</span> <span class="attr">onAction</span>=<span class="string">"#buttonLineClicked"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">fx:id</span>=<span class="string">"buttonRectangle"</span> <span class="attr">onAction</span>=<span class="string">"#buttonRectangleClicked"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">FlowPane</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Separator</span> <span class="attr">orientation</span>=<span class="string">"VERTICAL"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">FlowPane</span> <span class="attr">fx:id</span>=<span class="string">"size"</span> <span class="attr">styleClass</span>=<span class="string">"tool"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">fx:id</span>=<span class="string">"buttonBigger"</span> <span class="attr">onAction</span>=<span class="string">"#buttonBiggerClicked"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">fx:id</span>=<span class="string">"buttonSmaller"</span> <span class="attr">onAction</span>=<span class="string">"#buttonSmallerClicked"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">FlowPane</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">HBox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">VBox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">MenuItem</span> <span class="attr">fx:id</span>=<span class="string">"itemOpen"</span> <span class="attr">text</span>=<span class="string">"Open"</span> <span class="attr">onAction</span>=<span class="string">"#itemOpenClicked"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>相当于Java程序中的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MenuItem itemOpen = <span class="keyword">new</span> MenuItem(<span class="string">"Open"</span>);</span><br><span class="line">itemOpen.addActionListener(actionEvent -&gt; &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h1 id="补全代码"><a href="#补全代码" class="headerlink" title="补全代码"></a>补全代码</h1><p>然后在 <code>Controller.java</code> 中补全设计界面时命名的元素和函数</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FXML</span></span><br><span class="line">VBox body;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buttonTextClick</span><span class="params">(ActionEvent actionEvent)</span> </span>&#123; &#125;</span><br><span class="line"><span class="comment">//...</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="使用CSS"><a href="#使用CSS" class="headerlink" title="使用CSS"></a>使用CSS</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">VBox</span> <span class="attr">fx:id</span>=<span class="string">"body"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">fx:controller</span>=<span class="string">"miniCAD.Controller"</span></span></span><br><span class="line">      stylesheets="/miniCAD/miniCAD.css" &lt;!-- this --&gt;</span><br><span class="line">      xmlns:fx="http://javafx.com/fxml"&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">VBox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>对应的css文件中属性均以-fx-开头</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#body</span> &#123;</span><br><span class="line">    <span class="attribute">-fx-pref-width</span>: <span class="number">1000px</span>;</span><br><span class="line">    <span class="attribute">-fx-pref-height</span>: <span class="number">600px</span>;</span><br><span class="line">    <span class="attribute">-fx-spacing</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">Button</span> &#123;</span><br><span class="line">    <span class="attribute">-fx-font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">FlowPane</span> &#123;</span><br><span class="line">    <span class="attribute">-fx-hgap</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">-fx-vgap</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>实例项目</p>
 <p><a href="https://github.com/hahahaha123567/mini-cad" target="_blank" rel="noopener">mini-cad</a></p>
@@ -440,9 +446,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -455,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +567,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

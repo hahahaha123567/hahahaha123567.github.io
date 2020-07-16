@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Docker," />
+  <meta name="keywords" content="Docker,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="大部分都是一些之前不知道的常识">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-20T18:45:29.225Z">
+<meta property="og:updated_time" content="2019-02-20T18:45:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写Dockerfile中遇到的问题">
 <meta name="twitter:description" content="大部分都是一些之前不知道的常识">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2019/02/21/2019-02-21-写Dockerfile中遇到的问题/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/02/21/2019-02-21-写Dockerfile中遇到的问题/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -317,7 +317,8 @@
         <h1 id="文件映射"><a href="#文件映射" class="headerlink" title="文件映射"></a>文件映射</h1><p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Use volumes | Docker Documentation</a></p>
 <p><a href="http://dockone.io/article/128" target="_blank" rel="noopener">深入理解Docker Volume（一） - DockOne.io</a></p>
 <p><a href="http://dockone.io/article/129" target="_blank" rel="noopener">深入理解Docker Volume（二） - DockOne.io</a></p>
-<h2 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 运行时指定</span></span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> -v /container/data hello</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 2. Dockerfile中指定</span></span></span><br><span class="line"><span class="bash">VOLUME /container/data</span></span><br></pre></td></tr></table></figure>
+<h2 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 运行时指定</span></span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> -v /container/data hello</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Dockerfile中指定</span></span><br><span class="line"><span class="keyword">VOLUME</span><span class="bash"> /container/data</span></span><br></pre></td></tr></table></figure>
+
 <p>docker 会在 host 上创建一个目录并挂载到 container 的 <code>/container/data</code></p>
 <p>创建的目录默认路径在 <code>/var/lib/docker</code></p>
 <h2 id="bind-mount"><a href="#bind-mount" class="headerlink" title="bind-mount"></a>bind-mount</h2><p><code>docker run -v /host/data:/container/data hello</code> </p>
@@ -330,13 +331,16 @@
 <p>todo: volume 的顺序是否会影响文件是否被覆盖</p>
 <p><a href="https://segmentfault.com/a/1190000015684472" target="_blank" rel="noopener">Docker volume 挂载时文件或文件夹不存在 - Keep Coding - SegmentFault 思否</a></p>
 <h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><h2 id="终端打印彩色字体"><a href="#终端打印彩色字体" class="headerlink" title="终端打印彩色字体"></a>终端打印彩色字体</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">"\033[31m 我是红色 \033[0m"</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="shell的比较选项"><a href="#shell的比较选项" class="headerlink" title="shell的比较选项"></a>shell的比较选项</h2><p><a href="https://www.ibm.com/developerworks/cn/linux/l-bash-test.html" target="_blank" rel="noopener">Linux 技巧: Bash 测试和比较函数</a></p>
 <h2 id="shell读参数"><a href="#shell读参数" class="headerlink" title="shell读参数"></a>shell读参数</h2><p><a href="http://billie66.github.io/TLCL/book/chap33.html" target="_blank" rel="noopener">位置参数 - TLCL</a></p>
 <h2 id="星际选手"><a href="#星际选手" class="headerlink" title="星际选手"></a>星际选手</h2><p><code>sed</code> 写成了 <code>set</code>, 两个单词高亮一样, 查了几个小时, 一直以为是脚本没执行, 最后才发现是命令写错了</p>
 <h1 id="持续运行"><a href="#持续运行" class="headerlink" title="持续运行"></a>持续运行</h1><p>docker 执行完脚本后就会自动停止</p>
 <p>为了使其正常工作, 一般用 <code>CMD [&quot;...&quot;]</code> 显式使其执行命令, 或者使用 tailf 查看日志等</p>
 <h1 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h1><h2 id="容器运行时"><a href="#容器运行时" class="headerlink" title="容器运行时"></a>容器运行时</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器内部查看程序的日志</span></span><br><span class="line">docker <span class="built_in">exec</span> -it hello bash</span><br></pre></td></tr></table></figure>
+
 <h2 id="容器停止后"><a href="#容器停止后" class="headerlink" title="容器停止后"></a>容器停止后</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 host 上查看 hello 输出的日志, 即 hello 内部打印到 bash 的信息</span></span><br><span class="line">docker logs hello</span><br></pre></td></tr></table></figure>
+
 <h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="document"><a href="#document" class="headerlink" title="document"></a>document</h2><p><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_blank" rel="noopener">Best practices for writing Dockerfiles | Docker Documentation</a></p>
 <p><a href="https://yeasy.gitbooks.io/docker_practice/appendix/best_practices.html" target="_blank" rel="noopener">附录四：Dockerfile 最佳实践 · Docker —— 从入门到实践</a></p>
 <h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p><a href="https://hub.docker.com/_/redis" target="_blank" rel="noopener">redis - Docker Hub</a></p>
@@ -449,9 +453,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -464,7 +466,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -572,7 +574,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

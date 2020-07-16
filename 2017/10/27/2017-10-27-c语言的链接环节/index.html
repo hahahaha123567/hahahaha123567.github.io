@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c,Linux," />
+  <meta name="keywords" content="c,Linux,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="弄懂 include  的背后">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T11:49:57.017Z">
+<meta property="og:updated_time" content="2019-03-18T11:49:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c语言的链接环节">
 <meta name="twitter:description" content="弄懂 include  的背后">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/27/2017-10-27-c语言的链接环节/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/27/2017-10-27-c语言的链接环节/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -298,7 +298,7 @@
           
               <div class="post-description">
                   弄懂 include <stdio> 的背后
-              </div>
+              </stdio></div>
           
 
         </div>
@@ -326,16 +326,18 @@
 </li>
 </ol>
 <p>见 <a href="http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2287738.html#_Toc311642841" target="_blank" rel="noopener">Linux GCC常用命令 - ggjucheng - 博客园</a> 的解释</p>
-<h1 id="include"><a href="#include" class="headerlink" title="# include "></a># include <stdio.h></stdio.h></h1><p>我们的代码中的<code>#include &lt;stdio.h&gt;</code>的作用是将该头文件中函数的<strong>声明(declaration)</strong>拷贝过来，使程序通过编译</p>
+<h1 id="include-lt-stdio-h-gt"><a href="#include-lt-stdio-h-gt" class="headerlink" title="# include &lt;stdio.h&gt;"></a># include &lt;stdio.h&gt;</h1><p>我们的代码中的<code>#include &lt;stdio.h&gt;</code>的作用是将该头文件中函数的**声明(declaration)**拷贝过来，使程序通过编译</p>
 <p>此时，编译生成的.s文件中并没有实现函数功能的代码，程序只知道去调用一个叫做<code>printf()</code>的函数，而不知道这个函数在哪</p>
 <p>要到第四步链接(link)时，程序才能找到<code>printf()</code>的实现</p>
 <p>但是我们链接时只需要执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.o -o test    # no other lib</span><br></pre></td></tr></table></figure>
+
 <p>就能生成包含输入输出功能的可执行文件，这是因为编译器悄悄地帮你链接了<code>libc</code>库</p>
 <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>以Linux环境下的gcc为例</p>
 <p>Linux环境下，静态链接库文件后缀<code>.a</code>，动态链接库文件后缀<code>.so</code></p>
 <h2 id="链接指令"><a href="#链接指令" class="headerlink" title="链接指令"></a>链接指令</h2><p>经过汇编后产生的<code>.o</code>二进制文件需要与代码中include的对应的库文件链接后才能生成最后的可执行文件。例如，多线程编程用到了<code>libpthread.a</code>和<code>libphread.so</code>库文件，在链接时就要指明</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.o /usr/lib/i386-linux-gun/libpthread.so -o test</span><br></pre></td></tr></table></figure>
+
 <p>为了防止每次都要输入库文件的绝对路径，Linux的环境变量</p>
 <p><code>LIBRARY_PATH</code>用来指示默认的静态库路径</p>
 <p><code>LD_LIBRARY_PATH</code>用来指示默认的动态库路径</p>
@@ -343,7 +345,7 @@
 <li>ld会去找gcc命令中的参数-L后的绝对路径</li>
 </ol>
 <p>根据-l后的文件相对名称（无前缀lib与后缀文件格式）去</p>
-<ol>
+<ol start="2">
 <li><p><code>LIBRARY_PATH</code></p>
 </li>
 <li><p><code>/lib</code> <code>/usr/lib</code> <code>/usr/local/lib</code> (这是当初compile gcc时写在程序内的) </p>
@@ -354,7 +356,7 @@
 <li>ld会去找gcc命令中的参数-L后的绝对路径</li>
 </ol>
 <p>根据-l后的文件相对名称（无前缀lib与后缀文件格式）去</p>
-<ol>
+<ol start="2">
 <li><p><code>LD_LIBRARY_PATH</code></p>
 </li>
 <li><p>配置文件<code>/etc/ld.so.conf</code>中指定的动态库搜索路径</p>
@@ -480,9 +482,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -495,7 +495,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c程序编译流程"><span class="nav-number">1.</span> <span class="nav-text">c程序编译流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">2.</span> <span class="nav-text"># include </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接"><span class="nav-number">3.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接指令"><span class="nav-number">3.1.</span> <span class="nav-text">链接指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态库链接时搜索路径顺序："><span class="nav-number">3.2.</span> <span class="nav-text">静态库链接时搜索路径顺序：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态链接时、执行时搜索路径顺序"><span class="nav-number">3.3.</span> <span class="nav-text">动态链接时、执行时搜索路径顺序:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接实现"><span class="nav-number">3.4.</span> <span class="nav-text">链接实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#libc"><span class="nav-number">3.5.</span> <span class="nav-text">libc</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c程序编译流程"><span class="nav-number">1.</span> <span class="nav-text">c程序编译流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-lt-stdio-h-gt"><span class="nav-number">2.</span> <span class="nav-text"># include &lt;stdio.h&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接"><span class="nav-number">3.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接指令"><span class="nav-number">3.1.</span> <span class="nav-text">链接指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态库链接时搜索路径顺序："><span class="nav-number">3.2.</span> <span class="nav-text">静态库链接时搜索路径顺序：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态链接时、执行时搜索路径顺序"><span class="nav-number">3.3.</span> <span class="nav-text">动态链接时、执行时搜索路径顺序:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接实现"><span class="nav-number">3.4.</span> <span class="nav-text">链接实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#libc"><span class="nav-number">3.5.</span> <span class="nav-text">libc</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -603,7 +603,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

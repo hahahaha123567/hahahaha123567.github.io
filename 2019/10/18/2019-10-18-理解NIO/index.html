@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前写过一篇《Java的IO》, 对看的相关文章做了总结, 但实际上自己并没有理解, 直到看了知乎上《进击的Java新人》, 从操作系统内核调用上去看, 才慢慢理解">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解NIO">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019/10/18/2019-10-18-理解NIO/index.html">
+<meta property="og:site_name" content="Yazawa&#39;s Blog">
+<meta property="og:description" content="之前写过一篇《Java的IO》, 对看的相关文章做了总结, 但实际上自己并没有理解, 直到看了知乎上《进击的Java新人》, 从操作系统内核调用上去看, 才慢慢理解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-07-16T11:49:55.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解NIO">
+<meta name="twitter:description" content="之前写过一篇《Java的IO》, 对看的相关文章做了总结, 但实际上自己并没有理解, 直到看了知乎上《进击的Java新人》, 从操作系统内核调用上去看, 才慢慢理解">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hahahaha123567.github.io/2019/10/18/2019-10-18-理解NIO/">
+
+
+
+
+
+  <title>理解NIO | Yazawa's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yazawa's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019/10/18/2019-10-18-理解NIO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/nicoumi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yazawa's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解NIO</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T00:00:00+08:00">
+                2019-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  之前写过一篇《Java的IO》, 对看的相关文章做了总结, 但实际上自己并没有理解, 直到看了知乎上《进击的Java新人》, 从操作系统内核调用上去看, 才慢慢理解
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h1><h2 id="阻塞IO"><a href="#阻塞IO" class="headerlink" title="阻塞IO"></a>阻塞IO</h2><p>以server处理socket连接为例, 标准的几步</p>
+<ol>
+<li>socket</li>
+<li>bind</li>
+<li>listen</li>
+<li>accept  &lt;- block</li>
+<li>receive</li>
+</ol>
+<p>不管是Java还是c, 在accept时都是阻塞等待操作系统返回新连接</p>
+<h2 id="非阻塞IO"><a href="#非阻塞IO" class="headerlink" title="非阻塞IO"></a>非阻塞IO</h2><ol>
+<li>socket</li>
+<li>bind</li>
+<li>listen</li>
+<li>fcntl(O_NONBLOCK), accept  &lt;- unblock</li>
+<li>receive</li>
+</ol>
+<p>手动设置fd(file_descriptor)的属性, 可以使用操作系统提供的非阻塞接口, 即无输入返回0, 有输入返回大于0, 如果需要处理数据, 需要循环检查返回值</p>
+<p>接口立即返回, 程序可以执行下文, 所以是非阻塞</p>
+<p>要等接口返回有效内容后才能执行期望的操作, 所以是同步的</p>
+<h2 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h2><p>上面两种模型, 都是一个线程对应一个连接</p>
+<blockquote>
+<p>在Java中创建线程，一个线程默认就会预留1M的空间，那么1G的内存也不过只能支持1000个线程创建而已。而且，随着线程数的增多，线程之间的调度和切换，引发的资源竞争也会加剧，使整个系统变得很慢</p>
+</blockquote>
+<p>IO多路复用, 支持一个线程管理多个连接, 所有连接均没有消息时, 对应的接口即阻塞</p>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><ol>
+<li>socket</li>
+<li>bind</li>
+<li>listen</li>
+<li>select &lt;- block</li>
+<li>accept</li>
+<li>receive</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while(true) &#123;</span><br><span class="line">    // 如果没有消息, 这里会阻塞</span><br><span class="line">    n = select(fd_set)</span><br><span class="line">    // 走到这里说明fd_set不为空, 有需要处理的连接, accept不会阻塞</span><br><span class="line">    accept()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h3><ol>
+<li>socket</li>
+<li>bind</li>
+<li>listen</li>
+<li>poll &lt;- block</li>
+<li>accept</li>
+<li>receive</li>
+</ol>
+<p>和select基本相同, 只是fd_set从数组换成了链表, 支持的fd数超过1024</p>
+<h3 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h3><h4 id="对poll的优化"><a href="#对poll的优化" class="headerlink" title="对poll的优化"></a>对poll的优化</h4><ul>
+<li>返回可读的fd, 不需要再遍历一遍哪些可读</li>
+<li>接口拆分为 epoll_ctl 和 epoll_wait, 减少了用户空间到内核空间的拷贝</li>
+</ul>
+<p>只有较新的linux支持epoll</p>
+<h4 id="两种模式"><a href="#两种模式" class="headerlink" title="两种模式"></a>两种模式</h4><h5 id="Edge模式"><a href="#Edge模式" class="headerlink" title="Edge模式"></a>Edge模式</h5><p>空的接收缓冲区刚接收到数据时触发读事件; 满的缓冲区刚空出空间时触发读事件</p>
+<h5 id="Level模式"><a href="#Level模式" class="headerlink" title="Level模式"></a>Level模式</h5><p>接收缓冲区不为空, 有数据可读, 则读事件一直触发; 发送缓冲区不满可以继续写入数据, 则写事件一直触发</p>
+<h1 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h1><p>Java NIO的selector是对select/poll/epoll的封装</p>
+<h1 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h1><p>看讲Java IO的文章, 总是不理解为什么会有这么多模型, 既然有效率更高的, 直接用更好的不就行了吗?</p>
+<p>所以说问题要看本质, Java IO能做什么, 取决于操作系统提供了什么接口</p>
+<p>说到底还是大学课堂涉及的内容, 上课时不知道学了能干啥而知其然不知其所以然, 现在遇到了使用场景就得得好好补一补</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://zhuanlan.zhihu.com/p/24393775" target="_blank" rel="noopener">进击的Java新人 - 知乎</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/2019-04-21-看完天安门纪录片的一点感受/" rel="next" title="看完天安门纪录片的一点感受">
+                <i class="fa fa-chevron-left"></i> 看完天安门纪录片的一点感受
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/02/2019-12-02-[错误 找不到或无法加载主类]排查流程/" rel="prev" title="错误 找不到或无法加载主类]排查流程">
+                错误 找不到或无法加载主类]排查流程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
+            
+              <p class="site-author-name" itemprop="name">hahahaha123567</p>
+              <p class="site-description motion-element" itemprop="description">niconiconi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IO"><span class="nav-number">1.</span> <span class="nav-text">IO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞IO"><span class="nav-number">1.1.</span> <span class="nav-text">阻塞IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非阻塞IO"><span class="nav-number">1.2.</span> <span class="nav-text">非阻塞IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO多路复用"><span class="nav-number">1.3.</span> <span class="nav-text">IO多路复用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">1.3.1.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poll"><span class="nav-number">1.3.2.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epoll"><span class="nav-number">1.3.3.</span> <span class="nav-text">epoll</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对poll的优化"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">对poll的优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种模式"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">两种模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Edge模式"><span class="nav-number">1.3.3.2.1.</span> <span class="nav-text">Edge模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Level模式"><span class="nav-number">1.3.3.2.2.</span> <span class="nav-text">Level模式</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#netty"><span class="nav-number">2.</span> <span class="nav-text">netty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感想"><span class="nav-number">3.</span> <span class="nav-text">感想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

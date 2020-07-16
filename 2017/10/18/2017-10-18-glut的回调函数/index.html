@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机图形学,openGL," />
+  <meta name="keywords" content="计算机图形学,openGL,">
 
 
 
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yazawa&#39;s Blog">
 <meta property="og:description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:58:53.069Z">
+<meta property="og:updated_time" content="2018-08-12T13:58:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="glut的回调函数">
 <meta name="twitter:description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/"/>
+  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Yazawa's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
     </span>
 
@@ -316,15 +316,19 @@
       
         <h1 id="Callback-Function"><a href="#Callback-Function" class="headerlink" title="Callback Function"></a>Callback Function</h1><p>从行为上概括，回调函数就是用函数指针去调用函数。这样起到的作用与直接调用函数相似，但是灵活性大大增加。</p>
 <p>平时函数的参数是变量的值或变量的指针，调用者就只能传递这个有限的信息；而如果函数的参数可以是其他函数的指针，调用者就向被调用者传递了一个动作。</p>
-<p>举个我们最熟悉的例子，C语言的stdlib.h中的qsort函数的原型是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void qsort (void* base, size_t num, size_t width, int(__cdecl* compare)(const void*, const void*));</span><br></pre></td></tr></table></figure></p>
+<p>举个我们最熟悉的例子，C语言的stdlib.h中的qsort函数的原型是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void qsort (void* base, size_t num, size_t width, int(__cdecl* compare)(const void*, const void*));</span><br></pre></td></tr></table></figure>
+
 <p>在我们调用qsort的时候，不仅可以传递数组的基地址、数组的元素个数、每个元素占用的字节数这些基本信息，还可以传递“比较”这个动作。</p>
 <p>从<strong>库函数编写者</strong>的角度看更为明显，我需要编写一个函数foo实现功能A，但是功能A的实现过程中有部分动作是不确定的，由foo的调用者决定，就用函数指针做参数来实现。</p>
-<p>总结：实体A提供函数a的指针，调用函数B，B实现的时候就<strong>回调(Callback)</strong>了函数a</p>
+<p>总结：实体A提供函数a的指针，调用函数B，B实现的时候就**回调(Callback)**了函数a</p>
 <h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><p>从面向对象的角度看，如果是为了实现上述的灵活性，应该尽量避免使用回调函数，去利用面向对象的特性。</p>
 <p>现在我们利用回调是因为可以异步实现，有利有弊。由于本人水平有限，更多的例子可以参考知乎问题 <a href="https://www.zhihu.com/question/19801131" target="_blank" rel="noopener">回调函数（callback）是什么？</a></p>
-<h1 id="Callback-Function-in-GLUT"><a href="#Callback-Function-in-GLUT" class="headerlink" title="Callback Function in GLUT"></a>Callback Function in GLUT</h1><h2 id="Program-Format"><a href="#Program-Format" class="headerlink" title="Program Format"></a>Program Format</h2><p>初学openGL，照着例程的格式写出了这样的程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void graph (void) &#123;</span><br><span class="line">    glBegin(...);</span><br><span class="line">        ... // points</span><br><span class="line">    glEnd();</span><br><span class="line">    glFlush();</span><br><span class="line">&#125;</span><br><span class="line">int main () &#123;</span><br><span class="line">    ... // initial</span><br><span class="line">    ... // create window</span><br><span class="line">    glutDisplayFunc(graph);</span><br><span class="line">    glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Callback-Function-in-GLUT"><a href="#Callback-Function-in-GLUT" class="headerlink" title="Callback Function in GLUT"></a>Callback Function in GLUT</h1><h2 id="Program-Format"><a href="#Program-Format" class="headerlink" title="Program Format"></a>Program Format</h2><p>初学openGL，照着例程的格式写出了这样的程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void graph (void) &#123;</span><br><span class="line">    glBegin(...);</span><br><span class="line">        ... // points</span><br><span class="line">    glEnd();</span><br><span class="line">    glFlush();</span><br><span class="line">&#125;</span><br><span class="line">int main () &#123;</span><br><span class="line">    ... // initial</span><br><span class="line">    ... // create window</span><br><span class="line">    glutDisplayFunc(graph);</span><br><span class="line">    glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>显然，最后的 <code>glutDisplayFunc()</code>与<code>glutMainLoop()</code>是将画好的图形显示出来的关键。</p>
-<h2 id="Process-of-Execution"><a href="#Process-of-Execution" class="headerlink" title="Process of Execution"></a>Process of Execution</h2><p>这里的<code>glutDisplayFunc()</code>属于回调函数，而<code>glutMainLoop()</code>的作用是进入一个死循环，不断检测程序之前注册的那些回调函数是否应该被调用，类似<strong>轮询(polling)</strong>机制。</p>
+<h2 id="Process-of-Execution"><a href="#Process-of-Execution" class="headerlink" title="Process of Execution"></a>Process of Execution</h2><p>这里的<code>glutDisplayFunc()</code>属于回调函数，而<code>glutMainLoop()</code>的作用是进入一个死循环，不断检测程序之前注册的那些回调函数是否应该被调用，类似**轮询(polling)**机制。</p>
 <p>对于<code>glutDisplayFunc()</code>来说，为了防止画面不停绘制占用CPU资源，只有在以下情况发生时才会再次执行</p>
 <ul>
 <li>窗口大小改变</li>
@@ -333,17 +337,22 @@
 <p>而其他回调函数则会在其对应的时候被触发并执行</p>
 <h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><p>先给出glut中那些 <a href="https://www.opengl.org/resources/libraries/glut/spec3/node45.html#SECTION00080000000000000000" target="_blank" rel="noopener">回调函数的原型</a></p>
 <h2 id="glutKeyboardFunc"><a href="#glutKeyboardFunc" class="headerlink" title="glutKeyboardFunc()"></a>glutKeyboardFunc()</h2><h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutKeyboardFunc (void (*func)(unsigned char key, int x, int y));</span><br></pre></td></tr></table></figure>
+
 <h3 id="Called"><a href="#Called" class="headerlink" title="Called"></a>Called</h3><p>当按下的是字母键等有对应的ASCII码的键时被调用</p>
 <h3 id="Parameter"><a href="#Parameter" class="headerlink" title="Parameter"></a>Parameter</h3><p>key:</p>
 <p>按下的键</p>
 <p>x, y:</p>
 <p>鼠标的位置，注意原点(0, 0)为window的左上角</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// control the square with &apos;w&apos;, &apos;a&apos;, &apos;s&apos;, &apos;d&apos;</span><br><span class="line">void keyboard (char key, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (key == &apos;w&apos;) &#123;</span><br><span class="line">		y -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &apos;a&apos;) &#123;</span><br><span class="line">		x -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &apos;s&apos;) &#123;</span><br><span class="line">		y += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &apos;d&apos;) &#123;</span><br><span class="line">		x += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="glutSpecialFunc"><a href="#glutSpecialFunc" class="headerlink" title="glutSpecialFunc()"></a>glutSpecialFunc()</h2><h3 id="Prototype-1"><a href="#Prototype-1" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutSpecialFunc (void (*func)(int key, int x, int y));</span><br></pre></td></tr></table></figure>
+
 <h3 id="Called-1"><a href="#Called-1" class="headerlink" title="Called"></a>Called</h3><p>当按下方向键等没有对应的ASCII码的键时被调用</p>
 <h3 id="Parameter-1"><a href="#Parameter-1" class="headerlink" title="Parameter"></a>Parameter</h3><p>类似<code>glutSpecialFunc()</code></p>
 <h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// control the square with &apos;up&apos;, &apos;down&apos;, &apos;left&apos;, &apos;right&apos;</span><br><span class="line">void keyboard_special (int key, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (key == GLUT_KEY_UP) &#123;</span><br><span class="line">		y -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_LEFT) &#123;</span><br><span class="line">		x -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_DOWN) &#123;</span><br><span class="line">		y += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_RIGHT) &#123;</span><br><span class="line">		x += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="glutMouseFunc"><a href="#glutMouseFunc" class="headerlink" title="glutMouseFunc()"></a>glutMouseFunc()</h2><h3 id="Prototype-2"><a href="#Prototype-2" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutMouseFunc (void (*func)(int button, int state, int x, int y));</span><br></pre></td></tr></table></figure>
+
 <h3 id="Called-2"><a href="#Called-2" class="headerlink" title="Called"></a>Called</h3><p>当鼠标左键/中键/右键被按下/释放时被调用</p>
 <h3 id="Parameter-2"><a href="#Parameter-2" class="headerlink" title="Parameter"></a>Parameter</h3><p>button:</p>
 <p>被按下/释放的是哪个键</p>
@@ -352,13 +361,17 @@
 <p>x, y:</p>
 <p>鼠标的位置，注意原点(0, 0)为window的左上角</p>
 <h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// make the square big by click left mouse</span><br><span class="line">void mouse (int button, int state, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (button == GLUT_LEFT_BUTTON &amp;&amp; state == GLUT_DOWN) &#123;</span><br><span class="line">		size += 4;</span><br><span class="line">	&#125;</span><br><span class="line">	if (size &gt;= 30) &#123;</span><br><span class="line">		size = 5;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="glutMotionFunc-glutPassiveMotionFunc"><a href="#glutMotionFunc-glutPassiveMotionFunc" class="headerlink" title="glutMotionFunc(), glutPassiveMotionFunc()"></a>glutMotionFunc(), glutPassiveMotionFunc()</h2><h3 id="Prototype-3"><a href="#Prototype-3" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void glutMotionFunc (void (*func)(int x, int y));</span><br><span class="line">void glutPassiveMotionFunc (void (*func)(int x, int y));</span><br></pre></td></tr></table></figure>
+
 <h3 id="Called-3"><a href="#Called-3" class="headerlink" title="Called"></a>Called</h3><p>当鼠标在被按下的时候移动时，<code>glutMotionFunc()</code>被调用；</p>
 <p>当鼠标在松开的时候移动时，<code>glutPassiveMotionFunc()</code>被调用；</p>
 <h3 id="Parameter-3"><a href="#Parameter-3" class="headerlink" title="Parameter"></a>Parameter</h3><p>x, y:</p>
 <p>鼠标的位置，注意原点(0, 0)为window的左上角</p>
 <h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// drag the square by keep pressing the left mouse</span><br><span class="line">void motion (int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	x = curr_x;</span><br><span class="line">	y = curr_y;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="glutTimerFunc"><a href="#glutTimerFunc" class="headerlink" title="glutTimerFunc()"></a>glutTimerFunc()</h2><h3 id="Prototype-4"><a href="#Prototype-4" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutTimerFunc (unsigned int msecs, void (*func)(int value), int value);</span><br></pre></td></tr></table></figure>
+
 <h3 id="Called-4"><a href="#Called-4" class="headerlink" title="Called"></a>Called</h3><p>直接被调用，在使用时一般在被调用的函数最后进行递归调用，继续累计时间</p>
 <p>这个函数不是在运行到它时立即执行，所以不算死循环</p>
 <p>常用于render</p>
@@ -368,12 +381,16 @@
 <p>value:</p>
 <p>函数标记</p>
 <h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// act with interval</span><br><span class="line">void timer (int value)</span><br><span class="line">&#123;</span><br><span class="line">	y += 1;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">	glutTimerFunc(30, timer, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="glutIdleFunc"><a href="#glutIdleFunc" class="headerlink" title="glutIdleFunc()"></a>glutIdleFunc()</h2><h3 id="Prototype-5"><a href="#Prototype-5" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutIdleFunc (void (*func)(void));</span><br></pre></td></tr></table></figure>
+
 <h3 id="Called-5"><a href="#Called-5" class="headerlink" title="Called"></a>Called</h3><p>空闲时调用</p>
 <p>应尽量减少空闲回调函数中的计算和渲染量，不然会影响其他部分的性能</p>
 <h3 id="Code-5"><a href="#Code-5" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;windows.h&gt; // Sleep() in windows</span><br><span class="line"></span><br><span class="line">// act with interval</span><br><span class="line">void idle ()</span><br><span class="line">&#123;</span><br><span class="line">	x += 2;</span><br><span class="line">	Sleep(20);</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Public-Part"><a href="#Public-Part" class="headerlink" title="Public Part"></a>Public Part</h2><p>这段代码是上文各回调函数定义的调用部分</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;gl\glut.h&gt;</span><br><span class="line"></span><br><span class="line">GLint windowSize = 500;</span><br><span class="line">GLint x = 250, y = 250, size = 5;</span><br><span class="line"></span><br><span class="line">int main (int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">	glutInit(&amp;argc, argv);</span><br><span class="line">	glutInitDisplayMode(GLUT_RGB);</span><br><span class="line">	glutInitWindowPosition(300, 100);</span><br><span class="line">	glutInitWindowSize(windowSize, windowSize);</span><br><span class="line">	glutCreateWindow(&quot;I&apos;m a window&quot;);</span><br><span class="line">	glClearColor(1.0, 1.0, 1.0, 0.0);</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">	gluOrtho2D(0, 500, 0, 500);</span><br><span class="line"></span><br><span class="line">	glutKeyboardFunc(keyboard);</span><br><span class="line">	glutSpecialFunc(keyboard_special);</span><br><span class="line">	glutMouseFunc(mouse);</span><br><span class="line">	glutMotionFunc(motion);</span><br><span class="line">	glutIdleFunc(idle);</span><br><span class="line">	glutDisplayFunc(graph);</span><br><span class="line">	glutTimerFunc(20, timer, 0);</span><br><span class="line">	glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Complete-Program"><a href="#Complete-Program" class="headerlink" title="Complete Program"></a>Complete Program</h2><p><a href="https://github.com/hahahaha123567/hello-world/blob/master/Computer%20Graphics/callback.c" target="_blank" rel="noopener">完整代码</a></p>
 <hr>
 <p>几个有用的链接</p>
@@ -491,9 +508,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/nicoumi.jpg"
-                alt="hahahaha123567" />
+              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
             
               <p class="site-author-name" itemprop="name">hahahaha123567</p>
               <p class="site-description motion-element" itemprop="description">niconiconi</p>
@@ -506,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -594,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function"><span class="nav-number">1.</span> <span class="nav-text">Callback Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">1.0.1.</span> <span class="nav-text">意义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function-in-GLUT"><span class="nav-number">2.</span> <span class="nav-text">Callback Function in GLUT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Format"><span class="nav-number">2.1.</span> <span class="nav-text">Program Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-of-Execution"><span class="nav-number">2.2.</span> <span class="nav-text">Process of Execution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">3.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#glutKeyboardFunc"><span class="nav-number">3.1.</span> <span class="nav-text">glutKeyboardFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">3.1.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called"><span class="nav-number">3.1.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter"><span class="nav-number">3.1.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutSpecialFunc"><span class="nav-number">3.2.</span> <span class="nav-text">glutSpecialFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMouseFunc"><span class="nav-number">3.3.</span> <span class="nav-text">glutMouseFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMotionFunc-glutPassiveMotionFunc"><span class="nav-number">3.4.</span> <span class="nav-text">glutMotionFunc(), glutPassiveMotionFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-3"><span class="nav-number">3.4.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">3.4.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutTimerFunc"><span class="nav-number">3.5.</span> <span class="nav-text">glutTimerFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-4"><span class="nav-number">3.5.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">3.5.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutIdleFunc"><span class="nav-number">3.6.</span> <span class="nav-text">glutIdleFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">3.6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-Part"><span class="nav-number">3.7.</span> <span class="nav-text">Public Part</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Program"><span class="nav-number">3.8.</span> <span class="nav-text">Complete Program</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function"><span class="nav-number">1.</span> <span class="nav-text">Callback Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">1.0.1.</span> <span class="nav-text">意义</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function-in-GLUT"><span class="nav-number">2.</span> <span class="nav-text">Callback Function in GLUT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Format"><span class="nav-number">2.1.</span> <span class="nav-text">Program Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-of-Execution"><span class="nav-number">2.2.</span> <span class="nav-text">Process of Execution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">3.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#glutKeyboardFunc"><span class="nav-number">3.1.</span> <span class="nav-text">glutKeyboardFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">3.1.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called"><span class="nav-number">3.1.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter"><span class="nav-number">3.1.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutSpecialFunc"><span class="nav-number">3.2.</span> <span class="nav-text">glutSpecialFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMouseFunc"><span class="nav-number">3.3.</span> <span class="nav-text">glutMouseFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMotionFunc-glutPassiveMotionFunc"><span class="nav-number">3.4.</span> <span class="nav-text">glutMotionFunc(), glutPassiveMotionFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-3"><span class="nav-number">3.4.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">3.4.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutTimerFunc"><span class="nav-number">3.5.</span> <span class="nav-text">glutTimerFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-4"><span class="nav-number">3.5.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">3.5.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutIdleFunc"><span class="nav-number">3.6.</span> <span class="nav-text">glutIdleFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">3.6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-Part"><span class="nav-number">3.7.</span> <span class="nav-text">Public Part</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Program"><span class="nav-number">3.8.</span> <span class="nav-text">Complete Program</span></a></li></ol></li></div>
             
 
           </div>
@@ -614,7 +629,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="hahahaha123567&#39;s Blog">
 <meta property="og:description" content="服务里定时出现的神秘异常">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-01T12:10:06.819Z">
+<meta property="og:updated_time" content="2021-06-01T12:12:37.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个redis-session的bug-fix">
 <meta name="twitter:description" content="服务里定时出现的神秘异常">
@@ -333,6 +333,7 @@
 <p>RedisHttpSessionConfiguration 本身是一个 Spring 配置类, 会向 Spring 容器注册 sessionRepository, redisMessageListenerContainer 等实例</p>
 <p>RedisHttpSessionConfiguration 会注册 Redis 消息监听器容器 RedisMessageListenerContainer, 并将 RedisIndexedSessionRepository 作为 Redis 消息订阅的监听器, 因为它实现了 MessageListener 接口。当 Redis 中 key 过期或销毁时, 会通知将 RedisIndexedSessionRepository 调用其onMessage() 方法来处理消息</p>
 <p><a href="https://juejin.cn/post/6844904159091621901" target="_blank" rel="noopener">Spring Session Data Redis 源码解析</a></p>
+<p>排查问题的时候要灵活阅读异常栈的信息</p>
 
       
     </div>

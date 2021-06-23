@@ -17,18 +17,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="服务器接收到网络包 网卡接收到网络包,使用DMA不经过CPU直接将数据包放到Circular buffer(圆形缓冲区,适合先进先出,旧数据读出后新数据不需要移位) 网卡发送硬中断信号,操作系统使用软中断处理多个数据包,没有新数据再恢复终端 操作系统将数据从Circular buffer拷贝到sk_buff缓冲区,网络层,传输层,通过socket转交给用户进程  简单解析你不好奇 Linux 网络">
+  <meta name="description" content=".">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springboot内置的tomcat">
 <meta property="og:url" content="https://hahahaha123567.github.io/2020-12-23-springboot-nei-zhi-de-tomcat.html">
 <meta property="og:site_name" content="hahahaha123567&#39;s Blog">
-<meta property="og:description" content="服务器接收到网络包 网卡接收到网络包,使用DMA不经过CPU直接将数据包放到Circular buffer(圆形缓冲区,适合先进先出,旧数据读出后新数据不需要移位) 网卡发送硬中断信号,操作系统使用软中断处理多个数据包,没有新数据再恢复终端 操作系统将数据从Circular buffer拷贝到sk_buff缓冲区,网络层,传输层,通过socket转交给用户进程  简单解析你不好奇 Linux 网络">
+<meta property="og:description" content=".">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-12-29T01:42:24.294Z">
+<meta property="article:modified_time" content="2021-06-23T11:43:10.030Z">
 <meta property="article:author" content="hahahaha123567">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Spring">
@@ -188,10 +188,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-29 09:42:24" itemprop="dateModified" datetime="2020-12-29T09:42:24+08:00">2020-12-29</time>
+                <time title="修改时间：2021-06-23 19:43:10" itemprop="dateModified" datetime="2021-06-23T19:43:10+08:00">2021-06-23</time>
               </span>
 
           
+            <div class="post-description">.</div>
 
         </div>
       </header>
@@ -234,12 +235,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020-11-23-cpu-chang-shi.html" rel="prev" title="CPU常识">
-      <i class="fa fa-chevron-left"></i> CPU常识
+    <a href="/2021-01-28-java-ji-ge-chang-yong-de-io-lei.html" rel="prev" title="Java几个常用的io类">
+      <i class="fa fa-chevron-left"></i> Java几个常用的io类
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021-01-28-java-ji-ge-chang-yong-de-io-lei.html" rel="next" title="Java几个常用的io类">
-      Java几个常用的io类 <i class="fa fa-chevron-right"></i>
+    <a href="/2020-11-23-cpu-chang-shi.html" rel="next" title="CPU常识">
+      CPU常识 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -397,6 +398,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -414,6 +416,31 @@
 
 
   
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
 
 
 

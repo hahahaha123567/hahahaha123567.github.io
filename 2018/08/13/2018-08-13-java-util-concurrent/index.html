@@ -1,130 +1,50 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Java,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="Java 的并行除了直接对线程进行操作，还有 java.tuil.concurrent 包中的这些高级并发特性">
-<meta name="keywords" content="Java">
+  <meta name="description" content="Java 的并行除了直接对线程进行操作，还有 java.tuil.concurrent 包中的这些高级并发特性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java.util.concurrent">
 <meta property="og:url" content="https://hahahaha123567.github.io/2018/08/13/2018-08-13-java-util-concurrent/index.html">
 <meta property="og:site_name" content="hahahaha123567&#39;s Blog">
 <meta property="og:description" content="Java 的并行除了直接对线程进行操作，还有 java.tuil.concurrent 包中的这些高级并发特性">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T12:49:12.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-08-13T12:47:52.000Z">
+<meta property="article:modified_time" content="2018-08-13T12:49:12.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java.util.concurrent">
-<meta name="twitter:description" content="Java 的并行除了直接对线程进行操作，还有 java.tuil.concurrent 包中的这些高级并发特性">
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2018/08/13/2018-08-13-java-util-concurrent/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
-
-
-
-  <link rel="canonical" href="https://hahahaha123567.github.io/2018/08/13/2018-08-13-java-util-concurrent/">
-
-
-
-
 
   <title>java.util.concurrent | hahahaha123567's Blog</title>
   
@@ -134,184 +54,145 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">hahahaha123567's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hahahaha123567's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2018/08/13/2018-08-13-java-util-concurrent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="hahahaha123567's Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">java.util.concurrent</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          java.util.concurrent
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
               
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T20:47:52+08:00">
-                2018-08-13
-              </time>
-            
 
-            
-
-            
-          </span>
+              <time title="Created: 2018-08-13 20:47:52 / Modified: 20:49:12" itemprop="dateCreated datePublished" datetime="2018-08-13T20:47:52+08:00">2018-08-13</time>
+            </span>
 
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Java 的并行除了直接对线程进行操作，还有 java.tuil.concurrent 包中的这些高级并发特性
-              </div>
-          
+            <div class="post-description">Java 的并行除了直接对线程进行操作，还有 java.tuil.concurrent 包中的这些高级并发特性</div>
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h1 id="Concurrent-包"><a href="#Concurrent-包" class="headerlink" title="Concurrent 包"></a>Concurrent 包</h1><h2 id="1-Lock"><a href="#1-Lock" class="headerlink" title="1. Lock"></a>1. Lock</h2><p>Lock 对象的工作机制类似于同步代码块使用的 synchronized，在某一时刻只允许一个线程拥有锁对象</p>
@@ -344,9 +225,9 @@
 <li>isDone：判断是否计算完</li>
 <li>isCancelled：判断计算是否被取消</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Callable&lt;String&gt; callable = () -&gt; &#123;</span><br><span class="line">    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"niconiconi"</span>;</span><br><span class="line">&#125;;</span><br><span class="line">FutureTask&lt;String&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(callable);</span><br><span class="line"><span class="keyword">new</span> Thread(task).start();</span><br><span class="line">String say = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    say = task.get();</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(say);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Callable&lt;String&gt; callable = () -&gt; &#123;</span><br><span class="line">    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;niconiconi&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line">FutureTask&lt;String&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(callable);</span><br><span class="line"><span class="keyword">new</span> Thread(task).start();</span><br><span class="line">String say = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    say = task.get();</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(say);</span><br></pre></td></tr></table></figure>
 
-<p>源码分析见 <a href="https://www.cnblogs.com/cz123/p/7693064.html" target="_blank" rel="noopener">彻底理解Java的Future模式 - 大诚挚 - 博客园</a></p>
+<p>源码分析见 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cz123/p/7693064.html">彻底理解Java的Future模式 - 大诚挚 - 博客园</a></p>
 <h2 id="3-Executor"><a href="#3-Executor" class="headerlink" title="3. Executor"></a>3. Executor</h2><p>Java.util.concurrent 包定义了三种 executor 接口： </p>
 <ul>
 <li>Executor，支持加载新任务的简单接口</li>
@@ -389,9 +270,9 @@
 
 <p>把以上代码封装成ForkJoinTask子类</p>
 <p>特别地作为更具体的类型 RecursiveAction 或 RecursiveTask (可以返回结果)</p>
-<h3 id="4-2-例子"><a href="#4-2-例子" class="headerlink" title="4.2 例子"></a>4.2 例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RecursiveAction, execute without return value</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinPool;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.RecursiveAction;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRecursiveAction</span> <span class="keyword">extends</span> <span class="title">RecursiveAction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> workLoad = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyRecursiveAction</span><span class="params">(<span class="keyword">long</span> workLoad)</span> </span>&#123; <span class="keyword">this</span>.workLoad = workLoad; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.workLoad &gt; <span class="number">16</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Splitting workLoad : "</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line"></span><br><span class="line">            List&lt;MyRecursiveAction&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;(createSubtasks());</span><br><span class="line">            <span class="keyword">for</span>(RecursiveAction subtask : subtasks)&#123;</span><br><span class="line">                subtask.fork();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Doing workLoad myself: "</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;MyRecursiveAction&gt; <span class="title">createSubtasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;MyRecursiveAction&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        MyRecursiveAction subtask1 = <span class="keyword">new</span> MyRecursiveAction(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line">        MyRecursiveAction subtask2 = <span class="keyword">new</span> MyRecursiveAction(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        subtasks.add(subtask1);</span><br><span class="line">        subtasks.add(subtask2);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> subtasks;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ForkJoinPool forkJoinPool = <span class="keyword">new</span> ForkJoinPool(<span class="number">4</span>);</span><br><span class="line">        MyRecursiveAction myRecursiveAction = <span class="keyword">new</span> MyRecursiveAction(<span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">        forkJoinPool.invoke(myRecursiveAction);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-例子"><a href="#4-2-例子" class="headerlink" title="4.2 例子"></a>4.2 例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RecursiveAction, execute without return value</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinPool;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.RecursiveAction;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRecursiveAction</span> <span class="keyword">extends</span> <span class="title">RecursiveAction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> workLoad = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyRecursiveAction</span><span class="params">(<span class="keyword">long</span> workLoad)</span> </span>&#123; <span class="keyword">this</span>.workLoad = workLoad; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.workLoad &gt; <span class="number">16</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Splitting workLoad : &quot;</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line"></span><br><span class="line">            List&lt;MyRecursiveAction&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;(createSubtasks());</span><br><span class="line">            <span class="keyword">for</span>(RecursiveAction subtask : subtasks)&#123;</span><br><span class="line">                subtask.fork();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Doing workLoad myself: &quot;</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;MyRecursiveAction&gt; <span class="title">createSubtasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;MyRecursiveAction&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        MyRecursiveAction subtask1 = <span class="keyword">new</span> MyRecursiveAction(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line">        MyRecursiveAction subtask2 = <span class="keyword">new</span> MyRecursiveAction(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        subtasks.add(subtask1);</span><br><span class="line">        subtasks.add(subtask2);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> subtasks;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ForkJoinPool forkJoinPool = <span class="keyword">new</span> ForkJoinPool(<span class="number">4</span>);</span><br><span class="line">        MyRecursiveAction myRecursiveAction = <span class="keyword">new</span> MyRecursiveAction(<span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">        forkJoinPool.invoke(myRecursiveAction);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RecursiveTask, execute with return value</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRecursiveTask</span> <span class="keyword">extends</span> <span class="title">RecursiveTask</span>&lt;<span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> workLoad = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyRecursiveTask</span><span class="params">(<span class="keyword">long</span> workLoad)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.workLoad = workLoad;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Long <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.workLoad &gt; <span class="number">16</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Splitting workLoad : "</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line"></span><br><span class="line">            List&lt;MyRecursiveTask&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;(createSubtasks());</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(MyRecursiveTask subtask : subtasks)&#123;</span><br><span class="line">                subtask.fork();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(MyRecursiveTask subtask : subtasks) &#123;</span><br><span class="line">                result += subtask.join();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"Doing workLoad myself: "</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line">            <span class="keyword">return</span> workLoad * <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;MyRecursiveTask&gt; <span class="title">createSubtasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;MyRecursiveTask&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        MyRecursiveTask subtask1 = <span class="keyword">new</span> MyRecursiveTask(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line">        MyRecursiveTask subtask2 = <span class="keyword">new</span> MyRecursiveTask(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        subtasks.add(subtask1);</span><br><span class="line">        subtasks.add(subtask2);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> subtasks;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ForkJoinPool forkJoinPool = <span class="keyword">new</span> ForkJoinPool(<span class="number">4</span>);</span><br><span class="line">        MyRecursiveTask myRecursiveTask = <span class="keyword">new</span> MyRecursiveTask(<span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> mergedResult = forkJoinPool.invoke(myRecursiveTask);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"mergedResult = "</span> + mergedResult);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RecursiveTask, execute with return value</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRecursiveTask</span> <span class="keyword">extends</span> <span class="title">RecursiveTask</span>&lt;<span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> workLoad = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyRecursiveTask</span><span class="params">(<span class="keyword">long</span> workLoad)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.workLoad = workLoad;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Long <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.workLoad &gt; <span class="number">16</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Splitting workLoad : &quot;</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line"></span><br><span class="line">            List&lt;MyRecursiveTask&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;(createSubtasks());</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(MyRecursiveTask subtask : subtasks)&#123;</span><br><span class="line">                subtask.fork();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(MyRecursiveTask subtask : subtasks) &#123;</span><br><span class="line">                result += subtask.join();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Doing workLoad myself: &quot;</span> + <span class="keyword">this</span>.workLoad);</span><br><span class="line">            <span class="keyword">return</span> workLoad * <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;MyRecursiveTask&gt; <span class="title">createSubtasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;MyRecursiveTask&gt; subtasks = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        MyRecursiveTask subtask1 = <span class="keyword">new</span> MyRecursiveTask(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line">        MyRecursiveTask subtask2 = <span class="keyword">new</span> MyRecursiveTask(<span class="keyword">this</span>.workLoad / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        subtasks.add(subtask1);</span><br><span class="line">        subtasks.add(subtask2);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> subtasks;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ForkJoinPool forkJoinPool = <span class="keyword">new</span> ForkJoinPool(<span class="number">4</span>);</span><br><span class="line">        MyRecursiveTask myRecursiveTask = <span class="keyword">new</span> MyRecursiveTask(<span class="number">128</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> mergedResult = forkJoinPool.invoke(myRecursiveTask);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;mergedResult = &quot;</span> + mergedResult);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-3-work-stealing"><a href="#4-3-work-stealing" class="headerlink" title="4.3 work-stealing"></a>4.3 work-stealing</h3><p>调度策略：</p>
 <ul>
@@ -420,7 +301,7 @@
 <h3 id="5-2-BlockingDeque"><a href="#5-2-BlockingDeque" class="headerlink" title="5.2 BlockingDeque"></a>5.2 BlockingDeque</h3><p>如果生产者线程需要在队列的两端都可以插入数据，消费者线程需要在队列的两端都可以移除数据，可以使用 BlockingDeque </p>
 <p>如果双端队列已满，插入线程将被阻塞，直到一个移除线程从该队列中移出了一个元素</p>
 <p>如果双端队列为空，移除线程将被阻塞，直到一个插入线程向该队列插入了一个新元素 </p>
-<h3 id="5-3-ConcurrentMap"><a href="#5-3-ConcurrentMap" class="headerlink" title="5.3 ConcurrentMap"></a>5.3 ConcurrentMap</h3><p>见 <a href="http://www.jasongj.com/java/concurrenthashmap" target="_blank" rel="noopener">ConcurrentHashMap演进从Java7到Java8</a> </p>
+<h3 id="5-3-ConcurrentMap"><a href="#5-3-ConcurrentMap" class="headerlink" title="5.3 ConcurrentMap"></a>5.3 ConcurrentMap</h3><p>见 <a target="_blank" rel="noopener" href="http://www.jasongj.com/java/concurrenthashmap">ConcurrentHashMap演进从Java7到Java8</a> </p>
 <h2 id="6-CyclicBarrier"><a href="#6-CyclicBarrier" class="headerlink" title="6. CyclicBarrier"></a>6. CyclicBarrier</h2><p>它就是一个所有线程必须等待的一个栅栏，直到所有线程都到达这里，然后所有线程才可以继续做其他事情 </p>
 <h2 id="7-Exchanger"><a href="#7-Exchanger" class="headerlink" title="7. Exchanger"></a>7. Exchanger</h2><p>表示一种两个线程可以进行互相交换对象的会和点 </p>
 <h2 id="8-Semaphore"><a href="#8-Semaphore" class="headerlink" title="8. Semaphore"></a>8. Semaphore</h2><p>计数信号量由一个指定数量的 “许可” 初始化</p>
@@ -434,301 +315,207 @@
 <p>可以将它用来在多线程或ForJoinTask中获得随机数</p>
 <hr>
 <p>参考文章</p>
-<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html" target="_blank" rel="noopener">java.util.concurrent (Java Platform SE 8 )</a> </p>
-<p><a href="http://623deyingxiong.iteye.com/blog/1754030" target="_blank" rel="noopener">高级并发对象(Councurrency Tutorial 7) - 春晓春晓 - ITeye博客</a> </p>
-<p><a href="https://www.cnblogs.com/cz123/p/7693064.html" target="_blank" rel="noopener">彻底理解Java的Future模式 - 大诚挚 - 博客园</a> </p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/j-jvmc1/index.html" target="_blank" rel="noopener">JVM 并发性: Java 和 Scala 并发性基础</a> </p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/j-jvmc2/index.html" target="_blank" rel="noopener">JVM 并发性: Java 8 并发性基础</a> </p>
-<p><a href="http://ifeve.com/java-fork-join-framework" target="_blank" rel="noopener">Java Fork/Join框架 | 并发编程网 – ifeve.com</a> </p>
-<p><a href="http://www.importnew.com/26461.html" target="_blank" rel="noopener">Java 并发工具包 java.util.concurrent 用户指南 - CSDN博客</a> </p>
-<p><a href="http://www.jasongj.com/java/concurrenthashmap" target="_blank" rel="noopener">ConcurrentHashMap演进从Java7到Java8 | 技术世界</a> </p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html">java.util.concurrent (Java Platform SE 8 )</a> </p>
+<p><a target="_blank" rel="noopener" href="http://623deyingxiong.iteye.com/blog/1754030">高级并发对象(Councurrency Tutorial 7) - 春晓春晓 - ITeye博客</a> </p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cz123/p/7693064.html">彻底理解Java的Future模式 - 大诚挚 - 博客园</a> </p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-jvmc1/index.html">JVM 并发性: Java 和 Scala 并发性基础</a> </p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-jvmc2/index.html">JVM 并发性: Java 8 并发性基础</a> </p>
+<p><a target="_blank" rel="noopener" href="http://ifeve.com/java-fork-join-framework">Java Fork/Join框架 | 并发编程网 – ifeve.com</a> </p>
+<p><a target="_blank" rel="noopener" href="http://www.importnew.com/26461.html">Java 并发工具包 java.util.concurrent 用户指南 - CSDN博客</a> </p>
+<p><a target="_blank" rel="noopener" href="http://www.jasongj.com/java/concurrenthashmap">ConcurrentHashMap演进从Java7到Java8 | 技术世界</a> </p>
 
-      
     </div>
+
     
     
     
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/08/10/2018-08-10-Java的IO/" rel="next" title="Java的IO">
-                <i class="fa fa-chevron-left"></i> Java的IO
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/15/2018-12-15-Java用注解做参数校验/" rel="prev" title="Java用注解做参数校验">
-                Java用注解做参数校验 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/08/10/2018-08-10-Java%E7%9A%84IO/" rel="prev" title="Java的IO">
+      <i class="fa fa-chevron-left"></i> Java的IO
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/15/2018-12-15-Java%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%81%9A%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/" rel="next" title="Java用注解做参数校验">
+      Java用注解做参数校验 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
           </div>
           
 
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
-            
-              <p class="site-author-name" itemprop="name">hahahaha123567</p>
-              <p class="site-description motion-element" itemprop="description">niconiconi</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">62</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
-                      
-                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Concurrent-包"><span class="nav-number">1.</span> <span class="nav-text">Concurrent 包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Lock"><span class="nav-number">1.1.</span> <span class="nav-text">1. Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-ReadWriteLock"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 ReadWriteLock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Future"><span class="nav-number">1.2.</span> <span class="nav-text">2. Future</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Executor"><span class="nav-number">1.3.</span> <span class="nav-text">3. Executor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Executor"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-ExecutorService"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 ExecutorService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-ScheduledExecutorService"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 ScheduledExecutorService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-thread-pool"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 thread pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-the-fixed-thread-pool"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 the fixed thread pool</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#what"><span class="nav-number">1.3.5.0.1.</span> <span class="nav-text">what</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#how"><span class="nav-number">1.3.5.0.2.</span> <span class="nav-text">how</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#why"><span class="nav-number">1.3.5.0.3.</span> <span class="nav-text">why</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Fork-Join"><span class="nav-number">1.4.</span> <span class="nav-text">4. Fork/Join</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-思路"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-例子"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-work-stealing"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 work-stealing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Concurrent-Collection"><span class="nav-number">1.5.</span> <span class="nav-text">5. Concurrent Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-BlockingQueue"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 BlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-BlockingDeque"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 BlockingDeque</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-ConcurrentMap"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 ConcurrentMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-CyclicBarrier"><span class="nav-number">1.6.</span> <span class="nav-text">6. CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Exchanger"><span class="nav-number">1.7.</span> <span class="nav-text">7. Exchanger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Semaphore"><span class="nav-number">1.8.</span> <span class="nav-text">8. Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Atomic-Variable"><span class="nav-number">1.9.</span> <span class="nav-text">9. Atomic Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-AtomicReference"><span class="nav-number">1.9.1.</span> <span class="nav-text">9.1 AtomicReference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-ThreadLocalRandom"><span class="nav-number">1.10.</span> <span class="nav-text">10. ThreadLocalRandom</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Concurrent-%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">Concurrent 包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Lock"><span class="nav-number">1.1.</span> <span class="nav-text">1. Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-ReadWriteLock"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 ReadWriteLock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Future"><span class="nav-number">1.2.</span> <span class="nav-text">2. Future</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Executor"><span class="nav-number">1.3.</span> <span class="nav-text">3. Executor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Executor"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-ExecutorService"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 ExecutorService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-ScheduledExecutorService"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 ScheduledExecutorService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-thread-pool"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 thread pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-the-fixed-thread-pool"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 the fixed thread pool</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#what"><span class="nav-number">1.3.5.0.1.</span> <span class="nav-text">what</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#how"><span class="nav-number">1.3.5.0.2.</span> <span class="nav-text">how</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#why"><span class="nav-number">1.3.5.0.3.</span> <span class="nav-text">why</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Fork-Join"><span class="nav-number">1.4.</span> <span class="nav-text">4. Fork&#x2F;Join</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%80%9D%E8%B7%AF"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%BE%8B%E5%AD%90"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-work-stealing"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 work-stealing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Concurrent-Collection"><span class="nav-number">1.5.</span> <span class="nav-text">5. Concurrent Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-BlockingQueue"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 BlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-BlockingDeque"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 BlockingDeque</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-ConcurrentMap"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 ConcurrentMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-CyclicBarrier"><span class="nav-number">1.6.</span> <span class="nav-text">6. CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Exchanger"><span class="nav-number">1.7.</span> <span class="nav-text">7. Exchanger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Semaphore"><span class="nav-number">1.8.</span> <span class="nav-text">8. Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Atomic-Variable"><span class="nav-number">1.9.</span> <span class="nav-text">9. Atomic Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-AtomicReference"><span class="nav-number">1.9.1.</span> <span class="nav-text">9.1 AtomicReference</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-ThreadLocalRandom"><span class="nav-number">1.10.</span> <span class="nav-text">10. ThreadLocalRandom</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hahahaha123567"
+      src="/images/nicoumi.jpg">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Bangumi</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hahahaha123567" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
 
 
 
 
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -736,7 +523,6 @@
   
 
 
-  
 
 
 
@@ -748,123 +534,7 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
 
   
 

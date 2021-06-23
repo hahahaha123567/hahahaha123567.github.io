@@ -1,130 +1,51 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="计算机图形学,openGL,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
-<meta name="keywords" content="计算机图形学,openGL">
+  <meta name="description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="glut的回调函数">
-<meta property="og:url" content="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/index.html">
+<meta property="og:url" content="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="hahahaha123567&#39;s Blog">
 <meta property="og:description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:58:54.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-10-18T11:56:29.000Z">
+<meta property="article:modified_time" content="2018-08-12T13:58:54.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="计算机图形学">
+<meta property="article:tag" content="openGL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="glut的回调函数">
-<meta name="twitter:description" content="计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例">
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
-
-
-
-  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/">
-
-
-
-
 
   <title>glut的回调函数 | hahahaha123567's Blog</title>
   
@@ -134,176 +55,146 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">hahahaha123567's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hahahaha123567's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut的回调函数/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017/10/18/2017-10-18-glut%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="hahahaha123567's Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">glut的回调函数</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          glut的回调函数
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T19:56:29+08:00">
-                2017-10-18
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
+              <time title="Created: 2017-10-18 19:56:29" itemprop="dateCreated datePublished" datetime="2017-10-18T19:56:29+08:00">2017-10-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-08-12 21:58:54" itemprop="dateModified" datetime="2018-08-12T21:58:54+08:00">2018-08-12</time>
+              </span>
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例
-              </div>
-          
+            <div class="post-description">计算机图形学课上讲了回调函数是一个利用glut编程的基本概念，举了几个例子但是没有讲原理和完整的实现，现在进行基本介绍和举例</div>
 
         </div>
       </header>
-    
 
     
     
@@ -311,22 +202,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <h1 id="Callback-Function"><a href="#Callback-Function" class="headerlink" title="Callback Function"></a>Callback Function</h1><p>从行为上概括，回调函数就是用函数指针去调用函数。这样起到的作用与直接调用函数相似，但是灵活性大大增加。</p>
 <p>平时函数的参数是变量的值或变量的指针，调用者就只能传递这个有限的信息；而如果函数的参数可以是其他函数的指针，调用者就向被调用者传递了一个动作。</p>
 <p>举个我们最熟悉的例子，C语言的stdlib.h中的qsort函数的原型是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void qsort (void* base, size_t num, size_t width, int(__cdecl* compare)(const void*, const void*));</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void qsort (void* base, size_t num, size_t width, int(__cdecl* compare)(const void*, const void*));</span><br></pre></td></tr></table></figure>
 <p>在我们调用qsort的时候，不仅可以传递数组的基地址、数组的元素个数、每个元素占用的字节数这些基本信息，还可以传递“比较”这个动作。</p>
 <p>从<strong>库函数编写者</strong>的角度看更为明显，我需要编写一个函数foo实现功能A，但是功能A的实现过程中有部分动作是不确定的，由foo的调用者决定，就用函数指针做参数来实现。</p>
 <p>总结：实体A提供函数a的指针，调用函数B，B实现的时候就**回调(Callback)**了函数a</p>
 <h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><p>从面向对象的角度看，如果是为了实现上述的灵活性，应该尽量避免使用回调函数，去利用面向对象的特性。</p>
-<p>现在我们利用回调是因为可以异步实现，有利有弊。由于本人水平有限，更多的例子可以参考知乎问题 <a href="https://www.zhihu.com/question/19801131" target="_blank" rel="noopener">回调函数（callback）是什么？</a></p>
+<p>现在我们利用回调是因为可以异步实现，有利有弊。由于本人水平有限，更多的例子可以参考知乎问题 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19801131">回调函数（callback）是什么？</a></p>
 <h1 id="Callback-Function-in-GLUT"><a href="#Callback-Function-in-GLUT" class="headerlink" title="Callback Function in GLUT"></a>Callback Function in GLUT</h1><h2 id="Program-Format"><a href="#Program-Format" class="headerlink" title="Program Format"></a>Program Format</h2><p>初学openGL，照着例程的格式写出了这样的程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void graph (void) &#123;</span><br><span class="line">    glBegin(...);</span><br><span class="line">        ... // points</span><br><span class="line">    glEnd();</span><br><span class="line">    glFlush();</span><br><span class="line">&#125;</span><br><span class="line">int main () &#123;</span><br><span class="line">    ... // initial</span><br><span class="line">    ... // create window</span><br><span class="line">    glutDisplayFunc(graph);</span><br><span class="line">    glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void graph (void) &#123;</span><br><span class="line">    glBegin(...);</span><br><span class="line">        ... // points</span><br><span class="line">    glEnd();</span><br><span class="line">    glFlush();</span><br><span class="line">&#125;</span><br><span class="line">int main () &#123;</span><br><span class="line">    ... // initial</span><br><span class="line">    ... // create window</span><br><span class="line">    glutDisplayFunc(graph);</span><br><span class="line">    glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>显然，最后的 <code>glutDisplayFunc()</code>与<code>glutMainLoop()</code>是将画好的图形显示出来的关键。</p>
 <h2 id="Process-of-Execution"><a href="#Process-of-Execution" class="headerlink" title="Process of Execution"></a>Process of Execution</h2><p>这里的<code>glutDisplayFunc()</code>属于回调函数，而<code>glutMainLoop()</code>的作用是进入一个死循环，不断检测程序之前注册的那些回调函数是否应该被调用，类似**轮询(polling)**机制。</p>
 <p>对于<code>glutDisplayFunc()</code>来说，为了防止画面不停绘制占用CPU资源，只有在以下情况发生时才会再次执行</p>
@@ -335,23 +221,23 @@
 <li>某个回调函数调用了<code>glutPostRedisplay()</code></li>
 </ul>
 <p>而其他回调函数则会在其对应的时候被触发并执行</p>
-<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><p>先给出glut中那些 <a href="https://www.opengl.org/resources/libraries/glut/spec3/node45.html#SECTION00080000000000000000" target="_blank" rel="noopener">回调函数的原型</a></p>
-<h2 id="glutKeyboardFunc"><a href="#glutKeyboardFunc" class="headerlink" title="glutKeyboardFunc()"></a>glutKeyboardFunc()</h2><h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutKeyboardFunc (void (*func)(unsigned char key, int x, int y));</span><br></pre></td></tr></table></figure>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><p>先给出glut中那些 <a target="_blank" rel="noopener" href="https://www.opengl.org/resources/libraries/glut/spec3/node45.html#SECTION00080000000000000000">回调函数的原型</a></p>
+<h2 id="glutKeyboardFunc"><a href="#glutKeyboardFunc" class="headerlink" title="glutKeyboardFunc()"></a>glutKeyboardFunc()</h2><h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutKeyboardFunc (void (*func)(unsigned char key, int x, int y));</span><br></pre></td></tr></table></figure>
 
 <h3 id="Called"><a href="#Called" class="headerlink" title="Called"></a>Called</h3><p>当按下的是字母键等有对应的ASCII码的键时被调用</p>
 <h3 id="Parameter"><a href="#Parameter" class="headerlink" title="Parameter"></a>Parameter</h3><p>key:</p>
 <p>按下的键</p>
 <p>x, y:</p>
 <p>鼠标的位置，注意原点(0, 0)为window的左上角</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// control the square with &apos;w&apos;, &apos;a&apos;, &apos;s&apos;, &apos;d&apos;</span><br><span class="line">void keyboard (char key, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (key == &apos;w&apos;) &#123;</span><br><span class="line">		y -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &apos;a&apos;) &#123;</span><br><span class="line">		x -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &apos;s&apos;) &#123;</span><br><span class="line">		y += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &apos;d&apos;) &#123;</span><br><span class="line">		x += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// control the square with &#x27;w&#x27;, &#x27;a&#x27;, &#x27;s&#x27;, &#x27;d&#x27;</span><br><span class="line">void keyboard (char key, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (key == &#x27;w&#x27;) &#123;</span><br><span class="line">		y -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &#x27;a&#x27;) &#123;</span><br><span class="line">		x -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &#x27;s&#x27;) &#123;</span><br><span class="line">		y += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == &#x27;d&#x27;) &#123;</span><br><span class="line">		x += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="glutSpecialFunc"><a href="#glutSpecialFunc" class="headerlink" title="glutSpecialFunc()"></a>glutSpecialFunc()</h2><h3 id="Prototype-1"><a href="#Prototype-1" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutSpecialFunc (void (*func)(int key, int x, int y));</span><br></pre></td></tr></table></figure>
+<h2 id="glutSpecialFunc"><a href="#glutSpecialFunc" class="headerlink" title="glutSpecialFunc()"></a>glutSpecialFunc()</h2><h3 id="Prototype-1"><a href="#Prototype-1" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutSpecialFunc (void (*func)(int key, int x, int y));</span><br></pre></td></tr></table></figure>
 
 <h3 id="Called-1"><a href="#Called-1" class="headerlink" title="Called"></a>Called</h3><p>当按下方向键等没有对应的ASCII码的键时被调用</p>
 <h3 id="Parameter-1"><a href="#Parameter-1" class="headerlink" title="Parameter"></a>Parameter</h3><p>类似<code>glutSpecialFunc()</code></p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// control the square with &apos;up&apos;, &apos;down&apos;, &apos;left&apos;, &apos;right&apos;</span><br><span class="line">void keyboard_special (int key, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (key == GLUT_KEY_UP) &#123;</span><br><span class="line">		y -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_LEFT) &#123;</span><br><span class="line">		x -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_DOWN) &#123;</span><br><span class="line">		y += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_RIGHT) &#123;</span><br><span class="line">		x += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// control the square with &#x27;up&#x27;, &#x27;down&#x27;, &#x27;left&#x27;, &#x27;right&#x27;</span><br><span class="line">void keyboard_special (int key, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (key == GLUT_KEY_UP) &#123;</span><br><span class="line">		y -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_LEFT) &#123;</span><br><span class="line">		x -= 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_DOWN) &#123;</span><br><span class="line">		y += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (key == GLUT_KEY_RIGHT) &#123;</span><br><span class="line">		x += 10;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="glutMouseFunc"><a href="#glutMouseFunc" class="headerlink" title="glutMouseFunc()"></a>glutMouseFunc()</h2><h3 id="Prototype-2"><a href="#Prototype-2" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutMouseFunc (void (*func)(int button, int state, int x, int y));</span><br></pre></td></tr></table></figure>
+<h2 id="glutMouseFunc"><a href="#glutMouseFunc" class="headerlink" title="glutMouseFunc()"></a>glutMouseFunc()</h2><h3 id="Prototype-2"><a href="#Prototype-2" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutMouseFunc (void (*func)(int button, int state, int x, int y));</span><br></pre></td></tr></table></figure>
 
 <h3 id="Called-2"><a href="#Called-2" class="headerlink" title="Called"></a>Called</h3><p>当鼠标左键/中键/右键被按下/释放时被调用</p>
 <h3 id="Parameter-2"><a href="#Parameter-2" class="headerlink" title="Parameter"></a>Parameter</h3><p>button:</p>
@@ -360,17 +246,17 @@
 <p>该键是被按下还是释放</p>
 <p>x, y:</p>
 <p>鼠标的位置，注意原点(0, 0)为window的左上角</p>
-<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// make the square big by click left mouse</span><br><span class="line">void mouse (int button, int state, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (button == GLUT_LEFT_BUTTON &amp;&amp; state == GLUT_DOWN) &#123;</span><br><span class="line">		size += 4;</span><br><span class="line">	&#125;</span><br><span class="line">	if (size &gt;= 30) &#123;</span><br><span class="line">		size = 5;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// make the square big by click left mouse</span><br><span class="line">void mouse (int button, int state, int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	if (button == GLUT_LEFT_BUTTON &amp;&amp; state == GLUT_DOWN) &#123;</span><br><span class="line">		size += 4;</span><br><span class="line">	&#125;</span><br><span class="line">	if (size &gt;= 30) &#123;</span><br><span class="line">		size = 5;</span><br><span class="line">	&#125;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="glutMotionFunc-glutPassiveMotionFunc"><a href="#glutMotionFunc-glutPassiveMotionFunc" class="headerlink" title="glutMotionFunc(), glutPassiveMotionFunc()"></a>glutMotionFunc(), glutPassiveMotionFunc()</h2><h3 id="Prototype-3"><a href="#Prototype-3" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void glutMotionFunc (void (*func)(int x, int y));</span><br><span class="line">void glutPassiveMotionFunc (void (*func)(int x, int y));</span><br></pre></td></tr></table></figure>
+<h2 id="glutMotionFunc-glutPassiveMotionFunc"><a href="#glutMotionFunc-glutPassiveMotionFunc" class="headerlink" title="glutMotionFunc(), glutPassiveMotionFunc()"></a>glutMotionFunc(), glutPassiveMotionFunc()</h2><h3 id="Prototype-3"><a href="#Prototype-3" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void glutMotionFunc (void (*func)(int x, int y));</span><br><span class="line">void glutPassiveMotionFunc (void (*func)(int x, int y));</span><br></pre></td></tr></table></figure>
 
 <h3 id="Called-3"><a href="#Called-3" class="headerlink" title="Called"></a>Called</h3><p>当鼠标在被按下的时候移动时，<code>glutMotionFunc()</code>被调用；</p>
 <p>当鼠标在松开的时候移动时，<code>glutPassiveMotionFunc()</code>被调用；</p>
 <h3 id="Parameter-3"><a href="#Parameter-3" class="headerlink" title="Parameter"></a>Parameter</h3><p>x, y:</p>
 <p>鼠标的位置，注意原点(0, 0)为window的左上角</p>
-<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// drag the square by keep pressing the left mouse</span><br><span class="line">void motion (int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	x = curr_x;</span><br><span class="line">	y = curr_y;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// drag the square by keep pressing the left mouse</span><br><span class="line">void motion (int curr_x, int curr_y)</span><br><span class="line">&#123;</span><br><span class="line">	x = curr_x;</span><br><span class="line">	y = curr_y;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="glutTimerFunc"><a href="#glutTimerFunc" class="headerlink" title="glutTimerFunc()"></a>glutTimerFunc()</h2><h3 id="Prototype-4"><a href="#Prototype-4" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutTimerFunc (unsigned int msecs, void (*func)(int value), int value);</span><br></pre></td></tr></table></figure>
+<h2 id="glutTimerFunc"><a href="#glutTimerFunc" class="headerlink" title="glutTimerFunc()"></a>glutTimerFunc()</h2><h3 id="Prototype-4"><a href="#Prototype-4" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutTimerFunc (unsigned int msecs, void (*func)(int value), int value);</span><br></pre></td></tr></table></figure>
 
 <h3 id="Called-4"><a href="#Called-4" class="headerlink" title="Called"></a>Called</h3><p>直接被调用，在使用时一般在被调用的函数最后进行递归调用，继续累计时间</p>
 <p>这个函数不是在运行到它时立即执行，所以不算死循环</p>
@@ -380,313 +266,216 @@
 <p>时间间隔</p>
 <p>value:</p>
 <p>函数标记</p>
-<h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// act with interval</span><br><span class="line">void timer (int value)</span><br><span class="line">&#123;</span><br><span class="line">	y += 1;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">	glutTimerFunc(30, timer, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// act with interval</span><br><span class="line">void timer (int value)</span><br><span class="line">&#123;</span><br><span class="line">	y += 1;</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">	glutTimerFunc(30, timer, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="glutIdleFunc"><a href="#glutIdleFunc" class="headerlink" title="glutIdleFunc()"></a>glutIdleFunc()</h2><h3 id="Prototype-5"><a href="#Prototype-5" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutIdleFunc (void (*func)(void));</span><br></pre></td></tr></table></figure>
+<h2 id="glutIdleFunc"><a href="#glutIdleFunc" class="headerlink" title="glutIdleFunc()"></a>glutIdleFunc()</h2><h3 id="Prototype-5"><a href="#Prototype-5" class="headerlink" title="Prototype"></a>Prototype</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void glutIdleFunc (void (*func)(void));</span><br></pre></td></tr></table></figure>
 
 <h3 id="Called-5"><a href="#Called-5" class="headerlink" title="Called"></a>Called</h3><p>空闲时调用</p>
 <p>应尽量减少空闲回调函数中的计算和渲染量，不然会影响其他部分的性能</p>
-<h3 id="Code-5"><a href="#Code-5" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;windows.h&gt; // Sleep() in windows</span><br><span class="line"></span><br><span class="line">// act with interval</span><br><span class="line">void idle ()</span><br><span class="line">&#123;</span><br><span class="line">	x += 2;</span><br><span class="line">	Sleep(20);</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="Code-5"><a href="#Code-5" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;windows.h&gt; // Sleep() in windows</span><br><span class="line"></span><br><span class="line">// act with interval</span><br><span class="line">void idle ()</span><br><span class="line">&#123;</span><br><span class="line">	x += 2;</span><br><span class="line">	Sleep(20);</span><br><span class="line">	glutPostRedisplay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Public-Part"><a href="#Public-Part" class="headerlink" title="Public Part"></a>Public Part</h2><p>这段代码是上文各回调函数定义的调用部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;gl\glut.h&gt;</span><br><span class="line"></span><br><span class="line">GLint windowSize = 500;</span><br><span class="line">GLint x = 250, y = 250, size = 5;</span><br><span class="line"></span><br><span class="line">int main (int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">	glutInit(&amp;argc, argv);</span><br><span class="line">	glutInitDisplayMode(GLUT_RGB);</span><br><span class="line">	glutInitWindowPosition(300, 100);</span><br><span class="line">	glutInitWindowSize(windowSize, windowSize);</span><br><span class="line">	glutCreateWindow(&quot;I&apos;m a window&quot;);</span><br><span class="line">	glClearColor(1.0, 1.0, 1.0, 0.0);</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">	gluOrtho2D(0, 500, 0, 500);</span><br><span class="line"></span><br><span class="line">	glutKeyboardFunc(keyboard);</span><br><span class="line">	glutSpecialFunc(keyboard_special);</span><br><span class="line">	glutMouseFunc(mouse);</span><br><span class="line">	glutMotionFunc(motion);</span><br><span class="line">	glutIdleFunc(idle);</span><br><span class="line">	glutDisplayFunc(graph);</span><br><span class="line">	glutTimerFunc(20, timer, 0);</span><br><span class="line">	glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Complete-Program"><a href="#Complete-Program" class="headerlink" title="Complete Program"></a>Complete Program</h2><p><a href="https://github.com/hahahaha123567/hello-world/blob/master/Computer%20Graphics/callback.c" target="_blank" rel="noopener">完整代码</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;gl\glut.h&gt;</span><br><span class="line"></span><br><span class="line">GLint windowSize = 500;</span><br><span class="line">GLint x = 250, y = 250, size = 5;</span><br><span class="line"></span><br><span class="line">int main (int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">	glutInit(&amp;argc, argv);</span><br><span class="line">	glutInitDisplayMode(GLUT_RGB);</span><br><span class="line">	glutInitWindowPosition(300, 100);</span><br><span class="line">	glutInitWindowSize(windowSize, windowSize);</span><br><span class="line">	glutCreateWindow(&quot;I&#x27;m a window&quot;);</span><br><span class="line">	glClearColor(1.0, 1.0, 1.0, 0.0);</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">	gluOrtho2D(0, 500, 0, 500);</span><br><span class="line"></span><br><span class="line">	glutKeyboardFunc(keyboard);</span><br><span class="line">	glutSpecialFunc(keyboard_special);</span><br><span class="line">	glutMouseFunc(mouse);</span><br><span class="line">	glutMotionFunc(motion);</span><br><span class="line">	glutIdleFunc(idle);</span><br><span class="line">	glutDisplayFunc(graph);</span><br><span class="line">	glutTimerFunc(20, timer, 0);</span><br><span class="line">	glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Complete-Program"><a href="#Complete-Program" class="headerlink" title="Complete Program"></a>Complete Program</h2><p><a target="_blank" rel="noopener" href="https://github.com/hahahaha123567/hello-world/blob/master/Computer%20Graphics/callback.c">完整代码</a></p>
 <hr>
 <p>几个有用的链接</p>
-<p><a href="https://www.opengl.org/resources/libraries/glut/spec3/spec3.html" target="_blank" rel="noopener">按函数介绍GLUT(官方文档)</a></p>
-<p><a href="http://www.lighthouse3d.com/tutorials/glut-tutorial/" target="_blank" rel="noopener">按功能介绍GLUT</a></p>
-<p><a href="http://www.cnblogs.com/live41/tag/%E6%B8%B8%E6%88%8F/default.html?page=2" target="_blank" rel="noopener">按功能介绍GLUT_个人翻译版</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.opengl.org/resources/libraries/glut/spec3/spec3.html">按函数介绍GLUT(官方文档)</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.lighthouse3d.com/tutorials/glut-tutorial/">按功能介绍GLUT</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/live41/tag/%E6%B8%B8%E6%88%8F/default.html?page=2">按功能介绍GLUT_个人翻译版</a></p>
 <hr>
 
-      
     </div>
+
     
     
     
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/计算机图形学/" rel="tag"># 计算机图形学</a>
-          
-            <a href="/tags/openGL/" rel="tag"># openGL</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/17/2017-10-17-学习使用packet tracer/" rel="next" title="学习使用packet tracer">
-                <i class="fa fa-chevron-left"></i> 学习使用packet tracer
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag"># 计算机图形学</a>
+              <a href="/tags/openGL/" rel="tag"># openGL</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/20/2017-10-20-初学Java/" rel="prev" title="初学Java">
-                初学Java <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/10/17/2017-10-17-%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8packet%20tracer/" rel="prev" title="学习使用packet tracer">
+      <i class="fa fa-chevron-left"></i> 学习使用packet tracer
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/10/20/2017-10-20-%E5%88%9D%E5%AD%A6Java/" rel="next" title="初学Java">
+      初学Java <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
           </div>
           
 
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
-            
-              <p class="site-author-name" itemprop="name">hahahaha123567</p>
-              <p class="site-description motion-element" itemprop="description">niconiconi</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">62</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
-                      
-                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function"><span class="nav-number">1.</span> <span class="nav-text">Callback Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#意义"><span class="nav-number">1.0.1.</span> <span class="nav-text">意义</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function-in-GLUT"><span class="nav-number">2.</span> <span class="nav-text">Callback Function in GLUT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Format"><span class="nav-number">2.1.</span> <span class="nav-text">Program Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-of-Execution"><span class="nav-number">2.2.</span> <span class="nav-text">Process of Execution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">3.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#glutKeyboardFunc"><span class="nav-number">3.1.</span> <span class="nav-text">glutKeyboardFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">3.1.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called"><span class="nav-number">3.1.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter"><span class="nav-number">3.1.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutSpecialFunc"><span class="nav-number">3.2.</span> <span class="nav-text">glutSpecialFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMouseFunc"><span class="nav-number">3.3.</span> <span class="nav-text">glutMouseFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMotionFunc-glutPassiveMotionFunc"><span class="nav-number">3.4.</span> <span class="nav-text">glutMotionFunc(), glutPassiveMotionFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-3"><span class="nav-number">3.4.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">3.4.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutTimerFunc"><span class="nav-number">3.5.</span> <span class="nav-text">glutTimerFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-4"><span class="nav-number">3.5.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">3.5.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutIdleFunc"><span class="nav-number">3.6.</span> <span class="nav-text">glutIdleFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">3.6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-Part"><span class="nav-number">3.7.</span> <span class="nav-text">Public Part</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Program"><span class="nav-number">3.8.</span> <span class="nav-text">Complete Program</span></a></li></ol></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function"><span class="nav-number">1.</span> <span class="nav-text">Callback Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%8F%E4%B9%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">意义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Callback-Function-in-GLUT"><span class="nav-number">2.</span> <span class="nav-text">Callback Function in GLUT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Program-Format"><span class="nav-number">2.1.</span> <span class="nav-text">Program Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-of-Execution"><span class="nav-number">2.2.</span> <span class="nav-text">Process of Execution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">3.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#glutKeyboardFunc"><span class="nav-number">3.1.</span> <span class="nav-text">glutKeyboardFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype"><span class="nav-number">3.1.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called"><span class="nav-number">3.1.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter"><span class="nav-number">3.1.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.1.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutSpecialFunc"><span class="nav-number">3.2.</span> <span class="nav-text">glutSpecialFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMouseFunc"><span class="nav-number">3.3.</span> <span class="nav-text">glutMouseFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-2"><span class="nav-number">3.3.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutMotionFunc-glutPassiveMotionFunc"><span class="nav-number">3.4.</span> <span class="nav-text">glutMotionFunc(), glutPassiveMotionFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-3"><span class="nav-number">3.4.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">3.4.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutTimerFunc"><span class="nav-number">3.5.</span> <span class="nav-text">glutTimerFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-4"><span class="nav-number">3.5.3.</span> <span class="nav-text">Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-4"><span class="nav-number">3.5.4.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#glutIdleFunc"><span class="nav-number">3.6.</span> <span class="nav-text">glutIdleFunc()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Called-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">Called</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-5"><span class="nav-number">3.6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-Part"><span class="nav-number">3.7.</span> <span class="nav-text">Public Part</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Program"><span class="nav-number">3.8.</span> <span class="nav-text">Complete Program</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hahahaha123567"
+      src="/images/nicoumi.jpg">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Bangumi</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hahahaha123567" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
 
 
 
 
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -694,7 +483,6 @@
   
 
 
-  
 
 
 
@@ -706,123 +494,7 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
 
   
 

@@ -1,130 +1,50 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/snowman-32.ico?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Java,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="Principles of Programming Language的第一个作业，用Java写个MUA的解释器。原理很简单，但是刚接触Java，再加上以前只用过C with classes，遇到了一些坑，在此做下记录。">
-<meta name="keywords" content="Java">
+  <meta name="description" content="Principles of Programming Language的第一个作业，用Java写个MUA的解释器。原理很简单，但是刚接触Java，再加上以前只用过C with classes，遇到了一些坑，在此做下记录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初学Java">
-<meta property="og:url" content="https://hahahaha123567.github.io/2017/10/20/2017-10-20-初学Java/index.html">
+<meta property="og:url" content="https://hahahaha123567.github.io/2017/10/20/2017-10-20-%E5%88%9D%E5%AD%A6Java/index.html">
 <meta property="og:site_name" content="hahahaha123567&#39;s Blog">
 <meta property="og:description" content="Principles of Programming Language的第一个作业，用Java写个MUA的解释器。原理很简单，但是刚接触Java，再加上以前只用过C with classes，遇到了一些坑，在此做下记录。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T13:59:48.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-10-20T07:37:25.000Z">
+<meta property="article:modified_time" content="2018-08-12T13:59:48.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初学Java">
-<meta name="twitter:description" content="Principles of Programming Language的第一个作业，用Java写个MUA的解释器。原理很简单，但是刚接触Java，再加上以前只用过C with classes，遇到了一些坑，在此做下记录。">
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2017/10/20/2017-10-20-%E5%88%9D%E5%AD%A6Java/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
-
-
-
-  <link rel="canonical" href="https://hahahaha123567.github.io/2017/10/20/2017-10-20-初学Java/">
-
-
-
-
 
   <title>初学Java | hahahaha123567's Blog</title>
   
@@ -134,176 +54,146 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">hahahaha123567's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hahahaha123567's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017/10/20/2017-10-20-初学Java/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017/10/20/2017-10-20-%E5%88%9D%E5%AD%A6Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/nicoumi.jpg">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="hahahaha123567's Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">初学Java</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          初学Java
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T15:37:25+08:00">
-                2017-10-20
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
+              <time title="Created: 2017-10-20 15:37:25" itemprop="dateCreated datePublished" datetime="2017-10-20T15:37:25+08:00">2017-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-08-12 21:59:48" itemprop="dateModified" datetime="2018-08-12T21:59:48+08:00">2018-08-12</time>
+              </span>
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Principles of Programming Language的第一个作业，用Java写个MUA的解释器。原理很简单，但是刚接触Java，再加上以前只用过C with classes，遇到了一些坑，在此做下记录。
-              </div>
-          
+            <div class="post-description">Principles of Programming Language的第一个作业，用Java写个MUA的解释器。原理很简单，但是刚接触Java，再加上以前只用过C with classes，遇到了一些坑，在此做下记录。</div>
 
         </div>
       </header>
-    
 
     
     
@@ -311,22 +201,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <h1 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h1><p>MUA的语法有点像汇编，是操作符+操作数的形式。在写MIPS翻译器的时候大量使用了switch case的结构去匹配字符串和opcode，这次本来也准备用同样的形式，然而FM在Java课上把switch case批判了一番，说现代企业都禁止使用；后来我查了一下，确实违背了开放封闭原则(Open Closed Principle)，于是就开始想替换方法。</p>
 <p>最终要实现的是根据十几种操作符进行十几种不同的操作（函数），不能写到case里的话，操作符大概只有两种存放方式：数组、枚举(enum)。但是把一堆常量放到一个String[]里总感觉怪怪的，于是开始用枚举实现。</p>
 <p>然后就发现了Java的枚举和C的区别之大。C里面是把int起了个别名，处理的时候用循环非常方便；而Java的枚举是一个继承自java.lang.Enum的类，列举出的类型相当于这个类的静态成员变量，想要在外部操作的话需要<code>values()</code>和<code>valueof()</code>函数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Idol &#123;</span><br><span class="line">    Nico(<span class="string">"pink"</span>), Maki(<span class="string">"red"</span>);</span><br><span class="line"></span><br><span class="line">    String color;</span><br><span class="line">    Idol(String s) &#123;</span><br><span class="line">        color = s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Idol idol : Idol.values()) &#123;</span><br><span class="line">            System.out.println(idol);</span><br><span class="line">        &#125;</span><br><span class="line">        Idol i = Idol.valueOf(<span class="string">"Nico"</span>);</span><br><span class="line">        System.out.println(i.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//Nico</span></span><br><span class="line"><span class="comment">//Maki</span></span><br><span class="line"><span class="comment">//pink</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Idol</span> </span>&#123;</span><br><span class="line">    Nico(<span class="string">&quot;pink&quot;</span>), Maki(<span class="string">&quot;red&quot;</span>);</span><br><span class="line"></span><br><span class="line">    String color;</span><br><span class="line">    Idol(String s) &#123;</span><br><span class="line">        color = s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Idol idol : Idol.values()) &#123;</span><br><span class="line">            System.out.println(idol);</span><br><span class="line">        &#125;</span><br><span class="line">        Idol i = Idol.valueOf(<span class="string">&quot;Nico&quot;</span>);</span><br><span class="line">        System.out.println(i.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//Nico</span></span><br><span class="line"><span class="comment">//Maki</span></span><br><span class="line"><span class="comment">//pink</span></span><br></pre></td></tr></table></figure>
 
 <p>知道了怎么遍历之后分别让不同的类型干不同的事情就可以了，这里需要用到枚举+匿名内部类(Anonymous Inner Class)的概念，让枚举里各个不同的类型做不同的事。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Idol &#123;</span><br><span class="line">    Nico(<span class="string">"pink"</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"niconiconi"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    maki(<span class="string">"red"</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"Imi wa wakaranai"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    String color;</span><br><span class="line">    Idol(String s) &#123;</span><br><span class="line">        color = s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>; <span class="comment">// out interface of Anonymous Inner Class</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Idol idol : Idol.values()) &#123;</span><br><span class="line">            idol.speak();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Idol</span> </span>&#123;</span><br><span class="line">    Nico(<span class="string">&quot;pink&quot;</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;niconiconi&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    maki(<span class="string">&quot;red&quot;</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Imi wa wakaranai&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    String color;</span><br><span class="line">    Idol(String s) &#123;</span><br><span class="line">        color = s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span>; <span class="comment">// out interface of Anonymous Inner Class</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Idol idol : Idol.values()) &#123;</span><br><span class="line">            idol.speak();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="Everything-is-an-Object"><a href="#Everything-is-an-Object" class="headerlink" title="Everything is an Object"></a>Everything is an Object</h1><p>但是MUA的各个操作的返回值不同，有boolean有data也有的没有返回值，无法直接用函数重载完成功能。</p>
 <p>然后又绕了好久的弯，突然意识到了Java的Object是所有类的父类。这样可以对一个返回值为Object的函数进行重载，再对返回值的类型进行判断，再分支处理。</p>
 <h1 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h1><p>没有系统地了解反射的机制，当前只是会用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c = Class.forName(Data.getType(word, inList));</span><br><span class="line">Constructor cc = c.getDeclaredConstructor(<span class="keyword">new</span> Class[]&#123;String<span class="class">.<span class="keyword">class</span>&#125;)</span>;</span><br><span class="line">cc.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">data = (Data) cc.newInstance(<span class="keyword">new</span> Object[]&#123;word&#125;);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c = Class.forName(Data.getType(word, inList));</span><br><span class="line">Constructor cc = c.getDeclaredConstructor(<span class="keyword">new</span> Class[]&#123;String.class&#125;);</span><br><span class="line">cc.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">data = (Data) cc.newInstance(<span class="keyword">new</span> Object[]&#123;word&#125;);</span><br></pre></td></tr></table></figure>
 <p>进行运行时(runtime)对象的类型判断与实例化</p>
 <h1 id="IntelliJ提示的改进"><a href="#IntelliJ提示的改进" class="headerlink" title="IntelliJ提示的改进"></a>IntelliJ提示的改进</h1><p>尽可能使用private作用域</p>
 <p>时刻注意检查对象是否为null</p>
@@ -337,302 +223,209 @@
 <p>diamond operator: a little like “auto” in cpp</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// instead of </span></span><br><span class="line">Map&lt;String, List&lt;String&gt;&gt; anagrams = <span class="keyword">new</span> HashMap&lt;String, List&lt;String&gt;&gt;();</span><br><span class="line"><span class="comment">// you can write </span></span><br><span class="line">Map&lt;String, List&lt;String&gt;&gt; anagrams = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
 
+
 <h1 id="几个debug了好久的坑"><a href="#几个debug了好久的坑" class="headerlink" title="几个debug了好久的坑"></a>几个debug了好久的坑</h1><h2 id="euqals-instead-of"><a href="#euqals-instead-of" class="headerlink" title="euqals() instead of =="></a>euqals() instead of ==</h2><p>比较对象时永远用<code>equals()</code></p>
 <p>无法像c++那样重载运算符(operator overload)，类的标准比较成了<code>equals()</code>的重载</p>
 <h2 id="NullPointerException"><a href="#NullPointerException" class="headerlink" title="NullPointerException"></a>NullPointerException</h2><p>NullPointerException只有在试图用指向null的对象进行操作时才会throw，单纯的对象赋值并不会throw，还需要手动判断</p>
 <hr>
 <p>参考资料：</p>
 <ol>
-<li><a href="http://www.cnblogs.com/gaochundong/p/open_closed_principle.html" target="_blank" rel="noopener">开放封闭原则（Open Closed Principle） - 匠心十年 - 博客园</a></li>
-<li><a href="http://www.codeceo.com/article/java-8-enum.html" target="_blank" rel="noopener">在Java 8下更好地利用枚举 – 码农网</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/open_closed_principle.html">开放封闭原则（Open Closed Principle） - 匠心十年 - 博客园</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.codeceo.com/article/java-8-enum.html">在Java 8下更好地利用枚举 – 码农网</a></li>
 </ol>
 
-      
     </div>
+
     
     
     
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/18/2017-10-18-glut的回调函数/" rel="next" title="glut的回调函数">
-                <i class="fa fa-chevron-left"></i> glut的回调函数
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/27/2017-10-27-c语言的链接环节/" rel="prev" title="c语言的链接环节">
-                c语言的链接环节 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/10/18/2017-10-18-glut%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" rel="prev" title="glut的回调函数">
+      <i class="fa fa-chevron-left"></i> glut的回调函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/10/27/2017-10-27-c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E6%8E%A5%E7%8E%AF%E8%8A%82/" rel="next" title="c语言的链接环节">
+      c语言的链接环节 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
 
 
           </div>
           
 
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/nicoumi.jpg" alt="hahahaha123567">
-            
-              <p class="site-author-name" itemprop="name">hahahaha123567</p>
-              <p class="site-description motion-element" itemprop="description">niconiconi</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">62</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/hahahaha123567" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://weibo.com/hahahaha123567" target="_blank" title="Weibo">
-                      
-                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://bangumi.tv/user/hahahaha123567" target="_blank" title="Bangumi">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Bangumi</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/hahahaha123567" target="_blank" title="Zhihu">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Zhihu</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://lovelive.ws/" title="μ's" target="_blank">μ's</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Enum"><span class="nav-number">1.</span> <span class="nav-text">Enum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Everything-is-an-Object"><span class="nav-number">2.</span> <span class="nav-text">Everything is an Object</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reflection"><span class="nav-number">3.</span> <span class="nav-text">Reflection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IntelliJ提示的改进"><span class="nav-number">4.</span> <span class="nav-text">IntelliJ提示的改进</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几个debug了好久的坑"><span class="nav-number">5.</span> <span class="nav-text">几个debug了好久的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#euqals-instead-of"><span class="nav-number">5.1.</span> <span class="nav-text">euqals() instead of ==</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NullPointerException"><span class="nav-number">5.2.</span> <span class="nav-text">NullPointerException</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Enum"><span class="nav-number">1.</span> <span class="nav-text">Enum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Everything-is-an-Object"><span class="nav-number">2.</span> <span class="nav-text">Everything is an Object</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reflection"><span class="nav-number">3.</span> <span class="nav-text">Reflection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IntelliJ%E6%8F%90%E7%A4%BA%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">4.</span> <span class="nav-text">IntelliJ提示的改进</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%A0%E4%B8%AAdebug%E4%BA%86%E5%A5%BD%E4%B9%85%E7%9A%84%E5%9D%91"><span class="nav-number">5.</span> <span class="nav-text">几个debug了好久的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#euqals-instead-of"><span class="nav-number">5.1.</span> <span class="nav-text">euqals() instead of &#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NullPointerException"><span class="nav-number">5.2.</span> <span class="nav-text">NullPointerException</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hahahaha123567"
+      src="/images/nicoumi.jpg">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Bangumi</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hahahaha123567" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
 
 
 
 
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -640,7 +433,6 @@
   
 
 
-  
 
 
 
@@ -652,123 +444,7 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
 
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
 
   
 

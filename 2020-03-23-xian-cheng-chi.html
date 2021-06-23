@@ -212,7 +212,8 @@
 // 1. 自己控制线程
 (new Thread(r)).start();
 // 2. 用 executor
-e.execute(r);</code></pre>
+e.execute(r);
+</code></pre>
 <p>对于 execute 方法的实现并没有特殊要求。低级的实现只是创建一个新的线程并立即执行</p>
 <p>但更有可能是使用一个已经存在的工作线程（worker Threads）去执行 r，或者将 r 放在一个执行队列中等待工作线程有空的时候再执行</p>
 <h2 id="ExecutorService"><a href="#ExecutorService" class="headerlink" title="ExecutorService"></a>ExecutorService</h2><p>ExecutorService 接口提供了另一个相似的 submit 方法，但比 execute 更加通用</p>
@@ -229,7 +230,8 @@ e.execute(r);</code></pre>
     BlockingQueue&lt;Runnable&gt; workQueue, // 线程池内部的等待队列：工作线程数等于核心线程数时，新任务放到等待队列中
     ThreadFactory threadFactory,       // 线程工厂，创建新线程的方式
     RejectedExecutionHandler handler   // 饱和策略：工作线程数等于最大线程数，且等待队列已满，处理新任务
-);</code></pre>
+);
+</code></pre>
 <h2 id="等待队列"><a href="#等待队列" class="headerlink" title="等待队列"></a>等待队列</h2><p>系统资源是有限的，任务的处理速度总有可能比不上任务的提交速度，因此，可以为ThreadPoolExecutor提供一个阻塞队列来保存因线程不足而等待的Runnable任务，这就是BlockingQueue</p>
 <p>JDK为BlockingQueue提供了几种实现方式，常用的有：</p>
 <ul>
@@ -248,7 +250,8 @@ public static class AbortPolicy implements RejectedExecutionHandler &#123;
     public void rejectedExecution(Runnable r, ThreadPoolExecutor e) &#123;
         throw new RejectedExecutionException(&quot;Task &quot; + r.toString() + &quot; rejected from &quot; + e.toString());
     &#125;
-&#125;</code></pre>
+&#125;
+</code></pre>
 <h2 id="ThreadFactory"><a href="#ThreadFactory" class="headerlink" title="ThreadFactory"></a>ThreadFactory</h2><p>每当线程池需要创建一个新线程，都是通过线程工厂获取。如果不为ThreadPoolExecutor设定一个线程工厂，就会使用默认的 defaultThreadFactory：</p>
 <pre><code>public static ThreadFactory defaultThreadFactory() &#123;
     return new DefaultThreadFactory();
@@ -279,7 +282,8 @@ static class DefaultThreadFactory implements ThreadFactory &#123;
             t.setPriority(Thread.NORM_PRIORITY);
         return t;
     &#125;
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>平时打印线程池里线程的name时，会输出形如pool-1-thread-1之类的名称，就是在这里设置的。这个默认的线程工厂，创建的线程是普通的非守护线程，如果需要定制，实现ThreadFactory后传给ThreadPoolExecutor即可</p>
 <h2 id="ThreadPoolExecutor-类"><a href="#ThreadPoolExecutor-类" class="headerlink" title="ThreadPoolExecutor 类"></a>ThreadPoolExecutor 类</h2><h3 id="Fields"><a href="#Fields" class="headerlink" title="Fields"></a>Fields</h3><ul>
 <li><p>AtomicInteger ctl  runState 是线程池运行状态，workerCount 是工作线程的数量，ctl 用一个32位的int来同时保存 runState 和 workerCount，其中高3位是 runState，其余29位是 workerCount，代码中会反复使用 runStateOf() 和 workerCountOf() 来获取 runState 和 workerCount </p>
@@ -323,7 +327,8 @@ static class DefaultThreadFactory implements ThreadFactory &#123;
     else if (!addWorker(command, false))
         // 如果新建工作线程(worker)失败就handle掉
         reject(command);
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>addWorker()</p>
 <pre><code>// 用 lock 和 CAS 更新数据
 private boolean addWorker(Runnable firstTask, boolean core) &#123;
@@ -391,7 +396,8 @@ private boolean addWorker(Runnable firstTask, boolean core) &#123;
             addWorkerFailed(w);
     &#125;
     return workerStarted;
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>runWorker()</p>
 <pre><code>final void runWorker(Worker w) &#123;
     Thread wt = Thread.currentThread();
@@ -433,12 +439,14 @@ private boolean addWorker(Runnable firstTask, boolean core) &#123;
     &#125; finally &#123;
         processWorkerExit(w, completedAbruptly);
     &#125;
-&#125;</code></pre>
+&#125;
+</code></pre>
 <h2 id="工厂类-Executors"><a href="#工厂类-Executors" class="headerlink" title="工厂类 Executors"></a>工厂类 Executors</h2><h3 id="FixedThreadPool"><a href="#FixedThreadPool" class="headerlink" title="FixedThreadPool"></a>FixedThreadPool</h3><pre><code>public static ExecutorService newFixedThreadPool(int nThreads) &#123;
     return new ThreadPoolExecutor(nThreads, nThreads,
                                   0L, TimeUnit.MILLISECONDS,
                                   new LinkedBlockingQueue&lt;Runnable&gt;());
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>FixedThreadPool 的优点是”优雅的缓冲”</p>
 <p>考虑一个web应用服务，它的每一个线程只处理一个HTTP请求。如果这个应用简单地为每一个新来的请求创建一个新的处理线程，那么，当请求数量足够多时，线程占用的资源总和将超过系统的承受能力，服务器会因此忽然停止对所有请求的应答(常见的内存溢出)</p>
 <p>而在使用固定大小线程池后，即使请求数量超出工作线程能够处理的请求上限，但是新来的HTTP请求会被暂时存放在消息队列中，当出现空闲的工作线程后，这些HTTP请求就会得到及时的处理</p>
@@ -447,13 +455,15 @@ private boolean addWorker(Runnable firstTask, boolean core) &#123;
         (new ThreadPoolExecutor(1, 1,
                                 0L, TimeUnit.MILLISECONDS,
                                 new LinkedBlockingQueue&lt;Runnable&gt;()));
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>newSingleThreadExecutor是线程数量固定为1的newFixedThreadPool版本，保证池内的任务串行 </p>
 <h3 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool"></a>CachedThreadPool</h3><pre><code>public static ExecutorService newCachedThreadPool() &#123;
     return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                                   60L, TimeUnit.SECONDS,
                                   new SynchronousQueue&lt;Runnable&gt;());
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>newCachedThreadPool 生成一个会缓存的线程池，线程数量可以从0到 Integer.MAX_VALUE，超时时间为1分钟。线程池用起来的效果是：如果有空闲线程，会复用线程；如果没有空闲线程，会新建线程；如果线程空闲超过1分钟，将会被回收 </p>
 <h3 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h3><p>使用完 ExecutorService 之后你应该将其关闭，以使其中的线程不再运行。</p>
 <p>比如，如果你的应用是通过一个 main() 方法启动的，之后 main 方法退出了你的应用，如果你的应用有一个活动的 ExexutorService 它将还会保持运行。ExecutorService 里的活动线程阻止了 JVM 的关闭。</p>

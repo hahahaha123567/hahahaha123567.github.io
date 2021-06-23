@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="几个JDK自带的操作查看JVM的工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几个JDK工具">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019-03-18-ji-ge-jdk-gong-ju.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="几个JDK自带的操作查看JVM的工具">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-18T07:50:37.000Z">
+<meta property="article:modified_time" content="2019-03-18T10:01:54.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2019-03-18-ji-ge-jdk-gong-ju.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>几个JDK工具 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hahahaha123567's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019-03-18-ji-ge-jdk-gong-ju.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/nicoumi.jpg">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          几个JDK工具
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-03-18 15:50:37 / 修改时间：18:01:54" itemprop="dateCreated datePublished" datetime="2019-03-18T15:50:37+08:00">2019-03-18</time>
+            </span>
+
+          
+            <div class="post-description">几个JDK自带的操作查看JVM的工具</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p>列出所有正在运行的JVM</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>jps命令列出目标系统上已检测的Java HotSpot VM, 该命令仅限于报告具有访问权限的JVM的信息</p>
+<p>如果在未指定hostid的情况下运行jps命令, 则它将在本地主机上搜索已检测的JVM; 如果以hostid启动，则它使用指定的协议和端口在指定的主机上搜索JVM</p>
+<p>jps命令报告在目标系统上找到的每个已检测JVM的本地JVM标识符或lvmid.  lvmid通常(但不一定)是JVM进程的操作系统进程标识符. 如果没有选项, jps会列出每个Java应用程序的lvmid, 后跟应用程序的类名或jar文件名的简短形式. 类名或JAR文件名的缩写形式省略了类的包信息或JAR文件路径信息</p>
+<p>jps命令使用Java启动程序查找传递给main方法的类名和参数. 如果使用自定义启动程序启动目标JVM, 则类或JAR文件名和main方法的参数不可用. 在这种情况下, jps命令输出类名称或JAR文件名的字符串Unknown以及main方法的参数</p>
+<p>jps命令生成的JVM列表可以由授予运行该命令的主体的权限限制. 该命令仅列出原则具有访问权限的JVM, 具体取决于操作系统特定的访问控制机制</p>
+<h2 id="options"><a href="#options" class="headerlink" title="options"></a>options</h2><p><code>-q</code> 只显示pid</p>
+<p><code>-m</code> 显示传递给 main() 的参数</p>
+<p><code>-l</code> 显示应用程序主类的完整包名或应用程序的JAR文件的完整路径名</p>
+<p><code>-v</code> 显示传递给JVM的参数</p>
+<h1 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h1><p>查看/修改JVM参数信息</p>
+<h2 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h2><p>jinfo命令打印指定Java进程或核心文件或远程调试服务器的Java配置信息,  包括Java系统属性和JVM命令行标志 </p>
+<p>如果指定的进程在64位JVM上运行, 可能需要指定-J-d64选项: jinfo-J-d64 -sysprops pid</p>
+<p>该指令JDK以后可能不再支持</p>
+<h2 id="options-1"><a href="#options-1" class="headerlink" title="options"></a>options</h2><p><code>no-option</code> 显示命令行和系统属性键值对</p>
+<p><code>-flag name</code> 显示指定命令行键值对</p>
+<p><code>-flag [+|-]name</code> 启用或禁用指定命令行属性</p>
+<p><code>-flag name=value</code> 设置指定命令行属性值</p>
+<p><code>-flags</code> 显示传递给JVM的命令行属性</p>
+<p><code>-sysprops</code> 显示系统属性键值对</p>
+<h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>监控JVM运行状态</p>
+<h2 id="功能-2"><a href="#功能-2" class="headerlink" title="功能"></a>功能</h2><p>显示JVM性能统计信息, 目标JVM由vmid指定</p>
+<h2 id="options-2"><a href="#options-2" class="headerlink" title="options"></a>options</h2><p><code>-options</code> 查看可用选项</p>
+<p><code>-class</code> 类装载器统计</p>
+<p><code>-compiler</code> jit编译器统计</p>
+<p><code>-gc</code> 垃圾收集堆信息</p>
+<p><code>-gccapacity</code> 内存池生成和空间容量</p>
+<p><code>-gccause</code> <code>-gcutil</code>的内容+最后一次gc的原因</p>
+<p><code>-gcnew</code> 新生代统计</p>
+<p><code>-gcnewcapacity</code> 新生代空间大小统计</p>
+<p><code>-gcold</code> 年老代和元空间行为统计</p>
+<p><code>-gcoldcapacity</code> 年老代空间大小统计</p>
+<p><code>-gcmetacapacity</code> 元空间大小统计</p>
+<p><code>-gcutil</code> 垃圾回收统计概要</p>
+<p><code>-printcompilation</code> JVM编译器方法统计</p>
+<h1 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h1><p>打印JVM堆内存信息</p>
+<h2 id="功能-3"><a href="#功能-3" class="headerlink" title="功能"></a>功能</h2><p>打印JVM堆内存信息, 如果指定的进程在64位JVM上运行, 可能需要指定-J-d64选项: jmap-J-d64 -heap pid</p>
+<p>该指令JDK以后可能不再支持</p>
+<h2 id="options-3"><a href="#options-3" class="headerlink" title="options"></a>options</h2><p><code>no option</code> 显示共享对象映射</p>
+<p><code>-dump: format=b, file=filename</code> 将Java堆另存为hprof二进制格式, 可以使用jhat命令读取生成的文件</p>
+<p><code>-heap</code> 打印使用的垃圾收集, 头部配置和生成方式堆使用的堆摘要</p>
+<p><code>-histo</code> 打印堆的直方图, 对于每个Java类, 将打印对象数, 内存大小(以字节为单位)和完全限定的类名</p>
+<p><code>-clstats</code> 打印class loader统计信息</p>
+<h1 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h1><p>打印java线程堆栈</p>
+<h2 id="功能-4"><a href="#功能-4" class="headerlink" title="功能"></a>功能</h2><p>jstack命令打印指定Java进程, 核心文件或远程调试服务器的Java线程的Java堆栈跟踪</p>
+<p>对于每个Java帧, 将打印完整的类名, 方法名, 字节代码索引(BCI)和行号(如果可用)</p>
+<p>如果指定的进程在64位JVM上运行, 可能需要指定-J-d64选项: jstack -J-d64 -m pid</p>
+<h2 id="options-4"><a href="#options-4" class="headerlink" title="options"></a>options</h2><p><code>-l</code> 长列表, 打印锁的额外信息</p>
+<p><code>-m</code> 打印java和native c/c++框架的所有栈信息</p>
+<h1 id="排查实战"><a href="#排查实战" class="headerlink" title="排查实战"></a>排查实战</h1><h2 id="频繁GC问题或内存溢出问题"><a href="#频繁GC问题或内存溢出问题" class="headerlink" title="频繁GC问题或内存溢出问题"></a>频繁GC问题或内存溢出问题</h2><ol>
+<li>使用<code>jps</code>查看线程ID</li>
+<li>使用<code>jstat -gc 25252 250 20</code>查看gc情况, 一般比较关注PERM区的情况, 查看GC的增长情况</li>
+<li>使用<code>jstat -gccause</code>输出上次GC原因</li>
+<li>使用<code>jmap -dump:format=b,file=heapDump 25252</code>生成堆转储文件</li>
+<li>使用jhat或者可视化工具(Eclipse Memory Analyzer, IBM HeapAnalyzer)分析堆情况</li>
+<li>结合代码解决内存溢出或泄露问题</li>
+</ol>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><ol>
+<li>使用<code>jps</code>查看线程ID</li>
+<li>使用<code>jstack 3331</code>查看线程情况</li>
+</ol>
+<hr>
+<p>参考 <a target="_blank" rel="noopener" href="https://www.hollischuang.com/archives/1561">Java开发必须掌握的线上问题排查命令-HollisChuang’s Blog</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-03-18-logback-de-asyncappender-chan-sheng-de-xian-cheng-wen-ti.html" rel="prev" title="logback的AsyncAppender产生的线程问题">
+      <i class="fa fa-chevron-left"></i> logback的AsyncAppender产生的线程问题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019-03-18-linux-de-init-zheng-li.html" rel="next" title="Linux的init整理">
+      Linux的init整理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jps"><span class="nav-number">1.</span> <span class="nav-text">jps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options"><span class="nav-number">1.2.</span> <span class="nav-text">options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jinfo"><span class="nav-number">2.</span> <span class="nav-text">jinfo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD-1"><span class="nav-number">2.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options-1"><span class="nav-number">2.2.</span> <span class="nav-text">options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jstat"><span class="nav-number">3.</span> <span class="nav-text">jstat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD-2"><span class="nav-number">3.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options-2"><span class="nav-number">3.2.</span> <span class="nav-text">options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jmap"><span class="nav-number">4.</span> <span class="nav-text">jmap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD-3"><span class="nav-number">4.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options-3"><span class="nav-number">4.2.</span> <span class="nav-text">options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jstack"><span class="nav-number">5.</span> <span class="nav-text">jstack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD-4"><span class="nav-number">5.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options-4"><span class="nav-number">5.2.</span> <span class="nav-text">options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E6%9F%A5%E5%AE%9E%E6%88%98"><span class="nav-number">6.</span> <span class="nav-text">排查实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%91%E7%B9%81GC%E9%97%AE%E9%A2%98%E6%88%96%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98"><span class="nav-number">6.1.</span> <span class="nav-text">频繁GC问题或内存溢出问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%BB%E9%94%81"><span class="nav-number">6.2.</span> <span class="nav-text">死锁</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hahahaha123567"
+      src="/images/nicoumi.jpg">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Bangumi</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hahahaha123567" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

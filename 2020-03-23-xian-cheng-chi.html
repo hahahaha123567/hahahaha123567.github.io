@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="对《java.util.concurrent》囫囵吞枣的补充">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程池">
+<meta property="og:url" content="https://hahahaha123567.github.io/2020-03-23-xian-cheng-chi.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="对《java.util.concurrent》囫囵吞枣的补充">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-16T12:33:57.801Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2020-03-23-xian-cheng-chi.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>线程池 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hahahaha123567's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2020-03-23-xian-cheng-chi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/nicoumi.jpg">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线程池
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-23 00:00:00" itemprop="dateCreated datePublished" datetime="2020-03-23T00:00:00+08:00">2020-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-16 20:33:57" itemprop="dateModified" datetime="2020-07-16T20:33:57+08:00">2020-07-16</time>
+              </span>
+
+          
+            <div class="post-description">对《java.util.concurrent》囫囵吞枣的补充</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Executor-与-线程池"><a href="#Executor-与-线程池" class="headerlink" title="Executor 与 线程池"></a>Executor 与 线程池</h1><h2 id="基本接口"><a href="#基本接口" class="headerlink" title="基本接口"></a>基本接口</h2><p>Java.util.concurrent 包定义了三种 executor 接口：</p>
+<ul>
+<li>Executor，支持加载新任务的简单接口</li>
+<li>ExecutorService，Executor 的子接口，增加了帮助管理任务和executor本身的生命周期的功能</li>
+<li>ScheduledExecutorService，ExecutorService 的子接口，支持周期性地执行任务</li>
+</ul>
+<h2 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h2><p>Executor 接口只定义了一个方法 execute，被设计用来代替一般的创建线程惯例</p>
+<pre><code>// r implements Runnable
+// 1. 自己控制线程
+(new Thread(r)).start();
+// 2. 用 executor
+e.execute(r);</code></pre>
+<p>对于 execute 方法的实现并没有特殊要求。低级的实现只是创建一个新的线程并立即执行</p>
+<p>但更有可能是使用一个已经存在的工作线程（worker Threads）去执行 r，或者将 r 放在一个执行队列中等待工作线程有空的时候再执行</p>
+<h2 id="ExecutorService"><a href="#ExecutorService" class="headerlink" title="ExecutorService"></a>ExecutorService</h2><p>ExecutorService 接口提供了另一个相似的 submit 方法，但比 execute 更加通用</p>
+<p>和 execute 一样，submit 接受 Runnable 对象，但也接受 Callable 对象，Callable 允许任务执行后返回一个值</p>
+<p>Submit 方法返回 Future 对象，Future 对象被用来接收 Callable 返回的值，并管理 Callable 和 Runnable 对象所代表的任务</p>
+<h2 id="ScheduledExecutorService"><a href="#ScheduledExecutorService" class="headerlink" title="ScheduledExecutorService"></a>ScheduledExecutorService</h2><p>ScheduledExecutorService 接口为它的父类 ExecutorService 的行为提供计划，允许在执行 Runnable 和 Callable 任务之前停顿一段时间</p>
+<p>接口定义了 scheduleAtFixedRate 和 scheduleWithFixedDelay，这两个方法以特定的时间间隔重复地执行特定任务</p>
+<h2 id="ThreadPoolExecutor-的构造参数"><a href="#ThreadPoolExecutor-的构造参数" class="headerlink" title="ThreadPoolExecutor 的构造参数"></a>ThreadPoolExecutor 的构造参数</h2><p>构造函数</p>
+<pre><code>ThreadPoolExecutor(
+    int corePoolSize,                  // 核心线程数
+    int maximumPoolSize,               // 最大线程数
+    long keepAliveTime,                // 空闲线程存活时间：空闲线程即超过核心线程数的工作线程
+    TimeUnit unit,                     // keepAliveTime的单位
+    BlockingQueue&lt;Runnable&gt; workQueue, // 线程池内部的等待队列：工作线程数等于核心线程数时，新任务放到等待队列中
+    ThreadFactory threadFactory,       // 线程工厂，创建新线程的方式
+    RejectedExecutionHandler handler   // 饱和策略：工作线程数等于最大线程数，且等待队列已满，处理新任务
+);</code></pre>
+<h2 id="等待队列"><a href="#等待队列" class="headerlink" title="等待队列"></a>等待队列</h2><p>系统资源是有限的，任务的处理速度总有可能比不上任务的提交速度，因此，可以为ThreadPoolExecutor提供一个阻塞队列来保存因线程不足而等待的Runnable任务，这就是BlockingQueue</p>
+<p>JDK为BlockingQueue提供了几种实现方式，常用的有：</p>
+<ul>
+<li>ArrayBlockingQueue：数组结构的阻塞队列</li>
+<li>LinkedBlockingQueue：链表结构的阻塞队列</li>
+<li>PriorityBlockingQueue：有优先级的阻塞队列</li>
+<li>SynchronousQueue：不会存储元素的阻塞队列</li>
+</ul>
+<p>newFixedThreadPool 和 newSingleThreadExecutor 在默认情况下使用一个无界的 LinkedBlockingQueue</p>
+<p>newCachedThreadPool 使用的 SynchronousQueue 十分有趣，看名称是个队列，但它却不能存储元素。要将一个任务放进队列，必须有另一个线程去接收这个任务，一个进就有一个出，队列不会存储任何东西。因此，SynchronousQueue 是一种移交机制，不能算是队列。newCachedThreadPool 生成的是一个没有上限的线程池，理论上提交多少任务都可以，使用 SynchronousQueue 作为等待队列正合适</p>
+<h2 id="饱和策略"><a href="#饱和策略" class="headerlink" title="饱和策略"></a>饱和策略</h2><p>当有界的等待队列满了之后，就需要用到饱和策略去处理，ThreadPoolExecutor的饱和策略通过传入RejectedExecutionHandler来实现。如果没有为构造函数传入，将会使用默认的defaultHandler。</p>
+<pre><code>private static final RejectedExecutionHandler defaultHandler = new AbortPolicy();
+
+public static class AbortPolicy implements RejectedExecutionHandler &#123;
+    public AbortPolicy() &#123; &#125;
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) &#123;
+        throw new RejectedExecutionException(&quot;Task &quot; + r.toString() + &quot; rejected from &quot; + e.toString());
+    &#125;
+&#125;</code></pre>
+<h2 id="ThreadFactory"><a href="#ThreadFactory" class="headerlink" title="ThreadFactory"></a>ThreadFactory</h2><p>每当线程池需要创建一个新线程，都是通过线程工厂获取。如果不为ThreadPoolExecutor设定一个线程工厂，就会使用默认的 defaultThreadFactory：</p>
+<pre><code>public static ThreadFactory defaultThreadFactory() &#123;
+    return new DefaultThreadFactory();
+&#125;
+
+static class DefaultThreadFactory implements ThreadFactory &#123;
+    private static final AtomicInteger poolNumber = new AtomicInteger(1);
+    private final ThreadGroup group;
+    private final AtomicInteger threadNumber = new AtomicInteger(1);
+    private final String namePrefix;
+
+    DefaultThreadFactory() &#123;
+        SecurityManager s = System.getSecurityManager();
+        group = (s != null) ? s.getThreadGroup() :
+        Thread.currentThread().getThreadGroup();
+        namePrefix = &quot;pool-&quot; +
+            poolNumber.getAndIncrement() +
+            &quot;-thread-&quot;;
+    &#125;
+
+    public Thread newThread(Runnable r) &#123;
+        Thread t = new Thread(group, r,
+                              namePrefix + threadNumber.getAndIncrement(),
+                              0);
+        if (t.isDaemon())
+            t.setDaemon(false);
+        if (t.getPriority() != Thread.NORM_PRIORITY)
+            t.setPriority(Thread.NORM_PRIORITY);
+        return t;
+    &#125;
+&#125;</code></pre>
+<p>平时打印线程池里线程的name时，会输出形如pool-1-thread-1之类的名称，就是在这里设置的。这个默认的线程工厂，创建的线程是普通的非守护线程，如果需要定制，实现ThreadFactory后传给ThreadPoolExecutor即可</p>
+<h2 id="ThreadPoolExecutor-类"><a href="#ThreadPoolExecutor-类" class="headerlink" title="ThreadPoolExecutor 类"></a>ThreadPoolExecutor 类</h2><h3 id="Fields"><a href="#Fields" class="headerlink" title="Fields"></a>Fields</h3><ul>
+<li><p>AtomicInteger ctl  runState 是线程池运行状态，workerCount 是工作线程的数量，ctl 用一个32位的int来同时保存 runState 和 workerCount，其中高3位是 runState，其余29位是 workerCount，代码中会反复使用 runStateOf() 和 workerCountOf() 来获取 runState 和 workerCount </p>
+<p>  // ctl<br>  private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));<br>  private static final int COUNT_BITS = Integer.SIZE - 3;<br>  private static final int CAPACITY   = (1 &lt;&lt; COUNT_BITS) - 1;</p>
+<p>  // Packing and unpacking ctl<br>  private static int runStateOf(int c)     { return c &amp; ~CAPACITY; }<br>  private static int workerCountOf(int c)  { return c &amp; CAPACITY; }<br>  private static int ctlOf(int rs, int wc) { return rs | wc; }</p>
+</li>
+<li><p>BlockingQueue<Runnable> workQueue  等待队列</p>
+</li>
+<li><p>HashSet<Worker> workers  工作线程</p>
+</li>
+</ul>
+<h3 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h3><p>线程池是由Worker类负责执行任务，Worker继承了AbstractQueuedSynchronizer，引出了Java并发框架的核心AQS。</p>
+<p>AbstractQueuedSynchronizer，简称AQS，是Java并发包里一系列同步工具的基础实现，原理是根据状态位来控制线程的入队阻塞、出队唤醒来处理同步。</p>
+<p>Worker利用AQS的功能实现对独占线程变量的设置，这是一个需要同步的过程</p>
+<p>execute()</p>
+<pre><code>public void execute(Runnable command) &#123;
+    // 参数检验
+    if (command == null)
+        throw new NullPointerException();
+    // 获取当前线程池状态
+    int c = ctl.get();
+    // 如果当前工作线程数 &lt; 核心线程数
+    if (workerCountOf(c) &lt; corePoolSize) &#123;
+        // 新建工作线程(worker)，若成功则返回
+        if (addWorker(command, true))
+            return;
+        // 若新建失败，更新线程池状态
+        c = ctl.get();
+    &#125;
+    // 在等待队列中新建线程成功
+    if (isRunning(c) &amp;&amp; workQueue.offer(command)) &#123;
+        int recheck = ctl.get();
+        // 若线程池不处于RUNNING状态则删掉刚刚新建的线程并handle掉
+        if (! isRunning(recheck) &amp;&amp; remove(command))
+            reject(command);
+        // 如果此时没有工作线程(worker)，就添加个空的工作线程(worker)
+        else if (workerCountOf(recheck) == 0)
+            addWorker(null, false);
+    &#125;
+    // 若之前在等待队列中新建线程失败，就新建为工作线程(worker)
+    else if (!addWorker(command, false))
+        // 如果新建工作线程(worker)失败就handle掉
+        reject(command);
+&#125;</code></pre>
+<p>addWorker()</p>
+<pre><code>// 用 lock 和 CAS 更新数据
+private boolean addWorker(Runnable firstTask, boolean core) &#123;
+    retry:
+    for (;;) &#123;
+        int c = ctl.get();
+        int rs = runStateOf(c);
+
+        // Check if queue empty only if necessary.
+        if (rs &gt;= SHUTDOWN &amp;&amp;
+            ! (rs == SHUTDOWN &amp;&amp;
+               firstTask == null &amp;&amp;
+               ! workQueue.isEmpty()))
+            return false;
+
+        for (;;) &#123;
+            int wc = workerCountOf(c);
+            if (wc &gt;= CAPACITY ||
+                wc &gt;= (core ? corePoolSize : maximumPoolSize))
+                return false;
+            if (compareAndIncrementWorkerCount(c))
+                break retry;
+            c = ctl.get();  // Re-read ctl
+            if (runStateOf(c) != rs)
+                continue retry;
+            // else CAS failed due to workerCount change; retry inner loop
+        &#125;
+    &#125;
+
+    boolean workerStarted = false;
+    boolean workerAdded = false;
+    Worker w = null;
+    try &#123;
+        w = new Worker(firstTask);
+        final Thread t = w.thread;
+        if (t != null) &#123;
+            final ReentrantLock mainLock = this.mainLock;
+            mainLock.lock();
+            try &#123;
+                // Recheck while holding lock.
+                // Back out on ThreadFactory failure or if
+                // shut down before lock acquired.
+                int rs = runStateOf(ctl.get());
+
+                if (rs &lt; SHUTDOWN ||
+                    (rs == SHUTDOWN &amp;&amp; firstTask == null)) &#123;
+                    if (t.isAlive()) // precheck that t is startable
+                        throw new IllegalThreadStateException();
+                    workers.add(w);
+                    int s = workers.size();
+                    if (s &gt; largestPoolSize)
+                        largestPoolSize = s;
+                    workerAdded = true;
+                &#125;
+            &#125; finally &#123;
+                mainLock.unlock();
+            &#125;
+            if (workerAdded) &#123;
+                t.start();
+                workerStarted = true;
+            &#125;
+        &#125;
+    &#125; finally &#123;
+        if (! workerStarted)
+            addWorkerFailed(w);
+    &#125;
+    return workerStarted;
+&#125;</code></pre>
+<p>runWorker()</p>
+<pre><code>final void runWorker(Worker w) &#123;
+    Thread wt = Thread.currentThread();
+    Runnable task = w.firstTask;
+    w.firstTask = null;
+    w.unlock(); // allow interrupts
+    boolean completedAbruptly = true;
+    try &#123;
+        // 从workQueue里拿task
+        while (task != null || (task = getTask()) != null) &#123;
+            w.lock();
+            // 保证了线程池在STOP状态下线程是中断的，非STOP状态下线程没有被中断
+            if ((runStateAtLeast(ctl.get(), STOP) ||
+                 (Thread.interrupted() &amp;&amp;
+                  runStateAtLeast(ctl.get(), STOP))) &amp;&amp;
+                !wt.isInterrupted())
+                wt.interrupt();
+            try &#123;
+                beforeExecute(wt, task);
+                Throwable thrown = null;
+                try &#123;
+                    task.run();
+                &#125; catch (RuntimeException x) &#123;
+                    thrown = x; throw x;
+                &#125; catch (Error x) &#123;
+                    thrown = x; throw x;
+                &#125; catch (Throwable x) &#123;
+                    thrown = x; throw new Error(x);
+                &#125; finally &#123;
+                    afterExecute(task, thrown);
+                &#125;
+            &#125; finally &#123;
+                task = null;
+                w.completedTasks++;
+                w.unlock();
+            &#125;
+        &#125;
+        completedAbruptly = false;
+    &#125; finally &#123;
+        processWorkerExit(w, completedAbruptly);
+    &#125;
+&#125;</code></pre>
+<h2 id="工厂类-Executors"><a href="#工厂类-Executors" class="headerlink" title="工厂类 Executors"></a>工厂类 Executors</h2><h3 id="FixedThreadPool"><a href="#FixedThreadPool" class="headerlink" title="FixedThreadPool"></a>FixedThreadPool</h3><pre><code>public static ExecutorService newFixedThreadPool(int nThreads) &#123;
+    return new ThreadPoolExecutor(nThreads, nThreads,
+                                  0L, TimeUnit.MILLISECONDS,
+                                  new LinkedBlockingQueue&lt;Runnable&gt;());
+&#125;</code></pre>
+<p>FixedThreadPool 的优点是”优雅的缓冲”</p>
+<p>考虑一个web应用服务，它的每一个线程只处理一个HTTP请求。如果这个应用简单地为每一个新来的请求创建一个新的处理线程，那么，当请求数量足够多时，线程占用的资源总和将超过系统的承受能力，服务器会因此忽然停止对所有请求的应答(常见的内存溢出)</p>
+<p>而在使用固定大小线程池后，即使请求数量超出工作线程能够处理的请求上限，但是新来的HTTP请求会被暂时存放在消息队列中，当出现空闲的工作线程后，这些HTTP请求就会得到及时的处理</p>
+<h3 id="SingleThreadExecutor"><a href="#SingleThreadExecutor" class="headerlink" title="SingleThreadExecutor"></a>SingleThreadExecutor</h3><pre><code>public static ExecutorService newSingleThreadExecutor() &#123;
+    return new FinalizableDelegatedExecutorService
+        (new ThreadPoolExecutor(1, 1,
+                                0L, TimeUnit.MILLISECONDS,
+                                new LinkedBlockingQueue&lt;Runnable&gt;()));
+&#125;</code></pre>
+<p>newSingleThreadExecutor是线程数量固定为1的newFixedThreadPool版本，保证池内的任务串行 </p>
+<h3 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool"></a>CachedThreadPool</h3><pre><code>public static ExecutorService newCachedThreadPool() &#123;
+    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                  60L, TimeUnit.SECONDS,
+                                  new SynchronousQueue&lt;Runnable&gt;());
+&#125;</code></pre>
+<p>newCachedThreadPool 生成一个会缓存的线程池，线程数量可以从0到 Integer.MAX_VALUE，超时时间为1分钟。线程池用起来的效果是：如果有空闲线程，会复用线程；如果没有空闲线程，会新建线程；如果线程空闲超过1分钟，将会被回收 </p>
+<h3 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h3><p>使用完 ExecutorService 之后你应该将其关闭，以使其中的线程不再运行。</p>
+<p>比如，如果你的应用是通过一个 main() 方法启动的，之后 main 方法退出了你的应用，如果你的应用有一个活动的 ExexutorService 它将还会保持运行。ExecutorService 里的活动线程阻止了 JVM 的关闭。</p>
+<p>要终止 ExecutorService 里的线程你需要调用 ExecutorService 的 shutdown() 方法。ExecutorService 并不会立即关闭，但它将不再接受新的任务，而且一旦所有线程都完成了当前任务的时候，ExecutorService 将会关闭。在 shutdown() 被调用之前所有提交给 ExecutorService 的任务都被执行。如果你想要立即关闭 ExecutorService，你可以调用 shutdownNow() 方法。这样会立即尝试停止所有执行中的任务，并忽略掉那些已提交但尚未开始处理的任务。无法担保执行任务的正确执行。可能它们被停止了，也可能已经执行结束</p>
+<hr>
+<p>参考资料</p>
+<p>分析Java线程池的创建 - 简书</p>
+<p>分析Java线程池执行原理 - 简书</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-01-10-java-9-12-update.html" rel="prev" title="Java 9-12 update">
+      <i class="fa fa-chevron-left"></i> Java 9-12 update
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020-04-17-rpc-gai-nian.html" rel="next" title="RPC的概念">
+      RPC的概念 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Executor-%E4%B8%8E-%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.</span> <span class="nav-text">Executor 与 线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.1.</span> <span class="nav-text">基本接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor"><span class="nav-number">1.2.</span> <span class="nav-text">Executor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ExecutorService"><span class="nav-number">1.3.</span> <span class="nav-text">ExecutorService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ScheduledExecutorService"><span class="nav-number">1.4.</span> <span class="nav-text">ScheduledExecutorService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor-%E7%9A%84%E6%9E%84%E9%80%A0%E5%8F%82%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">ThreadPoolExecutor 的构造参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E9%98%9F%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">等待队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A5%B1%E5%92%8C%E7%AD%96%E7%95%A5"><span class="nav-number">1.7.</span> <span class="nav-text">饱和策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadFactory"><span class="nav-number">1.8.</span> <span class="nav-text">ThreadFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor-%E7%B1%BB"><span class="nav-number">1.9.</span> <span class="nav-text">ThreadPoolExecutor 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fields"><span class="nav-number">1.9.1.</span> <span class="nav-text">Fields</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Worker"><span class="nav-number">1.9.2.</span> <span class="nav-text">Worker</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E7%B1%BB-Executors"><span class="nav-number">1.10.</span> <span class="nav-text">工厂类 Executors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FixedThreadPool"><span class="nav-number">1.10.1.</span> <span class="nav-text">FixedThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SingleThreadExecutor"><span class="nav-number">1.10.2.</span> <span class="nav-text">SingleThreadExecutor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CachedThreadPool"><span class="nav-number">1.10.3.</span> <span class="nav-text">CachedThreadPool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD"><span class="nav-number">1.10.4.</span> <span class="nav-text">关闭</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hahahaha123567"
+      src="/images/nicoumi.jpg">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Bangumi</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hahahaha123567" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

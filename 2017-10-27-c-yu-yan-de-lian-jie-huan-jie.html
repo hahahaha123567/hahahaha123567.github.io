@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hahahaha123567.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="弄懂 include  的背后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c语言的链接环节">
+<meta property="og:url" content="https://hahahaha123567.github.io/2017-10-27-c-yu-yan-de-lian-jie-huan-jie.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="弄懂 include  的背后">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-10-27T07:20:20.000Z">
+<meta property="article:modified_time" content="2019-03-18T11:49:58.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2017-10-27-c-yu-yan-de-lian-jie-huan-jie.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>c语言的链接环节 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">hahahaha123567's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017-10-27-c-yu-yan-de-lian-jie-huan-jie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/nicoumi.jpg">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          c语言的链接环节
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-10-27 15:20:20" itemprop="dateCreated datePublished" datetime="2017-10-27T15:20:20+08:00">2017-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-18 19:49:58" itemprop="dateModified" datetime="2019-03-18T19:49:58+08:00">2019-03-18</time>
+              </span>
+
+          
+            <div class="post-description">弄懂 include <stdio> 的背后</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="c程序编译流程"><a href="#c程序编译流程" class="headerlink" title="c程序编译流程"></a>c程序编译流程</h1><p>c语言程序从源代码到可执行文件经过四个步骤</p>
+<ol>
+<li><p>编译预处理</p>
+</li>
+<li><p>编译</p>
+</li>
+<li><p>汇编</p>
+</li>
+<li><p>链接</p>
+</li>
+</ol>
+<p>见 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/ggjucheng/archive/2011/12/14/2287738.html#_Toc311642841">Linux GCC常用命令 - ggjucheng - 博客园</a> 的解释</p>
+<h1 id="include-lt-stdio-h-gt"><a href="#include-lt-stdio-h-gt" class="headerlink" title="# include &lt;stdio.h&gt;"></a># include &lt;stdio.h&gt;</h1><p>我们的代码中的<code>#include &lt;stdio.h&gt;</code>的作用是将该头文件中函数的**声明(declaration)**拷贝过来，使程序通过编译</p>
+<p>此时，编译生成的.s文件中并没有实现函数功能的代码，程序只知道去调用一个叫做<code>printf()</code>的函数，而不知道这个函数在哪</p>
+<p>要到第四步链接(link)时，程序才能找到<code>printf()</code>的实现</p>
+<p>但是我们链接时只需要执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.o -o test    # no other lib</span><br></pre></td></tr></table></figure>
+
+<p>就能生成包含输入输出功能的可执行文件，这是因为编译器悄悄地帮你链接了<code>libc</code>库</p>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>以Linux环境下的gcc为例</p>
+<p>Linux环境下，静态链接库文件后缀<code>.a</code>，动态链接库文件后缀<code>.so</code></p>
+<h2 id="链接指令"><a href="#链接指令" class="headerlink" title="链接指令"></a>链接指令</h2><p>经过汇编后产生的<code>.o</code>二进制文件需要与代码中include的对应的库文件链接后才能生成最后的可执行文件。例如，多线程编程用到了<code>libpthread.a</code>和<code>libphread.so</code>库文件，在链接时就要指明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.o /usr/lib/i386-linux-gun/libpthread.so -o test</span><br></pre></td></tr></table></figure>
+
+<p>为了防止每次都要输入库文件的绝对路径，Linux的环境变量</p>
+<p><code>LIBRARY_PATH</code>用来指示默认的静态库路径</p>
+<p><code>LD_LIBRARY_PATH</code>用来指示默认的动态库路径</p>
+<h2 id="静态库链接时搜索路径顺序："><a href="#静态库链接时搜索路径顺序：" class="headerlink" title="静态库链接时搜索路径顺序："></a>静态库链接时搜索路径顺序：</h2><ol>
+<li>ld会去找gcc命令中的参数-L后的绝对路径</li>
+</ol>
+<p>根据-l后的文件相对名称（无前缀lib与后缀文件格式）去</p>
+<ol start="2">
+<li><p><code>LIBRARY_PATH</code></p>
+</li>
+<li><p><code>/lib</code> <code>/usr/lib</code> <code>/usr/local/lib</code> (这是当初compile gcc时写在程序内的) </p>
+</li>
+</ol>
+<p>中找</p>
+<h2 id="动态链接时、执行时搜索路径顺序"><a href="#动态链接时、执行时搜索路径顺序" class="headerlink" title="动态链接时、执行时搜索路径顺序:"></a>动态链接时、执行时搜索路径顺序:</h2><ol>
+<li>ld会去找gcc命令中的参数-L后的绝对路径</li>
+</ol>
+<p>根据-l后的文件相对名称（无前缀lib与后缀文件格式）去</p>
+<ol start="2">
+<li><p><code>LD_LIBRARY_PATH</code></p>
+</li>
+<li><p>配置文件<code>/etc/ld.so.conf</code>中指定的动态库搜索路径</p>
+</li>
+<li><p><code>/lib</code> <code>/usr/lib</code></p>
+</li>
+</ol>
+<p>中找</p>
+<h2 id="链接实现"><a href="#链接实现" class="headerlink" title="链接实现"></a>链接实现</h2><p>静态链接：将静态库的二进制代码链接到源.o文件中，以后可以独立运行</p>
+<p>动态链接：将动态库的信息链接到源.o文件中，运行时到相关位置去寻找二进制代码</p>
+<h2 id="libc"><a href="#libc" class="headerlink" title="libc"></a>libc</h2><p>libc(libc.a, libc.so) 是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/C_standard_library">C stand library </a> 的实现，包括<code>stdio.h</code> <code>string.h</code> <code>stdlib.h</code>的头文件的实现，编译器默认自动链接，这就是为什么链接时我们不需要手动指定<code>stdio.h</code>的库</p>
+<p>libc实现了<code>math.h</code>，但在一些平台下依然需要手动指定<code>libm</code></p>
+<hr>
+<p>大一开始学C，现在才赶在学编译原理之前弄懂完整的编译流程，丢人的，褪裙吧</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017-10-20-chu-xue-java.html" rel="prev" title="初学Java">
+      <i class="fa fa-chevron-left"></i> 初学Java
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017-10-27-li-jie-opengl-zhong-de-ju-zhen-cao-zuo.html" rel="next" title="理解openGL中的矩阵操作">
+      理解openGL中的矩阵操作 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">c程序编译流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-lt-stdio-h-gt"><span class="nav-number">2.</span> <span class="nav-text"># include &lt;stdio.h&gt;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%8C%87%E4%BB%A4"><span class="nav-number">3.1.</span> <span class="nav-text">链接指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%BA%93%E9%93%BE%E6%8E%A5%E6%97%B6%E6%90%9C%E7%B4%A2%E8%B7%AF%E5%BE%84%E9%A1%BA%E5%BA%8F%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">静态库链接时搜索路径顺序：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E6%97%B6%E3%80%81%E6%89%A7%E8%A1%8C%E6%97%B6%E6%90%9C%E7%B4%A2%E8%B7%AF%E5%BE%84%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.3.</span> <span class="nav-text">动态链接时、执行时搜索路径顺序:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.4.</span> <span class="nav-text">链接实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#libc"><span class="nav-number">3.5.</span> <span class="nav-text">libc</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hahahaha123567"
+      src="/images/nicoumi.jpg">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Bangumi</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hahahaha123567" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class=" fa-fw"></i>Zhihu</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

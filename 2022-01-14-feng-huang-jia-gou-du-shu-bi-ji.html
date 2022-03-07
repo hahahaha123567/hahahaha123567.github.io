@@ -29,7 +29,7 @@
 <meta property="og:description" content="周志明的关于构建一个大规模但依然可靠的软件系统的架构讨论与代码实践">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-04T10:11:20.036Z">
+<meta property="article:modified_time" content="2022-03-07T01:34:52.523Z">
 <meta property="article:author" content="hahahaha123567">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-04 18:11:20" itemprop="dateModified" datetime="2022-03-04T18:11:20+08:00">2022-03-04</time>
+                <time title="修改时间：2022-03-07 09:34:52" itemprop="dateModified" datetime="2022-03-07T09:34:52+08:00">2022-03-07</time>
               </span>
 
           
@@ -254,7 +254,47 @@
 <p>后微服务时代（Cloud Native）<br>从软件层面独力应对微服务架构问题，发展到软、硬一体，合力应对架构问题的时代，此即为“后微服务时代”</p>
 </blockquote>
 <p>以 Docker Swarm、Apache Mesos 与 Kubernetes 为主要竞争者的“容器编排战争”终于有了明确的结果，Kubernetes 登基加冕是容器发展中一个时代的终章，也将是软件架构发展下一个纪元的开端</p>
-<p>传统 Spring Cloud 与 Kubernetes 提供的解决方案对比<br>|Kubernetes|    Spring Cloud<br>|-|-|<br>弹性伸缩|    Autoscaling    N/A<br>服务发现|    KubeDNS / CoreDNS    Spring Cloud Eureka<br>配置中心|    ConfigMap / Secret    Spring Cloud Config<br>服务网关|    Ingress Controller    Spring Cloud Zuul<br>负载均衡|    Load Balancer    Spring Cloud Ribbon<br>服务安全|    RBAC API    Spring Cloud Security<br>跟踪监控|    Metrics API / Dashboard    Spring Cloud Turbine<br>降级熔断|    N/A    Spring Cloud Hystrix</p>
+<p>传统 Spring Cloud 与 Kubernetes 提供的解决方案对比</p>
+<table>
+<thead>
+<tr>
+<th>Kubernetes</th>
+<th>Spring Cloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>弹性伸缩</td>
+<td>Autoscaling N/A</td>
+</tr>
+<tr>
+<td>服务发现</td>
+<td>KubeDNS, CoreDNS Spring Cloud Eureka</td>
+</tr>
+<tr>
+<td>配置中心</td>
+<td>ConfigMap, Secret Spring Cloud Config</td>
+</tr>
+<tr>
+<td>服务网关</td>
+<td>Ingress Controller Spring Cloud Zuul</td>
+</tr>
+<tr>
+<td>负载均衡</td>
+<td>Load Balancer Spring Cloud Ribbon</td>
+</tr>
+<tr>
+<td>服务安全</td>
+<td>RBAC API Spring Cloud Security</td>
+</tr>
+<tr>
+<td>跟踪监控</td>
+<td>Metrics API, Dashboard Spring Cloud Turbine</td>
+</tr>
+<tr>
+<td>降级熔断</td>
+<td>N/A Spring Cloud Hystrix</td>
+</tr>
+</tbody></table>
 <p>仅从功能上看，单纯的 Kubernetes 反而不如之前的 Spring Cloud 方案。这是因为有一些问题处于应用系统与基础设施的边缘，使得完全在基础设施层面中确实很难精细化地处理。通过 Spring Cloud 这类应用代码实现的微服务中并不难处理，既然是使用程序代码来解决问题，只要合乎逻辑，想要实现什么功能，只受限于开发人员的想象力与技术能力，但基础设施是针对整个容器来管理的，粒度相对粗旷，只能到容器层面，对单个远程服务就很难有效管控</p>
 <p>为了解决这一类问题，虚拟化的基础设施很快完成了第二次进化，引入了今天被称为“服务网格”（Service Mesh）的“边车代理模式”（Sidecar Proxy）</p>
 <p>由系统自动在服务容器（通常是指 Kubernetes 的 Pod）中注入一个通信代理服务器，以类似网络安全里中间人攻击的方式进行流量劫持，在应用毫无感知的情况下，悄然接管应用所有对外通信。这个代理除了实现正常的服务间通信外（称为数据平面通信），还接收来自控制器的指令（称为控制平面通信），根据控制平面中的配置，对数据平面通信的内容进行分析处理</p>

@@ -29,7 +29,7 @@
 <meta property="og:description" content="周志明的关于构建一个大规模但依然可靠的软件系统的架构讨论与代码实践">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-07T02:06:20.777Z">
+<meta property="article:modified_time" content="2022-04-13T11:06:18.014Z">
 <meta property="article:author" content="hahahaha123567">
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-07 10:06:20" itemprop="dateModified" datetime="2022-04-07T10:06:20+08:00">2022-04-07</time>
+                <time title="修改时间：2022-04-13 19:06:18" itemprop="dateModified" datetime="2022-04-13T19:06:18+08:00">2022-04-13</time>
               </span>
 
           
@@ -402,22 +402,22 @@
 <tbody><tr>
 <td>读未提交(Read Uncommitted)</td>
 <td>写锁持续至事务结束,无读锁</td>
-<td>脏读:在事务执行过程中,一个事务读取到了另一个事务未提交的数据</td>
+<td>脏读:在事务执行过程中,一个事务读取到了另一个事务未提交的数据(读数据不需要加读锁,写锁就限制不了读操作了)</td>
 </tr>
 <tr>
 <td>读已提交(Read Committed)</td>
 <td>写锁持续至事务结束,读锁在操作完成后马上释放</td>
-<td>不可重复读:在事务执行过程中,对同一行数据的两次查询得到了不同的结果,即读到了另一个事务已提交的数据</td>
+<td>不可重复读:在事务执行过程中,对同一行数据的两次查询得到了不同的结果,即读到了另一个事务已提交的数据(写锁释放太早,限制不到其他事务加读锁)</td>
 </tr>
 <tr>
 <td>可重复读(Repeatable Read)</td>
 <td>写锁、读锁持续至事务结束</td>
-<td>幻读:在事务执行过程中,两个完全相同的范围查询得到了不同的结果集,原因是可重复读没有范围锁来禁止在该范围内插入新的数据,这是一个事务受到其他事务影响,隔离性被破坏的表现</td>
+<td>幻读:在事务执行过程中,两个完全相同的范围查询得到了不同的结果集,没有范围锁来禁止在该范围内插入新的数据</td>
 </tr>
 <tr>
 <td>可串行化(Serializable)</td>
 <td>写锁、读锁、范围所持续至事务结束</td>
-<td></td>
+<td>-</td>
 </tr>
 </tbody></table>
 <h4 id="MVVC"><a href="#MVVC" class="headerlink" title="MVVC"></a>MVVC</h4><p>幻读、不可重复读、脏读等问题都是由于一个事务在读数据过程中，受另外一个写数据的事务影响而破坏了隔离性，针对这种“一个事务读+另一个事务写”的隔离问题，近年来有一种名为“多版本并发控制”（Multi-Version Concurrency Control，MVCC）的无锁优化方案被主流的商业数据库广泛采用。MVCC 是一种读取优化策略，它的“无锁”是特指读取时不需要加锁。MVCC 的基本思路是对数据库的任何修改都不会直接覆盖之前的数据，而是产生一个新版副本与老版本共存，以此达到读取时可以完全不加锁的目的</p>

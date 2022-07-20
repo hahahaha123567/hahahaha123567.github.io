@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="官方文档只介绍了固定属性的情况">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaFX中的table相关">
+<meta property="og:url" content="https://hahahaha123567.github.io/2018-03-07-JavaFX%E4%B8%AD%E7%9A%84table%E7%9B%B8%E5%85%B3.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="官方文档只介绍了固定属性的情况">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-07T05:43:56.000Z">
+<meta property="article:modified_time" content="2018-08-12T13:59:38.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JavaFX">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2018-03-07-JavaFX%E4%B8%AD%E7%9A%84table%E7%9B%B8%E5%85%B3.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2018-03-07-JavaFX%E4%B8%AD%E7%9A%84table%E7%9B%B8%E5%85%B3.html","path":"2018-03-07-JavaFX中的table相关.html","title":"JavaFX中的table相关"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JavaFX中的table相关 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%B1%9E%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">固定属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">动态属性</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2018-03-07-JavaFX%E4%B8%AD%E7%9A%84table%E7%9B%B8%E5%85%B3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JavaFX中的table相关 | hahahaha123567's Blog">
+      <meta itemprop="description" content="官方文档只介绍了固定属性的情况">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaFX中的table相关
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-07 13:43:56" itemprop="dateCreated datePublished" datetime="2018-03-07T13:43:56+08:00">2018-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2018-08-12 21:59:38" itemprop="dateModified" datetime="2018-08-12T21:59:38+08:00">2018-08-12</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">官方文档只介绍了固定属性的情况</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>JavaFX中实现一个table需要实现两个类：<code>TableView</code> , <code>TableColumn</code> </p>
+<p>此外，还要将放入表格中的数据（每行是一个对象）用一个自定义的类表示。在JavaFX中，这个自定义类可以使用property属性绑定</p>
+<p>为了将TableColumn的对象和数据对象进行关联，需要使用 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html#cellValueFactoryProperty%28%29">Cell Value Factory</a> 和 <a target="_blank" rel="noopener" href="https://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html#cellFactoryProperty%28%29">Cell Factory</a> </p>
+<blockquote>
+<p>setCellFactory的意图是在创建这列的时候要做的事情，你可以改变TableCell的任何内容，包括UI和Value，而setCellValueFactory呢，它的重点是关联属性，从你传递给它的Model中通过对应属性的getter来获取值。在setCellFactory中的TableCell有个回调，叫<code>updateItem</code>，它可以获取到你设置到此Cell的值，这个值是跟setCellValueFactory所关联的属性有关。</p>
+</blockquote>
+<h1 id="固定属性"><a href="#固定属性" class="headerlink" title="固定属性"></a>固定属性</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> SimpleStringProperty p1;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> SimpleStringProperty p2;</span><br><span class="line">  Data (String s1, String s2) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TableView</span> <span class="variable">table</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TableView</span>();</span><br><span class="line"><span class="type">TableColumn</span> <span class="variable">column1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TableColumn</span>(<span class="string">&quot;c1&quot;</span>);</span><br><span class="line"><span class="type">TableColumn</span> <span class="variable">column2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TableColumn</span>(<span class="string">&quot;c2&quot;</span>);</span><br><span class="line">table.getColumns().addAll(column1, column2);</span><br><span class="line"></span><br><span class="line">column1.setCellValueFactory(<span class="keyword">new</span> <span class="title class_">PropertyValueFactory</span>&lt;Data, String&gt;(<span class="string">&quot;p1&quot;</span>));</span><br><span class="line">column2.setCellValueFactory(<span class="keyword">new</span> <span class="title class_">PropertyValueFactory</span>&lt;Data, String&gt;(<span class="string">&quot;p2&quot;</span>));</span><br><span class="line"></span><br><span class="line">ObservableList&lt;Person&gt; dataList = FXCollections.observableArrayList(</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Data</span>(<span class="string">&quot;Nico&quot;</span>, <span class="string">&quot;Maki&quot;</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Data</span>(<span class="string">&quot;haha&quot;</span>, <span class="string">&quot;hoho&quot;</span>)</span><br><span class="line">);</span><br><span class="line">table.setItems(dataList);</span><br></pre></td></tr></table></figure>
+
+<h1 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a>动态属性</h1><p>在写 <a target="_blank" rel="noopener" href="https://github.com/hahahaha123567/csv-editor">CSV editor</a> 时，显然table的行列数都是不确定的，因此不能按照上述步骤。TableColumn可以根据需要创建，但是绑定column和数据需要进行改动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column.setCellValueFactory(param -&gt; param.getValue().get(ii));</span><br></pre></td></tr></table></figure>
+
+<p>这里的参数不能继续使用PropertyValueFactory的对象，而应该用index去获取ObservableList的值</p>
+<p>应用可以参考 <a target="_blank" rel="noopener" href="https://github.com/hahahaha123567/csv-editor/blob/master/src/csv/Controller.java">这段代码</a> 的showData()函数</p>
+<hr>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="http://cmlanche.com/2017/06/08/JavaFx-TableView%E8%AF%A6%E8%A7%A3/">JavaFx TableView疑难详解 | cmlanche</a></p>
+<p><a target="_blank" rel="noopener" href="https://community.oracle.com/thread/2474328">Creating columns dynamically | Oracle Community</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10519534/cell-factory-in-javafx">tableview - Cell factory in javafx - Stack Overflow</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/JavaFX/" rel="tag"># JavaFX</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018-03-06-%E7%94%A8Lambda%E7%AE%80%E5%8C%96%E6%9E%9A%E4%B8%BE.html" rel="prev" title="用Lambda简化枚举">
+                  <i class="fa fa-chevron-left"></i> 用Lambda简化枚举
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018-03-07-JavaFX%E4%BB%8B%E7%BB%8D.html" rel="next" title="JavaFX入门">
+                  JavaFX入门 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;rocketmq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读RocketMQ源码(1) - 项目信息,本地日志模块">
+<meta property="og:url" content="https://hahahaha123567.github.io/2021-02-19-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%811.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;rocketmq">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-07-22T08:03:46.864Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="MessageQueue">
+<meta property="article:tag" content="源码">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2021-02-19-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%811.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2021-02-19-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%811.html","path":"2021-02-19-阅读RocketMQ源码1.html","title":"阅读RocketMQ源码(1) - 项目信息,本地日志模块"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>阅读RocketMQ源码(1) - 项目信息,本地日志模块 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A8%A1%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">项目模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">本地日志模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">3.1.</span> <span class="nav-text">tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A1%8C%E5%88%86%E9%9A%94%E7%AC%A6"><span class="nav-number">3.1.1.</span> <span class="nav-text">获取当前系统的行分隔符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number">3.1.2.</span> <span class="nav-text">finalize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.3.</span> <span class="nav-text">工厂模式</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2021-02-19-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%811.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="阅读RocketMQ源码(1) - 项目信息,本地日志模块 | hahahaha123567's Blog">
+      <meta itemprop="description" content="https://github.com/apache/rocketmq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阅读RocketMQ源码(1) - 项目信息,本地日志模块
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-19 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-19T00:00:00+08:00">2021-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-07-22 16:03:46" itemprop="dateModified" datetime="2021-07-22T16:03:46+08:00">2021-07-22</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">https://github.com/apache/rocketmq</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>源码: <a target="_blank" rel="noopener" href="https://github.com/apache/rocketmq">https://github.com/apache/rocketmq</a></p>
+<p>官网: <a target="_blank" rel="noopener" href="https://rocketmq.apache.org/">https://rocketmq.apache.org</a></p>
+<p>中文文档: <a target="_blank" rel="noopener" href="https://github.com/apache/rocketmq/tree/master/docs/cn">https://github.com/apache/rocketmq/tree/master/docs/cn</a></p>
+<p>版本: 4.8</p>
+<h1 id="项目模块"><a href="#项目模块" class="headerlink" title="项目模块"></a>项目模块</h1><p>用idea的analyze module dependencies功能整理出依赖顺序,也是阅读顺序</p>
+<ul>
+<li>logging, 本地日志模块</li>
+<li>remoting, 通信模块</li>
+<li>common, 工具类</li>
+<li>srvutil, 命令行交互工具类</li>
+<li>acl, 网络控制工具</li>
+<li>client, 客户端代码</li>
+<li>filter, 过滤器解析代码</li>
+<li>logappender, 对几种日志框架的适配</li>
+<li>store, 落盘逻辑</li>
+<li>tools, 监控工具</li>
+<li>openmessaging, open-message协议实现</li>
+<li>broker, broker代码</li>
+<li>namesrv, 路由注册中心</li>
+</ul>
+<h1 id="本地日志模块"><a href="#本地日志模块" class="headerlink" title="本地日志模块"></a>本地日志模块</h1><p>Log4j的最精简fork</p>
+<p>Appender -&gt; Logger(AppenderPipeline)</p>
+<p>实现了<code>RollingFileAppender</code>等多种appender,用到writer和buffer</p>
+<p><code>SysLogger</code>即标准输入输出兜底</p>
+<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><h3 id="获取当前系统的行分隔符"><a href="#获取当前系统的行分隔符" class="headerlink" title="获取当前系统的行分隔符"></a>获取当前系统的行分隔符</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.getProperty(<span class="string">&quot;line.separator&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="finalize"><a href="#finalize" class="headerlink" title="finalize"></a>finalize</h3><p>jvm回收该对象时执行,用来释放一些手动申请的资源</p>
+<p>大量对象同时执行finalize可能引起执行队列堆积</p>
+<p>Java9开始被java.lang.ref.Cleaner和java.lang.ref.PhantomReference代替</p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>product</p>
+<ul>
+<li>InternalLogger</li>
+</ul>
+<p>concreate products</p>
+<ul>
+<li>InnerLogger</li>
+<li>Slf4jLogger</li>
+</ul>
+<p>creator</p>
+<ul>
+<li>InternalLoggerFactory</li>
+</ul>
+<p>concreate creators</p>
+<ul>
+<li>InnerLoggerFactory</li>
+<li>Slf4jLoggerFactory</li>
+</ul>
+<p>creator给concreate creators提供注册方法,给用户提供生产方法</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MessageQueue/" rel="tag"># MessageQueue</a>
+              <a href="/tags/%E6%BA%90%E7%A0%81/" rel="tag"># 源码</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-02-07-csrankings%E4%BC%9A%E8%AE%AE%E7%B4%A2%E5%BC%95.html" rel="prev" title="csrankings会议索引">
+                  <i class="fa fa-chevron-left"></i> csrankings会议索引
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-03-17-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%812.html" rel="next" title="阅读RocketMQ源码(2) - 基础通信模块">
+                  阅读RocketMQ源码(2) - 基础通信模块 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

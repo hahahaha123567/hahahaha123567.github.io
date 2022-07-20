@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自定义mybatis插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis日志问号替换">
+<meta property="og:url" content="https://hahahaha123567.github.io/2019-03-18-mybatis%E6%97%A5%E5%BF%97%E9%97%AE%E5%8F%B7%E6%9B%BF%E6%8D%A2.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="自定义mybatis插件">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-18T01:50:37.000Z">
+<meta property="article:modified_time" content="2019-03-18T08:52:40.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2019-03-18-mybatis%E6%97%A5%E5%BF%97%E9%97%AE%E5%8F%B7%E6%9B%BF%E6%8D%A2.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2019-03-18-mybatis%E6%97%A5%E5%BF%97%E9%97%AE%E5%8F%B7%E6%9B%BF%E6%8D%A2.html","path":"2019-03-18-mybatis日志问号替换.html","title":"mybatis日志问号替换"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>mybatis日志问号替换 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E6%97%B6%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">打印日志时机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019-03-18-mybatis%E6%97%A5%E5%BF%97%E9%97%AE%E5%8F%B7%E6%9B%BF%E6%8D%A2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="mybatis日志问号替换 | hahahaha123567's Blog">
+      <meta itemprop="description" content="自定义mybatis插件">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mybatis日志问号替换
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2019-03-18 09:50:37 / 修改时间：16:52:40" itemprop="dateCreated datePublished" datetime="2019-03-18T09:50:37+08:00">2019-03-18</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">自定义mybatis插件</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>项目里使用 logback+log4j 作为日志框架, mybatis 支持 log4j 作为日志框架, 默认即输出日志如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">==&gt;  Preparing: select * from idol where name = ?</span><br><span class="line">==&gt; Parameters: nico(String)</span><br><span class="line">&lt;==      Total: 1 </span><br></pre></td></tr></table></figure>
+
+<p>每次验证sql都要手动替换问号很麻烦, 就写个插件直接打印实际执行的完整sql</p>
+<h1 id="打印日志时机"><a href="#打印日志时机" class="headerlink" title="打印日志时机"></a>打印日志时机</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// org.apache.ibatis.executor;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SimpleExecutor</span> <span class="keyword">extends</span> <span class="title class_">BaseExecutor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> &lt;E&gt; List&lt;E&gt; <span class="title function_">doQuery</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">        <span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> ms.getConfiguration();</span><br><span class="line">            <span class="type">StatementHandler</span> <span class="variable">handler</span> <span class="operator">=</span> configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);</span><br><span class="line">            <span class="comment">// 打sql模板日志</span></span><br><span class="line">            stmt = prepareStatement(handler, ms.getStatementLog());</span><br><span class="line">            <span class="comment">// 打实际参数</span></span><br><span class="line">            <span class="keyword">return</span> handler.&lt;E&gt;query(stmt, resultHandler);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            closeStatement(stmt);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// org.apache.ibatis.logging.jdbc;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">ConnectionLogger</span> <span class="keyword">extends</span> <span class="title class_">BaseJdbcLogger</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] params)</span> &#123;</span><br><span class="line">        <span class="comment">// log sql template</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// org.apache.ibatis.logging.jdbc;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">PreparedStatementLogger</span> <span class="keyword">extends</span> <span class="title class_">BaseJdbcLogger</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] params)</span> &#123;</span><br><span class="line">        <span class="comment">// log paramaters</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// org.apache.ibatis.logging.jdbc;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">ResultSetLogger</span> <span class="keyword">extends</span> <span class="title class_">BaseJdbcLogger</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] params)</span> &#123;</span><br><span class="line">        <span class="comment">// log total</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用到的Logger: MapperRegistry &lt;-&gt; Configuration -&gt; MappedStatement -&gt; Log</p>
+<p>org.apache.ibatis.executor.Executor: update(), query()<br>增&#x2F;删&#x2F;改查</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>本来想通过侵入打日志代码的方式实现, 后来发现mybatis提供了<a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/zh/configuration.html#plugins">插件</a>功能, 可以<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fangjian0423/p/mybatis-interceptor.html">自定义sql执行流程</a></p>
+<p>最终实现如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> hahahaha123567@qq.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 注解拦截接口可选方法</span></span><br><span class="line"><span class="comment"> * Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</span></span><br><span class="line"><span class="comment"> * ParameterHandler (getParameterObject, setParameters)</span></span><br><span class="line"><span class="comment"> * ResultSetHandler (handleResultSets, handleOutputParameters)</span></span><br><span class="line"><span class="comment"> * StatementHandler (prepare, parameterize, batch, update, query)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2019/01/03</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@Intercepts(&#123;</span></span><br><span class="line"><span class="meta">        @Signature(</span></span><br><span class="line"><span class="meta">                type = Executor.class,</span></span><br><span class="line"><span class="meta">                method = &quot;update&quot;,</span></span><br><span class="line"><span class="meta">                args = &#123;MappedStatement.class, Object.class&#125;),</span></span><br><span class="line"><span class="meta">        @Signature(</span></span><br><span class="line"><span class="meta">                type = Executor.class,</span></span><br><span class="line"><span class="meta">                method = &quot;query&quot;,</span></span><br><span class="line"><span class="meta">                args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisInterceptor</span> <span class="keyword">implements</span> <span class="title class_">Interceptor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(MybatisInterceptor.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties properties;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">getParameterValue</span><span class="params">(Object param)</span> &#123;</span><br><span class="line">        String value;</span><br><span class="line">        <span class="keyword">if</span> (param == <span class="literal">null</span>) &#123;</span><br><span class="line">            value = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            value = param.toString();</span><br><span class="line">            <span class="keyword">if</span> (param <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                value = <span class="string">&quot;&#x27;&quot;</span> + value + <span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (param <span class="keyword">instanceof</span> CodeDescEnum) &#123;</span><br><span class="line">                value = ((CodeDescEnum) param).getCode().toString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Matcher.quoteReplacement(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">showSql</span><span class="params">(Configuration configuration, BoundSql boundSql)</span> &#123;</span><br><span class="line">        <span class="comment">// 去掉空白字符</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> boundSql.getSql().replaceAll(<span class="string">&quot;[\\s]+&quot;</span>, <span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">parameterObject</span> <span class="operator">=</span> boundSql.getParameterObject();</span><br><span class="line">        List&lt;ParameterMapping&gt; parameterMappings = boundSql.getParameterMappings();</span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(sql) &amp;&amp; Objects.nonNull(parameterObject) &amp;&amp; !CollectionUtils.isEmpty(parameterMappings)) &#123;</span><br><span class="line">            <span class="comment">// 替换参数</span></span><br><span class="line">            <span class="type">TypeHandlerRegistry</span> <span class="variable">typeHandlerRegistry</span> <span class="operator">=</span> configuration.getTypeHandlerRegistry();</span><br><span class="line">            <span class="keyword">if</span> (typeHandlerRegistry.hasTypeHandler(parameterObject.getClass())) &#123;</span><br><span class="line">                <span class="comment">// 有对应的typeHandler</span></span><br><span class="line">                sql = sql.replaceFirst(<span class="string">&quot;\\?&quot;</span>, getParameterValue(parameterObject));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 没有对应的typeHandler</span></span><br><span class="line">                <span class="type">MetaObject</span> <span class="variable">metaObject</span> <span class="operator">=</span> configuration.newMetaObject(parameterObject);</span><br><span class="line">                <span class="keyword">for</span> (ParameterMapping parameterMapping : parameterMappings) &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">propertyName</span> <span class="operator">=</span> parameterMapping.getProperty();</span><br><span class="line">                    <span class="keyword">if</span> (metaObject.hasGetter(propertyName)) &#123;</span><br><span class="line">                        <span class="comment">// 从metaObject里取值</span></span><br><span class="line">                        <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> metaObject.getValue(propertyName);</span><br><span class="line">                        sql = sql.replaceFirst(<span class="string">&quot;\\?&quot;</span>, getParameterValue(obj));</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (boundSql.hasAdditionalParameter(propertyName)) &#123;</span><br><span class="line">                        <span class="comment">// 从boundSql里取值</span></span><br><span class="line">                        <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> boundSql.getAdditionalParameter(propertyName);</span><br><span class="line">                        sql = sql.replaceFirst(<span class="string">&quot;\\?&quot;</span>, getParameterValue(obj));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sql;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">plugin</span><span class="params">(Object target)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Plugin.wrap(target, <span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setProperties</span><span class="params">(Properties properties)</span> &#123;</span><br><span class="line">        MybatisInterceptor.properties = properties;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Invocation invocation)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line"></span><br><span class="line">        MybatisFilter.enable();</span><br><span class="line">        <span class="type">MappedStatement</span> <span class="variable">mappedStatement</span> <span class="operator">=</span> (MappedStatement) invocation.getArgs()[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// sql参数</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">parameter</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (invocation.getArgs().length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            parameter = invocation.getArgs()[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">BoundSql</span> <span class="variable">boundSql</span> <span class="operator">=</span> mappedStatement.getBoundSql(parameter);</span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> mappedStatement.getConfiguration();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 统计sql执行时间</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">Object</span> <span class="variable">returnValue</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">Exception</span> <span class="variable">sqlException</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            returnValue = invocation.proceed();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            MybatisFilter.disable();</span><br><span class="line">            sqlException = e;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">long</span> <span class="variable">time</span> <span class="operator">=</span> (end - start);</span><br><span class="line">        <span class="comment">// sql执行位置的logger</span></span><br><span class="line">        <span class="type">Log</span> <span class="variable">statementLog</span> <span class="operator">=</span> mappedStatement.getStatementLog();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (returnValue != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (returnValue <span class="keyword">instanceof</span> Collection) &#123;</span><br><span class="line">                    <span class="comment">// executor.query()</span></span><br><span class="line">                    size = ((Collection) returnValue).size();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (returnValue <span class="keyword">instanceof</span> Number) &#123;</span><br><span class="line">                    <span class="comment">// executor.update()</span></span><br><span class="line">                    size = ((Number) returnValue).intValue();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    logger.error(<span class="string">&quot;处理sql结果出错, returnValue类型为 &#123;&#125;&quot;</span>, returnValue.getClass().getName());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> showSql(configuration, boundSql);</span><br><span class="line">            statementLog.debug(String.format(<span class="string">&quot;sql执行耗时: %dms, 结果数: %d, %s&quot;</span>, time, size, sql));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            MybatisFilter.disable();</span><br><span class="line">            statementLog.error(String.format(<span class="string">&quot;[LogHub]mybatis拦截器格式化sql出错, 调用位置%s, sql模板: %s&quot;</span>, mappedStatement.getId(), boundSql.getSql()), e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sqlException != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> sqlException;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> returnValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把插件注册到mybatis</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> SqlSessionFactory <span class="title function_">sqlSessionFactory</span><span class="params">(DataSource dataSource, PageHelper pageHelper, MybatisInterceptor mybatisInterceptor)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    logger.info(<span class="string">&quot;==== sqlSessionFactory execute ====&quot;</span>);</span><br><span class="line"></span><br><span class="line">    VFS.addImplClass(SpringBootVFS.class);</span><br><span class="line"></span><br><span class="line">    <span class="type">SqlSessionFactoryBean</span> <span class="variable">bean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加插件</span></span><br><span class="line">    Interceptor[] plugins = <span class="keyword">new</span> <span class="title class_">Interceptor</span>[]&#123;pageHelper, mybatisInterceptor&#125;;</span><br><span class="line">    bean.setPlugins(plugins);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加数据源</span></span><br><span class="line">    bean.setDataSource(dataSource);</span><br><span class="line">    <span class="comment">// 注册 *Mapper.xml 配置文件</span></span><br><span class="line">    <span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    bean.setMapperLocations(resolver.getResources(<span class="string">&quot;classpath*:/mapper/**/*Mapper.xml&quot;</span>));</span><br><span class="line">    bean.setTypeHandlersPackage(<span class="string">&quot;com.haha.model.enums&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> bean.getObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019-03-15-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%A3%85%E6%9C%BA%E8%AE%B0%E5%BD%95.html" rel="prev" title="第一次装机记录">
+                  <i class="fa fa-chevron-left"></i> 第一次装机记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019-03-18-logback%E7%9A%84AsyncAppender%E4%BA%A7%E7%94%9F%E7%9A%84%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98.html" rel="next" title="logback的AsyncAppender产生的线程问题">
+                  logback的AsyncAppender产生的线程问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

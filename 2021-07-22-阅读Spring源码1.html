@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="跟着其他人的博客看源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读Spring源码(1) - 上下文启动">
+<meta property="og:url" content="https://hahahaha123567.github.io/2021-07-22-%E9%98%85%E8%AF%BBSpring%E6%BA%90%E7%A0%811.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="跟着其他人的博客看源码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hahahaha123567.github.io/image/bean_factory.png">
+<meta property="article:published_time" content="2021-07-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-05T09:32:04.082Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hahahaha123567.github.io/image/bean_factory.png">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2021-07-22-%E9%98%85%E8%AF%BBSpring%E6%BA%90%E7%A0%811.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2021-07-22-%E9%98%85%E8%AF%BBSpring%E6%BA%90%E7%A0%811.html","path":"2021-07-22-阅读Spring源码1.html","title":"阅读Spring源码(1) - 上下文启动"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>阅读Spring源码(1) - 上下文启动 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%92%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">Spring的整体架构和环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC%E6%B3%A8%E5%86%8C"><span class="nav-number">2.</span> <span class="nav-text">IOC注册</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC%E6%B3%A8%E5%85%A5-BeanFactory"><span class="nav-number">3.</span> <span class="nav-text">IOC注入(BeanFactory)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96bean%E5%90%8D%E7%A7%B0"><span class="nav-number">3.1.</span> <span class="nav-text">获取bean名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8D%95%E4%BE%8B%E7%BC%93%E5%AD%98sharedInstance"><span class="nav-number">3.2.</span> <span class="nav-text">获取单例缓存sharedInstance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAbean"><span class="nav-number">3.3.</span> <span class="nav-text">创建bean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scope-x3D-singleton"><span class="nav-number">3.3.1.</span> <span class="nav-text">scope&#x3D;singleton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope-x3D-prototype"><span class="nav-number">3.3.2.</span> <span class="nav-text">scope&#x3D;prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope-x3D-other"><span class="nav-number">3.3.3.</span> <span class="nav-text">scope&#x3D;other</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E6%B3%95createBean"><span class="nav-number">3.3.4.</span> <span class="nav-text">实现的方法createBean()</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2021-07-22-%E9%98%85%E8%AF%BBSpring%E6%BA%90%E7%A0%811.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="阅读Spring源码(1) - 上下文启动 | hahahaha123567's Blog">
+      <meta itemprop="description" content="跟着其他人的博客看源码">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阅读Spring源码(1) - 上下文启动
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-22 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-22T00:00:00+08:00">2021-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-08-05 17:32:04" itemprop="dateModified" datetime="2021-08-05T17:32:04+08:00">2021-08-05</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">跟着其他人的博客看源码</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Spring的整体架构和环境搭建"><a href="#Spring的整体架构和环境搭建" class="headerlink" title="Spring的整体架构和环境搭建"></a>Spring的整体架构和环境搭建</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-chen-hao/p/11046190.html">spring5 源码深度解析—–Spring的整体架构和环境搭建 - chen_hao - 博客园</a></p>
+<p>Spring的整体架构</p>
+<ul>
+<li>Core Container<ul>
+<li>Core</li>
+<li>Beans</li>
+<li>Context</li>
+<li>SpEL</li>
+</ul>
+</li>
+<li>AOP</li>
+<li>Aspect</li>
+<li>Instrumentation</li>
+<li>Messaging</li>
+<li>Web<ul>
+<li>Web</li>
+<li>Servlet</li>
+<li>Websocket</li>
+<li>Portlet</li>
+</ul>
+</li>
+<li>Data Access&#x2F;Integration<ul>
+<li>JDBC</li>
+<li>ORM</li>
+<li>OXM</li>
+<li>JMS</li>
+<li>Transactions</li>
+</ul>
+</li>
+<li>Test</li>
+</ul>
+<p>阅读步骤</p>
+<ol>
+<li>安装gradle</li>
+<li>下载源码</li>
+<li>build项目</li>
+<li>创建测试模块并debug</li>
+</ol>
+<h1 id="IOC注册"><a href="#IOC注册" class="headerlink" title="IOC注册"></a>IOC注册</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-chen-hao/p/11113340.html">spring5 源码深度解析—– IOC 之 容器的基本实现 - chen_hao - 博客园</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-chen-hao/p/11115300.html">spring5 源码深度解析—– IOC 之 默认标签解析（上） - chen_hao - 博客园</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-chen-hao/p/11120677.html">spring5 源码深度解析—– IOC 之 默认标签解析（下） - chen_hao - 博客园</a></p>
+<p>ClassPathResource, Resource 配置资源的抽象</p>
+<p>示例使用 XmlBeanFactory</p>
+<blockquote>
+<p>BeanFactoryAware&#x2F;ApplicationContextAware 在构建BeanFactory的时候就进行了相关配置</p>
+</blockquote>
+<p>XmlBeanDefinitionReader 解析XML文件, 返回 <code>org.w3c.dom.Document</code></p>
+<p>BeanDefinitionDocumentReader 使用 BeanDefinitionParserDelegate 解析Document, 包含defaultElement&#x2F;customElement, 返回 <code>BeanDefinitionHolder</code> (包含 <code>GenericBeanDefinition</code>)</p>
+<p>BeanDefinitionDocumentReader 将 &lt;beanName, beanDefinition&gt; 注册到 <code>BeanDefinitionRegistry</code>(beanFactory), 实际使用 <code>DefaultListableBeanFactory</code> 的 <code>registerBeanDefinition</code>, 映射关系保存在一个ConcurrentHashMap中</p>
+<h1 id="IOC注入-BeanFactory"><a href="#IOC注入-BeanFactory" class="headerlink" title="IOC注入(BeanFactory)"></a>IOC注入(BeanFactory)</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-chen-hao/p/11137571.html">spring5 源码深度解析—– IOC 之 开启 bean 的加载 - chen_hao - 博客园</a></p>
+<p><strong>BeanFactory</strong></p>
+<p><img src="/../../../../image/bean_factory.png" alt="BeanFactory类图"></p>
+<p><code>BeanFactory</code> 和 <code>FactoryBean</code> 的区别:</p>
+<ul>
+<li>BeanFactory, 访问 Spring bean 容器的根接口, 是应用程序组件的中央注册表</li>
+<li>FactoryBean, 如果一个 bean 实现了这个接口，它就被用作一个对象暴露的工厂</li>
+</ul>
+<h2 id="获取bean名称"><a href="#获取bean名称" class="headerlink" title="获取bean名称"></a>获取bean名称</h2><p><code>AbstractBeanFactory</code> 的 <code>transformedBeanName</code></p>
+<ol>
+<li>FactoryBean的&amp;名称解引用</li>
+<li>alias转换</li>
+</ol>
+<h2 id="获取单例缓存sharedInstance"><a href="#获取单例缓存sharedInstance" class="headerlink" title="获取单例缓存sharedInstance"></a>获取单例缓存sharedInstance</h2><p><code>DefaultSingletonBeanRegistry</code> 的 <code>getSingleton()</code></p>
+<p>几个缓存(使用时不加锁的是ConcurrentHashMap, 使用时加锁的是HashMap)</p>
+<ul>
+<li>singletonObjects:用于保存BeanName和创建bean实例之间的关系，beanName–&gt;bean Instance</li>
+<li>singletonFactories:用于保存BeanName和创建bean的工厂之间的关系，banName–&gt;ObjectFactory</li>
+<li>earlySingletonObjects:也是保存BeanName和创建bean实例之间的关系，与singletonObjects的不同之处在于，当一个单例bean被放到这里面后，那么当bean还在创建过程中，就可以通过getBean方法获取到了，其目的是用来检测循环引用</li>
+</ul>
+<p>如果有单例缓存, 则使用单例缓存获取bean</p>
+<p>如果单例缓存不是FactoryBean则说明为bean直接返回</p>
+<p>如果单例缓存是FactoryBean则调用getBean, <code>DefaultSingletonBeanRegistry</code> 的 <code>beforeSingletonCreation</code> <code>afterSingletonCreation</code> 继续使用缓存判断是否创建中(检测循环引用), <code>postProcessObjectFromFactoryBean</code> 调用bean的 <code>BeanPostProcessors</code> 方法</p>
+<h2 id="创建bean"><a href="#创建bean" class="headerlink" title="创建bean"></a>创建bean</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/java-chen-hao/p/11139157.html">spring5 源码深度解析—– IOC 之 bean 创建 - chen_hao - 博客园</a></p>
+<p>未获取到单例缓存的话就要创建bean</p>
+<p>入口 <code>AbstractBeanFactory</code> 的 <code>doGetBean()</code></p>
+<h3 id="scope-x3D-singleton"><a href="#scope-x3D-singleton" class="headerlink" title="scope&#x3D;singleton"></a>scope&#x3D;singleton</h3><ol>
+<li>synchronized全局锁</li>
+<li>检查缓存</li>
+<li>beforeSingletonCreation()</li>
+<li>createBean()</li>
+<li>afterSingletonCreation()</li>
+<li>加入缓存</li>
+</ol>
+<h3 id="scope-x3D-prototype"><a href="#scope-x3D-prototype" class="headerlink" title="scope&#x3D;prototype"></a>scope&#x3D;prototype</h3><ol>
+<li>beforeSingletonCreation()</li>
+<li>createBean()</li>
+<li>afterSingletonCreation()</li>
+<li>getObjectForBeanInstance()</li>
+</ol>
+<h3 id="scope-x3D-other"><a href="#scope-x3D-other" class="headerlink" title="scope&#x3D;other"></a>scope&#x3D;other</h3><ol>
+<li>beforeSingletonCreation()</li>
+<li>scope.get() -&gt; createBean()</li>
+<li>afterSingletonCreation()</li>
+<li>getObjectForBeanInstance()</li>
+</ol>
+<h3 id="实现的方法createBean"><a href="#实现的方法createBean" class="headerlink" title="实现的方法createBean()"></a>实现的方法createBean()</h3><p><code>AbstractAutowireCapableBeanFactory</code> 的 <code>createBean()</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-07-01-Java%E5%90%84%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E4%BB%8B%E7%BB%8D.html" rel="prev" title="Java各版本更新介绍">
+                  <i class="fa fa-chevron-left"></i> Java各版本更新介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-11-05-Java%E4%B8%AD%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E5%BC%82%E6%AD%A5%E5%B7%A5%E5%85%B7.html" rel="next" title="Java中几种常用的异步工具">
+                  Java中几种常用的异步工具 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

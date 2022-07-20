@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍几种常见的 @NotNull 注解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java用注解做参数校验">
+<meta property="og:url" content="https://hahahaha123567.github.io/2018-12-15-Java%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%81%9A%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="介绍几种常见的 @NotNull 注解">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-14T17:32:08.000Z">
+<meta property="article:modified_time" content="2018-12-17T17:53:26.000Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2018-12-15-Java%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%81%9A%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2018-12-15-Java%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%81%9A%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C.html","path":"2018-12-15-Java用注解做参数校验.html","title":"Java用注解做参数校验"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java用注解做参数校验 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSR-303-Bean-Validation"><span class="nav-number">1.</span> <span class="nav-text">JSR 303 Bean Validation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSR-305-Annotations-for-Software-Defect-Detection"><span class="nav-number">2.</span> <span class="nav-text">JSR 305 Annotations for Software Defect Detection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jetbrains-%E5%AE%B6%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">Jetbrains 家的注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%B8%B8%E8%AF%86"><span class="nav-number">4.</span> <span class="nav-text">几个常识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JCP"><span class="nav-number">4.0.1.</span> <span class="nav-text">JCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSR"><span class="nav-number">4.0.2.</span> <span class="nav-text">JSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JEP"><span class="nav-number">4.0.3.</span> <span class="nav-text">JEP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2018-12-15-Java%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%81%9A%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java用注解做参数校验 | hahahaha123567's Blog">
+      <meta itemprop="description" content="介绍几种常见的 @NotNull 注解">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java用注解做参数校验
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-15 01:32:08" itemprop="dateCreated datePublished" datetime="2018-12-15T01:32:08+08:00">2018-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2018-12-18 01:53:26" itemprop="dateModified" datetime="2018-12-18T01:53:26+08:00">2018-12-18</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">介绍几种常见的 @NotNull 注解</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="JSR-303-Bean-Validation"><a href="#JSR-303-Bean-Validation" class="headerlink" title="JSR 303 Bean Validation"></a>JSR 303 Bean Validation</h1><p><code>javax.validation.constraints</code></p>
+<ul>
+<li>NotNull</li>
+<li>NotEmpty</li>
+<li>NotBlank</li>
+<li>…</li>
+</ul>
+<p>常用 Hibernate Validator 实现, 在 controller 层用 @Validated 开启, 在运行时校验不通过则报错</p>
+<h1 id="JSR-305-Annotations-for-Software-Defect-Detection"><a href="#JSR-305-Annotations-for-Software-Defect-Detection" class="headerlink" title="JSR 305 Annotations for Software Defect Detection"></a>JSR 305 Annotations for Software Defect Detection</h1><p><code>org.springframework.lang</code></p>
+<ul>
+<li>NonNull</li>
+<li>Nullable</li>
+</ul>
+<p>提供给ide做判断提示, 在运行时不起作用</p>
+<h1 id="Jetbrains-家的注解"><a href="#Jetbrains-家的注解" class="headerlink" title="Jetbrains 家的注解"></a>Jetbrains 家的注解</h1><p>涵盖了 JSR 305 的规范, 还有额外的 @Contract @TestOnly 等</p>
+<p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/idea/annotating-source-code.html">官网英文文档</a><br>(Jetbrains 家的文档是真的好)</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24778947">中文文档(不)</a></p>
+<h1 id="几个常识"><a href="#几个常识" class="headerlink" title="几个常识"></a>几个常识</h1><h3 id="JCP"><a href="#JCP" class="headerlink" title="JCP"></a>JCP</h3><p>Java Community Process, 由Sun创建, 用来发展和更新Java技术规范, 参考实现(RI), 技术兼容包(TCK)</p>
+<h3 id="JSR"><a href="#JSR" class="headerlink" title="JSR"></a>JSR</h3><p>Java Specification Requests, JCP 成员向委员会提交的 Java 发展议案，经过一系列流程后，如果通过会成为 JEP</p>
+<h3 id="JEP"><a href="#JEP" class="headerlink" title="JEP"></a>JEP</h3><p>JDK Enhancement Proposals, JDK的版本变化将从这些提案中选取</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.oschina.net/question/3838659_2278450">JAVA中@NotNull和@Nonnull有什么区别？ - 开源中国</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/31433bcaa1a5">JDK 版本变化 - 简书</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018-08-13-java-util-concurrent.html" rel="prev" title="java.util.concurrent">
+                  <i class="fa fa-chevron-left"></i> java.util.concurrent
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018-12-16-%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E9%94%81.html" rel="next" title="用字符串加锁">
+                  用字符串加锁 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

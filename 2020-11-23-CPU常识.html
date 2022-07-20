@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content=".">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPU常识">
+<meta property="og:url" content="https://hahahaha123567.github.io/2020-11-23-CPU%E5%B8%B8%E8%AF%86.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content=".">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-23T11:43:11.955Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="cs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2020-11-23-CPU%E5%B8%B8%E8%AF%86.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2020-11-23-CPU%E5%B8%B8%E8%AF%86.html","path":"2020-11-23-CPU常识.html","title":"CPU常识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CPU常识 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%89%E6%8C%87%E4%BB%A4%E9%9B%86%E5%88%92%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">按指令集划分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intel%E4%BA%A7%E5%93%81%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">Intel产品线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Server"><span class="nav-number">2.1.</span> <span class="nav-text">Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PC"><span class="nav-number">2.2.</span> <span class="nav-text">PC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="nav-number">2.3.</span> <span class="nav-text">移动端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intel%E7%9A%84%E5%90%8E%E7%BC%80"><span class="nav-number">3.</span> <span class="nav-text">Intel的后缀</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AMD%E4%BA%A7%E5%93%81%E7%BA%BF"><span class="nav-number">4.</span> <span class="nav-text">AMD产品线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PC-1"><span class="nav-number">4.1.</span> <span class="nav-text">PC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPU"><span class="nav-number">4.2.</span> <span class="nav-text">GPU</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2020-11-23-CPU%E5%B8%B8%E8%AF%86.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CPU常识 | hahahaha123567's Blog">
+      <meta itemprop="description" content=".">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CPU常识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-23 00:00:00" itemprop="dateCreated datePublished" datetime="2020-11-23T00:00:00+08:00">2020-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-06-23 19:43:11" itemprop="dateModified" datetime="2021-06-23T19:43:11+08:00">2021-06-23</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="按指令集划分"><a href="#按指令集划分" class="headerlink" title="按指令集划分"></a>按指令集划分</h1><ul>
+<li>CISC指令集<ul>
+<li>X86架构<ul>
+<li>Intel</li>
+<li>AMD</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RISC指令集<ul>
+<li>ARM架构<ul>
+<li>ARM</li>
+</ul>
+</li>
+<li>MIPS架构</li>
+<li>RISC-V</li>
+</ul>
+</li>
+</ul>
+<h1 id="Intel产品线"><a href="#Intel产品线" class="headerlink" title="Intel产品线"></a>Intel产品线</h1><h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><ul>
+<li>Xeon至强</li>
+<li>Itanium安腾</li>
+</ul>
+<h2 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h2><ul>
+<li>Core酷睿</li>
+<li>Pentium奔腾</li>
+<li>Celeron赛扬</li>
+</ul>
+<h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><ul>
+<li>Atom凌动</li>
+<li>Quark SOC</li>
+</ul>
+<h1 id="Intel的后缀"><a href="#Intel的后缀" class="headerlink" title="Intel的后缀"></a>Intel的后缀</h1><ul>
+<li>G, 附带AMD的GPU</li>
+<li>K, 可超频</li>
+<li>T, 低压版桌面</li>
+<li>Y,M,U, 低压版移动</li>
+<li>X, 当代最强</li>
+</ul>
+<h1 id="AMD产品线"><a href="#AMD产品线" class="headerlink" title="AMD产品线"></a>AMD产品线</h1><h2 id="PC-1"><a href="#PC-1" class="headerlink" title="PC"></a>PC</h2><ul>
+<li>RyzenThreadripper锐龙线程撕裂者</li>
+<li>Ryzen锐龙</li>
+<li>Athlon速龙</li>
+</ul>
+<h2 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h2><ul>
+<li>Radeon</li>
+<li>Radeon Pro</li>
+<li>FirePro</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cs/" rel="tag"># cs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020-06-17-%E5%B8%B8%E8%A7%81Linux%E5%8F%91%E8%A1%8C%E7%89%88.html" rel="prev" title="常见Linux发行版">
+                  <i class="fa fa-chevron-left"></i> 常见Linux发行版
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020-12-23-springboot%E5%86%85%E7%BD%AE%E7%9A%84tomcat.html" rel="next" title="springboot内置的tomcat">
+                  springboot内置的tomcat <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

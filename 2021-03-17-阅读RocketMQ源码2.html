@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/snowman-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/snowman-16.ico">
+  <link rel="mask-icon" href="/images/snowman-32.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基础通信模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读RocketMQ源码(2) - 基础通信模块">
+<meta property="og:url" content="https://hahahaha123567.github.io/2021-03-17-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%812.html">
+<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:description" content="基础通信模块">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hahahaha123567.github.io/image/rocketmq_design_3.png">
+<meta property="og:image" content="https://hahahaha123567.github.io/image/rocketmq_design_5.png">
+<meta property="article:published_time" content="2021-03-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-31T03:27:31.051Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="MessageQueue">
+<meta property="article:tag" content="源码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hahahaha123567.github.io/image/rocketmq_design_3.png">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2021-03-17-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%812.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2021-03-17-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%812.html","path":"2021-03-17-阅读RocketMQ源码2.html","title":"阅读RocketMQ源码(2) - 基础通信模块"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>阅读RocketMQ源码(2) - 基础通信模块 | hahahaha123567's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">基础通信模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">协议内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96-x2F-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">序列化&#x2F;反序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">通信方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">异步请求的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#serverHandler-receive-and-process-message"><span class="nav-number">1.4.1.</span> <span class="nav-text">serverHandler: receive and process message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-the-processMessageReceived-method-process"><span class="nav-number">1.4.2.</span> <span class="nav-text">server: the processMessageReceived method process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-get-the-corresponding-processor-according-to-the-business-code"><span class="nav-number">1.4.3.</span> <span class="nav-text">server: get the corresponding processor according to the business code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-the-business-processor-executes-and-gets-the-responds-result"><span class="nav-number">1.4.4.</span> <span class="nav-text">server: the business processor executes and gets the responds result</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-determines-whether-the-request-is-one-way"><span class="nav-number">1.4.5.</span> <span class="nav-text">server: determines whether the request is one-way</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-set-opaque-to-the-response-and-send-it-to-the-client-side"><span class="nav-number">1.4.6.</span> <span class="nav-text">server: set opaque to the response and send it to the client side</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clientHandler-read-the-message-that-netty-receives-and-process"><span class="nav-number">1.4.7.</span> <span class="nav-text">clientHandler: read the message that netty receives and process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-get-responseFuture-based-on-opaque"><span class="nav-number">1.4.8.</span> <span class="nav-text">client: get responseFuture based on opaque</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-execute-the-callback-method"><span class="nav-number">1.4.9.</span> <span class="nav-text">client: execute the callback method</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">1.5.</span> <span class="nav-text">tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8Dos%E7%89%88%E6%9C%AC"><span class="nav-number">1.5.1.</span> <span class="nav-text">获取当前os版本</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2021-03-17-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%812.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="阅读RocketMQ源码(2) - 基础通信模块 | hahahaha123567's Blog">
+      <meta itemprop="description" content="基础通信模块">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阅读RocketMQ源码(2) - 基础通信模块
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-17 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-17T00:00:00+08:00">2021-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-12-31 11:27:31" itemprop="dateModified" datetime="2021-12-31T11:27:31+08:00">2021-12-31</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">基础通信模块</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="基础通信模块"><a href="#基础通信模块" class="headerlink" title="基础通信模块"></a>基础通信模块</h1><p>依赖netty实现,引入了netty-tcnative</p>
+<h2 id="协议内容"><a href="#协议内容" class="headerlink" title="协议内容"></a>协议内容</h2><ul>
+<li>4byte msg length</li>
+<li>1byte serialization type</li>
+<li>3byte header length</li>
+<li>header</li>
+<li>body</li>
+</ul>
+<h2 id="序列化-x2F-反序列化"><a href="#序列化-x2F-反序列化" class="headerlink" title="序列化&#x2F;反序列化"></a>序列化&#x2F;反序列化</h2><p>在<code>RemotingCommand</code>类的<code>encode()</code>方法中可以看到序列化的过程</p>
+<ul>
+<li>RocketMQSerializable, 序列化为bytes, 用ByteBuffer实现</li>
+<li>RemotingSerializable, 序列化为Json, 用fastjson实现</li>
+</ul>
+<p>在获取selector时针对Linux特殊处理, 尝试获取<code>sun.nio.ch.EPollSelectorProvider</code>, 笔者使用macOS装有Java1.8 HotSpotJVM, 使用了<code>sun.nio.ch.KQueueSelectorProvider</code></p>
+<h2 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h2><p><img src="/../../../../image/rocketmq_design_3.png" alt="rocketmq_design_3"></p>
+<p>在<code>NettyRemotingAbstract</code>类中实现了三种通信方式</p>
+<ul>
+<li>sync</li>
+<li>async</li>
+<li>oneway</li>
+</ul>
+<h2 id="异步请求的流程"><a href="#异步请求的流程" class="headerlink" title="异步请求的流程"></a>异步请求的流程</h2><p><img src="/../../../../image/rocketmq_design_5.png" alt="rocketmq_design_5"></p>
+<ol>
+<li><p><strong>client</strong> Assemle remotingCommand and generate callbacks (MQClientAPIImpl.sendMessage())</p>
+</li>
+<li><p><strong>client</strong> create a chennel for communication based on addr (NettyRemotingClient.getAndCreateChannel())</p>
+</li>
+<li><p><strong>client</strong> Acquisition semaphore (NettyRemotingAbstract.invokeAsyncImpl())</p>
+</li>
+<li><p><strong>client</strong> give opaque access to ResponseFuture (NettyRemotingAbstract.invokeAsyncImpl())</p>
+</li>
+<li><p><strong>client</strong> call netty’s channel’s writeAndFlush (NettyRemotingAbstract.invokeAsyncImpl())</p>
+</li>
+</ol>
+<h3 id="serverHandler-receive-and-process-message"><a href="#serverHandler-receive-and-process-message" class="headerlink" title="serverHandler: receive and process message"></a>serverHandler: receive and process message</h3><h3 id="server-the-processMessageReceived-method-process"><a href="#server-the-processMessageReceived-method-process" class="headerlink" title="server: the processMessageReceived method process"></a>server: the processMessageReceived method process</h3><h3 id="server-get-the-corresponding-processor-according-to-the-business-code"><a href="#server-get-the-corresponding-processor-according-to-the-business-code" class="headerlink" title="server: get the corresponding processor according to the business code"></a>server: get the corresponding processor according to the business code</h3><h3 id="server-the-business-processor-executes-and-gets-the-responds-result"><a href="#server-the-business-processor-executes-and-gets-the-responds-result" class="headerlink" title="server: the business processor executes and gets the responds result"></a>server: the business processor executes and gets the responds result</h3><h3 id="server-determines-whether-the-request-is-one-way"><a href="#server-determines-whether-the-request-is-one-way" class="headerlink" title="server: determines whether the request is one-way"></a>server: determines whether the request is one-way</h3><h3 id="server-set-opaque-to-the-response-and-send-it-to-the-client-side"><a href="#server-set-opaque-to-the-response-and-send-it-to-the-client-side" class="headerlink" title="server: set opaque to the response and send it to the client side"></a>server: set opaque to the response and send it to the client side</h3><h3 id="clientHandler-read-the-message-that-netty-receives-and-process"><a href="#clientHandler-read-the-message-that-netty-receives-and-process" class="headerlink" title="clientHandler: read the message that netty receives and process"></a>clientHandler: read the message that netty receives and process</h3><h3 id="client-get-responseFuture-based-on-opaque"><a href="#client-get-responseFuture-based-on-opaque" class="headerlink" title="client: get responseFuture based on opaque"></a>client: get responseFuture based on opaque</h3><h3 id="client-execute-the-callback-method"><a href="#client-execute-the-callback-method" class="headerlink" title="client: execute the callback method"></a>client: execute the callback method</h3><h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><h3 id="获取当前os版本"><a href="#获取当前os版本" class="headerlink" title="获取当前os版本"></a>获取当前os版本</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>reference</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/apache/rocketmq/blob/master/docs/cn/design.md#2-%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6">2-通信机制 at master · apache&#x2F;rocketmq</a></p>
+<p><a target="_blank" rel="noopener" href="https://jaskey.github.io/blog/2016/12/19/rocketmq-network-protocol/">RocketMQ——通信协议 - 薛定谔的风口猪</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MessageQueue/" rel="tag"># MessageQueue</a>
+              <a href="/tags/%E6%BA%90%E7%A0%81/" rel="tag"># 源码</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021-02-19-%E9%98%85%E8%AF%BBRocketMQ%E6%BA%90%E7%A0%811.html" rel="prev" title="阅读RocketMQ源码(1) - 项目信息,本地日志模块">
+                  <i class="fa fa-chevron-left"></i> 阅读RocketMQ源码(1) - 项目信息,本地日志模块
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-04-07-JavaSE%E5%90%84%E5%A4%A7%E5%8E%82%E5%95%86JDK.html" rel="next" title="Java SE 各大厂商JDK">
+                  Java SE 各大厂商JDK <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

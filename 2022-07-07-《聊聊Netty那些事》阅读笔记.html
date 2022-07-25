@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/snowman-32.ico">
@@ -18,13 +19,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="《聊聊Netty那些事》bin的技术小屋, 保留一些重要的内容和有很多形象的配图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《聊聊Netty那些事》阅读笔记">
 <meta property="og:url" content="https://hahahaha123567.github.io/2022-07-07-%E3%80%8A%E8%81%8A%E8%81%8ANetty%E9%82%A3%E4%BA%9B%E4%BA%8B%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0.html">
-<meta property="og:site_name" content="hahahaha123567&#39;s Blog">
+<meta property="og:site_name" content="hahahaha123567">
 <meta property="og:description" content="《聊聊Netty那些事》bin的技术小屋, 保留一些重要的内容和有很多形象的配图">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hahahaha123567.github.io/image/netty1-1.png">
@@ -45,7 +46,7 @@
 <meta property="og:image" content="https://hahahaha123567.github.io/image/netty7-3.png">
 <meta property="og:image" content="https://hahahaha123567.github.io/image/netty8-1.png">
 <meta property="article:published_time" content="2022-07-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-20T12:44:42.759Z">
+<meta property="article:modified_time" content="2022-07-25T07:22:51.648Z">
 <meta property="article:author" content="hahahaha123567">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Netty">
@@ -60,7 +61,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2022-07-07-%E3%80%8A%E8%81%8A%E8%81%8ANetty%E9%82%A3%E4%BA%9B%E4%BA%8B%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0.html","path":"2022-07-07-《聊聊Netty那些事》阅读笔记.html","title":"《聊聊Netty那些事》阅读笔记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>《聊聊Netty那些事》阅读笔记 | hahahaha123567's Blog</title>
+<title>《聊聊Netty那些事》阅读笔记 | hahahaha123567</title>
   
 
 
@@ -90,7 +91,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">hahahaha123567's Blog</p>
+      <p class="site-title">hahahaha123567</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -135,7 +136,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E6%A0%B8IO%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">内核IO模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8C%85%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">网络包接收流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-number">1.2.</span> <span class="nav-text">同步与异步, 阻塞与非阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-TODO"><span class="nav-number">1.3.</span> <span class="nav-text">IO多路复用 TODO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">1.3.1.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poll"><span class="nav-number">1.3.2.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epoll"><span class="nav-number">1.3.3.</span> <span class="nav-text">epoll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">Reactor模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E5%AF%B9Reactor%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.5.</span> <span class="nav-text">Netty对Reactor模型的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MainReactorGroup"><span class="nav-number">1.5.1.</span> <span class="nav-text">MainReactorGroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SubReactorGroup"><span class="nav-number">1.5.2.</span> <span class="nav-text">SubReactorGroup</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactor%E5%9C%A8Netty%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0-%E5%88%9B%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">Reactor在Netty中的实现(创建)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.1.</span> <span class="nav-text">Netty服务端代码模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E4%BA%8E%E5%90%AF%E5%8A%A8Reactor%E7%BA%BF%E7%A8%8B%E7%9A%84executor"><span class="nav-number">2.2.</span> <span class="nav-text">创建用于启动Reactor线程的executor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAReactor"><span class="nav-number">2.3.</span> <span class="nav-text">创建Reactor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAChannel%E5%88%B0Reactor%E7%9A%84%E7%BB%91%E5%AE%9A%E7%AD%96%E7%95%A5"><span class="nav-number">2.4.</span> <span class="nav-text">创建Channel到Reactor的绑定策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">Netty启动流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="nav-number">3.2.</span> <span class="nav-text">Netty服务端的启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactor%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">Reactor的架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">Reactor线程的整个运行框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E8%BD%AE%E8%AF%A2IO%E5%B0%B1%E7%BB%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">Reactor线程轮询IO就绪事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E5%A4%84%E7%90%86IO%E4%B8%8E%E5%A4%84%E7%90%86%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%97%B6%E9%97%B4%E6%AF%94%E4%BE%8B%E5%88%86%E9%85%8D"><span class="nav-number">4.3.</span> <span class="nav-text">Reactor处理IO与处理异步任务的时间比例分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86IO%E5%B0%B1%E7%BB%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.4.</span> <span class="nav-text">Reactor线程处理IO就绪事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">4.5.</span> <span class="nav-text">Reactor线程处理异步任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E9%81%BFJDK-Epoll%E7%A9%BA%E8%BD%AE%E8%AF%A2bug"><span class="nav-number">4.6.</span> <span class="nav-text">规避JDK Epoll空轮询bug</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">Netty接收网络连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MainReactor%E5%A4%84%E7%90%86OP-ACCEPT%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">MainReactor处理OP_ACCEPT事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doReadMessages%E6%8E%A5%E6%94%B6%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">5.2.</span> <span class="nav-text">doReadMessages接收客户端连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChannelRead%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%93%8D%E5%BA%94"><span class="nav-number">5.3.</span> <span class="nav-text">ChannelRead事件的响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91SubReactorGroup%E4%B8%AD%E6%B3%A8%E5%86%8CNioSocketChannel"><span class="nav-number">5.4.</span> <span class="nav-text">向SubReactorGroup中注册NioSocketChannel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">Netty接收网络数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SubReactor%E5%A4%84%E7%90%86OP-READ%E4%BA%8B%E4%BB%B6%E6%B5%81%E7%A8%8B%E6%80%BB%E8%A7%88"><span class="nav-number">6.1.</span> <span class="nav-text">SubReactor处理OP_READ事件流程总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B%E6%80%BB%E8%A7%88"><span class="nav-number">6.2.</span> <span class="nav-text">Netty接收网络数据流程总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChannelRead%E5%92%8CChannelReadComplete%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.3.</span> <span class="nav-text">ChannelRead和ChannelReadComplete的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E6%80%BB%E8%A7%88"><span class="nav-number">6.4.</span> <span class="nav-text">源码核心框架总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8DDirectByteBuffer%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">6.4.1.</span> <span class="nav-text">分配DirectByteBuffer接收网络数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ByteBuffer%E5%8A%A8%E6%80%81%E8%87%AA%E9%80%82%E5%BA%94%E6%8B%AC%E7%BC%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">6.5.</span> <span class="nav-text">ByteBuffer动态自适应括缩容机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98%E4%B8%BAByteBuffer%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="nav-number">6.6.</span> <span class="nav-text">使用堆外内存为ByteBuffer分配内存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recycler%E5%AF%B9%E8%B1%A1%E6%B1%A0"><span class="nav-number">7.</span> <span class="nav-text">Recycler对象池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">7.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%9C%A8JVM%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%92%8C%E5%9B%9E%E6%94%B6%E5%BC%80%E9%94%80"><span class="nav-number">7.2.</span> <span class="nav-text">对象在JVM中创建和回收开销</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0Recycler"><span class="nav-number">7.3.</span> <span class="nav-text">对象池Recycler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recycler%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.4.</span> <span class="nav-text">Recycler总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E6%97%A0%E9%94%81%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.4.1.</span> <span class="nav-text">获取对象无锁化设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E5%AF%B9%E8%B1%A1%E6%97%A0%E9%94%81%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.4.2.</span> <span class="nav-text">释放对象无锁化设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recycler%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.5.</span> <span class="nav-text">Recycler实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">Netty发送数据流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#write%E6%96%B9%E6%B3%95%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE"><span class="nav-number">8.1.</span> <span class="nav-text">write方法发送数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pipeline-%E8%AF%A6%E8%A7%A3%E6%89%80%E6%9C%89-IO-%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA%E4%BB%A5%E5%8F%8A%E4%BC%A0%E6%92%AD%E8%B7%AF%E5%BE%84"><span class="nav-number">9.</span> <span class="nav-text">Pipeline, 详解所有 IO 事件的触发时机以及传播路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-TCP-%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%AD%A3%E5%B8%B8%E5%85%B3%E9%97%AD-%E5%BC%82%E5%B8%B8%E5%85%B3%E9%97%AD-%E5%8D%8A%E5%85%B3%E9%97%AD%E5%9C%BA%E6%99%AF"><span class="nav-number">10.</span> <span class="nav-text">Netty 如何处理 TCP 连接的正常关闭, 异常关闭, 半关闭场景</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E6%A0%B8IO%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">内核IO模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8C%85%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">网络包接收流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5-%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-number">1.2.</span> <span class="nav-text">同步与异步, 阻塞与非阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-TODO"><span class="nav-number">1.3.</span> <span class="nav-text">IO多路复用 TODO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select"><span class="nav-number">1.3.1.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poll"><span class="nav-number">1.3.2.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epoll"><span class="nav-number">1.3.3.</span> <span class="nav-text">epoll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">Reactor模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E5%AF%B9Reactor%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.5.</span> <span class="nav-text">Netty对Reactor模型的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BBReactorGroup"><span class="nav-number">1.5.1.</span> <span class="nav-text">主ReactorGroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8EReactorGroup"><span class="nav-number">1.5.2.</span> <span class="nav-text">从ReactorGroup</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactor%E5%9C%A8Netty%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0-%E5%88%9B%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">Reactor在Netty中的实现(创建)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.1.</span> <span class="nav-text">Netty服务端代码模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E4%BA%8E%E5%90%AF%E5%8A%A8EventLoop%E7%BA%BF%E7%A8%8B%E7%9A%84executor"><span class="nav-number">2.2.</span> <span class="nav-text">创建用于启动EventLoop线程的executor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAEventLoop"><span class="nav-number">2.3.</span> <span class="nav-text">创建EventLoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAChannel%E5%88%B0EventLoop%E7%9A%84%E7%BB%91%E5%AE%9A%E7%AD%96%E7%95%A5"><span class="nav-number">2.4.</span> <span class="nav-text">创建Channel到EventLoop的绑定策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">Netty启动流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="nav-number">3.2.</span> <span class="nav-text">Netty服务端的启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactor%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">Reactor的架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%90%E8%A1%8C%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">Reactor线程的整个运行框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E8%BD%AE%E8%AF%A2IO%E5%B0%B1%E7%BB%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">Reactor线程轮询IO就绪事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E5%A4%84%E7%90%86IO%E4%B8%8E%E5%A4%84%E7%90%86%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%97%B6%E9%97%B4%E6%AF%94%E4%BE%8B%E5%88%86%E9%85%8D"><span class="nav-number">4.3.</span> <span class="nav-text">Reactor处理IO与处理异步任务的时间比例分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86IO%E5%B0%B1%E7%BB%AA%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.4.</span> <span class="nav-text">Reactor线程处理IO就绪事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactor%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="nav-number">4.5.</span> <span class="nav-text">Reactor线程处理异步任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%84%E9%81%BFJDK-Epoll%E7%A9%BA%E8%BD%AE%E8%AF%A2bug"><span class="nav-number">4.6.</span> <span class="nav-text">规避JDK Epoll空轮询bug</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">Netty接收网络连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MainReactor%E5%A4%84%E7%90%86OP-ACCEPT%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">MainReactor处理OP_ACCEPT事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doReadMessages%E6%8E%A5%E6%94%B6%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">5.2.</span> <span class="nav-text">doReadMessages接收客户端连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChannelRead%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%93%8D%E5%BA%94"><span class="nav-number">5.3.</span> <span class="nav-text">ChannelRead事件的响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E4%BB%8EReactorGroup%E6%B3%A8%E5%86%8CNioSocketChannel"><span class="nav-number">5.4.</span> <span class="nav-text">向从ReactorGroup注册NioSocketChannel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">Netty接收网络数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SubReactor%E5%A4%84%E7%90%86OP-READ%E4%BA%8B%E4%BB%B6%E6%B5%81%E7%A8%8B%E6%80%BB%E8%A7%88"><span class="nav-number">6.1.</span> <span class="nav-text">SubReactor处理OP_READ事件流程总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B%E6%80%BB%E8%A7%88"><span class="nav-number">6.2.</span> <span class="nav-text">Netty接收网络数据流程总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChannelRead%E5%92%8CChannelReadComplete%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.3.</span> <span class="nav-text">ChannelRead和ChannelReadComplete的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E6%80%BB%E8%A7%88"><span class="nav-number">6.4.</span> <span class="nav-text">源码核心框架总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%85%8DDirectByteBuffer%E6%8E%A5%E6%94%B6%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">6.4.1.</span> <span class="nav-text">分配DirectByteBuffer接收网络数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ByteBuffer%E5%8A%A8%E6%80%81%E8%87%AA%E9%80%82%E5%BA%94%E6%8B%AC%E7%BC%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">6.5.</span> <span class="nav-text">ByteBuffer动态自适应括缩容机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98%E4%B8%BAByteBuffer%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="nav-number">6.6.</span> <span class="nav-text">使用堆外内存为ByteBuffer分配内存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recycler%E5%AF%B9%E8%B1%A1%E6%B1%A0"><span class="nav-number">7.</span> <span class="nav-text">Recycler对象池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">7.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%9C%A8JVM%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%92%8C%E5%9B%9E%E6%94%B6%E5%BC%80%E9%94%80"><span class="nav-number">7.2.</span> <span class="nav-text">对象在JVM中创建和回收开销</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0Recycler"><span class="nav-number">7.3.</span> <span class="nav-text">对象池Recycler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recycler%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.4.</span> <span class="nav-text">Recycler总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E6%97%A0%E9%94%81%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.4.1.</span> <span class="nav-text">获取对象无锁化设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8A%E6%94%BE%E5%AF%B9%E8%B1%A1%E6%97%A0%E9%94%81%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.4.2.</span> <span class="nav-text">释放对象无锁化设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recycler%E5%AE%9E%E7%8E%B0"><span class="nav-number">7.5.</span> <span class="nav-text">Recycler实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">Netty发送数据流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#write%E6%96%B9%E6%B3%95%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE"><span class="nav-number">8.1.</span> <span class="nav-text">write方法发送数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pipeline-%E8%AF%A6%E8%A7%A3%E6%89%80%E6%9C%89-IO-%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA%E4%BB%A5%E5%8F%8A%E4%BC%A0%E6%92%AD%E8%B7%AF%E5%BE%84"><span class="nav-number">9.</span> <span class="nav-text">Pipeline, 详解所有 IO 事件的触发时机以及传播路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-TCP-%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%AD%A3%E5%B8%B8%E5%85%B3%E9%97%AD-%E5%BC%82%E5%B8%B8%E5%85%B3%E9%97%AD-%E5%8D%8A%E5%85%B3%E9%97%AD%E5%9C%BA%E6%99%AF"><span class="nav-number">10.</span> <span class="nav-text">Netty 如何处理 TCP 连接的正常关闭, 异常关闭, 半关闭场景</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -162,9 +163,6 @@
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
         <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://weibo.com/hahahaha1235678" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;hahahaha1235678" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
         <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
@@ -197,6 +195,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -222,12 +221,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hahahaha123567's Blog">
+      <meta itemprop="name" content="hahahaha123567">
       <meta itemprop="description" content="niconiconi">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="《聊聊Netty那些事》阅读笔记 | hahahaha123567's Blog">
+      <meta itemprop="name" content="《聊聊Netty那些事》阅读笔记 | hahahaha123567">
       <meta itemprop="description" content="《聊聊Netty那些事》bin的技术小屋, 保留一些重要的内容和有很多形象的配图">
     </span>
       <header class="post-header">
@@ -250,10 +249,25 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-20 20:44:42" itemprop="dateModified" datetime="2022-07-20T20:44:42+08:00">2022-07-20</time>
+      <time title="修改时间：2022-07-25 15:22:51" itemprop="dateModified" datetime="2022-07-25T15:22:51+08:00">2022-07-25</time>
     </span>
 
   
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>16k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
 </div>
 
             <div class="post-description">《聊聊Netty那些事》bin的技术小屋, 保留一些重要的内容和有很多形象的配图</div>
@@ -268,7 +282,7 @@
 <ul>
 <li>从<code>网卡</code>DMA拷贝网络数据包到<code>内存</code>中的开销(DMA指网卡可以在没有CPU参与的情况下独立写内存)</li>
 <li>CPU收到<code>硬中断</code>后调用网卡驱动进行响应的开销</li>
-<li>OS的内核线程ksoftirqd响应<code>软中断</code>的开销</li>
+<li>OS的内核线程<code>ksoftirqd</code>响应<code>软中断</code>的开销</li>
 <li>应用程序通过系统调用从<code>用户态</code>转为<code>内核态</code>的开销, 系统调用返回时从<code>内核态</code>转为<code>用户态</code>的开销</li>
 <li>网络数据从<code>内存</code>的<code>内核空间</code>通过CPU拷贝到<code>用户空间</code>的开销</li>
 </ul>
@@ -276,7 +290,7 @@
 <p><img src="/../../../../image/netty1-2.png" alt="网络包发送过程"></p>
 <h2 id="同步与异步-阻塞与非阻塞"><a href="#同步与异步-阻塞与非阻塞" class="headerlink" title="同步与异步, 阻塞与非阻塞"></a>同步与异步, 阻塞与非阻塞</h2><p>接收网络数据包的2个流程</p>
 <ul>
-<li>数据准备阶段:  在这个阶段, 网络数据包到达<code>网卡</code>, 通过<code>DMA</code>的方式将数据包拷贝到<code>内存</code>中, 然后经过<code>硬中断</code>, <code>软中断</code>, 接着通过内核线程ksoftirqd经过内核协议栈的处理, 最终将数据发送到<code>内核Socket的接收缓冲区</code>中</li>
+<li>数据准备阶段:  在这个阶段, 网络数据包到达<code>网卡</code>, 通过<code>DMA</code>的方式将数据包拷贝到<code>内存</code>中, 然后经过<code>硬中断</code>, <code>软中断</code>, 接着通过内核线程<code>ksoftirqd</code>经过内核协议栈的处理, 最终将数据发送到<code>内核Socket的接收缓冲区</code>中</li>
 <li>数据拷贝阶段:  当数据到达内核Socket的接收缓冲区中时, 此时数据存在于<code>内核空间</code>中, 需要将数据拷贝到<code>用户空间</code>中, 才能够被应用程序读取</li>
 </ul>
 <p>参考<a href="https://hahahaha123567.github.io/2022-01-14-feng-huang-jia-gou-du-shu-bi-ji-copy.html">《凤凰架构》读书摘要</a>的<code>网络IO模型</code>一节</p>
@@ -294,7 +308,7 @@
 <p>阻塞与非阻塞的区别主要发生在第一阶段: 数据准备阶段</p>
 <ul>
 <li>阻塞模式, 当Socket的接收缓冲区中没有数据的时候, 应用线程会一直等待</li>
-<li>非阻塞模式, 应用线程不会等待, 系统调用直接返回错误标志EWOULDBLOCK</li>
+<li>非阻塞模式, 应用线程不会等待, 系统调用直接返回错误标志<code>EWOULDBLOCK</code></li>
 </ul>
 <p>同步与异步主要的区别发生在第二阶段: 数据拷贝阶段</p>
 <ul>
@@ -303,148 +317,146 @@
 </ul>
 <h2 id="IO多路复用-TODO"><a href="#IO多路复用-TODO" class="headerlink" title="IO多路复用 TODO"></a>IO多路复用 TODO</h2><h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p><img src="/../../../../image/netty1-3.png" alt="select"></p>
 <h3 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h3><h3 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h3><p><img src="/../../../../image/netty1-4.png" alt="epoll"></p>
-<p>在Netty中实现的EpollSocketChannel默认的就是边缘触发模式, JDK的NIO默认是水平触发模式</p>
+<p>在Netty中实现的<code>EpollSocketChannel</code>默认的就是边缘触发模式, JDK的NIO默认是水平触发模式</p>
 <p>epoll对select, poll的优化</p>
 <ol>
-<li><p>epoll在内核中通过红黑树管理海量的连接, 所以在调用epoll_wait获取IO就绪的socket时, 不需要传入监听的socket文件描述符, 从而避免了海量的文件描述符集合在用户空间和内核空间中来回复制</p>
+<li><p>epoll在内核中通过红黑树管理海量的连接, 所以在调用<code>epoll_wait</code>获取IO就绪的socket时, 不需要传入监听的socket文件描述符, 从而避免了海量的文件描述符集合在用户空间和内核空间中来回复制</p>
 </li>
 <li><p>epoll仅会通知IO就绪的socket, 避免了在用户空间遍历的开销</p>
 </li>
-<li><p>epoll通过在socket的等待队列上注册回调函数ep_poll_callback通知用户程序IO就绪的socket, 避免了在内核中轮询的开销</p>
+<li><p>epoll通过在socket的等待队列上注册回调函数<code>ep_poll_callback</code>通知用户程序IO就绪的socket, 避免了在内核中轮询的开销</p>
 </li>
 </ol>
 <h2 id="Reactor模型"><a href="#Reactor模型" class="headerlink" title="Reactor模型"></a>Reactor模型</h2><p><code>Reactor</code>基于<code>NIO</code>, <code>Proactor</code>基于<code>AIO</code></p>
 <ul>
 <li>单Reactor单线程<ul>
-<li>单Reactor意味着只有一个epoll对象, 用来监听所有的事件, 比如连接事件, 读写事件, </li>
-<li>单线程意味着只有一个线程来执行epoll_wait获取IO就绪的Socket, 然后对这些就绪的Socket执行读写, 以及后边的业务处理也依然是这个线程</li>
+<li>单Reactor意味着只有一个epoll对象, 监听所有的事件, 包括连接事件, 读写事件</li>
+<li>单线程意味着只有一个线程来执行<code>epoll_wait</code>获取IO就绪的Socket, 然后对这些就绪的Socket执行读写, 后续的业务处理也依然是这个线程</li>
 </ul>
 </li>
 <li>单Reactor多线程<ul>
-<li>只有一个epoll对象来监听所有的IO事件, 一个线程来调用epoll_wait获取IO就绪的Socket, </li>
-<li>但是当IO就绪事件产生时, 这些IO事件对应处理的业务Handler, 我们是通过线程池来执行, 这样相比单Reactor单线程模型提高了执行效率, 充分发挥了多核CPU的优势</li>
+<li>只有一个epoll对象来监听所有的IO事件, 一个线程来调用<code>epoll_wait</code>获取IO就绪的Socket</li>
+<li>当IO就绪事件产生时, 这些IO事件对应处理的业务Handler, 我们是通过线程池来执行, 这样相比单Reactor单线程模型提高了执行效率, 充分发挥了多核CPU的优势</li>
 </ul>
 </li>
 <li>主从Reactor多线程<ul>
 <li><code>主Reactor</code>处理连接事件</li>
-<li>当创建好连接, 建立好对应的socket后, 在acceptor中将要监听的read事件注册到<code>从Reactor</code>中, 由<code>从Reactor</code>来监听socket上的读写事件</li>
+<li>当创建好连接, 建立好对应的socket后, 在acceptor中将需要监听的read事件注册到<code>从Reactor</code>中, 由<code>从Reactor</code>来监听socket上的读写事件</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置单Reactor单线程</span></span><br><span class="line"><span class="type">EventLoopGroup</span> <span class="variable">eventGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">ServerBootstrap</span>().group(eventGroup);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置多Reactor线程</span></span><br><span class="line"><span class="type">EventLoopGroup</span> <span class="variable">eventGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">ServerBootstrap</span>().group(eventGroup);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置主从Reactor多线程</span></span><br><span class="line"><span class="type">EventLoopGroup</span> <span class="variable">bossGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>(<span class="number">1</span>); </span><br><span class="line"><span class="type">EventLoopGroup</span> <span class="variable">workerGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">ServerBootstrap</span>().group(bossGroup, workerGroup);</span><br></pre></td></tr></table></figure>
 
 <h2 id="Netty对Reactor模型的实现"><a href="#Netty对Reactor模型的实现" class="headerlink" title="Netty对Reactor模型的实现"></a>Netty对Reactor模型的实现</h2><p><img src="/../../../../image/netty1.png" alt="Netty中的reactor"></p>
-<p>Reactor在netty中是以group的形式出现的, netty中将Reactor分为两组, 一组是<code>MainReactorGroup</code>也就是<code>EventLoopGroup bossGroup</code>, 另一组是<code>SubReactorGroup</code>也就是<code>EventLoopGroup workerGroup</code></p>
-<h3 id="MainReactorGroup"><a href="#MainReactorGroup" class="headerlink" title="MainReactorGroup"></a>MainReactorGroup</h3><p><code>MainReactorGroup</code>中通常只有一个Reactor, 专门负责<code>监听连接accept事件</code>, 当有连接事件产生时, 在对应的处理handler acceptor中创建初始化相应的<code>NioSocketChannel</code>(代表一个Socket连接), 然后以负载均衡的方式在<code>SubReactorGroup</code>中选取一个Reactor, 注册上去<code>监听Read事件</code>, ServerBootstrapAcceptor</p>
-<p><code>MainReactorGroup</code>中只有一个Reactor的原因是, 通常我们服务端程序只会绑定监听一个端口, 如果要绑定监听多个端口, 就会配置多个Reactor</p>
-<h3 id="SubReactorGroup"><a href="#SubReactorGroup" class="headerlink" title="SubReactorGroup"></a>SubReactorGroup</h3><p><code>SubReactorGroup</code>中有多个Reactor, 具体Reactor的个数可以由系统参数指定, 默认的Reactor的个数为CPU核数 * 2, SubReactorGroup中的Reactor主要负责监听读写事件, 每一个Reactor负责监听一组socket连接</p>
-<p>一个Reactor分配一个IO线程, 这个IO线程负责从Reactor中获取IO就绪事件, 执行IO调用获取IO数据, 执行PipeLine</p>
+<p>Reactor在netty中是以group的形式出现的, netty中将Reactor分为两组, 一组是<code>主ReactorGroup</code>也就是<code>bossGroup</code>, 另一组是<code>从ReactorGroup</code>也就是<code>workerGroup</code></p>
+<h3 id="主ReactorGroup"><a href="#主ReactorGroup" class="headerlink" title="主ReactorGroup"></a>主ReactorGroup</h3><p><code>主ReactorGroup</code>中通常只有一个Reactor, 专门负责监听<code>连接accept事件</code>, 当有连接事件产生时, 在acceptor中创建相应的<code>NioSocketChannel</code>(代表一个Socket连接), 然后以负载均衡的方式在<code>从ReactorGroup</code>中选一个Reactor, 注册监听<code>Read事件</code></p>
+<p><code>主ReactorGroup</code>中只有一个Reactor, 因为通常我们服务端程序只会绑定监听一个端口, 如果要绑定监听多个端口, 就会配置多个Reactor</p>
+<h3 id="从ReactorGroup"><a href="#从ReactorGroup" class="headerlink" title="从ReactorGroup"></a>从ReactorGroup</h3><p><code>从ReactorGroup</code>中有多个Reactor, 具体Reactor的个数可以由系统参数指定, 默认的Reactor的个数为<code>CPU核数 * 2</code>, <code>从ReactorGroup</code>中的Reactor主要负责监听读写事件, 每一个Reactor负责监听一组socket连接</p>
 <p>Socket连接在创建后就被固定的分配给一个Reactor, 所以一个Socket连接也只会被一个固定的IO线程执行, 这种无锁串行化的设计的目的是为了防止多线程并发执行同一个socket连接上的IO逻辑处理, 防止出现线程安全问题</p>
 <ol>
 <li>轮询IO就绪事件</li>
 <li>处理IO事件</li>
 <li>执行异步任务</li>
 </ol>
-<p>由于每个Reactor中只有一个IO线程, 这个IO线程既要执行IO活跃Socket连接对应的PipeLine中的ChannelHandler, 又要从Reactor中获取IO就绪事件, 执行IO调用, 所以PipeLine中ChannelHandler中执行的逻辑不能耗时太长, 尽量将耗时的业务逻辑处理放入单独的业务线程池中处理, 否则会影响其他连接的IO读写, 从而近一步影响整个服务程序的IO吞吐</p>
-<h1 id="Reactor在Netty中的实现-创建"><a href="#Reactor在Netty中的实现-创建" class="headerlink" title="Reactor在Netty中的实现(创建)"></a>Reactor在Netty中的实现(创建)</h1><h2 id="Netty服务端代码模板"><a href="#Netty服务端代码模板" class="headerlink" title="Netty服务端代码模板"></a>Netty服务端代码模板</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Echoes back any received data from a client.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">EchoServer</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">PORT</span> <span class="operator">=</span> Integer.parseInt(System.getProperty(<span class="string">&quot;port&quot;</span>, <span class="string">&quot;8007&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// Configure the server.</span></span><br><span class="line">        <span class="comment">//创建主从Reactor线程组</span></span><br><span class="line">        <span class="type">EventLoopGroup</span> <span class="variable">bossGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="type">EventLoopGroup</span> <span class="variable">workerGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>();</span><br><span class="line">        <span class="keyword">final</span> <span class="type">EchoServerHandler</span> <span class="variable">serverHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EchoServerHandler</span>();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ServerBootstrap</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerBootstrap</span>();</span><br><span class="line">            b.group(bossGroup, workerGroup)<span class="comment">//配置主从Reactor</span></span><br><span class="line">             .channel(NioServerSocketChannel.class)<span class="comment">//配置主Reactor中的channel类型</span></span><br><span class="line">             .option(ChannelOption.SO_BACKLOG, <span class="number">100</span>)<span class="comment">//设置主Reactor中channel的option选项</span></span><br><span class="line">             .handler(<span class="keyword">new</span> <span class="title class_">LoggingHandler</span>(LogLevel.INFO))<span class="comment">//设置主Reactor中Channel-&gt;pipline-&gt;handler</span></span><br><span class="line">             .childHandler(<span class="keyword">new</span> <span class="title class_">ChannelInitializer</span>&lt;SocketChannel&gt;() &#123;<span class="comment">//设置从Reactor中注册channel的pipeline</span></span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">                     <span class="type">ChannelPipeline</span> <span class="variable">p</span> <span class="operator">=</span> ch.pipeline();</span><br><span class="line">                     <span class="comment">//p.addLast(new LoggingHandler(LogLevel.INFO));</span></span><br><span class="line">                     p.addLast(serverHandler);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Start the server. 绑定端口启动服务, 开始监听accept事件</span></span><br><span class="line">            <span class="type">ChannelFuture</span> <span class="variable">f</span> <span class="operator">=</span> b.bind(PORT).sync();</span><br><span class="line">            <span class="comment">// Wait until the server socket is closed.</span></span><br><span class="line">            f.channel().closeFuture().sync();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// Shut down all event loops to terminate all threads.</span></span><br><span class="line">            bossGroup.shutdownGracefully();</span><br><span class="line">            workerGroup.shutdownGracefully();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于每个Reactor中只有一个IO线程, <code>ChannelHandler</code>中执行的逻辑不能耗时太长, 尽量将耗时的业务逻辑处理放入单独的业务线程池中处理, 否则会影响其他连接的IO读写, 从而影响整个服务程序的IO吞吐</p>
+<h1 id="Reactor在Netty中的实现-创建"><a href="#Reactor在Netty中的实现-创建" class="headerlink" title="Reactor在Netty中的实现(创建)"></a>Reactor在Netty中的实现(创建)</h1><h2 id="Netty服务端代码模板"><a href="#Netty服务端代码模板" class="headerlink" title="Netty服务端代码模板"></a>Netty服务端代码模板</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Echoes back any received data from a client.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">EchoServer</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">PORT</span> <span class="operator">=</span> Integer.parseInt(System.getProperty(<span class="string">&quot;port&quot;</span>, <span class="string">&quot;8007&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// Configure the server.</span></span><br><span class="line">        <span class="comment">//创建主从Reactor线程组</span></span><br><span class="line">        <span class="type">EventLoopGroup</span> <span class="variable">bossGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="type">EventLoopGroup</span> <span class="variable">workerGroup</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NioEventLoopGroup</span>();</span><br><span class="line">        <span class="keyword">final</span> <span class="type">EchoServerHandler</span> <span class="variable">serverHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EchoServerHandler</span>();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ServerBootstrap</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerBootstrap</span>();</span><br><span class="line">            b.group(bossGroup, workerGroup) <span class="comment">// 配置主从Reactor</span></span><br><span class="line">             .channel(NioServerSocketChannel.class) <span class="comment">// 配置主Reactor中的channel类型</span></span><br><span class="line">             .option(ChannelOption.SO_BACKLOG, <span class="number">100</span>) <span class="comment">// 设置主Reactor中channel的option选项</span></span><br><span class="line">             .handler(<span class="keyword">new</span> <span class="title class_">LoggingHandler</span>(LogLevel.INFO)) <span class="comment">// 设置主Reactor中Channel-&gt;pipline-&gt;handler</span></span><br><span class="line">             .childHandler(<span class="keyword">new</span> <span class="title class_">ChannelInitializer</span>&lt;SocketChannel&gt;() &#123;</span><br><span class="line">                <span class="comment">// 设置从Reactor中注册channel的pipeline</span></span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">initChannel</span><span class="params">(SocketChannel ch)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">                     <span class="type">ChannelPipeline</span> <span class="variable">p</span> <span class="operator">=</span> ch.pipeline();</span><br><span class="line">                     <span class="comment">// p.addLast(new LoggingHandler(LogLevel.INFO));</span></span><br><span class="line">                     p.addLast(serverHandler);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 绑定端口启动服务, 开始监听accept事件</span></span><br><span class="line">            <span class="type">ChannelFuture</span> <span class="variable">f</span> <span class="operator">=</span> b.bind(PORT).sync();</span><br><span class="line">            <span class="comment">// Wait until the server socket is closed.</span></span><br><span class="line">            f.channel().closeFuture().sync();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// Shut down all event loops to terminate all threads.</span></span><br><span class="line">            bossGroup.shutdownGracefully();</span><br><span class="line">            workerGroup.shutdownGracefully();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>创建主从<code>Reactor Group</code>, 在Netty中<code>EventLoopGroup</code>就是Reactor Group的实现类, <code>EventLoop</code>就是Reactor的实现类</p>
-<p>Socket</p>
+<p>创建<code>主从ReactorGroup</code>, 在Netty中<code>EventLoopGroup</code>就是<code>ReactorGroup</code>的实现类, <code>EventLoop</code>就是<code>Reactor</code>的实现类</p>
+<p>SocketChannel</p>
 <ul>
-<li><code>NioServerSocketChannel</code>, 监听Socket, 负责listen和bind, 使用<code>ServerBootstrapAcceptor</code>创建客户端连接socket</li>
+<li><code>NioServerSocketChannel</code>, 监听Socket, 负责listen和bind, 使用<code>ServerBootstrapAcceptor</code>创建<code>NioSocketChannel</code></li>
 <li><code>NioSocketChannel</code>, 客户端连接socket, 负责与客户端之间的网络通信</li>
 </ul>
 <p>serverBootstrap.handler设置的是服务端NioServerSocketChannel PipeLine中的ChannelHandler, ServerBootstrap启动类方法带有child前缀的均是设置客户端NioSocketChannel属性的</p>
-<h2 id="创建用于启动Reactor线程的executor"><a href="#创建用于启动Reactor线程的executor" class="headerlink" title="创建用于启动Reactor线程的executor"></a>创建用于启动Reactor线程的executor</h2><p><code>ThreadPerTaskExecutor</code>来一个任务就创建一个线程执行, Reactor线程的核心就是一个死循环不停的轮询IO就绪事件, 处理IO事件, 执行异步任务</p>
-<h2 id="创建Reactor"><a href="#创建Reactor" class="headerlink" title="创建Reactor"></a>创建Reactor</h2><p><img src="/../../../../image/netty2.png" alt="Reactor结构"></p>
-<p>Reactor线程组<code>NioEventLoopGroup</code>包含多个<code>Reactor</code>, 存放于<code>private final EventExecutor[] children</code>中</p>
-<p>Reactor的核心是采用的IO多路复用模型来对客户端连接上的IO事件进行监听, 所以最重要的事情是创建Selector</p>
-<p>openSelector是NioEventLoop类中用于创建IO多路复用的Selector, 并对创建出来的JDK NIO 原生的Selector进行性能优化: </p>
+<h2 id="创建用于启动EventLoop线程的executor"><a href="#创建用于启动EventLoop线程的executor" class="headerlink" title="创建用于启动EventLoop线程的executor"></a>创建用于启动EventLoop线程的executor</h2><p><code>ThreadPerTaskExecutor</code>, 来一个任务就创建一个线程执行, EventLoop线程的核心就是一个死循环不停的轮询IO就绪事件, 处理IO事件, 执行异步任务</p>
+<h2 id="创建EventLoop"><a href="#创建EventLoop" class="headerlink" title="创建EventLoop"></a>创建EventLoop</h2><p><img src="/../../../../image/netty2.png" alt="EventLoop结构"></p>
+<p>EventLoop线程组<code>NioEventLoopGroup</code>包含多个<code>EventLoop</code>, 存放于<code>private final EventExecutor[] children</code>中</p>
+<p>EventLoop的核心是使用IO多路复用模型来对客户端连接上的IO事件进行监听, 所以最重要的事情是创建Selector</p>
+<p>openSelector是NioEventLoop类中用于创建IO多路复用的Selector, 并对创建出来的JDK NIO原生的Selector进行性能优化: </p>
 <ol>
 <li>将<code>SelectorImpl</code>中存放可用socket的<code>HashSet</code>使用反射修改为<code>SelectedSelectionKeySet</code>, 底层实现从<code>HashMap</code>变为<code>数组</code>, 优化遍历、插入性能, 利用cpu cache</li>
 <li>使用代理模式, 用<code>SelectedSelectionKeySetSelector</code>代理selector的真实实现类, 在每次遍历结束后清空SelectedSelectionKeySet的内容</li>
 </ol>
-<p>Reactor内的异步任务队列的类型为<code>MpscQueue</code>,它是由<code>JCTools</code>提供的一个高性能无锁队列, 从命名前缀Mpsc可以看出, 它适用于多生产者单消费者的场景</p>
-<p>Reactor负责执行的异步任务分为三类: </p>
+<p>EventLoop内的异步任务队列的类型为<code>MpscQueue</code>,它是由<code>JCTools</code>提供的一个高性能无锁队列, 从命名前缀Mpsc可以看出, 它适用于多生产者单消费者的场景</p>
+<p>EventLoop负责执行的异步任务分为三类: </p>
 <ul>
 <li>普通任务: 这是Netty最主要执行的异步任务, 存放在普通任务队列taskQueue中, 在<code>NioEventLoop</code>构造函数中创建</li>
 <li>定时任务: 存放在优先级队列中</li>
-<li>尾部任务: 存放于尾部任务队列tailTasks中, 尾部任务一般不常用, 在普通任务执行完后 Reactor线程会执行尾部任务, 比如对Netty的运行状态做一些统计数据, 例如任务循环的耗时、占用物理内存的大小等等都可以向尾部队列添加一个收尾任务完成统计数据的实时更新</li>
+<li>尾部任务: 存放于尾部任务队列tailTasks中, 尾部任务一般不常用, 在普通任务执行完后 EventLoop线程会执行尾部任务, 比如对Netty的运行状态做一些统计数据, 例如任务循环的耗时、占用物理内存的大小等等都可以向尾部队列添加一个收尾任务完成统计数据的实时更新</li>
 </ul>
-<h2 id="创建Channel到Reactor的绑定策略"><a href="#创建Channel到Reactor的绑定策略" class="headerlink" title="创建Channel到Reactor的绑定策略"></a>创建Channel到Reactor的绑定策略</h2><p>无论是Netty服务端<code>NioServerSocketChannel</code>关注的<code>OP_ACCEPT</code>事件也好, 还是Netty客户端<code>NioSocketChannel</code>关注的<code>OP_READ</code>和<code>OP_WRITE</code>事件也好, 都需要先注册到Reactor上, Reactor才能监听Channel上关注的IO事件实现IO多路复用</p>
-<p><code>MultithreadEventExecutorGroup</code>类的构造器参数<code>EventExecutorChooserFactory</code>负责创建Channel到Reactor的绑定策略, 默认为round-robin轮询, 如果reactor数量为2的次幂可以用移位快速计算</p>
-<h1 id="Netty启动流程"><a href="#Netty启动流程" class="headerlink" title="Netty启动流程"></a>Netty启动流程</h1><p><img src="/../../../../image/netty3-1.png" alt="Reactor启动流程图"></p>
+<h2 id="创建Channel到EventLoop的绑定策略"><a href="#创建Channel到EventLoop的绑定策略" class="headerlink" title="创建Channel到EventLoop的绑定策略"></a>创建Channel到EventLoop的绑定策略</h2><p>无论是Netty服务端<code>NioServerSocketChannel</code>关注的<code>OP_ACCEPT</code>事件, 还是Netty客户端<code>NioSocketChannel</code>关注的<code>OP_READ</code>和<code>OP_WRITE</code>事件, 都需要先注册到EventLoop上, EventLoop才能监听Channel上关注的IO事件实现IO多路复用</p>
+<p><code>MultithreadEventExecutorGroup</code>类的构造器参数<code>EventExecutorChooserFactory</code>负责创建Channel到EventLoop的绑定策略, 默认为round-robin轮询, 如果EventLoop数量为2的次幂可以用移位快速计算</p>
+<h1 id="Netty启动流程"><a href="#Netty启动流程" class="headerlink" title="Netty启动流程"></a>Netty启动流程</h1><p><img src="/../../../../image/netty3-1.png" alt="EventLoop启动流程图"></p>
 <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>不管是服务端用到的<code>NioServerSocketChannel</code>还是客户端用到的<code>NioSocketChannel</code>, 每个Channel实例都会有一个Pipeline, Pipeline中有多个<code>ChannelHandler</code>用于编排处理对应Channel上感兴趣的IO事件</p>
 <p>向<code>NioServerSocketChannel</code>中的Pipeline添加<code>ChannelHandler</code>分为两种方式</p>
 <ol>
 <li>显式添加: 用户通过<code>ServerBootstrap#handler</code>添加, 如果需要添加多个<code>ChannelHandler</code>, 则可以通过<code>ChannelInitializer</code>向pipeline中进行添加</li>
-<li>隐式添加: 隐式添加主要添加的就是主ReactorGroup的核心组件, 也就是图中的acceptor, Netty中的实现为<code>ServerBootstrapAcceptor</code>, 本质上也是一种<code>ChannelHandler</code>, 主要负责在客户端连接建立好后, 初始化客户端<code>NioSocketChannel</code>, 在从Reactor线程组中选取一个Sub Reactor, 将客户端<code>NioSocketChannel</code>注册到Sub Reactor中的selector上</li>
+<li>隐式添加: 隐式添加主要添加的就是<code>MainEventLoopGroup</code>的核心组件, 也就是图中的acceptor, Netty中的实现为<code>ServerBootstrapAcceptor</code>, 本质上也是一种<code>ChannelHandler</code>, 主要负责在客户端连接建立好后, 初始化客户端<code>NioSocketChannel</code>, 在从EventLoop线程组中选取一个<code>SubEventLoop</code>, 将客户端<code>NioSocketChannel</code>注册到<code>SubEventLoop</code>中的selector上</li>
 </ol>
-<p><img src="/../../../../image/netty3.png" alt="ReactorGroup结构"></p>
-<p>由于在Netty的IO线程模型中, 是由单个Sub Reactor线程负责执行客户端<code>NioSocketChannel</code>中的Pipeline, 一个Sub Reactor线程负责处理多个<code>NioSocketChannel</code>上的IO事件, 如果Pipeline中的<code>ChannelHandler</code>添加的太多, 就会影响Sub Reactor线程执行其他<code>NioSocketChannel</code>上的Pipeline, 从而降低IO处理效率, 降低吞吐量</p>
+<p><img src="/../../../../image/netty3.png" alt="EventLoopGroup结构"></p>
+<p>由于在Netty的IO线程模型中, 是由单个<code>SubEventLoop</code>线程负责执行客户端<code>NioSocketChannel</code>中的Pipeline, 一个<code>SubEventLoop</code>线程负责处理多个<code>NioSocketChannel</code>上的IO事件, 如果Pipeline中的<code>ChannelHandler</code>添加的太多, 就会影响<code>SubEventLoop</code>线程执行其他<code>NioSocketChannel</code>上的Pipeline, 从而降低IO处理效率, 降低吞吐量</p>
 <p>所以Pipeline中的<code>ChannelHandler</code>不易添加过多, 并且不能在<code>ChannelHandler</code>中执行耗时的业务处理任务</p>
-<h2 id="Netty服务端的启动"><a href="#Netty服务端的启动" class="headerlink" title="Netty服务端的启动"></a>Netty服务端的启动</h2><p><img src="/../../../../image/netty9.png" alt="Reactor启动后的结构"></p>
+<h2 id="Netty服务端的启动"><a href="#Netty服务端的启动" class="headerlink" title="Netty服务端的启动"></a>Netty服务端的启动</h2><p><img src="/../../../../image/netty9.png" alt="EventLoop启动后的结构"></p>
 <p>Netty服务端的启动流程总体如下: </p>
 <ol>
-<li>创建服务端NioServerSocketChannel并初始化</li>
-<li>将服务端NioServerSocketChannel注册到主Reactor线程组中</li>
-<li>注册成功后, 开始初始化NioServerSocketChannel中的pipeline, 然后在pipeline中触发channelRegister事件</li>
-<li>随后由NioServerSocketChannel绑定端口地址</li>
-<li>绑定端口地址成功后, 向NioServerSocketChannel对应的Pipeline中触发传播ChannelActive事件, 在ChannelActive事件回调中向Main Reactor注册OP_ACCEPT事件, 开始等待客户端连接, 服务端启动完成</li>
+<li>创建服务端<code>NioServerSocketChannel</code>并初始化</li>
+<li>将服务端<code>NioServerSocketChannel</code>注册到<code>主EventLoopGroup</code>中</li>
+<li>注册成功后, 开始初始化<code>NioServerSocketChannel</code>中的pipeline, 然后在pipeline中触发<code>ChannelRegister</code>事件</li>
+<li>随后由<code>NioServerSocketChannel</code>绑定端口地址</li>
+<li>绑定端口地址成功后, 向<code>NioServerSocketChannel</code>对应的Pipeline中触发传播<code>ChannelActive</code>事件, 在事件回调中向<code>MainEventLoop</code>注册<code>OP_ACCEPT</code>事件, 开始等待客户端连接, 服务端启动完成</li>
 </ol>
 <p>代码执行流程:</p>
 <ol>
-<li>创建NioServerSocketChannel</li>
-<li>初始化NioServerSocketChannel</li>
-<li>向Main Reactor注册NioServerSocketChannel<ol>
-<li>主Reactor线程组中选取一个Main Reactor进行注册</li>
-<li>向绑定后的Main Reactor进行注册</li>
-<li>Reactor线程的启动</li>
+<li>创建<code>NioServerSocketChannel</code></li>
+<li>初始化<code>NioServerSocketChannel</code></li>
+<li>向<code>MainEventLoop</code>注册<code>NioServerSocketChannel</code><ol>
+<li><code>MainEventLoopGroup</code>中选取一个<code>MainEventLoop</code>进行注册</li>
+<li>向绑定后的<code>MainEventLoop</code>进行注册</li>
+<li><code>MainEventLoop</code>的启动</li>
 <li>startThread</li>
 <li>register0, 封装为异步任务</li>
 <li>doRegister(), 添加Acceptor封装为异步任务</li>
-<li>HandlerAdded事件回调中初始化ChannelPipeline</li>
-<li>回调regFuture的ChannelFutureListener</li>
+<li><code>HandlerAdded</code>事件回调中初始化ChannelPipeline</li>
+<li>回调regFuture的<code>ChannelFutureListener</code></li>
 </ol>
 </li>
 <li>doBind0, 封装为异步任务</li>
 <li>绑定端口地址<ol>
 <li>HeadContext</li>
-<li>channelActive事件处理, 封装为异步任务</li>
+<li><code>channelActive</code>事件处理, 封装为异步任务</li>
 <li>beginRead</li>
 </ol>
 </li>
 </ol>
 <p><code>Unsafe</code>为<code>Channel</code>接口的一个内部接口, 用于定义实现对Channel底层的各种操作, Unsafe接口定义的操作行为只能由Netty框架的Reactor线程调用, 用户线程禁止调用</p>
-<p>Netty自定义的SocketChannel类型均继承AttributeMap接口以及DefaultAttributeMap类, 正是它们定义了ChannelAttributes, 用于向Channel添加用户自定义的一些信息</p>
-<p>初始化NioServerSocketChannel中pipeline的时机是: 当NioServerSocketChannel注册到Main Reactor之后, 绑定端口地址之前</p>
-<p>Reactor线程的启动是在向Reactor提交第一个异步任务的时候启动的</p>
-<p>Netty中的主Reactor线程组NioEventLoopGroup中的Main ReactorNioEventLoop, 是在用户程序Main线程向Main Reactor提交用于注册NioServerSocketChannel的异步任务时开始启动</p>
+<p>Netty自定义的<code>SocketChannel</code>类型均继承<code>AttributeMap</code>接口以及<code>DefaultAttributeMap</code>类, 正是它们定义了<code>ChannelAttributes</code>, 用于向Channel添加用户自定义的一些信息</p>
+<p>初始化<code>NioServerSocketChannel</code>中pipeline的时机是: 当<code>NioServerSocketChannel</code>注册到<code>MainEventLoop</code>之后, 绑定端口地址之前</p>
+<p><code>MainEventLoop</code>线程是在提交第一个异步任务的时候启动的, 在用户程序(Main线程)提交用于注册<code>NioServerSocketChannel</code>的异步任务时开始启动</p>
 <h1 id="Reactor的架构"><a href="#Reactor的架构" class="headerlink" title="Reactor的架构"></a>Reactor的架构</h1><h2 id="Reactor线程的整个运行框架"><a href="#Reactor线程的整个运行框架" class="headerlink" title="Reactor线程的整个运行框架"></a>Reactor线程的整个运行框架</h2><p>Netty中的Reactor线程主要干三件事情: </p>
 <ul>
-<li>轮询注册在Reactor上的所有Channel感兴趣的IO就绪事件</li>
+<li>轮询注册在<code>EventLoop</code>上的所有Channel感兴趣的IO就绪事件</li>
 <li>处理Channel上的IO就绪事件</li>
 <li>执行Netty中的异步任务</li>
 </ul>
-<p>Reactor线程其实执行的就是一个死循环, 在死循环中不断的通过Selector去轮询IO就绪事件, 如果发生IO就绪事件则从Selector系统调用中返回并处理IO就绪事件, 如果没有发生IO就绪事件则一直阻塞在Selector系统调用上, 直到满足Selector唤醒条件:</p>
+<p><code>EventLoop</code>线程其实执行的就是一个死循环, 在死循环中不断的通过Selector去轮询IO就绪事件, 如果发生IO就绪事件则从Selector系统调用中返回并处理IO就绪事件, 如果没有发生IO就绪事件则一直阻塞在Selector系统调用上, 直到满足Selector唤醒条件:</p>
 <ol>
 <li>当Selector轮询到有IO活跃事件发生时</li>
-<li>当Reactor线程需要执行的定时任务到达任务执行时间deadline时</li>
-<li>当有异步任务提交给Reactor时, Reactor线程需要从Selector上被唤醒, 这样才能及时的去执行异步任务</li>
+<li>当<code>EventLoop</code>线程需要执行的定时任务到达任务执行时间deadline时</li>
+<li>当有异步任务提交给<code>EventLoop</code>时, <code>EventLoop</code>线程需要从Selector上被唤醒, 这样才能及时的去执行异步任务</li>
 </ol>
-<p><img src="/../../../../image/netty5.png" alt="Reactor工作流程图"></p>
+<p><img src="/../../../../image/netty5.png" alt="EventLoop工作流程图"></p>
 <h2 id="Reactor线程轮询IO就绪事件"><a href="#Reactor线程轮询IO就绪事件" class="headerlink" title="Reactor线程轮询IO就绪事件"></a>Reactor线程轮询IO就绪事件</h2><p>在Reactor线程的轮询工作开始之前, 需要首先判断下当前是否有异步任务需要执行, 判断依据就是查看Reactor中的异步任务队列taskQueue和用于统计信息任务用的尾部队列tailTask是否有异步任务</p>
-<p>如果Reactor中有异步任务需要执行, 那么Reactor线程需要立即执行, 不能阻塞在Selector上, 在返回前需要再顺带调用selectNow()非阻塞查看一下当前是否有IO就绪事件发生, 如果有, 那么正好可以和异步任务一起被处理, 如果没有, 则及时地处理异步任务</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DefaultSelectStrategy</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">calculateStrategy</span><span class="params">(IntSupplier selectSupplier, <span class="type">boolean</span> hasTasks)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Reactor线程要保证及时的执行异步任务</span></span><br><span class="line"><span class="comment">    * 1: 如果有异步任务等待执行, 则马上执行selectNow()非阻塞轮询一次IO就绪事件</span></span><br><span class="line"><span class="comment">    * 2: 没有异步任务, 则跳到switch select分支</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">return</span> hasTasks ? selectSupplier.get() : SelectStrategy.SELECT;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// NioEventLoop</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">IntSupplier</span> <span class="variable">selectNowSupplier</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntSupplier</span>() &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 非阻塞</span></span><br><span class="line">        <span class="keyword">return</span> selector.selectNow();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果Reactor中有异步任务需要执行, 那么Reactor线程需要立即执行, 不能阻塞在Selector上, 在返回前需要再顺带调用<code>selectNow()</code>非阻塞查看一下当前是否有IO就绪事件发生, 如果有, 那么正好可以和异步任务一起被处理, 如果没有, 则及时地处理异步任务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DefaultSelectStrategy</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">calculateStrategy</span><span class="params">(IntSupplier selectSupplier, <span class="type">boolean</span> hasTasks)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Reactor线程要保证及时的执行异步任务</span></span><br><span class="line"><span class="comment">     * 1: 如果有异步任务等待执行, 则马上执行selectNow()非阻塞轮询一次IO就绪事件</span></span><br><span class="line"><span class="comment">     * 2: 没有异步任务, 则跳到switch select分支</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">return</span> hasTasks ? selectSupplier.get() : SelectStrategy.SELECT;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// NioEventLoop</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">IntSupplier</span> <span class="variable">selectNowSupplier</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntSupplier</span>() &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 非阻塞</span></span><br><span class="line">        <span class="keyword">return</span> selector.selectNow();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>NioEventLoop是ScheduledExecutorService的子类, 支持执行定时任务, 在阻塞轮询IO任务之前通过<code>AbstractScheduledEventExecutor</code>的<code>nextScheduledTaskDeadlineNanos</code>获取到下个定时任务执行的时间作为阻塞超时时间</p>
+<p><code>NioEventLoop</code>是<code>ScheduledExecutorService</code>的子类, 支持执行定时任务, 在阻塞轮询IO任务之前通过<code>AbstractScheduledEventExecutor</code>的<code>nextScheduledTaskDeadlineNanos</code>获取到下个定时任务执行的时间作为阻塞超时时间</p>
 <p>异步任务在被提交后希望立马得到执行, 那么就在提交异步任务的时候去唤醒正在阻塞轮询的Reactor线程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!hasTasks()) &#123;</span><br><span class="line">        strategy = select(curDeadlineNanos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 执行到这里说明Reactor已经从Selector上被唤醒了</span></span><br><span class="line">    <span class="comment">// 设置Reactor的状态为苏醒状态AWAKE</span></span><br><span class="line">    <span class="comment">// lazySet优化不必要的volatile操作, 不使用内存屏障, 不保证写操作的可见性（单线程不需要保证）</span></span><br><span class="line">    nextWakeupNanos.lazySet(AWAKE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!hasTasks()) &#123;</span><br><span class="line">        strategy = select(curDeadlineNanos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 执行到这里说明EventLoop已经从Selector上被唤醒了</span></span><br><span class="line">    <span class="comment">// 设置EventLoop的状态为苏醒状态AWAKE</span></span><br><span class="line">    <span class="comment">// lazySet优化不必要的volatile操作, 不使用内存屏障, 不保证写操作的可见性（单线程不需要保证）</span></span><br><span class="line">    nextWakeupNanos.lazySet(AWAKE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Reactor处理IO与处理异步任务的时间比例分配"><a href="#Reactor处理IO与处理异步任务的时间比例分配" class="headerlink" title="Reactor处理IO与处理异步任务的时间比例分配"></a>Reactor处理IO与处理异步任务的时间比例分配</h2><p>Netty通过ioRatio变量来调配Reactor线程在处理IO事件和执行异步任务之间的CPU时间分配比例, 防止Reactor线程处理异步任务时间过长而导致I&#x2F;O 事件得不到及时地处理</p>
-<p>ioRatio &#x2F; 100 &#x3D; 执行异步任务时间 &#x2F; (执行异步任务时间 + 轮询IO事件时间), 默认50</p>
+<h2 id="Reactor处理IO与处理异步任务的时间比例分配"><a href="#Reactor处理IO与处理异步任务的时间比例分配" class="headerlink" title="Reactor处理IO与处理异步任务的时间比例分配"></a>Reactor处理IO与处理异步任务的时间比例分配</h2><p>Netty通过ioRatio变量来调配<code>EventLoop</code>线程在处理IO事件和执行异步任务之间的CPU时间分配比例, 防止<code>EventLoop</code>线程处理异步任务时间过长而导致I&#x2F;O 事件得不到及时地处理</p>
+<p><code>ioRatio / 100 = 执行异步任务时间 / (执行异步任务时间 + 轮询IO事件时间)</code>, 默认50</p>
 <h2 id="Reactor线程处理IO就绪事件"><a href="#Reactor线程处理IO就绪事件" class="headerlink" title="Reactor线程处理IO就绪事件"></a>Reactor线程处理IO就绪事件</h2><ol>
-<li>processSelectedKeysPlain, JDK实现<ol>
+<li><code>processSelectedKeysPlain</code>, JDK实现<ol>
 <li>获取IO就绪的Channel</li>
 <li>处理Channel上的IO事件<ol>
 <li>处理Connect事件</li>
@@ -452,62 +464,62 @@
 <li>处理Read事件或者Accept事件</li>
 </ol>
 </li>
-<li>从Selector中移除失效的SelectionKey, 为了保证Selector中所有KeySet的有效性, 需要在Channel取消个数达到256时, 触发一次selectNow, 目的是清除无效的SelectionKey</li>
+<li>从Selector中移除失效的<code>SelectionKey</code>, 为了保证Selector中所有KeySet的有效性, 需要在Channel取消个数达到256时, 触发一次selectNow, 目的是清除无效的<code>SelectionKey</code></li>
 </ol>
 </li>
-<li>processSelectedKeysOptimized, Netty实现<ol>
+<li><code>processSelectedKeysOptimized</code>, Netty实现<ol>
 <li>数组需要手动做清除</li>
 </ol>
 </li>
 </ol>
-<p>服务端NioServerSocketChannel中的Read方法处理的是Accept事件, 客户端NioSocketChannel中的Read方法处理的是Read事件</p>
-<h2 id="Reactor线程处理异步任务"><a href="#Reactor线程处理异步任务" class="headerlink" title="Reactor线程处理异步任务"></a>Reactor线程处理异步任务</h2><p>Reactor线程执行异步任务的核心逻辑:</p>
+<p>服务端<code>NioServerSocketChannel</code>中的Read方法处理的是Accept事件, 客户端<code>NioSocketChannel</code>中的Read方法处理的是Read事件</p>
+<h2 id="Reactor线程处理异步任务"><a href="#Reactor线程处理异步任务" class="headerlink" title="Reactor线程处理异步任务"></a>Reactor线程处理异步任务</h2><p><code>EventLoop</code>线程执行异步任务的核心逻辑:</p>
 <ol>
-<li>先将到期的定时任务一股脑的从定时任务队列scheduledTaskQueue中取出并转存到普通任务队列taskQueue中</li>
-<li>由Reactor线程统一从普通任务队列taskQueue中取出任务执行</li>
-<li>在Reactor线程执行完定时任务和普通任务后, 开始执行存储于尾部任务队列tailTasks中的尾部任务</li>
+<li>先将到期的定时任务从定时任务队列<code>scheduledTaskQueue</code>中全部取出并转存到普通任务队列taskQueue中</li>
+<li>由<code>EventLoop</code>线程统一从普通任务队列taskQueue中取出任务执行</li>
+<li>在<code>EventLoop</code>线程执行完定时任务和普通任务后, 开始执行存储于尾部任务队列tailTasks中的尾部任务</li>
 </ol>
-<h2 id="规避JDK-Epoll空轮询bug"><a href="#规避JDK-Epoll空轮询bug" class="headerlink" title="规避JDK Epoll空轮询bug"></a>规避JDK Epoll空轮询bug</h2><p>由于JDK NIO Epoll的空轮询BUG存在, 这样会导致Reactor线程在没有任何事情可做的情况下被意外唤醒, 导致CPU空转</p>
-<p>既没有IO就绪事件, 也没有异步任务, Reactor线程从Selector上被异常唤醒, 发生512次之后认为已触发bug, 则重建Selector(将之前注册的所有Channel重新注册到新的Selector上并关闭旧的Selector), selectCnt计数归0</p>
-<h1 id="Netty接收网络连接"><a href="#Netty接收网络连接" class="headerlink" title="Netty接收网络连接"></a>Netty接收网络连接</h1><h2 id="MainReactor处理OP-ACCEPT事件"><a href="#MainReactor处理OP-ACCEPT事件" class="headerlink" title="MainReactor处理OP_ACCEPT事件"></a>MainReactor处理OP_ACCEPT事件</h2><p>Netty将OP_ACCEPT事件处理的入口函数封装在NioServerSocketChannel里的底层操作类Unsafe的read方法中</p>
+<h2 id="规避JDK-Epoll空轮询bug"><a href="#规避JDK-Epoll空轮询bug" class="headerlink" title="规避JDK Epoll空轮询bug"></a>规避JDK Epoll空轮询bug</h2><p>JDK NIO Epoll的空轮询BUG会导致<code>EventLoop</code>线程在没有任何事情可做的情况下被意外唤醒, 导致CPU空转</p>
+<p>既没有IO就绪事件, 也没有异步任务, <code>EventLoop</code>线程从Selector上被异常唤醒, 发生512次之后认为已触发bug, 则重建Selector(将之前注册的所有Channel重新注册到新的Selector上并关闭旧的Selector), selectCnt计数归0</p>
+<h1 id="Netty接收网络连接"><a href="#Netty接收网络连接" class="headerlink" title="Netty接收网络连接"></a>Netty接收网络连接</h1><h2 id="MainReactor处理OP-ACCEPT事件"><a href="#MainReactor处理OP-ACCEPT事件" class="headerlink" title="MainReactor处理OP_ACCEPT事件"></a>MainReactor处理OP_ACCEPT事件</h2><p>Netty将<code>OP_ACCEPT</code>事件处理的入口函数封装在<code>NioServerSocketChannel</code>里的底层操作类Unsafe的read方法中</p>
 <p><img src="/../../../../image/netty6.png" alt="接收客户端连接"></p>
-<p>main reactor线程是在一个无限循环read loop中不断的调用JDK NIO serverSocketChannel.accept()方法来接收完成三次握手的客户端连接NioSocketChannel的, 并将接收到的客户端连接NioSocketChannel临时保存在List<Object> readBuf集合中, 后续在NioServerSocketChannel的pipeline中通过ChannelRead事件来传递, 最终会在ServerBootstrapAcceptor这个ChannelHandler中被处理初始化, 并将其注册到Sub Reator Group中</p>
-<p>这里的read loop循环会被限定只能读取16次, 当main reactor从NioServerSocketChannel中读取客户端连接NioSocketChannel的次数达到16次之后, 无论此时是否还有客户端连接都不能在继续读取了, 因为还需要分配时间去执行异步任务, 不能因为无限制的接收客户端连接而耽误了异步任务的执行</p>
-<h2 id="doReadMessages接收客户端连接"><a href="#doReadMessages接收客户端连接" class="headerlink" title="doReadMessages接收客户端连接"></a>doReadMessages接收客户端连接</h2><p>根据ServerSocketChannel的accept方法获取到JDK NIO 原生的SocketChannel（用于底层真正与客户端通信的Channel）, 来创建Netty中的NioSocketChannel</p>
+<p>main reactor线程是在一个无限循环read loop中不断的调用JDK NIO <code>serverSocketChannel.accept()</code>方法来接收完成三次握手的客户端连接<code>NioSocketChannel</code>的, 并将接收到的<code>NioSocketChannel</code>临时保存在<code>List&lt;Object&gt; readBuf</code>集合中, 后续在<code>NioServerSocketChannel</code>的pipeline中通过<code>ChannelRead</code>事件来传递, 最终会在<code>ServerBootstrapAcceptor</code>这个ChannelHandler中被处理初始化, 并将其注册到<code>SubEventLoop</code>中</p>
+<p>这里的read loop循环会被限定只能读取16次, 当<code>MainEventLoop</code>从<code>NioServerSocketChannel</code>中读取客户端连接<code>NioSocketChannel</code>的次数达到16次之后, 无论此时是否还有客户端连接都不能在继续读取了, 因为还需要分配时间去执行异步任务, 不能因为无限制的接收客户端连接而耽误了异步任务的执行</p>
+<h2 id="doReadMessages接收客户端连接"><a href="#doReadMessages接收客户端连接" class="headerlink" title="doReadMessages接收客户端连接"></a>doReadMessages接收客户端连接</h2><p>根据<code>ServerSocketChannel</code>的accept方法获取到JDK NIO 原生的<code>SocketChannel</code>(用于底层真正与客户端通信的Channel), 来创建Netty中的<code>NioSocketChannel</code></p>
 <p><code>NioServerSocketChannel</code>与<code>NioSocketChannel</code>的不同</p>
 <ol>
-<li><code>NioServerSocketChannel</code>在Reactor启动过程中创建, <code>NioSocketChannel</code>在main reactor接收连接时在<code>NioServerSocketChannel</code>中被创建</li>
-<li><code>NioServerSocketChannel</code>向<code>Main Reactor</code>注册<code>SelectionKey.OP_ACCEPT</code>事件, <code>NioSocketChannel</code>向<code>Sub Reactor</code>注册<code>SelectionKey.OP_READ</code>事件</li>
+<li><code>NioServerSocketChannel</code>在<code>EventLoop</code>启动过程中创建, <code>NioSocketChannel</code>在<code>EventLoop</code>接收连接时被<code>NioServerSocketChannel</code>创建</li>
+<li><code>NioServerSocketChannel</code>向<code>MainEventLoop</code>注册<code>OP_ACCEPT</code>事件, <code>NioSocketChannel</code>向<code>SubEventLoop</code>注册<code>OP_READ</code>事件</li>
 <li><code>NioServerSocketChannel</code>继承<code>AbstractNioMessageChannel</code>, 输出的Message指的是<code>SocketChannel</code>客户端连接; <code>NioSocketChannel</code>继承的是<code>AbstractNioByteChannel</code>, 输出的是网络数据Byte</li>
 </ol>
 <p><img src="/../../../../image/netty8.png" alt="NioSocketChannel结构"></p>
-<h2 id="ChannelRead事件的响应"><a href="#ChannelRead事件的响应" class="headerlink" title="ChannelRead事件的响应"></a>ChannelRead事件的响应</h2><p><code>ServerBootstrapAcceptor</code>主要的作用就是初始化客户端<code>NioSocketChannel</code>, 并将客户端<code>NioSocketChannel</code>注册到<code>Sub Reactor Group</code>中, 并监听OP_READ事件</p>
-<h2 id="向SubReactorGroup中注册NioSocketChannel"><a href="#向SubReactorGroup中注册NioSocketChannel" class="headerlink" title="向SubReactorGroup中注册NioSocketChannel"></a>向SubReactorGroup中注册NioSocketChannel</h2><ol>
-<li>从Sub Reactor Group中选取一个Sub Reactor进行绑定</li>
-<li>向绑定的Sub Reactor上注册NioSocketChannel</li>
+<h2 id="ChannelRead事件的响应"><a href="#ChannelRead事件的响应" class="headerlink" title="ChannelRead事件的响应"></a>ChannelRead事件的响应</h2><p><code>ServerBootstrapAcceptor</code>主要的作用就是初始化客户端<code>NioSocketChannel</code>, 并将客户端<code>NioSocketChannel</code>注册到<code>从ReactorGroup</code>中, 并监听OP_READ事件</p>
+<h2 id="向从ReactorGroup注册NioSocketChannel"><a href="#向从ReactorGroup注册NioSocketChannel" class="headerlink" title="向从ReactorGroup注册NioSocketChannel"></a>向从ReactorGroup注册NioSocketChannel</h2><ol>
+<li>从<code>从ReactorGroup</code>中选取一个<code>从Reactor</code>进行绑定</li>
+<li>向绑定的<code>从Reactor</code>上注册<code>NioSocketChannel</code></li>
 <li>register0</li>
 </ol>
-<h1 id="Netty接收网络数据"><a href="#Netty接收网络数据" class="headerlink" title="Netty接收网络数据"></a>Netty接收网络数据</h1><h2 id="SubReactor处理OP-READ事件流程总览"><a href="#SubReactor处理OP-READ事件流程总览" class="headerlink" title="SubReactor处理OP_READ事件流程总览"></a>SubReactor处理OP_READ事件流程总览</h2><p>当网络数据到达服务端的网卡并经过内核协议栈的处理, 最终数据到达Socket的接收缓冲区之后, Sub Reactor轮询到<code>NioSocketChannel</code>上的<code>OP_READ</code>事件就绪, 随后Sub Reactor线程就会从JDK Selector上的阻塞轮询API<code>selector.select(timeoutMillis)</code>调用中返回, 转而去处理<code>NioSocketChannel</code>上的<code>OP_READ</code>事件</p>
-<p>Reactor在处理Channel上的IO事件入口函数为<code>NioEventLoop#processSelectedKey</code></p>
+<h1 id="Netty接收网络数据"><a href="#Netty接收网络数据" class="headerlink" title="Netty接收网络数据"></a>Netty接收网络数据</h1><h2 id="SubReactor处理OP-READ事件流程总览"><a href="#SubReactor处理OP-READ事件流程总览" class="headerlink" title="SubReactor处理OP_READ事件流程总览"></a>SubReactor处理OP_READ事件流程总览</h2><p>当网络数据到达服务端的网卡并经过内核协议栈的处理, 最终数据到达Socket的接收缓冲区之后, <code>SubEventLoop</code>轮询到<code>NioSocketChannel</code>上的<code>OP_READ</code>事件就绪, 随后<code>SubEventLoop</code>线程就会从JDK Selector上的阻塞轮询API<code>selector.select(timeoutMillis)</code>调用中返回, 转而去处理<code>NioSocketChannel</code>上的<code>OP_READ</code>事件</p>
+<p><code>SubEventLoop</code>在处理Channel上的IO事件入口函数为<code>NioEventLoop#processSelectedKey</code></p>
 <h2 id="Netty接收网络数据流程总览"><a href="#Netty接收网络数据流程总览" class="headerlink" title="Netty接收网络数据流程总览"></a>Netty接收网络数据流程总览</h2><p><img src="/../../../../image/netty10.png" alt="Netty接收网络数据流程"></p>
-<p>同样在NioSocketChannel读取连接数据的read loop中也是受最大读取次数的限制, 默认配置最多只能读取16次, 超过16次无论此时NioSocketChannel中是否还有数据可读都不能在进行读取了</p>
+<p><code>NioSocketChannel</code>读取连接数据的read loop中受最大读取次数的限制, 默认配置最多只能读取16次, 超过16次无论此时<code>NioSocketChannel</code>中是否还有可读数据都不能在进行读取了</p>
 <ul>
 <li>lastBytesRead &lt; 0: 表示客户端主动发起了连接关闭流程, Netty开始连接关闭处理流程</li>
-<li>lastBytesRead &#x3D; 0: 表示当前NioSocketChannel上的数据已经全部读取完毕, 没有数据可读, 本次OP_READ事件处理完毕</li>
-<li>lastBytesRead &gt; 0: 表示在本次read loop中从NioSocketChannel中读取到了数据, 会在NioSocketChannel的pipeline中触发ChannelRead事件, 进而在pipeline中负责IO处理的ChannelHandelr中响应, 处理网络请求</li>
+<li>lastBytesRead &#x3D; 0: 表示当前<code>NioSocketChannel</code>上的数据已经全部读取完毕, 没有数据可读, 本次<code>OP_READ</code>事件处理完毕</li>
+<li>lastBytesRead &gt; 0: 表示在本次read loop中从<code>NioSocketChannel</code>中读取到了数据, 会在<code>NioSocketChannel</code>的pipeline中触发<code>ChannelRead</code>事件, 进而在pipeline中负责IO处理的<code>ChannelHandelr</code>中响应, 处理网络请求</li>
 </ul>
 <h2 id="ChannelRead和ChannelReadComplete的区别"><a href="#ChannelRead和ChannelReadComplete的区别" class="headerlink" title="ChannelRead和ChannelReadComplete的区别"></a>ChannelRead和ChannelReadComplete的区别</h2><ul>
-<li>ChanneRead事件: 一次循环读取一次数据, 就触发一次ChannelRead事件, 本次最多读取在read loop循环开始分配的DirectByteBuffer容量大小</li>
-<li>ChannelReadComplete事件: 当读取不到数据或者不满足continueReading的任意一个条件就会退出read loop, 这时就会触发ChannelReadComplete事件</li>
+<li><code>ChanneRead</code>事件: 一次循环读取一次数据, 就触发一次ChannelRead事件, 本次最多读取在read loop循环开始分配的<code>DirectByteBuffer</code>容量大小</li>
+<li><code>ChannelReadComplete</code>事件: 当读取不到数据或者不满足continueReading的任意一个条件就会退出read loop, 这时就会触发<code>ChannelReadComplete</code>事件</li>
 </ul>
-<p>触发ChannelReadComplete事件并不代表NioSocketChannel中的数据已经读取完了, 只能说明本次OP_READ事件处理完毕, 因为有可能是客户端发送的数据太多, Netty读了16次还没读完, 那就只能等到下次OP_READ事件到来的时候在进行读取了</p>
+<p>触发<code>ChannelReadComplete</code>事件并不代表<code>NioSocketChannel</code>中的数据已经读取完了, 只能说明本次<code>OP_READ</code>事件处理完毕, 因为有可能是客户端发送的数据太多, Netty读了16次还没读完, 那就只能等到下次<code>OP_READ</code>事件到来的时候在进行读取了</p>
 <h2 id="源码核心框架总览"><a href="#源码核心框架总览" class="headerlink" title="源码核心框架总览"></a>源码核心框架总览</h2><h3 id="分配DirectByteBuffer接收网络数据"><a href="#分配DirectByteBuffer接收网络数据" class="headerlink" title="分配DirectByteBuffer接收网络数据"></a>分配DirectByteBuffer接收网络数据</h3><p><code>NioSocketChannel</code>的2个<code>ByteBufAllocator</code></p>
 <ul>
 <li><code>ByteBufAllocator</code>是一个<code>PooledByteBufAllocator</code>的实例, 内存池, 用来管理堆外内存<code>DirectByteBuffer</code></li>
 <li><code>RecvByteBufAllocator</code>是一个<code>AdaptiveRecvByteBufAllocator</code>类的实例, 可以动态调整ByteBuffer的容量, 初始为2048</li>
 </ul>
 <p><code>RecvByteBufAllocator</code>计算大小, 然后<code>ByteBufAllocator</code>进行内存分配</p>
-<h2 id="ByteBuffer动态自适应括缩容机制"><a href="#ByteBuffer动态自适应括缩容机制" class="headerlink" title="ByteBuffer动态自适应括缩容机制"></a>ByteBuffer动态自适应括缩容机制</h2><p><strong>容量索引表</strong></p>
+<h2 id="ByteBuffer动态自适应括缩容机制"><a href="#ByteBuffer动态自适应括缩容机制" class="headerlink" title="ByteBuffer动态自适应括缩容机制"></a>ByteBuffer动态自适应括缩容机制</h2><p>容量索引表</p>
 <ol>
 <li>当索引容量小于512时, 容量索引从16开始按16递增</li>
 <li>当索引容量大于512时, 容量索引按前一个索引容量的2倍递增</li>
@@ -525,15 +537,15 @@
 </ol>
 <p>Netty使用堆外内存的好处</p>
 <ol>
-<li>减少FGC, 手动引用计数维护内存</li>
 <li>减少一次拷贝</li>
+<li>手动引用计数维护内存可以减少FGC</li>
 </ol>
 <h1 id="Recycler对象池"><a href="#Recycler对象池" class="headerlink" title="Recycler对象池"></a>Recycler对象池</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Netty选择使用堆外内存存储网络通信数据</p>
 <ol>
 <li>在JVM堆中创建一个用于引用native memory的引用对象<code>DirectByteBuffer</code></li>
 <li>使用native方法<code>unsafe.allocateMemory</code>通过底层<code>malloc</code>系统调用申请一块堆外内存, 然后被<code>DirectByteBuffer</code>引用</li>
 </ol>
-<p>Netty面对的高并发网络通信场景下，申请堆外内存是一个非常频繁的操作，这种大量频繁的内存申请释放操作对程序的性能影响是巨大的，所以Netty就引入了内存池对内存相关的操作进行统一的管理</p>
+<p>Netty面对的高并发网络通信场景下, 申请堆外内存是一个非常频繁的操作, 这种大量频繁的内存申请释放操作对程序的性能影响是巨大的, 所以Netty就引入了内存池对内存相关的操作进行统一的管理</p>
 <h2 id="对象在JVM中创建和回收开销"><a href="#对象在JVM中创建和回收开销" class="headerlink" title="对象在JVM中创建和回收开销"></a>对象在JVM中创建和回收开销</h2><p>略过</p>
 <h2 id="对象池Recycler"><a href="#对象池Recycler" class="headerlink" title="对象池Recycler"></a>对象池Recycler</h2><p><img src="/../../../../image/netty7-1.png" alt="对象池接口"></p>
 <p>Netty中每个被池化的对象中都会引用对象池的实例<code>RECYCLER</code></p>
@@ -545,22 +557,22 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Channel#write使用的缓存ChannelOutboundBuffer中保存的对象Entry</span></span><br><span class="line"><span class="comment">// 以Entry为例看一下如何使用对象池</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Entry</span> &#123;</span><br><span class="line">    <span class="comment">// 构造</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ObjectPool&lt;Entry&gt; RECYCLER = ObjectPool.newPool(handle -&gt; <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Entry</span>(handle));</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Handle&lt;Entry&gt; recyclerHandle;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Entry</span><span class="params">(Handle&lt;Entry&gt; recyclerHandle)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.recyclerHandle = recyclerHandle;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 申请对象</span></span><br><span class="line">    <span class="keyword">static</span> Entry <span class="title function_">newInstance</span><span class="params">(Object msg, <span class="type">int</span> size, <span class="type">long</span> total, ChannelPromise promise)</span> &#123;</span><br><span class="line">        <span class="type">Entry</span> <span class="variable">entry</span> <span class="operator">=</span> RECYCLER.get();</span><br><span class="line">        entry.msg = msg;</span><br><span class="line">        entry.pendingSize = size + CHANNEL_OUTBOUND_BUFFER_ENTRY_OVERHEAD;</span><br><span class="line">        entry.total = total;</span><br><span class="line">        entry.promise = promise;</span><br><span class="line">        <span class="keyword">return</span> entry;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 回收对象</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">recycle</span><span class="params">()</span> &#123;</span><br><span class="line">        next = <span class="literal">null</span>;</span><br><span class="line">        bufs = <span class="literal">null</span>;</span><br><span class="line">        buf = <span class="literal">null</span>;</span><br><span class="line">        msg = <span class="literal">null</span>;</span><br><span class="line">        promise = <span class="literal">null</span>;</span><br><span class="line">        progress = <span class="number">0</span>;</span><br><span class="line">        total = <span class="number">0</span>;</span><br><span class="line">        pendingSize = <span class="number">0</span>;</span><br><span class="line">        count = -<span class="number">1</span>;</span><br><span class="line">        cancelled = <span class="literal">false</span>;</span><br><span class="line">        handle.recycle(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Recycler总体设计"><a href="#Recycler总体设计" class="headerlink" title="Recycler总体设计"></a>Recycler总体设计</h2><p><img src="/../../../../image/netty7-2.png" alt="Recycler总体设计"></p>
-<h3 id="获取对象无锁化设计"><a href="#获取对象无锁化设计" class="headerlink" title="获取对象无锁化设计"></a>获取对象无锁化设计</h3><p>每个线程拥有一个独立Stack，这样当多个线程并发从对象池中获取对象时，都是从自己线程中的Stack中获取，全程无锁化运行, JVM的堆内存分配也是这样(TLAB), 但是JVM提供的堆外内存分配为了防止内存泄漏是全局加锁的(堆外不能自动GC)</p>
+<h3 id="获取对象无锁化设计"><a href="#获取对象无锁化设计" class="headerlink" title="获取对象无锁化设计"></a>获取对象无锁化设计</h3><p>每个线程拥有一个独立Stack, 这样当多个线程并发从对象池中获取对象时, 都是从自己线程中的Stack中获取, 全程无锁化运行, JVM的堆内存分配也是这样(TLAB), 但是JVM提供的堆外内存分配为了防止内存泄漏是全局加锁的(堆外不能自动GC)</p>
 <h3 id="释放对象无锁化设计"><a href="#释放对象无锁化设计" class="headerlink" title="释放对象无锁化设计"></a>释放对象无锁化设计</h3><p>thread2释放thread1获取的对象, 就需要操作thread1的stack, 可能产生多线程冲突</p>
-<p>引入WeakOrderQueue链表, 每个WeakOrderQueue表示一个其他线程回收的该线程的对象, 获取对象时取不到对象就去WeakOrderQueue取</p>
-<p>对象池回收对象的一个原则就是对象由谁创建的，最终就要被回收到创建线程对应的Stack结构中的数组栈中, 数组栈中存放的才是真正被回收的池化对象，可以直接被取出复用, 回收线程只能将待回收对象暂时存放至创建线程对应的Stack结构中的WeakOrderQueue链表中, 当数组栈中没有对象时，由创建线程将WeakOrderQueue链表中的待回收对象转移至数组栈中</p>
-<p>WeakOrderQueue链表, <code>创建线程</code>使用head指针获取可以被回收的对象, <code>回收线程</code>使用tail指针插入需要被回收的对象, Netty这里为了不引入多线程同步的开销，只会保证待回收对象的最终可见性, 会存在线程可见性的问题(维护线程之间操作的原子性，可见性都是需要开销的, netty为了提高多线程的运行效率, 避免引入不必要的同步开销)</p>
+<p>引入<code>WeakOrderQueue</code>链表, 每个<code>WeakOrderQueue</code>表示一个其他线程回收的该线程的对象, 获取对象时取不到对象就去<code>WeakOrderQueue</code>取</p>
+<p>对象池回收对象的一个原则就是对象由谁创建的, 最终就要被回收到创建线程对应的<code>Stack</code>结构中的数组栈中, 数组栈中存放的才是真正被回收的池化对象, 可以直接被取出复用, 回收线程只能将待回收对象暂时存放至创建线程对应的<code>Stack</code>结构中的<code>WeakOrderQueue</code>链表中, 当数组栈中没有对象时, 由创建线程将<code>WeakOrderQueue</code>链表中的待回收对象转移至数组栈中</p>
+<p><code>WeakOrderQueue</code>链表, <code>创建线程</code>使用head指针获取可以被回收的对象, <code>回收线程</code>使用tail指针插入需要被回收的对象, Netty这里为了不引入多线程同步的开销, 只会保证待回收对象的最终可见性, 会存在线程可见性的问题(维护线程之间操作的原子性, 可见性都是需要开销的, netty为了提高多线程的运行效率, 避免引入不必要的同步开销)</p>
 <h2 id="Recycler实现"><a href="#Recycler实现" class="headerlink" title="Recycler实现"></a>Recycler实现</h2><p>Handle是池化对象在对象池中的一个模型, 默认实现是DefaultHandle</p>
-<p>stack和WeakOrderQueue中存的就是handle</p>
-<p>在创建对象池的时候，需要通过<code>ObjectCreator#newObject</code>方法指定对象池创建对象的行为即<code>Handle</code></p>
+<p><code>stack</code>和<code>WeakOrderQueue</code>中存的就是handle</p>
+<p>在创建对象池的时候, 需要通过<code>ObjectCreator#newObject</code>方法指定对象池创建对象的行为即<code>Handle</code></p>
 <p><img src="/../../../../image/netty7-3.png" alt="创建ObjectPool"></p>
 <h1 id="Netty发送数据流程"><a href="#Netty发送数据流程" class="headerlink" title="Netty发送数据流程"></a>Netty发送数据流程</h1><h2 id="write方法发送数据"><a href="#write方法发送数据" class="headerlink" title="write方法发送数据"></a>write方法发送数据</h2><p><img src="/../../../../image/netty8-1.png" alt="write事件传播流程"></p>
 <ul>
 <li><code>channelHandlerContext.write()</code>方法会从<code>当前ChannelHandler</code>开始在pipeline中向前传播write事件直到<code>HeadContext</code></li>
 <li><code>channelHandlerContext.channel().write()</code>会从pipeline的尾结点<code>TailContext</code>开始在pipeline中向前传播write事件直到<code>HeadContext</code></li>
 </ul>
-<p>Netty的写操作是一个异步操作，当我们在业务线程中调用<code>channelHandlerContext.write()</code>后，Netty会给我们返回一个<code>ChannelFuture</code>，我们可以在这个<code>ChannelFutrue</code>中添加<code>ChannelFutureListener</code>，这样要发送的数据发送到底层Socket中时，Netty会通过<code>ChannelFutureListener</code>通知我们写入结果</p>
-<p>当异步事件在pipeline传播的过程中发生异常时就会停止传播。所以我们在日常开发中，需要对写操作异常情况进行处理</p>
+<p>Netty的写操作是一个异步操作, 当我们在业务线程中调用<code>channelHandlerContext.write()</code>后, Netty会给我们返回一个<code>ChannelFuture</code>, 我们可以在这个<code>ChannelFutrue</code>中添加<code>ChannelFutureListener</code>, 这样要发送的数据发送到底层Socket中时, Netty会通过<code>ChannelFutureListener</code>通知我们写入结果</p>
+<p>当异步事件在pipeline传播的过程中发生异常时就会停止传播。所以我们在日常开发中, 需要对写操作异常情况进行处理</p>
 <h1 id="Pipeline-详解所有-IO-事件的触发时机以及传播路径"><a href="#Pipeline-详解所有-IO-事件的触发时机以及传播路径" class="headerlink" title="Pipeline, 详解所有 IO 事件的触发时机以及传播路径"></a>Pipeline, 详解所有 IO 事件的触发时机以及传播路径</h1><h1 id="Netty-如何处理-TCP-连接的正常关闭-异常关闭-半关闭场景"><a href="#Netty-如何处理-TCP-连接的正常关闭-异常关闭-半关闭场景" class="headerlink" title="Netty 如何处理 TCP 连接的正常关闭, 异常关闭, 半关闭场景"></a>Netty 如何处理 TCP 连接的正常关闭, 异常关闭, 半关闭场景</h1><hr>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2MzU3Mjc3Ng==&mid=2247483737&idx=1&sn=7ef3afbb54289c6e839eed724bb8a9d6">聊聊Netty那些事儿之从内核角度看IO模型</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2MzU3Mjc3Ng==&mid=2247483907&idx=1&sn=084c470a8fe6234c2c9461b5f713ff30">聊聊Netty那些事儿之Reactor在Netty中的实现(创建篇)</a></p>
@@ -616,12 +628,26 @@
 
 
 <div class="copyright">
-  &copy; 
+  &copy; 2017 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">162k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:27</span>
+  </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -631,7 +657,7 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
 

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Kafka官方文档里讲到的设计原则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka设计">
+<meta property="og:url" content="https://hahahaha123567.github.io/2022-08-05-Kafka%E8%AE%BE%E8%AE%A1.html">
+<meta property="og:site_name" content="hahahaha123567">
+<meta property="og:description" content="Kafka官方文档里讲到的设计原则">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-08T08:21:24.727Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Message Queue">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2022-08-05-Kafka%E8%AE%BE%E8%AE%A1.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2022-08-05-Kafka%E8%AE%BE%E8%AE%A1.html","path":"2022-08-05-Kafka设计.html","title":"Kafka设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Kafka设计 | hahahaha123567</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏夹"><a href="/favorite/" rel="section"><i class="fa fa-bookmark fa-fw"></i>收藏夹</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Design"><span class="nav-number">2.</span> <span class="nav-text">Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0%E6%97%B6%E9%97%B4"><span class="nav-number">2.2.2.</span> <span class="nav-text">常数时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E7%8E%87"><span class="nav-number">2.3.</span> <span class="nav-text">效率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%89%B9%E9%87%8F%E5%8E%8B%E7%BC%A9"><span class="nav-number">2.3.1.</span> <span class="nav-text">端到端批量压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Producer"><span class="nav-number">2.4.</span> <span class="nav-text">Producer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">2.4.1.</span> <span class="nav-text">负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%8F%91%E9%80%81"><span class="nav-number">2.4.2.</span> <span class="nav-text">异步发送</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consumer"><span class="nav-number">2.5.</span> <span class="nav-text">Consumer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PUSH-vs-PULL"><span class="nav-number">2.5.1.</span> <span class="nav-text">PUSH vs PULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consumer%E8%AE%B0%E5%BD%95%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.5.2.</span> <span class="nav-text">Consumer记录位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E8%AF%AD%E4%B9%89"><span class="nav-number">2.5.3.</span> <span class="nav-text">消息传递语义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#producer"><span class="nav-number">2.5.3.1.</span> <span class="nav-text">producer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#consumer"><span class="nav-number">2.5.3.2.</span> <span class="nav-text">consumer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replication"><span class="nav-number">2.6.</span> <span class="nav-text">Replication</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implementation"><span class="nav-number">3.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">消息格式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2022-08-05-Kafka%E8%AE%BE%E8%AE%A1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Kafka设计 | hahahaha123567">
+      <meta itemprop="description" content="Kafka官方文档里讲到的设计原则">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kafka设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-05 00:00:00" itemprop="dateCreated datePublished" datetime="2022-08-05T00:00:00+08:00">2022-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-08 16:21:24" itemprop="dateModified" datetime="2022-08-08T16:21:24+08:00">2022-08-08</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Kafka官方文档里讲到的设计原则</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><code>Apache Kafka</code>是一个开源的分布式事件流平台, 用于高性能数据管道、流分析、数据集成</p>
+<p>事件流是从事件源（如数据库、传感器、移动设备、云服务和软件应用程序）以事件流的形式实时捕获数据的实践；持久存储这些事件流以供以后检索；实时和回顾性地操作、处理和响应事件流；并根据需要将事件流路由到不同的目标技术</p>
+<ul>
+<li>publish&#x2F;subscribe(write&#x2F;read)事件流</li>
+<li>存储事件流</li>
+<li>实时或追溯处理事件流</li>
+</ul>
+<h1 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>与传统的MQ相比，更像数据库日志</p>
+<ul>
+<li>支持高吞吐</li>
+<li>支持处理大量数据积压</li>
+<li>支持低延迟</li>
+<li>机器故障时支持容错</li>
+</ul>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><p>Kafka非常依赖文件系统进行存储和缓存</p>
+<p>使用内存缓存的坏处:</p>
+<ol>
+<li>OS会将内存转移到磁盘缓存</li>
+<li>Java的对象内存开销大</li>
+<li>堆内存使用越多GC越慢</li>
+<li>服务重启时重建缓存慢</li>
+</ol>
+<p>进行的优化:</p>
+<ol>
+<li>自动访问空闲内存</li>
+<li>保存byte[]而不是Java对象</li>
+</ol>
+<ul>
+<li>NO  在内存中维护尽可能多的内容，并在空间不足时将其全部刷新到文件系统</li>
+<li>YES 所有数据都会立即写入文件系统上的持久日志, 不必刷新到磁盘(实际上只是被转移到内核的页面缓存中)</li>
+</ul>
+<h3 id="常数时间"><a href="#常数时间" class="headerlink" title="常数时间"></a>常数时间</h3><p>Queue建立在对文件的read和append上(在日志系统中很常见), 而BTree等数据结构如果触发磁盘寻道会开销很大</p>
+<p>优点:</p>
+<ol>
+<li>操作的时间复杂度O(1)</li>
+<li>读写不会阻塞</li>
+<li>性能与数据量无关</li>
+<li>支持消息保存较长时间</li>
+</ol>
+<h2 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h2><p>避免效率低的磁盘访问:</p>
+<ol>
+<li>过多的小型IO操作</li>
+<li>过多的byte复制</li>
+</ol>
+<p>如何避免:</p>
+<ol>
+<li>将数据抽象为<code>message set</code>, 网络请求将消息组合在一起, 服务器将消息一次性append, 消费者一次性获取大数据块</li>
+<li>使用标准化二进制格式, 这样数据传输时不用修改, 就可以利用OS提供的<code>zero-copy</code>, 在Linux中为<code>sendfile</code>系统调用. 使用<code>pagecache</code>+<code>sendfile</code>使磁盘几乎不会有高负载</li>
+</ol>
+<h3 id="端到端批量压缩"><a href="#端到端批量压缩" class="headerlink" title="端到端批量压缩"></a>端到端批量压缩</h3><p>大部分信息冗余来源于同一种类型的不同消息, Kafka支持一批消息批量压缩</p>
+<h2 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h2><h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>客户端可以控制消息的目标partition, 支持设置使用指定字段作为分区根据, 这样设计使consumer可以做局部敏感数据处理</p>
+<h3 id="异步发送"><a href="#异步发送" class="headerlink" title="异步发送"></a>异步发送</h3><p>producer支持异步, 在内存中保留一定消息然后批处理发送以提高效率, 可以配置缓存的大小和有效时间</p>
+<h2 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h2><p>consumer在每个请求中指定想要访问的偏移量</p>
+<h3 id="PUSH-vs-PULL"><a href="#PUSH-vs-PULL" class="headerlink" title="PUSH vs PULL"></a>PUSH vs PULL</h3><p>Kafka使用支持阻塞的PULL请求</p>
+<p>PULL的优点</p>
+<ol>
+<li>consumer不会收到超出可处理上限的消息, 不同的consumer可以按照自己的处理能力获取消息</li>
+<li>PUSH需要针对可能的阻塞设置推送延迟, PULL不需要设置</li>
+</ol>
+<p>简单的PULL的缺点</p>
+<ol>
+<li>没有消息的时候consumer浪费CPU资源进行空轮询</li>
+</ol>
+<h3 id="Consumer记录位置"><a href="#Consumer记录位置" class="headerlink" title="Consumer记录位置"></a>Consumer记录位置</h3><p>MQ需要确认消息是否被成功消费, 一些MQ引入一个中间状态”已发送未消费”</p>
+<p>Kafka的topic的每个分区记录一个consumer位置, 不需要维护每个消息的确认状态</p>
+<h3 id="消息传递语义"><a href="#消息传递语义" class="headerlink" title="消息传递语义"></a>消息传递语义</h3><p>可以在所有情况下提供多种保证()</p>
+<ol>
+<li>最多一次, 消息可能会丢失, 不会重复</li>
+<li>最少一次, 消息可能会重复, 不会丢失</li>
+<li>精确一次</li>
+</ol>
+<p>Kafka默认保证最少一次, 事务性producer&#x2F;consumer可以实现精确一次</p>
+<h4 id="producer"><a href="#producer" class="headerlink" title="producer"></a>producer</h4><p>Kafka支持<code>idempotent delivery</code>幂等生产, 重新发送消息不会导致broker中出现重复消息</p>
+<h4 id="consumer"><a href="#consumer" class="headerlink" title="consumer"></a>consumer</h4><p>Kafka需要支持一个consumer崩溃后切换到其他consumer的场景</p>
+<ol>
+<li>最多一次, consumer读消息-&gt;保存位置-&gt;处理消息</li>
+<li>至少一次, consumer读消息-&gt;处理消息-&gt;保存位置</li>
+<li>精确一次, 使用事务更新, broker同时更新consumer的位置和处理结果</li>
+</ol>
+<h2 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h2><p>replication的单位是partition, 每个partition都有1个主节点0或多个从节点, 主写从读</p>
+<p>replication的心跳使用ZooKeeper维护</p>
+<p>分布式一致性</p>
+<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>NIO服务器</p>
+<h2 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h2><p>key&#x2F;value不透明</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://kafka.apache.org/intro">Apache Kafka - intro</a></p>
+<p><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/#design">Apache Kafka - doc</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Message-Queue/" rel="tag"># Message Queue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-07-07-%E3%80%8A%E8%81%8A%E8%81%8ANetty%E9%82%A3%E4%BA%9B%E4%BA%8B%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0.html" rel="prev" title="《聊聊Netty那些事》阅读笔记">
+                  <i class="fa fa-chevron-left"></i> 《聊聊Netty那些事》阅读笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">161k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:26</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

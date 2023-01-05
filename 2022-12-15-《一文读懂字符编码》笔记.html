@@ -21,28 +21,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="initd, service, systemd, systemctl">
+    <meta name="description" content="常用字符集和字符编码科普">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux的init整理">
-<meta property="og:url" content="https://hahahaha123567.github.io/2019-03-18-Linux%E7%9A%84init%E6%95%B4%E7%90%86.html">
+<meta property="og:title" content="Encoding">
+<meta property="og:url" content="https://hahahaha123567.github.io/2022-12-15-%E3%80%8A%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E3%80%8B%E7%AC%94%E8%AE%B0.html">
 <meta property="og:site_name" content="hahahaha123567">
-<meta property="og:description" content="initd, service, systemd, systemctl">
+<meta property="og:description" content="常用字符集和字符编码科普">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-03-18T11:50:37.000Z">
-<meta property="article:modified_time" content="2019-03-18T11:49:24.000Z">
+<meta property="article:published_time" content="2022-12-15T03:10:00.000Z">
+<meta property="article:modified_time" content="2022-12-15T03:11:00.951Z">
 <meta property="article:author" content="hahahaha123567">
-<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hahahaha123567.github.io/2019-03-18-Linux%E7%9A%84init%E6%95%B4%E7%90%86.html">
+<link rel="canonical" href="https://hahahaha123567.github.io/2022-12-15-%E3%80%8A%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E3%80%8B%E7%AC%94%E8%AE%B0.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2019-03-18-Linux%E7%9A%84init%E6%95%B4%E7%90%86.html","path":"2019-03-18-Linux的init整理.html","title":"Linux的init整理"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2022-12-15-%E3%80%8A%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E3%80%8B%E7%AC%94%E8%AE%B0.html","path":"2022-12-15-《一文读懂字符编码》笔记.html","title":"Encoding"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Linux的init整理 | hahahaha123567</title>
+<title>Encoding | hahahaha123567</title>
   
 
 
@@ -117,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sysvinit"><span class="nav-number">2.</span> <span class="nav-text">Sysvinit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UpStart"><span class="nav-number">3.</span> <span class="nav-text">UpStart</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Systemd"><span class="nav-number">4.</span> <span class="nav-text">Systemd</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">字符集和字符编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%9C%80%E8%A6%81%E7%BC%96%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">为什么计算机需要编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%9A%84%E7%BC%96%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">字的编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E6%BC%94%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">字符编码演化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ASCII"><span class="nav-number">4.1.</span> <span class="nav-text">ASCII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ISO-8859%E7%B3%BB%E5%88%97"><span class="nav-number">4.2.</span> <span class="nav-text">ISO-8859系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">4.3.</span> <span class="nav-text">Unicode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-16"><span class="nav-number">4.3.1.</span> <span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8"><span class="nav-number">4.3.2.</span> <span class="nav-text">UTF-8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GB%E7%B3%BB%E5%88%97"><span class="nav-number">4.4.</span> <span class="nav-text">GB系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GB2312"><span class="nav-number">4.4.1.</span> <span class="nav-text">GB2312</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GBK"><span class="nav-number">4.4.2.</span> <span class="nav-text">GBK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GB18030"><span class="nav-number">4.4.3.</span> <span class="nav-text">GB18030</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +193,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2019-03-18-Linux%E7%9A%84init%E6%95%B4%E7%90%86.html">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2022-12-15-%E3%80%8A%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E3%80%8B%E7%AC%94%E8%AE%B0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,12 +206,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Linux的init整理 | hahahaha123567">
-      <meta itemprop="description" content="initd, service, systemd, systemctl">
+      <meta itemprop="name" content="Encoding | hahahaha123567">
+      <meta itemprop="description" content="常用字符集和字符编码科普">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux的init整理
+          Encoding
         </h1>
 
         <div class="post-meta-container">
@@ -224,7 +223,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2019-03-18 19:50:37 / 修改时间：19:49:24" itemprop="dateCreated datePublished" datetime="2019-03-18T19:50:37+08:00">2019-03-18</time>
+      <time title="创建时间：2022-12-15 11:10:00 / 修改时间：11:11:00" itemprop="dateCreated datePublished" datetime="2022-12-15T11:10:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -234,7 +233,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>227</span>
+      <span>666</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -245,7 +244,7 @@
     </span>
 </div>
 
-            <div class="post-description">initd, service, systemd, systemctl</div>
+            <div class="post-description">常用字符集和字符编码科普</div>
         </div>
       </header>
 
@@ -253,11 +252,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Linux 操作系统的启动首先从 BIOS 开始, 接下来进入 boot loader, 由 bootloader 载入内核, 进行内核初始化</p>
-<p>内核初始化的最后一步就是启动 pid 为 1 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Init">init</a> 进程. 这个进程是系统的第一个进程,  负责产生其他所有用户进程。</p>
-<h1 id="Sysvinit"><a href="#Sysvinit" class="headerlink" title="Sysvinit"></a>Sysvinit</h1><p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init1/index.html">浅析 Linux 初始化 init 系统，第 1 部分: sysvinit</a></p>
-<h1 id="UpStart"><a href="#UpStart" class="headerlink" title="UpStart"></a>UpStart</h1><p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init2/index.html">浅析 Linux 初始化 init 系统，第 2 部分: UpStart</a></p>
-<h1 id="Systemd"><a href="#Systemd" class="headerlink" title="Systemd"></a>Systemd</h1><p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html">浅析 Linux 初始化 init 系统，第 3 部分: Systemd</a></p>
+        <h1 id="字符集和字符编码"><a href="#字符集和字符编码" class="headerlink" title="字符集和字符编码"></a>字符集和字符编码</h1><p>字符集：字符的集合</p>
+<p>字符编码：字符集中的字符映射到数字序列的方式</p>
+<h1 id="为什么计算机需要编码"><a href="#为什么计算机需要编码" class="headerlink" title="为什么计算机需要编码"></a>为什么计算机需要编码</h1><ul>
+<li>磁盘使用凸起&#x2F;凹陷存储数据</li>
+<li>内存使用有电荷&#x2F;无电荷</li>
+<li>显示器不同颜色的二极管分别亮或灭</li>
+</ul>
+<p>二进制是为了处理这些情况抽象出来的数学逻辑</p>
+<h1 id="字的编码"><a href="#字的编码" class="headerlink" title="字的编码"></a>字的编码</h1><ul>
+<li>字形码: 屏幕上最终展示的字</li>
+<li>机内码: 计算机内部存储的字符格式</li>
+</ul>
+<p>字形码&#x3D;机内码+字体, 换句话说, 机内码是对字形码的一种压缩</p>
+<h1 id="字符编码演化"><a href="#字符编码演化" class="headerlink" title="字符编码演化"></a>字符编码演化</h1><h2 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h2><p>一个字节，最高位0，剩下7位表示127个字符，控制字符和英文数字字符</p>
+<h2 id="ISO-8859系列"><a href="#ISO-8859系列" class="headerlink" title="ISO-8859系列"></a>ISO-8859系列</h2><p>ASCII+欧洲字符</p>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>一套字符编码体系，涵盖抽象字符集、编号、逻辑编码、编码实现</p>
+<p>可以容纳世界上所有国家的文字和符号，其编号范围是0-0x10FFFF，有1,114,112个码位，现已定义的码位有238,605个</p>
+<h3 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h3><p>Unicode最开始设计位双字节编码，固定16位表示一个字符，后来发现不够用，修改为变长编码，常用字符使用2字节，不常用字符使用4字节</p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8是变长编码，范围1-4字节</p>
+<p>UTF-16不兼容ASCII，UTF-8兼容ASCII</p>
+<h2 id="GB系列"><a href="#GB系列" class="headerlink" title="GB系列"></a>GB系列</h2><h3 id="GB2312"><a href="#GB2312" class="headerlink" title="GB2312"></a>GB2312</h3><p>双字节编码，两个大于 127 的字节连在一起来共同表示一个汉字</p>
+<p>由__区位码__和__国标码__组成</p>
+<p>可容纳字符数过少</p>
+<h3 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h3><p>国标扩展</p>
+<p>双字节编码，字符数&#x3D;2*GB2312</p>
+<h3 id="GB18030"><a href="#GB18030" class="headerlink" title="GB18030"></a>GB18030</h3><p>强制性标准，现在在中国大陆销售的软件都支持</p>
+<p>Unicode的一种实现，兼容GB系列，是GB2312、GBK的超集</p>
+<hr>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5pAgcjk_lFGrPhSUp2Na3Q">一文读懂字符编码</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23374078">Unicode 和 UTF-8 有何区别？ - 知乎</a></p>
 
     </div>
 
@@ -266,22 +291,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Linux/" rel="tag"># Linux</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019-03-18-%E5%87%A0%E4%B8%AAJDK%E5%B7%A5%E5%85%B7.html" rel="prev" title="几个JDK工具">
-                  <i class="fa fa-chevron-left"></i> 几个JDK工具
+                <a href="/2022-08-05-Kafka%E8%AE%BE%E8%AE%A1.html" rel="prev" title="Kafka设计">
+                  <i class="fa fa-chevron-left"></i> Kafka设计
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019-03-23-%E5%9F%BA%E4%BA%8Efreeswitch%E7%9A%84unimrcp%E7%9A%84demo.html" rel="next" title="基于freeswitch的unimrcp的demo">
-                  基于freeswitch的unimrcp的demo <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

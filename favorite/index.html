@@ -29,7 +29,7 @@
 <meta property="og:description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个让面试官虎躯一震的回答。 - InfoQ 写作平台 腾讯面试官：线程池要设置多大 - 云+社区 - 腾讯云 GC咱们从头到尾说一次 Java 垃圾回收 JVM">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-05T07:43:23.000Z">
-<meta property="article:modified_time" content="2023-05-29T08:52:14.769Z">
+<meta property="article:modified_time" content="2023-06-14T05:57:27.250Z">
 <meta property="article:author" content="hahahaha123567">
 <meta name="twitter:card" content="summary">
 
@@ -239,6 +239,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/zFzUZPJ-ib2zbDYWN26iuA">Spring Boot 最流行的 16 条实践解读！</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RfdamAfOS8Ato14ZuDyjHQ">为什么数据库连接池不采用 IO 多路复用？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/cqkZEvmmh7jnNt2K5r_lXg">Spring循环依赖那些事儿（含Spring详细流程图）</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1xIWCoCdQtAPlcZe3zHusQ">探索｜Spring并行初始化加速的思路和实践
+</a></p>
 <h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ssj234/netty-source/433211">Netty源码笔记 · 看云</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/duanxz/tag/netty/">netty - 标签 - duanxz - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007282628">源码之下无秘密 ── 做最好的 Netty 源码分析教程 - SegmentFault 思否</a></p>
@@ -272,6 +274,7 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NoR1bEm8gs4YmkxxHUuNpA">Mysql可重复读（1） —— 快照何时创建</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/O_Efr9acyz2y52ESVJ0zPw">Mysql可重复读（2） —— 快照真的就是快照吗</a></p>
 <p><a target="_blank" rel="noopener" href="https://my.oschina.net/liughDevelop/blog/1631006">自己手写一个Mybatis框架(简化)</a></p>
+<p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/05/26/MySQL%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8D%A1%E9%A1%BF%E9%87%8D%E7%8E%B0/">MySQL线程池卡顿重现 | plantegg</a></p>
 <h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904135964229646">没内鬼，来点干货！SQL优化和诊断</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ahxUK5r6LjxwY30QfgsgBA">了解那些“奇葩”SQL写法，快速写出高效率SQL</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/b9251e9e3c28fbfaeb1c30528">MySQL“被动”性能优化汇总！ - InfoQ 写作平台</a></p>
@@ -292,6 +295,7 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yGh9hI-bz_yyrIdBFwwyqA">后端缓存的23个关键关注点</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TPJwulKmZmJjGSxLDwiPhQ">浅析 Redis 分布式锁解决方案-InfoQ</a></p>
 <p><a target="_blank" rel="noopener" href="https://susan.net.cn/post/2/2005/">redis分布式锁的8大坑</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6961380552519712798">最强分布式工具Redisson（一）：分布式锁 - 掘金</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040177140">Redis 实战篇：巧用 Bitmap 实现亿级数据统计 - SegmentFault 思否</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aMp0xoGPlY0XmJORzTmUZw">如何判断一个元素在亿级数据中是否存在？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-O4EzaQS-R9Mv-NBWkQK8w">Redis客户端Lettuce深度分析介绍（上）</a></p>
@@ -317,11 +321,11 @@
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1ad810427783">学学Elasticsearch：Term查询和全文查询，一文详解 - 简书</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luxiaoxun/p/13025019.html">LSM树和Elasticsearch的索引写入机制 - 阿凡卢 - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/uF4sZTxJv0zENlPp3Y31AA">千万级数据查询中CK、ES、RediSearch方案的优化</a></p>
-<h1 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h1><p><a target="_blank" rel="noopener" href="https://www.modb.pro/db/323288">LevelDB vs. RocksDB - 墨天轮</a></p>
-<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015274741">高手如何实践HBase？不容错过的滴滴内部技巧</a></p>
+<h1 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h1><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015274741">高手如何实践HBase？不容错过的滴滴内部技巧</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/685482">案例篇-HBase 在滴滴出行的应用场景和最佳实践-阿里云开发者社区</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FNRiU03xy7-JoQdU76ve1g">降本增效创未来——云原生多模数据库Lindorm 2022双十一总结</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/7RxBg1mxdpffcpWp02TJ7w">​深入浅出 ClickHouse 物化视图</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DkT6pGMEOnkentqbOUgTlQ">爱奇艺大数据加速：从Hive到Spark SQL</a></p>
 <h1 id="network"><a href="#network" class="headerlink" title="network"></a>network</h1><p><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/11564.html">TCP 的那些事儿（上） | 酷 壳 - CoolShell</a></p>
 <p><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/11609.html">TCP 的那些事儿（下） | 酷 壳 - CoolShell</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/90cf4bbfb2c2cc2b475e0efda">TCP 重传、滑动窗口、流量控制、拥塞控制图解 - InfoQ 写作平台</a></p>
@@ -351,6 +355,8 @@
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/CByq89C2DwrJxzXzAcad">抖音世界杯中 RTC 的技术挑战与实现_架构_InfoQ精选文章</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QPYprfHeHBnh38HQBh_K-w">分享一例有意思的灰度设计缺陷，浅谈灰度方案的设计</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/7YQ_Wb9mLdROlm5gIC-9uw">理论篇｜如何避免写出面条代码？</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HMLpjcE0UENUTfMK0Z9n8A">领域驱动设计DDD｜从入门到代码实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hv3tTOAdD-SiCq2owCdxZQ">如何设计一个海量任务调度系统</a></p>
 <h2 id="QPS"><a href="#QPS" class="headerlink" title="QPS"></a>QPS</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/huangyingsheng/p/13744422.html">服务端性能优化–最大QPS推算及验证 - huangyingsheng - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://weibo.com/1667773473/LslU6zRcd">QPS和延时的乘积是常量</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/apUVMfAI52uvc7U-iOVvKg">高并发是一种架构思维模式</a></p>
@@ -378,13 +384,10 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/x-AdmN0UN5KT58XWO1BCOA">深入解读Raft算法与etcd工程实现</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.openacid.com/algo/paxos/">可靠分布式系统-paxos的直观解释 - OpenACID Blog</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.51cto.com/jiangyi/3772035">最终一致性和实时一致性是什么？在架构设计中，我们应该选择哪种方式？_我爱娃哈哈的技术博客_51CTO博客</a></p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3AN28_AxwsFRNvl9WCcmIg">代码的简单设计五原则</a></p>
-<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/35dded4a7bfccda45135b8106">设计模式前传——为什么要学设计模式 - InfoQ 写作平台</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hwaggLee/p/4510687.html">Spring 框架用到的 9 个设计模式</a></p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hwaggLee/p/4510687.html">Spring 框架用到的 9 个设计模式</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.crazyant.net/2022.html">Mybatis 使用的 9 种设计模式</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/03/19/design-pattern-practice-in-marketing.html">设计模式在外卖营销业务中的实践 - 美团技术团队</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Vt1OpvD-3NL8KxpfBYTArA">观察者模式 vs 发布订阅模式</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/T3VIIYQUWTtRsG82KQLHZg">搭建系统先搭建框架</a></p>
 <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d187c7fe51d4577523f23d0">构建安全可靠、最小化的 Docker 镜像 - 掘金</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/97355a6e7ac01bce8532d5ff5">Docker 网络模式详解及容器间网络通信 - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/KCLh8SPcVsQxrW2tTV2w">从零开始入门 K8s：深入剖析 Linux 容器-InfoQ</a></p>

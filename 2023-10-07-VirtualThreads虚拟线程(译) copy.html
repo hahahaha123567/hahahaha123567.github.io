@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Oracle文档翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Virtual Threads虚拟线程(译)">
+<meta property="og:url" content="https://hahahaha123567.github.io/2023-10-07-VirtualThreads%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B(%E8%AF%91)%20copy.html">
+<meta property="og:site_name" content="hahahaha123567">
+<meta property="og:description" content="Oracle文档翻译">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://docs.oracle.com/en/java/javase/21/core/img/java-core-libraries-virtual-threads-thread-pool-and-semaphore.png">
+<meta property="article:published_time" content="2023-10-07T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-10T08:02:03.832Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java, JDK21, 并发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://docs.oracle.com/en/java/javase/21/core/img/java-core-libraries-virtual-threads-thread-pool-and-semaphore.png">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2023-10-07-VirtualThreads%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B(%E8%AF%91)%20copy.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2023-10-07-VirtualThreads%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B(%E8%AF%91)%20copy.html","path":"2023-10-07-VirtualThreads虚拟线程(译) copy.html","title":"Virtual Threads虚拟线程(译)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Virtual Threads虚拟线程(译) | hahahaha123567</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/favorite/" rel="section"><i class="fa fa-bookmark fa-fw"></i>收藏</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Platform-Threads-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">Platform Threads 是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-Threads-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">Virtual Threads 是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-Virtual-Threads"><span class="nav-number">3.</span> <span class="nav-text">为什么要使用 Virtual Threads</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E8%BF%90%E8%A1%8C-Virtual-Thread"><span class="nav-number">4.</span> <span class="nav-text">创建并运行 Virtual Thread</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Thread-%E7%B1%BB%E5%92%8C-Thread-Builder-%E6%8E%A5%E5%8F%A3%E5%88%9B%E5%BB%BA-Virtual-Threads"><span class="nav-number">4.1.</span> <span class="nav-text">使用 Thread 类和 Thread.Builder 接口创建 Virtual Threads</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-Builder-%E6%8E%A5%E5%8F%A3%E5%85%81%E8%AE%B8%E6%82%A8%E5%88%9B%E5%BB%BA%E5%85%B7%E6%9C%89%E5%B8%B8%E8%A7%81%E7%BA%BF%E7%A8%8B%E5%B1%9E%E6%80%A7%EF%BC%88%E4%BE%8B%E5%A6%82%E7%BA%BF%E7%A8%8B%E5%90%8D%E7%A7%B0%EF%BC%89%E7%9A%84%E7%BA%BF%E7%A8%8B%E3%80%82-Thread-Builder-OfPlatform-%E5%AD%90%E6%8E%A5%E5%8F%A3%E5%88%9B%E5%BB%BA-Platform-Threads%EF%BC%8C%E8%80%8C-Thread-Builder-OfVirtual-%E5%88%9B%E5%BB%BA-Virtual-Threads"><span class="nav-number">4.1.1.</span> <span class="nav-text">Thread.Builder 接口允许您创建具有常见线程属性（例如线程名称）的线程。 Thread.Builder.OfPlatform 子接口创建 Platform Threads，而 Thread.Builder.OfVirtual 创建 Virtual Threads</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Executors-newVirtualThreadPerTaskExecutor-%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA%E5%B9%B6%E8%BF%90%E8%A1%8C-Virtual-Threads"><span class="nav-number">4.2.</span> <span class="nav-text">使用 Executors.newVirtualThreadPerTaskExecutor() 方法创建并运行 Virtual Threads</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B-Client-Server-%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.3.</span> <span class="nav-text">多线程 Client Server 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtual-Threads-%E7%9A%84%E8%B0%83%E5%BA%A6%E5%92%8C%E5%9B%BA%E5%AE%9A%EF%BC%88pin%EF%BC%89"><span class="nav-number">4.4.</span> <span class="nav-text">Virtual Threads 的调度和固定（pin）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Debugging-Virtual-Threads"><span class="nav-number">5.</span> <span class="nav-text">Debugging Virtual Threads</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtual-Threads-%E7%9A%84-Java-Flight-Recorder-%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">Virtual Threads 的 Java Flight Recorder 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-jcmd-%E7%BA%BF%E7%A8%8B-dump-%E4%B8%AD%E7%9A%84-virtual-threads"><span class="nav-number">5.2.</span> <span class="nav-text">查看 jcmd 线程 dump 中的 virtual threads</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-Threads-%E9%87%87%E7%94%A8%E6%8C%87%E5%8D%97"><span class="nav-number">6.</span> <span class="nav-text">Virtual Threads 采用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%98%BB%E5%A1%9E-I-x2F-O-API-%E4%BB%A5-thread-per-request-%E7%9A%84%E6%96%B9%E5%BC%8F%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E7%9A%84%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81"><span class="nav-number">6.1.</span> <span class="nav-text">使用阻塞 I&#x2F;O API 以 thread-per-request 的方式编写简单的同步代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E6%AF%8F%E4%B8%AA%E5%B9%B6%E5%8F%91%E4%BB%BB%E5%8A%A1%E8%A1%A8%E7%A4%BA%E4%B8%BA%E4%B8%80%E4%B8%AA-Virtual-Thread-%E4%B8%8D%E6%B1%A0%E5%8C%96-Virtual-Threads"><span class="nav-number">6.2.</span> <span class="nav-text">将每个并发任务表示为一个 Virtual Thread, 不池化 Virtual Threads</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8-Semaphores-%E9%99%90%E5%88%B6%E5%B9%B6%E5%8F%91"><span class="nav-number">6.3.</span> <span class="nav-text">用 Semaphores 限制并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E5%9C%A8%E7%BA%BF%E7%A8%8B%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E4%B8%AD%E7%BC%93%E5%AD%98%E6%98%82%E8%B4%B5%E7%9A%84%E5%8F%AF%E9%87%8D%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.4.</span> <span class="nav-text">不要在线程局部变量中缓存昂贵的可重用对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E9%95%BF%E6%97%B6%E9%97%B4%E5%92%8C%E9%A2%91%E7%B9%81%E7%9A%84%E5%9B%BA%E5%AE%9A"><span class="nav-number">6.5.</span> <span class="nav-text">避免长时间和频繁的固定</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2023-10-07-VirtualThreads%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B(%E8%AF%91)%20copy.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Virtual Threads虚拟线程(译) | hahahaha123567">
+      <meta itemprop="description" content="Oracle文档翻译">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Virtual Threads虚拟线程(译)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-07 12:00:00" itemprop="dateCreated datePublished" datetime="2023-10-07T12:00:00+08:00">2023-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-10 16:02:03" itemprop="dateModified" datetime="2023-10-10T16:02:03+08:00">2023-10-10</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>14k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Oracle文档翻译</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>原文 <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html">Virtual Threads</a></p>
+<hr>
+<p>Virtual threads 虚拟线程是轻量级的线程，可以减少编写、维护和调试高吞吐量并发应用程序的工作量</p>
+<p>有关 Virtual Threads 的背景信息，请参阅 <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/444">JEP 444</a></p>
+<p>thread是可调度的最小处理单元，thread之间同时（并且独立）运行</p>
+<p>thread有两种，Platform Threads 平台线程和 Virtual Threads 虚拟线程</p>
+<h1 id="Platform-Threads-是什么"><a href="#Platform-Threads-是什么" class="headerlink" title="Platform Threads 是什么"></a>Platform Threads 是什么</h1><p>Platform Threads 是操作系统 (OS) 线程的简单封装，在底层OS线程上运行 Java 代码，因此 Platform Threads 的可用数量受限于OS线程的数量</p>
+<p>Platform Threads 通常具有大型线程堆栈和由OS维护的其他资源，适合运行所有类型的任务，但资源有限</p>
+<h1 id="Virtual-Threads-是什么"><a href="#Virtual-Threads-是什么" class="headerlink" title="Virtual Threads 是什么"></a>Virtual Threads 是什么</h1><p>与 Platform Threads 一样，Virtual Threads 也是 java.lang.Thread 的一个实例。 但是，Virtual Threads 并不依赖于特定的OS线程。Virtual Threads 仍然在OS线程上运行，但是当 Virtual Thread 中运行的代码调用阻塞 I&#x2F;O 操作时，Java 运行时会挂起 Virtual Threads，直到可以恢复为止。与挂起的 Virtual Thread 关联的OS线程现在可以自由地为其他 Virtual Threads 执行操作</p>
+<p>Virtual Thread 的实现方式与虚拟内存类似。为了模拟大量内存，操作系统将较大的虚拟地址空间映射到有限的 RAM。同样，为了模拟大量线程，Java运行时将大量 Virtual Threads 映射到少量OS线程。</p>
+<p>与 Platform Thread 不同，Virtual Threads 通常具有浅调用堆栈，只执行单个 HTTP 客户端调用或单个 JDBC 查询。 尽管Virtual Threads 支持线程本地变量和可继承的线程本地变量，但您应该仔细考虑使用它们，因为单个 JVM 可能支持数百万个 Virtual Threads</p>
+<p>Virtual Threads 适合运行大部分时间处于阻塞状态、通常等待 I&#x2F;O 操作完成的任务，不适用于长时间运行的 CPU 密集型操作</p>
+<h1 id="为什么要使用-Virtual-Threads"><a href="#为什么要使用-Virtual-Threads" class="headerlink" title="为什么要使用 Virtual Threads"></a>为什么要使用 Virtual Threads</h1><p>在高并发IO应用程序中使用 Virtual Threads，尤其是那些包含大量并发任务且大部分时间都在等待的应用程序。服务器应用程序是高吞吐量应用程序的示例，因为它们通常处理许多执行阻塞 I&#x2F;O 操作（例如获取资源）的客户端请求</p>
+<p>Virtual Threads 运行代码的速度并不比 Platform Threads 快。 它们的存在是为了提供scale规模（更高的吞吐量），而不是速度（更低的延迟）</p>
+<h1 id="创建并运行-Virtual-Thread"><a href="#创建并运行-Virtual-Thread" class="headerlink" title="创建并运行 Virtual Thread"></a>创建并运行 Virtual Thread</h1><p>Thread 和 Thread.Builder API 提供了创建 Platform Thread 和 Virtual Threads 的方法。</p>
+<p>java.util.concurrent.Executors 类还定义了创建 ExecutorService 的方法，该服务为每个任务启动一个新的 Virtual Threads</p>
+<h2 id="使用-Thread-类和-Thread-Builder-接口创建-Virtual-Threads"><a href="#使用-Thread-类和-Thread-Builder-接口创建-Virtual-Threads" class="headerlink" title="使用 Thread 类和 Thread.Builder 接口创建 Virtual Threads"></a>使用 Thread 类和 Thread.Builder 接口创建 Virtual Threads</h2><p>调用 Thread.ofVirtual() 方法创建 Thread.Builder 实例来创建 Virtual Threads</p>
+<p>以下示例创建并启动一个打印消息的 Virtual Threads。 它调用 join 方法来等待 Virtual Threads 终止（这使您能够在主线程终止之前看到打印的消息）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> Thread.ofVirtual().start(() -&gt; System.out.println(<span class="string">&quot;Hello&quot;</span>));</span><br><span class="line">thread.join();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Thread-Builder-接口允许您创建具有常见线程属性（例如线程名称）的线程。-Thread-Builder-OfPlatform-子接口创建-Platform-Threads，而-Thread-Builder-OfVirtual-创建-Virtual-Threads"><a href="#Thread-Builder-接口允许您创建具有常见线程属性（例如线程名称）的线程。-Thread-Builder-OfPlatform-子接口创建-Platform-Threads，而-Thread-Builder-OfVirtual-创建-Virtual-Threads" class="headerlink" title="Thread.Builder 接口允许您创建具有常见线程属性（例如线程名称）的线程。 Thread.Builder.OfPlatform 子接口创建 Platform Threads，而 Thread.Builder.OfVirtual 创建 Virtual Threads"></a>Thread.Builder 接口允许您创建具有常见线程属性（例如线程名称）的线程。 Thread.Builder.OfPlatform 子接口创建 Platform Threads，而 Thread.Builder.OfVirtual 创建 Virtual Threads</h3><p>以下示例使用 Thread.Builder 接口创建一个名为 MyThread 的 Virtual Threads</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Thread.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> Thread.ofVirtual().name(<span class="string">&quot;MyThread&quot;</span>);</span><br><span class="line"><span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> () -&gt; System.out.println(<span class="string">&quot;Running thread&quot;</span>);</span><br><span class="line"><span class="type">Thread</span> <span class="variable">t</span> <span class="operator">=</span> builder.start(task);</span><br><span class="line">System.out.println(<span class="string">&quot;Thread t name: &quot;</span> + t.getName());</span><br><span class="line">t.join();</span><br></pre></td></tr></table></figure>
+
+<p>以下示例使用 Thread.Builder 创建并启动两个 Virtual Threads</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Thread.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> Thread.ofVirtual().name(<span class="string">&quot;worker-&quot;</span>, <span class="number">0</span>);</span><br><span class="line"><span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> () -&gt; System.out.println(<span class="string">&quot;Thread ID: &quot;</span> + Thread.currentThread().threadId());</span><br><span class="line"></span><br><span class="line"><span class="comment">// name &quot;worker-0&quot;</span></span><br><span class="line"><span class="type">Thread</span> <span class="variable">t1</span> <span class="operator">=</span> builder.start(task);   </span><br><span class="line">t1.join();</span><br><span class="line">System.out.println(t1.getName() + <span class="string">&quot; terminated&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// name &quot;worker-1&quot;</span></span><br><span class="line"><span class="type">Thread</span> <span class="variable">t2</span> <span class="operator">=</span> builder.start(task);   </span><br><span class="line">t2.join();  </span><br><span class="line">System.out.println(t2.getName() + <span class="string">&quot; terminated&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Thread ID: 21</span><br><span class="line">worker-0 terminated</span><br><span class="line">Thread ID: 24</span><br><span class="line">worker-1 terminated</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Executors-newVirtualThreadPerTaskExecutor-方法创建并运行-Virtual-Threads"><a href="#使用-Executors-newVirtualThreadPerTaskExecutor-方法创建并运行-Virtual-Threads" class="headerlink" title="使用 Executors.newVirtualThreadPerTaskExecutor() 方法创建并运行 Virtual Threads"></a>使用 Executors.newVirtualThreadPerTaskExecutor() 方法创建并运行 Virtual Threads</h2><p>Executors 允许您将线程的管理和创建与应用程序的其余部分分开。</p>
+<p>以下示例使用 Executors.newVirtualThreadPerTaskExecutor() 方法创建 ExecutorService。 每当调用 ExecutorService.submit(Runnable) 时，就会创建一个新的 Virtual Thread 并开始运行任务。 该方法返回一个 Future 的实例。 请注意，Future.get() 方法等待线程任务完成。 因此，一旦 Virtual Threads 的任务完成，此示例就会打印一条消息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">ExecutorService</span> <span class="variable">myExecutor</span> <span class="operator">=</span> Executors.newVirtualThreadPerTaskExecutor()) &#123;</span><br><span class="line">    Future&lt;?&gt; future = myExecutor.submit(() -&gt; System.out.println(<span class="string">&quot;Running thread&quot;</span>));</span><br><span class="line">    future.get();</span><br><span class="line">    System.out.println(<span class="string">&quot;Task completed&quot;</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多线程-Client-Server-示例"><a href="#多线程-Client-Server-示例" class="headerlink" title="多线程 Client Server 示例"></a>多线程 Client Server 示例</h2><p>以下示例由两个类组成。 EchoServer 是一个服务器程序，它监听端口并为每个连接启动一个新的 Virtual Thread</p>
+<p>EchoClient 是一个客户端程序，它连接到服务器并发送在命令行中输入的消息</p>
+<p>EchoClient 创建一个 Socket，从而获得与 EchoServer 的连接。 它在标准输入流上读取用户的输入，然后通过将文本写入 Socket 来将该文本转发到 EchoServer。 EchoServer 通过 Socket 将输入回显给 EchoClient。 EchoClient 读取并显示从服务器传回给它的数据。 EchoServer 可以通过 Virtual Threads 同时为多个客户端提供服务，每个客户端连接一个线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EchoServer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="keyword">if</span> (args.length != <span class="number">1</span>) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;Usage: java EchoServer &lt;port&gt;&quot;</span>);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">portNumber</span> <span class="operator">=</span> Integer.parseInt(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            <span class="type">ServerSocket</span> <span class="variable">serverSocket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(Integer.parseInt(args[<span class="number">0</span>]));</span><br><span class="line">        ) &#123;                </span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="type">Socket</span> <span class="variable">clientSocket</span> <span class="operator">=</span> serverSocket.accept();</span><br><span class="line">                <span class="comment">// Accept incoming connections</span></span><br><span class="line">                <span class="comment">// Start a service thread</span></span><br><span class="line">                Thread.ofVirtual().start(() -&gt; &#123;</span><br><span class="line">                    <span class="keyword">try</span> (</span><br><span class="line">                        <span class="type">PrintWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(clientSocket.getOutputStream(), <span class="literal">true</span>);</span><br><span class="line">                        <span class="type">BufferedReader</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(</span><br><span class="line">                            <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(clientSocket.getInputStream()));</span><br><span class="line">                    ) &#123;</span><br><span class="line">                        String inputLine;</span><br><span class="line">                        <span class="keyword">while</span> ((inputLine = in.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">                            System.out.println(inputLine);</span><br><span class="line">                            out.println(inputLine);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IOException e) &#123; </span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Exception caught when trying to listen on port &quot;</span></span><br><span class="line">                + portNumber + <span class="string">&quot; or listening for a connection&quot;</span>);</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EchoClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="keyword">if</span> (args.length != <span class="number">2</span>) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;Usage: java EchoClient &lt;hostname&gt; &lt;port&gt;&quot;</span>);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">String</span> <span class="variable">hostName</span> <span class="operator">=</span> args[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">portNumber</span> <span class="operator">=</span> Integer.parseInt(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">echoSocket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(hostName, portNumber);</span><br><span class="line">            <span class="type">PrintWriter</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(echoSocket.getOutputStream(), <span class="literal">true</span>);</span><br><span class="line">            <span class="type">BufferedReader</span> <span class="variable">in</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(</span><br><span class="line">                    <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(echoSocket.getInputStream()));</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="type">BufferedReader</span> <span class="variable">stdIn</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(</span><br><span class="line">                    <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">            String userInput;</span><br><span class="line">            <span class="keyword">while</span> ((userInput = stdIn.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">                out.println(userInput);</span><br><span class="line">                System.out.println(<span class="string">&quot;echo: &quot;</span> + in.readLine());</span><br><span class="line">                <span class="keyword">if</span> (userInput.equals(<span class="string">&quot;bye&quot;</span>)) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;Don&#x27;t know about host &quot;</span> + hostName);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;Couldn&#x27;t get I/O for the connection to &quot;</span> + hostName);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Virtual-Threads-的调度和固定（pin）"><a href="#Virtual-Threads-的调度和固定（pin）" class="headerlink" title="Virtual Threads 的调度和固定（pin）"></a>Virtual Threads 的调度和固定（pin）</h2><p>OS调度 platform threads 何时运行。 但是，Java 运行时会调度 virtual threads 的运行时间。 当Java运行时调度 virtual threads 时，它会在 platform threads 上分配或安装 virtual threads，然后OS照常调度该 platform threads。 该 platform threads 称为 carrier 载体。运行一些代码后，virtual threads 可以从其 carrier 上卸载。 这通常发生在 virtual threads 执行阻塞 I&#x2F;O 操作时。Virtual threads 从其 carrier 上卸载后，carrier 就空闲了，这意味着Java运行时调度程序可以在其上挂载不同的 virtual threads</p>
+<p>当 virtual thread 固定到其 carrier 时，无法在阻塞操作期间卸载该 virtual thread。Virtual threads 在以下情况下被固定</p>
+<ol>
+<li><p>Virtual threads 在同步块或方法内运行代码</p>
+</li>
+<li><p>Virtual threads 运行 native 方法或 foreign 函数（请参阅外部函数和内存 API）</p>
+</li>
+</ol>
+<p>固定不会使应用程序不正确，但可能会妨碍其可扩展性。 尝试通过修改频繁运行的同步块或方法并使用 java.util.concurrent.locks.ReentrantLock 给潜在的长 I&#x2F;O 操作加锁来避免频繁且长期的固定</p>
+<h1 id="Debugging-Virtual-Threads"><a href="#Debugging-Virtual-Threads" class="headerlink" title="Debugging Virtual Threads"></a>Debugging Virtual Threads</h1><p>Virtual Threads 仍然是 thread, debugger 可以像 platform thread 一样单步调试它们。Java Flight Recorder 和 jcmd 工具具有附加功能，可帮助您观察应用程序中的 Virtual Threads</p>
+<h2 id="Virtual-Threads-的-Java-Flight-Recorder-事件"><a href="#Virtual-Threads-的-Java-Flight-Recorder-事件" class="headerlink" title="Virtual Threads 的 Java Flight Recorder 事件"></a>Virtual Threads 的 Java Flight Recorder 事件</h2><p>Java Flight Recorder (JFR) 可以发出与 Virtual Threads 相关的以下事件：</p>
+<ul>
+<li><p>jdk.VirtualThreadStart 和 jdk.VirtualThreadEnd 指示 Virtual Threads 何时开始和结束。 默认情况下禁用这些事件。</p>
+</li>
+<li><p>jdk.VirtualThreadPinned 指示 Virtual Threads 被固定（并且其载体线程未释放）的时间超过阈值持续时间。 默认情况下启用此事件，阈值为 20 毫秒。</p>
+</li>
+<li><p>jdk.VirtualThreadSubmitFailed 表示启动或取消停放 Virtual Threads 失败，可能是由于资源问题。 停放 Virtual Threads 会释放底层承载线程以执行其他工作，而取消停放 Virtual Threads 会安排其继续。 该事件默认启用。</p>
+</li>
+</ul>
+<p>通过 JDK Mission Control 或使用自定义 JFR 配置启用事件 jdk.VirtualThreadStart 和 jdk.VirtualThreadEnd，如 Java 平台标准版 Flight Recorder API 程序员指南中的 Flight Recorder 配置中所述。</p>
+<p>要打印这些事件，请运行以下命令，其中recording.jfr 是录制文件的文件名：</p>
+<p>jfr print –events jdk.VirtualThreadStart,jdk.VirtualThreadEnd,jdk.VirtualThreadPinned,jdk.VirtualThreadSubmitFailed recording.jfr</p>
+<h2 id="查看-jcmd-线程-dump-中的-virtual-threads"><a href="#查看-jcmd-线程-dump-中的-virtual-threads" class="headerlink" title="查看 jcmd 线程 dump 中的 virtual threads"></a>查看 jcmd 线程 dump 中的 virtual threads</h2><p>您可以以纯文本和 JSON 格式创建线程dump：</p>
+<p>jcmd <PID> Thread.dump_to_file -format&#x3D;text <file></p>
+<p>jcmd <PID> Thread.dump_to_file -format&#x3D;json <file></p>
+<p>jcmd 线程转储列出了网络 I&#x2F;O 操作中被阻塞的 virtual threads 以及 ExecutorService 接口创建的 virtual threads。 它不包括对象地址、锁、JNI 统计信息、堆统计信息以及传统线程dump中出现的其他信息</p>
+<h1 id="Virtual-Threads-采用指南"><a href="#Virtual-Threads-采用指南" class="headerlink" title="Virtual Threads 采用指南"></a>Virtual Threads 采用指南</h1><p>Virtual Threads 是由 Java 运行时而不是OS实现的 Java 线程。Virtual Threads 和传统线程（我们称之为 Platform Threads）之间的主要区别在于，我们可以轻松地在同一个 Java 进程中运行大量活动 Virtual Threads，甚至数百万个。Virtual Threads 的数量众多，赋予了 Virtual Threads 强大的力量：通过允许服务器同时处理更多请求，它们可以更有效地运行以 thread-per-request 风格编写的服务器应用程序，从而提高吞吐量并减少硬件浪费。</p>
+<p>由于 Virtual Threads 是 java.lang.Thread 的实现，并且遵守自 Java SE 1.0 以来指定 java.lang.Thread 的相同规则，因此开发人员无需学习新概念即可使用它们。 然而，由于无法生成大量 Platform Threads （多年来 Java 中唯一可用的线程实现），已经产生了旨在应对其高成本的实践。 这些做法在应用于 Virtual Threads 时会适得其反，必须摒弃。 此外，成本上的巨大差异提供了一种新的思考线程的方式，而这些线程一开始可能是陌生的。</p>
+<p>本指南无意全面涵盖 Virtual Threads 的每个重要细节。 其目的只是提供一套介绍性指南，以帮助那些希望开始使用 Virtual Threads 的人充分利用它们。</p>
+<h2 id="使用阻塞-I-x2F-O-API-以-thread-per-request-的方式编写简单的同步代码"><a href="#使用阻塞-I-x2F-O-API-以-thread-per-request-的方式编写简单的同步代码" class="headerlink" title="使用阻塞 I&#x2F;O API 以 thread-per-request 的方式编写简单的同步代码"></a>使用阻塞 I&#x2F;O API 以 thread-per-request 的方式编写简单的同步代码</h2><p>Virtual Threads 可以显著提高以 thread-per-request 风格编写的服务器的吞吐量（而不是延迟）。 在这种风格中，服务器专用一个线程在整个持续时间内处理每个传入请求。 它至少专用一个线程，因为在处理单个请求时，您可能希望使用更多线程来同时执行某些任务。</p>
+<p>阻塞 Platform Threads 的成本很高，因为它保留了线程（一种相对稀缺的资源），而它没有做太多有意义的工作。 因为 Virtual Threads 可能很丰富，所以阻塞它们是廉价的并且值得鼓励。 因此，您应该以简单的同步风格编写代码并使用阻塞 I&#x2F;O API</p>
+<p>例如，以下以非阻塞异步风格编写的代码不会从 Virtual Threads 中受益太多</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CompletableFuture.supplyAsync(info::getUrl, pool)</span><br><span class="line">   .thenCompose(url -&gt; getBodyAsync(url, HttpResponse.BodyHandlers.ofString()))</span><br><span class="line">   .thenApply(info::findImage)</span><br><span class="line">   .thenCompose(url -&gt; getBodyAsync(url, HttpResponse.BodyHandlers.ofByteArray()))</span><br><span class="line">   .thenApply(info::setImageData)</span><br><span class="line">   .thenAccept(<span class="built_in">this</span>::process)</span><br><span class="line">   .exceptionally(t -&gt; &#123; t.printStackTrace(); <span class="keyword">return</span> <span class="literal">null</span>; &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>另一方面，以下以同步风格编写并使用简单阻塞 IO 的代码将受益匪浅</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   <span class="type">String</span> <span class="variable">page</span> <span class="operator">=</span> getBody(info.getUrl(), HttpResponse.BodyHandlers.ofString());</span><br><span class="line">   <span class="type">String</span> <span class="variable">imageUrl</span> <span class="operator">=</span> info.findImage(page);</span><br><span class="line">   <span class="type">byte</span>[] data = getBody(imageUrl, HttpResponse.BodyHandlers.ofByteArray());   </span><br><span class="line">   info.setImageData(data);</span><br><span class="line">   process(info);</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">   t.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此类代码也更容易在调试器中调试、在分析器中分析或通过线程dump进行观察。要观察 virtual thread，请使用 jcmd 命令创建线程dump：</p>
+<p><code>jcmd &lt;pid&gt; Thread.dump_to_file -format=json &lt;文件&gt;</code></p>
+<p>以这种方式编写的堆栈越多， virtual threads 的性能和可观察性就越好。 以其他风格编写的程序或框架，如果每个任务没有专用一个线程，则不应期望从  virtual threads 中获得显著的好处。 避免将同步、阻塞代码与异步框架混合</p>
+<h2 id="将每个并发任务表示为一个-Virtual-Thread-不池化-Virtual-Threads"><a href="#将每个并发任务表示为一个-Virtual-Thread-不池化-Virtual-Threads" class="headerlink" title="将每个并发任务表示为一个 Virtual Thread, 不池化 Virtual Threads"></a>将每个并发任务表示为一个 Virtual Thread, 不池化 Virtual Threads</h2><p>关于 Virtual Threads 最难理解的事情是，虽然它们具有与 Platform Threads 相同的行为，但它们不应该代表相同的程序概念</p>
+<p> Platform Threads 稀缺，因此是宝贵的资源。 宝贵的资源需要管理，管理 Platform Threads 最常见的方法是使用线程池。 然后您需要回答的一个问题是，池中应该有多少个线程？</p>
+<p>但 Virtual Threads 非常丰富，因此每个 Virtual Threads 不应代表某些共享的、池化的资源，而应代表一个任务。 线程从托管资源转变为应用程序域对象。 我们应该有多少个 Virtual Threads 的问题变得显而易见，就像我们应该使用多少个字符串在内存中存储一组用户名的问题一样显而易见：在您的应用程序中，Virtual Threads 的数量始终等于并发任务的数量</p>
+<p>将 n 个平台线程转换为 n 个 Virtual Threads 不会产生什么好处；相反，它是需要转换的任务</p>
+<p>要将每个应用程序任务表示为一个线程，请不要使用共享线程池执行器，如下例所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;ResultA&gt; f1 = sharedThreadPoolExecutor.submit(task1);</span><br><span class="line">Future&lt;ResultB&gt; f2 = sharedThreadPoolExecutor.submit(task2);</span><br><span class="line"><span class="comment">// ... use futures</span></span><br></pre></td></tr></table></figure>
+
+<p>相反，请使用 Virtual Threads 执行器，如下例所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">var</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newVirtualThreadPerTaskExecutor()) &#123;</span><br><span class="line">   Future&lt;ResultA&gt; f1 = executor.submit(task1);</span><br><span class="line">   Future&lt;ResultB&gt; f2 = executor.submit(task2);</span><br><span class="line">   <span class="comment">// ... use futures</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该代码仍然使用 ExecutorService，但从 Executors.newVirtualThreadPerTaskExecutor() 返回的 service 不使用线程池。 相反，它为每个提交的任务创建一个新的 Vritual Thread</p>
+<p>此外，ExecutorService 本身是轻量级的，我们可以像创建任何简单对象一样创建一个新的。这使我们能够依赖新添加的 ExecutorService.close() 方法和 try-with-resources 构造。 在 try 块末尾隐式调用的 close 方法将自动等待提交给 ExecutorService 的所有任务（即 ExecutorService 生成的所有 Virtual Threads）终止</p>
+<p>对于扇出（fanout）场景来说，这是一种特别有用的模式，在这种场景中，您希望同时对不同的服务执行多个传出调用，如下例所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">handle</span><span class="params">(Request request, Response response)</span> &#123;</span><br><span class="line">    <span class="type">var</span> <span class="variable">url1</span> <span class="operator">=</span> ...</span><br><span class="line">    <span class="type">var</span> <span class="variable">url2</span> <span class="operator">=</span> ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> (<span class="type">var</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newVirtualThreadPerTaskExecutor()) &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">future1</span> <span class="operator">=</span> executor.submit(() -&gt; fetchURL(url1));</span><br><span class="line">        <span class="type">var</span> <span class="variable">future2</span> <span class="operator">=</span> executor.submit(() -&gt; fetchURL(url2));</span><br><span class="line">        response.send(future1.get() + future2.get());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ExecutionException | InterruptedException e) &#123;</span><br><span class="line">        response.fail(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String <span class="title function_">fetchURL</span><span class="params">(URL url)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="keyword">try</span> (<span class="type">var</span> <span class="variable">in</span> <span class="operator">=</span> url.openStream()) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(in.readAllBytes(), StandardCharsets.UTF_8);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上所示，您应该为即使是小型、短期的并发任务创建一个新的 Vritual Thread</p>
+<p>为了获得更多帮助编写扇出（fanout）模式和其他常见并发模式，并具有更好的可观察性，请使用结构化并发（structured concurrency）</p>
+<p>根据经验，如果您的应用程序从未拥有 10,000 个或更多 Vritual Threads，则它不太可能从 Vritual Threads 中受益。 要么它的负载太轻而需要更高的吞吐量，要么您没有向 Vritual Threads 表示足够多的任务</p>
+<h2 id="用-Semaphores-限制并发"><a href="#用-Semaphores-限制并发" class="headerlink" title="用 Semaphores 限制并发"></a>用 Semaphores 限制并发</h2><p>有时需要限制某个操作的并发数。 例如，某些外部服务可能无法处理超过 10 个并发请求。 由于 Platform Threads 是一种宝贵的资源，通常在池中进行管理，因此线程池已经变得如此普遍，以至于它们被用于限制并发的目的，如下例所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">es</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">...</span><br><span class="line">Result <span class="title function_">foo</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">fut</span> <span class="operator">=</span> es.submit(() -&gt; callLimitedService());</span><br><span class="line">        <span class="keyword">return</span> f.get();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (...) &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此示例确保有限服务最多有 10 个并发请求</p>
+<p>但限制并发只是线程池操作的副作用。 池旨在共享稀缺资源，而 Virtual Threads 并不稀缺，因此永远不应该池化！</p>
+<p>使用 Virtual Threads 时，如果要限制访问某些服务的并发性，则应该使用专门为此目的设计的构造：Semaphore 类。 下面的例子演示了这个类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Semaphore</span> <span class="variable">sem</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Semaphore</span>(<span class="number">10</span>);</span><br><span class="line">...</span><br><span class="line">Result <span class="title function_">foo</span><span class="params">()</span> &#123;</span><br><span class="line">    sem.acquire();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> callLimitedService();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        sem.release();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 foo 的线程将被阻塞，因此一次只有 10 个线程可以取得进展，而其他线程将不受阻碍地继续自己的业务</p>
+<p>简单地使用信号量阻塞某些 Virtual Threads 可能看起来与将任务提交到固定线程池有很大不同，但事实并非如此。 将任务提交到线程池会将它们排队以供稍后执行，但内部信号量（或与此相关的任何其他阻塞同步构造）会创建一个在其上阻塞的线程队列，该队列镜像等待池线程执行的任务队列来执行。 因为 Virtual Threads 是任务，所以结果结构是等效的</p>
+<p><img src="https://docs.oracle.com/en/java/javase/21/core/img/java-core-libraries-virtual-threads-thread-pool-and-semaphore.png" alt="线程池与信号量的比较"></p>
+<p>尽管您可以将 Platform Threads 池视为处理从队列中提取的任务的工作人员，并将 Virtual Threads 视为任务本身，在它们可以继续之前被阻塞，但计算机中的底层表示实际上是相同的。 认识排队任务和阻塞线程之间的等效性将帮助您充分利用 Virtual Threads</p>
+<p>数据库连接池本身充当信号量。 连接池限制为十个连接将阻止第十一个线程尝试获取连接。 无需在连接池之上添加额外的信号量</p>
+<h2 id="不要在线程局部变量中缓存昂贵的可重用对象"><a href="#不要在线程局部变量中缓存昂贵的可重用对象" class="headerlink" title="不要在线程局部变量中缓存昂贵的可重用对象"></a>不要在线程局部变量中缓存昂贵的可重用对象</h2><p>Virtual Threads 支持线程局部变量，就像平台线程一样。 有关详细信息，请参阅线程局部变量。 通常，线程局部变量用于将一些特定于上下文的信息与当前运行的代码关联起来，例如当前事务和用户ID。 对于 Virtual Threads 来说，线程局部变量的使用是完全合理的。 但是，请考虑使用更安全、更有效的范围值。 有关详细信息，请参阅范围值。</p>
+<p>线程局部变量的另一种用途与 Virtual Threads 根本上是不一致的：缓存可重用对象。 这些对象的创建成本通常很高（并且消耗大量内存），并且是可变的，并且不是线程安全的。 它们被缓存在线程局部变量中，以减少它们实例化的次数以及它们在内存中的实例数量，但它们可以被线程上不同时间运行的多个任务重用。</p>
+<p>例如，SimpleDateFormat 的实例创建成本很高，而且不是线程安全的。 出现的一种模式是将此类实例缓存在 ThreadLocal 中，如下例所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;SimpleDateFormat&gt; cachedFormatter = ThreadLocal.withInitial(SimpleDateFormat::<span class="keyword">new</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">foo</span><span class="params">()</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">        cachedFormatter.get().format(...);</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仅当线程（以及因此在线程本地缓存的昂贵对象）被多个任务共享和重用时（就像平台线程被池化时的情况一样），这种缓存才有用。 许多任务在线程池中运行时可能会调用 foo，但由于池中仅包含几个线程，因此该对象只会被实例化几次（每个池线程一次）并被缓存和重用。</p>
+<p>但是，Virtual Threads 永远不会被池化，也不会被不相关的任务重用。 因为每个任务都有自己的 Virtual hreads ，所以每次从不同任务调用 foo 都会触发新 SimpleDateFormat 的实例化。 而且，由于可能有大量的 Virtual Threads 同时运行，昂贵的对象可能会消耗相当多的内存。 这些结果与线程本地缓存想要实现的结果恰恰相反。</p>
+<p>没有提供单一的通用替代方案，但对于 SimpleDateFormat，您应该将其替换为 DateTimeFormatter，DateTimeFormatter 是不可变的，因此单个实例可以由所有线程共享</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="type">DateTimeFormatter</span> <span class="variable">formatter</span> <span class="operator">=</span> DateTimeFormatter….;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">foo</span><span class="params">()</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">        formatter.format(...);</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，使用线程局部变量来缓存共享的昂贵对象有时是由异步框架在幕后完成的，其隐含的假设是它们由极少数池线程使用。 这就是为什么混合 Virtual Threads 和异步框架不是一个好主意的原因之一：对方法的调用可能会导致在本来要缓存和共享的线程局部变量中实例化昂贵的对象</p>
+<h2 id="避免长时间和频繁的固定"><a href="#避免长时间和频繁的固定" class="headerlink" title="避免长时间和频繁的固定"></a>避免长时间和频繁的固定</h2><p>当前 Virtual Threads 实现的一个限制是，在同步块或方法内执行阻塞操作会导致 JDK 的 Virtual Threads 调度程序阻塞宝贵的OS线程，而如果阻塞操作是在同步块之外完成则不会，我们称这种情况为“固定”。 如果阻塞操作既长期又频繁，则固定可能会对服务器的吞吐量产生不利影响。 保护短期操作（例如内存中操作）或使用同步块或方法的不频繁操作应该不会产生不利影响。</p>
+<p>为了检测可能有害的固定实例，（JDK Flight Recorder (JFR) 在固定阻塞操作时发出 jdk.VirtualThreadPinned 线程；默认情况下，当操作时间超过 20 毫秒时启用此事件</p>
+<p>或者，您可以使用系统属性 jdk.tracePinnedThreads 在线程被固定时阻塞时发出堆栈跟踪。 使用选项 -Djdk.tracePinnedThreads&#x3D;full 运行会在线程被固定时阻塞时打印完整的堆栈跟踪，突出显示本机帧和持有监视器的帧。 使用选项 -Djdk.tracePinnedThreads&#x3D;short 运行将输出限制为仅有问题的帧。</p>
+<p>如果这些机制检测到固定既长期又频繁的地方，请在这些特定地方将同步的使用替换为 ReentrantLock（同样，无需在保护短期或不频繁操作的地方替换同步）。 以下是长期且频繁使用同步块的示例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(lockObj) &#123;</span><br><span class="line">    frequentIO();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>您可以将其替换为以下内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lock.lock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    frequentIO();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    lock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java-JDK21-%E5%B9%B6%E5%8F%91/" rel="tag"># Java, JDK21, 并发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-09-27-VirtualThreads%E8%83%8C%E6%99%AF%E5%92%8C%E5%BD%B1%E5%93%8D.html" rel="prev" title="Virtual Threads背景和影响">
+                  <i class="fa fa-chevron-left"></i> Virtual Threads背景和影响
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">190k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:53</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

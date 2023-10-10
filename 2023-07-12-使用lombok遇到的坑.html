@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="TODO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lombok的@Builder使用避雷">
+<meta property="og:url" content="https://hahahaha123567.github.io/2023-07-12-%E4%BD%BF%E7%94%A8lombok%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91.html">
+<meta property="og:site_name" content="hahahaha123567">
+<meta property="og:description" content="TODO">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-12T11:42:00.000Z">
+<meta property="article:modified_time" content="2023-10-10T07:45:00.040Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2023-07-12-%E4%BD%BF%E7%94%A8lombok%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2023-07-12-%E4%BD%BF%E7%94%A8lombok%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91.html","path":"2023-07-12-使用lombok遇到的坑.html","title":"lombok的@Builder使用避雷"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>lombok的@Builder使用避雷 | hahahaha123567</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/favorite/" rel="section"><i class="fa fa-bookmark fa-fw"></i>收藏</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">问题现象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">排查流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lombok%E7%9A%84%E8%BF%99%E5%87%A0%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">lombok的这几个对象注解</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2023-07-12-%E4%BD%BF%E7%94%A8lombok%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="lombok的@Builder使用避雷 | hahahaha123567">
+      <meta itemprop="description" content="TODO">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          lombok的@Builder使用避雷
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-12 19:42:00" itemprop="dateCreated datePublished" datetime="2023-07-12T19:42:00+08:00">2023-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-10 15:45:00" itemprop="dateModified" datetime="2023-10-10T15:45:00+08:00">2023-10-10</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">TODO</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h1><p>新项目的mybatis反序列化报错, Enum类型的字段, 在mapper中指定了typeHandler但是未生效, 报错内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.result.ResultMapException: Error attempting to get column &#x27;account&#x27; from result set.  Cause: java.lang.IllegalArgumentException: No enum constant com.billing.api.enums.TenantAccountEnum.0</span><br><span class="line">	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:96)</span><br><span class="line">	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)</span><br><span class="line">	at com.sun.proxy.$Proxy141.selectOne(Unknown Source)</span><br><span class="line">	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)</span><br><span class="line">	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)</span><br><span class="line">	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145)</span><br><span class="line">	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)</span><br><span class="line">	at com.sun.proxy.$Proxy148.selectBySourceModuleExtendId(Unknown Source)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)</span><br><span class="line">	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)</span><br><span class="line">	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)</span><br><span class="line">	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)</span><br><span class="line">	at com.sun.proxy.$Proxy149.selectBySourceModuleExtendId(Unknown Source)</span><br><span class="line">	at com.billing.provider.service.impl.BillServiceImpl.selectBySourceModuleExtendId(BillServiceImpl.java:25)</span><br><span class="line">	at com.billing.provider.service.BillServiceTest.create(BillServiceTest.java:26)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)</span><br><span class="line">	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)</span><br><span class="line">	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)</span><br><span class="line">	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)</span><br><span class="line">	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)</span><br><span class="line">	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)</span><br><span class="line">	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)</span><br><span class="line">	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)</span><br><span class="line">	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)</span><br><span class="line">	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)</span><br><span class="line">	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)</span><br><span class="line">	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)</span><br><span class="line">	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)</span><br><span class="line">	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)</span><br><span class="line">	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)</span><br><span class="line">	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:40)</span><br><span class="line">	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)</span><br><span class="line">	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)</span><br><span class="line">	at java.util.Iterator.forEachRemaining(Iterator.java:116)</span><br><span class="line">	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)</span><br><span class="line">	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)</span><br><span class="line">	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)</span><br><span class="line">	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)</span><br><span class="line">	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)</span><br><span class="line">	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)</span><br><span class="line">	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)</span><br><span class="line">	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)</span><br><span class="line">	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:71)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)</span><br><span class="line">	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)</span><br><span class="line">	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)</span><br><span class="line">	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)</span><br><span class="line">	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:221)</span><br><span class="line">	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)</span><br><span class="line">Caused by: org.apache.ibatis.executor.result.ResultMapException: Error attempting to get column &#x27;account&#x27; from result set.  Cause: java.lang.IllegalArgumentException: No enum constant com.billing.api.enums.TenantAccountEnum.0</span><br><span class="line">	at org.apache.ibatis.type.BaseTypeHandler.getResult(BaseTypeHandler.java:87)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.createUsingConstructor(EnumResultSetHandler.java:705)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.createByConstructorSignature(EnumResultSetHandler.java:688)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.createResultObject(EnumResultSetHandler.java:652)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.createResultObject(EnumResultSetHandler.java:625)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.getRowValue(EnumResultSetHandler.java:375)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.handleRowValuesForSimpleResultMap(EnumResultSetHandler.java:332)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.handleRowValues(EnumResultSetHandler.java:306)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.handleResultSet(EnumResultSetHandler.java:279)</span><br><span class="line">	at com.middleware.mysql.common.EnumResultSetHandler.handleResultSets(EnumResultSetHandler.java:172)</span><br><span class="line">	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65)</span><br><span class="line">	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)</span><br><span class="line">	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)</span><br><span class="line">	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)</span><br><span class="line">	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)</span><br><span class="line">	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)</span><br><span class="line">	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:151)</span><br><span class="line">	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)</span><br><span class="line">	at com.sun.proxy.$Proxy230.query(Unknown Source)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49)</span><br><span class="line">	at com.middleware.mysql.common.MybatisLogInterceptor.intercept(MybatisLogInterceptor.java:143)</span><br><span class="line">	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)</span><br><span class="line">	at com.sun.proxy.$Proxy230.query(Unknown Source)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:49)</span><br><span class="line">	at com.middleware.mysql.common.EnumInterceptor.intercept(EnumInterceptor.java:66)</span><br><span class="line">	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)</span><br><span class="line">	at com.sun.proxy.$Proxy230.query(Unknown Source)</span><br><span class="line">	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151)</span><br><span class="line">	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145)</span><br><span class="line">	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)</span><br><span class="line">	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)</span><br><span class="line">	... 68 more</span><br><span class="line">Caused by: java.lang.IllegalArgumentException: No enum constant com.billing.api.enums.TenantAccountEnum.0</span><br><span class="line">	at java.lang.Enum.valueOf(Enum.java:238)</span><br><span class="line">	at org.apache.ibatis.type.EnumTypeHandler.getNullableResult(EnumTypeHandler.java:49)</span><br><span class="line">	at org.apache.ibatis.type.EnumTypeHandler.getNullableResult(EnumTypeHandler.java:26)</span><br><span class="line">	at org.apache.ibatis.type.BaseTypeHandler.getResult(BaseTypeHandler.java:85)</span><br><span class="line">	... 111 more</span><br></pre></td></tr></table></figure>
+
+<p>数据库中 <code>account</code> 为0的数据本应使用自定义的typeHandler转换为 <code>TenantAccountEnum</code> 的一个类型, 但是自定义的typeHandler未生效</p>
+<h1 id="排查流程"><a href="#排查流程" class="headerlink" title="排查流程"></a>排查流程</h1><p>检查mybatis的配置项, typeHandler所在目录正常配置, 且mapper中显示指定了类的完整路径</p>
+<p>打断点排查, 发现并不是在反序列化<code>account</code>字段时产生的异常, 而是在sql执行完, 创建目标对象时产生的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Object <span class="title function_">createResultObject</span><span class="params">(ResultSetWrapper rsw, ResultMap resultMap, List&lt;Class&lt;?&gt;&gt; constructorArgTypes, List&lt;Object&gt; constructorArgs, String columnPrefix)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">    <span class="keyword">final</span> Class&lt;?&gt; resultType = resultMap.getType();</span><br><span class="line">    <span class="keyword">final</span> <span class="type">MetaClass</span> <span class="variable">metaType</span> <span class="operator">=</span> MetaClass.forClass(resultType, reflectorFactory);</span><br><span class="line">    <span class="keyword">final</span> List&lt;ResultMapping&gt; constructorMappings = resultMap.getConstructorResultMappings();</span><br><span class="line">    <span class="keyword">if</span> (hasTypeHandlerForResultObject(rsw, resultType)) &#123;</span><br><span class="line">        <span class="keyword">return</span> createPrimitiveResultObject(rsw, resultMap, columnPrefix);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!constructorMappings.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">return</span> createParameterizedResultObject(rsw, resultType, constructorMappings, constructorArgTypes, constructorArgs, columnPrefix);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (resultType.isInterface() || metaType.hasDefaultConstructor()) &#123;</span><br><span class="line">        <span class="keyword">return</span> objectFactory.create(resultType);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (shouldApplyAutomaticMappings(resultMap, <span class="literal">false</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> createByConstructorSignature(rsw, resultType, constructorArgTypes, constructorArgs);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ExecutorException</span>(<span class="string">&quot;Do not know how to create an instance of &quot;</span> + resultType);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 框架尝试用反射创建该对象的一个实例, 在其中一步判断<code>metaType.hasDefaultConstructor()</code>时, 代理对象返回false导致没有使用空构造函数新建实例, 后续使用反射新建实例时框架没有使用mapper中配置的typeHandler导致抛出异常</p>
+<p>对象使用了lombok的<code>@Data</code>注解为什么会没有空构造函数?</p>
+<p>因为又使用了<code>@Builder</code>注解</p>
+<h1 id="lombok的这几个对象注解"><a href="#lombok的这几个对象注解" class="headerlink" title="lombok的这几个对象注解"></a>lombok的这几个对象注解</h1><p>TODO</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022-12-15-%E3%80%8A%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E3%80%8B%E7%AC%94%E8%AE%B0.html" rel="prev" title="Encoding">
+                  <i class="fa fa-chevron-left"></i> Encoding
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023-09-27-VirtualThreads%E8%83%8C%E6%99%AF%E5%92%8C%E5%BD%B1%E5%93%8D.html" rel="next" title="Virtual Threads背景和影响">
+                  Virtual Threads背景和影响 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">190k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:53</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

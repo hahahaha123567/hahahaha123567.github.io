@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="背景JEP(JDK Enhancement Proposals)推进将虚拟线程引入Java 平台。虚拟线程是轻量级线程，可以显著减少编写、维护和观察高吞吐量并发应用程序的工作量  使以简单的每个请求线程风格编写的服务器应用程序能够以接近最佳的硬件利用率进行扩展  使使用 java.lang.Thread API 的现有代码能够以最小的更改采用虚拟线程  使用现有 JDK 工具轻松进行虚拟线程故障排">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Virtual Threads背景和影响">
+<meta property="og:url" content="https://hahahaha123567.github.io/2023-09-27-VirtualThreads%E8%83%8C%E6%99%AF%E5%92%8C%E5%BD%B1%E5%93%8D.html">
+<meta property="og:site_name" content="hahahaha123567">
+<meta property="og:description" content="背景JEP(JDK Enhancement Proposals)推进将虚拟线程引入Java 平台。虚拟线程是轻量级线程，可以显著减少编写、维护和观察高吞吐量并发应用程序的工作量  使以简单的每个请求线程风格编写的服务器应用程序能够以接近最佳的硬件利用率进行扩展  使使用 java.lang.Thread API 的现有代码能够以最小的更改采用虚拟线程  使用现有 JDK 工具轻松进行虚拟线程故障排">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-27T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-10T08:06:12.917Z">
+<meta property="article:author" content="hahahaha123567">
+<meta property="article:tag" content="Java, JDK21, 并发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hahahaha123567.github.io/2023-09-27-VirtualThreads%E8%83%8C%E6%99%AF%E5%92%8C%E5%BD%B1%E5%93%8D.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2023-09-27-VirtualThreads%E8%83%8C%E6%99%AF%E5%92%8C%E5%BD%B1%E5%93%8D.html","path":"2023-09-27-VirtualThreads背景和影响.html","title":"Virtual Threads背景和影响"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Virtual Threads背景和影响 | hahahaha123567</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hahahaha123567</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/favorite/" rel="section"><i class="fa fa-bookmark fa-fw"></i>收藏</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JEP-JDK-Enhancement-Proposals-%E6%8E%A8%E8%BF%9B"><span class="nav-number">1.1.</span> <span class="nav-text">JEP(JDK Enhancement Proposals)推进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loom"><span class="nav-number">1.2.</span> <span class="nav-text">Loom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structured-Concurrency-%E7%BB%93%E6%9E%84%E5%8C%96%E5%B9%B6%E5%8F%91"><span class="nav-number">1.3.</span> <span class="nav-text">Structured Concurrency 结构化并发</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E5%BC%80%E5%8F%91%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">2.</span> <span class="nav-text">对开发的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91or%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="nav-number">2.1.</span> <span class="nav-text">框架开发or应用开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC"><span class="nav-number">2.2.</span> <span class="nav-text">库依赖版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-%E5%8F%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">VS 反应式编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80%E7%9A%84coroutine"><span class="nav-number">3.</span> <span class="nav-text">其他语言的coroutine</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#go%E7%9A%84goroutine"><span class="nav-number">3.1.</span> <span class="nav-text">go的goroutine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kotlin%E7%9A%84coroutine"><span class="nav-number">3.2.</span> <span class="nav-text">kotlin的coroutine</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">hahahaha123567</p>
+  <div class="site-description" itemprop="description">niconiconi</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener" target="_blank">Bangumi</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2023-09-27-VirtualThreads%E8%83%8C%E6%99%AF%E5%92%8C%E5%BD%B1%E5%93%8D.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="hahahaha123567">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hahahaha123567">
+      <meta itemprop="description" content="niconiconi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Virtual Threads背景和影响 | hahahaha123567">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Virtual Threads背景和影响
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-27 12:00:00" itemprop="dateCreated datePublished" datetime="2023-09-27T12:00:00+08:00">2023-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-10 16:06:12" itemprop="dateModified" datetime="2023-10-10T16:06:12+08:00">2023-10-10</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><h2 id="JEP-JDK-Enhancement-Proposals-推进"><a href="#JEP-JDK-Enhancement-Proposals-推进" class="headerlink" title="JEP(JDK Enhancement Proposals)推进"></a>JEP(JDK Enhancement Proposals)推进</h2><p>将虚拟线程引入Java 平台。虚拟线程是轻量级线程，可以显著减少编写、维护和观察高吞吐量并发应用程序的工作量</p>
+<ul>
+<li><p>使以简单的每个请求线程风格编写的服务器应用程序能够以接近最佳的硬件利用率进行扩展</p>
+</li>
+<li><p>使使用 java.lang.Thread API 的现有代码能够以最小的更改采用虚拟线程</p>
+</li>
+<li><p>使用现有 JDK 工具轻松进行虚拟线程故障排除、调试和分析</p>
+</li>
+</ul>
+<p>2022-09-20 Java19发布, virtual threads作为preview功能发布 <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/425">https://openjdk.org/jeps/425</a></p>
+<p>2023-03-21 Java20发布, virtual threads作为second preview预览功能发布 <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/436">https://openjdk.org/jeps/436</a></p>
+<p>2023-09-19 Java21(LTS)发布, virtual threads正式发布 <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/444">https://openjdk.org/jeps/444</a></p>
+<h2 id="Loom"><a href="#Loom" class="headerlink" title="Loom"></a>Loom</h2><p>Loom 是一个OpenJDK的项目，旨在探索、孵化和交付构建在其之上的 Java VM 功能和 API，以支持 Java 平台上易于使用、高吞吐量的轻量级并发和新的编程模型</p>
+<p>主要包含2部分</p>
+<ol>
+<li><p>Virtual threads</p>
+</li>
+<li><p>Structured concurrency</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://wiki.openjdk.org/display/loom">https://wiki.openjdk.org/display/loom</a></p>
+<h2 id="Structured-Concurrency-结构化并发"><a href="#Structured-Concurrency-结构化并发" class="headerlink" title="Structured Concurrency 结构化并发"></a>Structured Concurrency 结构化并发</h2><p>通过引入结构化并发 API 来简化并发编程。结构化并发将在不同线程中运行的相关任务组视为单个工作单元，从而简化错误处理和取消、提高可靠性并增强可观察性</p>
+<p>2022-09-20 Java19发布, structured concurrency作为Incubator开始孵化 <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/428">https://openjdk.org/jeps/428</a></p>
+<p>2023-03-21 Java20发布, structured concurrency作为Second Incubator <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/437">https://openjdk.org/jeps/437</a></p>
+<p>2023-09-19 Java21(LTS)发布, structured concurrency作为preview功能发布 <a target="_blank" rel="noopener" href="https://openjdk.org/jeps/453">https://openjdk.org/jeps/453</a></p>
+<h1 id="对开发的影响"><a href="#对开发的影响" class="headerlink" title="对开发的影响"></a>对开发的影响</h1><h2 id="框架开发or应用开发"><a href="#框架开发or应用开发" class="headerlink" title="框架开发or应用开发"></a>框架开发or应用开发</h2><p>对于使用线程或并行的库和框架来说，将是一件大事。库作者能够实现巨大的性能和可扩展性提升，同时简化代码库，使其更易维护。大多数使用线程池和平台线程的 Java 项目都能够从切换至虚拟线程的过程中受益，候选项目包括 Tomcat、Undertow 和 Netty 这样的 Java 服务器软件，以及 Spring 和 Micronaut 这样的 Web 框架</p>
+<p>不会对普通的 Java 开发人员产生太大的影响，因为这些开发人员可能正在使用某些库来处理并发的场景。但是，在一些比较罕见的场景中，比如你可能进行了大量的多线程操作但是没有使用库，那么这些特性就是很有价值的了。虚拟线程可以毫不费力地替代你现在使用的线程池。根据现有的基准测试，在大多数情况下它们都能提高性能和可扩展性</p>
+<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/wg5qybla1ps222larj3y">https://www.infoq.cn/article/wg5qybla1ps222larj3y</a></p>
+<h2 id="库依赖版本"><a href="#库依赖版本" class="headerlink" title="库依赖版本"></a>库依赖版本</h2><p><a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions">https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42659920/is-there-a-compatibility-matrix-of-spring-boot-and-spring-cloud">https://stackoverflow.com/questions/42659920/is-there-a-compatibility-matrix-of-spring-boot-and-spring-cloud</a></p>
+<h2 id="VS-反应式编程"><a href="#VS-反应式编程" class="headerlink" title="VS 反应式编程"></a>VS 反应式编程</h2><p>对于应用开发者来说，Virtual Threads 和 Reactive 的目的一样，都是对于IO密集型服务，通过提高CPU的使用率来实现提高服务的吞吐量</p>
+<p>在Virtual Threads没有作为JEPS正式提出前，知乎上就有一些讨论，大部分人认为 Virtual Threads 这样将负担交给JVM的方式更好，而不是自己组织Reactive代码写回调</p>
+<ul>
+<li><p>Oracle的Reactive驱动ADBA停止开发，现在使用较多的MySQL Reactive驱动是Spring主导开发的R2DBC</p>
+</li>
+<li><p>loom的tech lead认为正确的方向是”Code like sync, works like async”</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/67579790">如何看待Project Loom? - 知乎</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/375996978">对于后端开发，响应式编程真的是大势所趋吗？ - 知乎</a></p>
+<h1 id="其他语言的coroutine"><a href="#其他语言的coroutine" class="headerlink" title="其他语言的coroutine"></a>其他语言的coroutine</h1><h2 id="go的goroutine"><a href="#go的goroutine" class="headerlink" title="go的goroutine"></a>go的goroutine</h2><p><a target="_blank" rel="noopener" href="https://colobu.com/2016/06/27/dive-into-go-8/">深入Go语言 - 8 - colobu.com</a></p>
+<p><a target="_blank" rel="noopener" href="https://colobu.com/2016/04/19/Scheduler-Tracing-In-Go/">Go 调度器跟踪 - colobu.com</a></p>
+<p>Go所有线程都是”虚拟线程”</p>
+<p>Java兼容GUI、Android，Virtual Thread是Thread的子类，支持手动指定Virtual Thread pin到 Platform Thread的逻辑</p>
+<h2 id="kotlin的coroutine"><a href="#kotlin的coroutine" class="headerlink" title="kotlin的coroutine"></a>kotlin的coroutine</h2><p><a target="_blank" rel="noopener" href="https://kotlinlang.org/docs/coroutines-overview.html">Coroutines | Kotlin Documentation - kotlinlang.org</a></p>
+<hr>
+<p>参考文章</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7280746515526058038">Java21手册（一）：虚拟线程 Virtual Threads - 掘金 - juejin.cn</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java-JDK21-%E5%B9%B6%E5%8F%91/" rel="tag"># Java, JDK21, 并发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-07-12-%E4%BD%BF%E7%94%A8lombok%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91.html" rel="prev" title="lombok的@Builder使用避雷">
+                  <i class="fa fa-chevron-left"></i> lombok的@Builder使用避雷
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023-10-07-VirtualThreads%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B(%E8%AF%91)%20copy.html" rel="next" title="Virtual Threads虚拟线程(译)">
+                  Virtual Threads虚拟线程(译) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">190k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:53</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

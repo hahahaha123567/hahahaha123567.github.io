@@ -20,29 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="人工智能、机器学习、一些基本概念">
+    <meta name="description" content="Redis cluster的proxy会计算key的hash路由到不同的计算节点, 此时key里的大括号会影响的路由规则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《机器学习》ch1.绪论">
-<meta property="og:url" content="https://hahahaha123567.github.io/2018-04-26-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8Bch1-%E7%BB%AA%E8%AE%BA.html">
+<meta property="og:title" content="Redis的key里的大括号会影响指令的路由">
+<meta property="og:url" content="https://hahahaha123567.github.io/2024-03-20-Redis%E7%9A%84key%E9%87%8C%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%8C%87%E4%BB%A4%E7%9A%84%E8%B7%AF%E7%94%B1.html">
 <meta property="og:site_name" content="hahahaha123567">
-<meta property="og:description" content="人工智能、机器学习、一些基本概念">
+<meta property="og:description" content="Redis cluster的proxy会计算key的hash路由到不同的计算节点, 此时key里的大括号会影响的路由规则">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-04-26T12:04:37.000Z">
-<meta property="article:modified_time" content="2018-08-12T13:59:34.000Z">
+<meta property="article:published_time" content="2024-03-20T06:30:00.000Z">
+<meta property="article:modified_time" content="2024-03-20T06:54:41.345Z">
 <meta property="article:author" content="hahahaha123567">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Java, Redis">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hahahaha123567.github.io/2018-04-26-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8Bch1-%E7%BB%AA%E8%AE%BA.html">
+<link rel="canonical" href="https://hahahaha123567.github.io/2024-03-20-Redis%E7%9A%84key%E9%87%8C%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%8C%87%E4%BB%A4%E7%9A%84%E8%B7%AF%E7%94%B1.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2018-04-26-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8Bch1-%E7%BB%AA%E8%AE%BA.html","path":"2018-04-26-《机器学习》ch1-绪论.html","title":"《机器学习》ch1.绪论"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2024-03-20-Redis%E7%9A%84key%E9%87%8C%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%8C%87%E4%BB%A4%E7%9A%84%E8%B7%AF%E7%94%B1.html","path":"2024-03-20-Redis的key里的大括号会影响指令的路由.html","title":"Redis的key里的大括号会影响指令的路由"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>《机器学习》ch1.绪论 | hahahaha123567</title>
+<title>Redis的key里的大括号会影响指令的路由 | hahahaha123567</title>
   
 
 
@@ -114,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">人工智能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">机器学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">一些基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="nav-number">3.0.1.</span> <span class="nav-text">学习目标</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">发现问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -180,7 +179,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2018-04-26-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8Bch1-%E7%BB%AA%E8%AE%BA.html">
+    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2024-03-20-Redis%E7%9A%84key%E9%87%8C%E7%9A%84%E5%A4%A7%E6%8B%AC%E5%8F%B7%E4%BC%9A%E5%BD%B1%E5%93%8D%E6%8C%87%E4%BB%A4%E7%9A%84%E8%B7%AF%E7%94%B1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -193,12 +192,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="《机器学习》ch1.绪论 | hahahaha123567">
-      <meta itemprop="description" content="人工智能、机器学习、一些基本概念">
+      <meta itemprop="name" content="Redis的key里的大括号会影响指令的路由 | hahahaha123567">
+      <meta itemprop="description" content="Redis cluster的proxy会计算key的hash路由到不同的计算节点, 此时key里的大括号会影响的路由规则">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          《机器学习》ch1.绪论
+          Redis的key里的大括号会影响指令的路由
         </h1>
 
         <div class="post-meta-container">
@@ -208,15 +207,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2018-04-26 20:04:37" itemprop="dateCreated datePublished" datetime="2018-04-26T20:04:37+08:00">2018-04-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2018-08-12 21:59:34" itemprop="dateModified" datetime="2018-08-12T21:59:34+08:00">2018-08-12</time>
+      <time title="创建时间：2024-03-20 14:30:00 / 修改时间：14:54:41" itemprop="dateCreated datePublished" datetime="2024-03-20T14:30:00+08:00">2024-03-20</time>
     </span>
 
   
@@ -226,7 +219,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>109</span>
+      <span>774</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -237,35 +230,25 @@
     </span>
 </div>
 
-            <div class="post-description">人工智能、机器学习、一些基本概念</div>
+            <div class="post-description">Redis cluster的proxy会计算key的hash路由到不同的计算节点, 此时key里的大括号会影响的路由规则</div>
         </div>
       </header>
 
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><ol>
-<li>推理期</li>
-<li>知识期</li>
-<li>机器学习</li>
-</ol>
-<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><p>从样例中学习</p>
-<ol>
-<li>符号主义学习：决策树，基于逻辑的学习</li>
-<li>连接主义学习：神经网络 -&gt; 深度学习</li>
-<li>统计学习：支持向量机，核方法</li>
-</ol>
-<h1 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h1><h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ol>
-<li>监督学习<ol>
-<li>离散值：分类</li>
-<li>连续值：回归</li>
-</ol>
-</li>
-<li>无监督学习<ol>
-<li>聚类</li>
-</ol>
-</li>
-</ol>
+    <div class="post-body" itemprop="articleBody"><h1 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h1><p>系统压测时发现Redis集群的某个节点出现CPU过高的情况，使用Redis阿里云控制台的[实时TopKey统计]功能发现某一高频写Redis的功能使用的几个key都被路由到了同一个Redis节点，key形如</p>
+<ul>
+<li>{cache}:::table_name:::field1</li>
+<li>{cache}:::table_name:::field2</li>
+</ul>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>阿里云提供了一些文档进行Redis的基本的性能优化 <a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/redis/user-guide/performance-optimization/">性能调优_云数据库 Redis 版(Redis)-阿里云帮助中心</a> 但是显然多个高频写的key被路由到同一个节点导致CPU升高的问题不是Redis自身的优化能够解决的</p>
+<p>阿里云的Redis集群是Redis cluster的实现，查询Redis cluster的文档后发现了问题</p>
+<p>关于Redis cluster的简要描述 <a target="_blank" rel="noopener" href="https://redis.io/docs/reference/cluster-spec/#overview-of-redis-cluster-main-components">overview-of-redis-cluster-main-components</a> , Redis使用<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">CRC16</a>算法对key进行hash, hash值再对cluster的size取模后决定路由的节点</p>
+<p>使用 <a target="_blank" rel="noopener" href="https://redis.io/commands/cluster-keyslot/">CLUSTER KEYSLOT | Redis</a> 命令查询这几个key的hash值都是相等的，为什么？</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/docs/reference/cluster-spec/#hash-tags">hash-tags</a> 哈希标签是一种确保多个键分配在同一个哈希槽中的方法。这用于在 Redis Cluster 中实现多键操作。为了实现哈希标签，在某些条件下，密钥的哈希槽的计算方式略有不同。如果密钥包含“{…}”模式，则仅对和之间的子字符串进行哈希 {处理}以获取哈希槽</p>
+<p>样例里的几个key使用了共同的”{cache}”前缀导致Redis计算hash时只计算了”cache”这5个字符的hash值，导致几个key路由到了同一个节点</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>进行修复时要注意这几个key的读操作和写操作的服务，必要时可以对读服务进行灰度发布，保证旧的key全部被消费、写服务全部更新为新key后再全量发布读服务</p>
 
     </div>
 
@@ -275,22 +258,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/AI/" rel="tag"># AI</a>
-              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+              <a href="/tags/Java-Redis/" rel="tag"># Java, Redis</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018-03-07-JavaFX%E4%BB%8B%E7%BB%8D.html" rel="prev" title="JavaFX入门">
-                  <i class="fa fa-angle-left"></i> JavaFX入门
+                <a href="/2024-02-23-%E5%AE%9A%E4%BD%8DdependencyManagement%E6%8C%87%E5%AE%9A%E7%9A%84%E9%94%99%E8%AF%AF%E7%89%88%E6%9C%AC.html" rel="prev" title="定位dependencyManagement指定的错误版本">
+                  <i class="fa fa-angle-left"></i> 定位dependencyManagement指定的错误版本
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018-04-26-%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8Bch2-%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9.html" rel="next" title="《机器学习》ch2.模型评估与选择">
-                  《机器学习》ch2.模型评估与选择 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

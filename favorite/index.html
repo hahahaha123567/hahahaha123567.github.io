@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -18,17 +18,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个让面试官虎躯一震的回答。 - InfoQ 写作平台 腾讯面试官：线程池要设置多大 - 云+社区 - 腾讯云 GC咱们从头到尾说一次 Java 垃圾回收 JVM">
+    <meta name="description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台 线程池要设置多大 - 云+社区 - 腾讯云 这些年背过的面试题——多线程篇 GC咱们从头到尾说一次 Java 垃圾回收 JV">
 <meta property="og:type" content="website">
 <meta property="og:title" content="收藏夹">
 <meta property="og:url" content="https://hahahaha123567.github.io/favorite/index.html">
 <meta property="og:site_name" content="hahahaha123567">
-<meta property="og:description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个让面试官虎躯一震的回答。 - InfoQ 写作平台 腾讯面试官：线程池要设置多大 - 云+社区 - 腾讯云 GC咱们从头到尾说一次 Java 垃圾回收 JVM">
+<meta property="og:description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台 线程池要设置多大 - 云+社区 - 腾讯云 这些年背过的面试题——多线程篇 GC咱们从头到尾说一次 Java 垃圾回收 JV">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-05T07:43:23.000Z">
-<meta property="article:modified_time" content="2024-03-19T15:17:39.869Z">
+<meta property="article:modified_time" content="2024-03-22T06:53:08.734Z">
 <meta property="article:author" content="hahahaha123567">
 <meta name="twitter:card" content="summary">
 
@@ -54,6 +54,7 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
+<link rel="alternate" href="/atom.xml" title="hahahaha123567" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -88,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/favorite/" rel="section"><i class="fa fa-bookmark fa-fw"></i>收藏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/favorite/" rel="section"><i class="fa fa-star fa-fw"></i>收藏</a></li>
   </ul>
 </nav>
 
@@ -113,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81"><span class="nav-number">1.1.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC"><span class="nav-number">1.3.</span> <span class="nav-text">GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.4.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty"><span class="nav-number">1.5.</span> <span class="nav-text">Netty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#others"><span class="nav-number">1.6.</span> <span class="nav-text">others</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RelationDB"><span class="nav-number">2.</span> <span class="nav-text">RelationDB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">2.1.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="nav-number">2.2.</span> <span class="nav-text">分库分表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E5%92%8C%E7%BC%93%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">Redis和缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MQ"><span class="nav-number">4.</span> <span class="nav-text">MQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka"><span class="nav-number">4.1.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-number">4.1.1.</span> <span class="nav-text">网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rocket-MQ"><span class="nav-number">4.2.</span> <span class="nav-text">Rocket MQ</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB"><span class="nav-number">5.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES"><span class="nav-number">6.</span> <span class="nav-text">ES</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE"><span class="nav-number">7.</span> <span class="nav-text">大数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#network"><span class="nav-number">8.</span> <span class="nav-text">network</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">9.</span> <span class="nav-text">理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#QPS"><span class="nav-number">9.1.</span> <span class="nav-text">QPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">9.2.</span> <span class="nav-text">微服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F"><span class="nav-number">9.3.</span> <span class="nav-text">分布式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">9.4.</span> <span class="nav-text">设计模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">10.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Go"><span class="nav-number">11.</span> <span class="nav-text">Go</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI"><span class="nav-number">12.</span> <span class="nav-text">AI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">13.</span> <span class="nav-text">C++</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">14.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI%E5%8A%A9%E6%89%8B"><span class="nav-number">14.1.</span> <span class="nav-text">AI助手</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="nav-number">15.</span> <span class="nav-text">方法论</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81"><span class="nav-number">1.1.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC"><span class="nav-number">1.3.</span> <span class="nav-text">GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.4.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty"><span class="nav-number">1.5.</span> <span class="nav-text">Netty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#others"><span class="nav-number">1.6.</span> <span class="nav-text">others</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">2.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL"><span class="nav-number">2.1.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="nav-number">2.2.</span> <span class="nav-text">分库分表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis%E5%92%8C%E7%BC%93%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">Redis和缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="nav-number">3.1.</span> <span class="nav-text">分布式锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MQ"><span class="nav-number">4.</span> <span class="nav-text">MQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka"><span class="nav-number">4.1.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-number">4.1.1.</span> <span class="nav-text">网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rocket-MQ"><span class="nav-number">4.2.</span> <span class="nav-text">Rocket MQ</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB"><span class="nav-number">5.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES"><span class="nav-number">6.</span> <span class="nav-text">ES</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE"><span class="nav-number">7.</span> <span class="nav-text">大数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#network"><span class="nav-number">8.</span> <span class="nav-text">network</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">9.</span> <span class="nav-text">理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">9.1.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">9.2.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web"><span class="nav-number">9.2.1.</span> <span class="nav-text">web</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QPS"><span class="nav-number">9.3.</span> <span class="nav-text">QPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">9.4.</span> <span class="nav-text">微服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F"><span class="nav-number">9.5.</span> <span class="nav-text">分布式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">9.5.1.</span> <span class="nav-text">共识算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">9.6.</span> <span class="nav-text">设计模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="nav-number">10.</span> <span class="nav-text">方法论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">11.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Go"><span class="nav-number">12.</span> <span class="nav-text">Go</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI"><span class="nav-number">13.</span> <span class="nav-text">AI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">14.</span> <span class="nav-text">C++</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">15.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI%E5%8A%A9%E6%89%8B"><span class="nav-number">15.1.</span> <span class="nav-text">AI助手</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,8 +193,9 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/av2_WntD1sX_e2Y0_FTCnQ">让人恶心的多线程代码，性能怎么优化！</a></p>
 <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/n2cZxqHqaMJM2mh9Tk13Bg">一文带你吃透线程池</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">Java线程池实现原理及其在美团业务中的实践 - 美团技术团队</a></p>
-<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/ea8c896d893243e49fe867b0c">如何设置线程池参数？美团给出了一个让面试官虎躯一震的回答。 - InfoQ 写作平台</a></p>
-<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1605149">腾讯面试官：线程池要设置多大 - 云+社区 - 腾讯云</a></p>
+<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/ea8c896d893243e49fe867b0c">如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1605149">线程池要设置多大 - 云+社区 - 腾讯云</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/IVgGXQKU1QiT1ToN2wXHJg">这些年背过的面试题——多线程篇</a></p>
 <h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aA1eDYIUHuIfigTw2ffouw">咱们从头到尾说一次 Java 垃圾回收</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/b37b289ef91bad11ce2d37b86">JVM-技术专题-GCViewer调优GC - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/632322582f697268a7fe77b35">常用JVM调优参数 - InfoQ 写作平台</a></p>
@@ -206,6 +208,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/os4dkJVIkN5kx8o90D_0Gg">干货 | 提升内存管理效率，携程酒店查询服务轻量化探索和实践</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/PflFTQVmZEOHkFfU0-CH6g">每天 100 万次登陆请求，8G 内存该如何设置 JVM 参数？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UVpYcCvY0yb9t9WLiznlgQ">从 JDK 9 到 19，认识一个新的 Java 形态（内存篇）</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rn34H19A30HmT7D0f7wg4Q">Spring Cloud Gateway下的GC停顿排查之旅</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Is4i8Ah_MdyHrmr7H7zbYQ">Spring Cloud高频面试题</a></p>
 <h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/1b4307c8fc0e2d67b075d98f5">CRUD搬砖两三年了，怎么阅读Spring源码？ - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/c3e190cb6e9d080d2c505a640">16张图解锁Spring的整体脉络_Java_4ye_InfoQ写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mOb8-fv_B6R32vmAvYT4-Q">SpringBoot 应用程序启动过程揭秘</a></p>
@@ -224,8 +228,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/zFzUZPJ-ib2zbDYWN26iuA">Spring Boot 最流行的 16 条实践解读！</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RfdamAfOS8Ato14ZuDyjHQ">为什么数据库连接池不采用 IO 多路复用？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/cqkZEvmmh7jnNt2K5r_lXg">Spring循环依赖那些事儿（含Spring详细流程图）</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1xIWCoCdQtAPlcZe3zHusQ">探索｜Spring并行初始化加速的思路和实践
-</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1xIWCoCdQtAPlcZe3zHusQ">探索｜Spring并行初始化加速的思路和实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/faEtlyaNHW9AWE6LMTs4Ng">这些年背过的面试题——Spring篇</a></p>
 <h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ssj234/netty-source/433211">Netty源码笔记 · 看云</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/duanxz/tag/netty/">netty - 标签 - duanxz - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007282628">源码之下无秘密 ── 做最好的 Netty 源码分析教程 - SegmentFault 思否</a></p>
@@ -234,9 +238,10 @@
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/10/18/netty-direct-memory-screening.html">Netty堆外内存泄露排查盛宴 - 美团技术团队</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/v-WpOgEQkoWOuAurMFJfdg">Netty 实现长连接服务的难点和优化点</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/T6Av8yRLhis4oGCZtEUKcg">从线上偶发的宕机事件看Netty流量控制</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gke82648Zh8k88psq4Klag">通过 HTTP&#x2F;2 协议案例学习 Java &amp; Netty 性能调优：工具、技巧与方法论</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-O4EzaQS-R9Mv-NBWkQK8w">Redis客户端Lettuce深度分析介绍（上）</a></p>
 <h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bFeVH3-j9n3poZ-Nz7s7IQ">35 个 Java 代码优化细节</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/8114fba36dae232639f1c6efa">一文说透”静态代理”与”动态代理” - InfoQ 写作平台</a></p>
-<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/93aae8b4ca45bebf727921b87">面试官问你MyBatis SQL是如何执行的？把这篇文章甩给他 - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/x509eBHiDuasGmJupJKVow">进击的 Java ，云原生时代的蜕变</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/LZ4nc7SgoqbNPPlQBdWMYw">为什么线程崩溃不会导致 JVM 崩溃</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/IFTLHliO1jKzrckcXN2cnw">Java本地高性能缓存实践</a></p>
@@ -247,8 +252,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/W3qlMyPc_DZhhy86u18ivw">Java8 异步非阻塞做法：CompletableFuture 两万字详解！</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/I2jX6S0bxO-OnEN4ySHSeA">读懂HikariCP一百行代码，多线程就是个孙子！</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Ul8-sidDZNtBuZJqhMxbGg">一些杂想：Java老矣，尚能饭否？</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gke82648Zh8k88psq4Klag">通过 HTTP&#x2F;2 协议案例学习 Java &amp; Netty 性能调优：工具、技巧与方法论</a></p>
-<h1 id="RelationDB"><a href="#RelationDB" class="headerlink" title="RelationDB"></a>RelationDB</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40820574">mysql索引简明教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fg2Dy0Dbhcrn5QaNydp1WQ">这些年背过的面试题——JVM篇</a></p>
+<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40820574">mysql索引简明教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qHJiTjpvDikFcdl9SRL97Q">深入理解 MySQL 索引底层原理</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9tmSxQ-EUzZYibLAMPaFZg">InnoDB一棵B+树可以存放多少行数据？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/S6I2HL89I0NfTw0I_Lr5PQ">Mysql Replication 简明教程</a></p>
@@ -261,9 +266,13 @@
 <p><a target="_blank" rel="noopener" href="https://my.oschina.net/liughDevelop/blog/1631006">自己手写一个Mybatis框架(简化)</a></p>
 <p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/05/26/MySQL%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8D%A1%E9%A1%BF%E9%87%8D%E7%8E%B0/">MySQL线程池卡顿重现 | plantegg</a></p>
 <p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/07/23/%E6%89%91%E6%9C%94%E8%BF%B7%E7%A6%BB%E6%A0%B9%E5%9B%A0%E5%88%86%E6%9E%90/">扑朔迷离的根因分析 | plantegg</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/L26rI11OV8hrfJVy5Yu78g">这些年背过的面试题——MySQL篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fnHC-TiutK8HGCNb4IBzkQ">MySQL 上亿大表，如何深度优化？</a></p>
+<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/93aae8b4ca45bebf727921b87">MyBatis SQL是如何执行的？ - InfoQ 写作平台</a></p>
 <h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904135964229646">没内鬼，来点干货！SQL优化和诊断</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ahxUK5r6LjxwY30QfgsgBA">了解那些“奇葩”SQL写法，快速写出高效率SQL</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/b9251e9e3c28fbfaeb1c30528">MySQL“被动”性能优化汇总！ - InfoQ 写作平台</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44141495/article/details/108744720">一篇明白SQL的执行顺序_sql in执行顺序-CSDN博客</a></p>
 <h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Bwwf-brPCmtDMBtdsfWmdA">干货 | 支持10X增长，携程机票订单库Sharding实践</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2016/11/18/dianping-order-db-sharding.html">大众点评订单系统分库分表实践 - 美团技术团队</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/t-IXTdnsaOn0OiccTa1-JA">分库分表会带来读扩散问题？怎么解决？</a></p>
@@ -271,7 +280,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mL_9HJmBfey_kJDjfNTtlw">分库分表技术演进&amp;最佳实践</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MqFsz1BcLPq9DJ3up2ZSyw">分库分表&amp;百亿级数据迁移</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lSxdx2QT3F9lZPZMxroQFA">一文读懂数据库优化之分库分表</a></p>
-<h1 id="Redis和缓存"><a href="#Redis和缓存" class="headerlink" title="Redis和缓存"></a>Redis和缓存</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MdKl5QJCEis-TjTqkPQP4g">Redis 知识总结</a></p>
+<h1 id="Redis和缓存"><a href="#Redis和缓存" class="headerlink" title="Redis和缓存"></a>Redis和缓存</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8-Lf5KiyclW77uQwrYDTCw">这些年背过的面试题——Redis篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MdKl5QJCEis-TjTqkPQP4g">Redis 知识总结</a></p>
 <p><a target="_blank" rel="noopener" href="https://my.oschina.net/liughDevelop/blog/2236771">Redis为何这么快–数据存储角度</a></p>
 <p><a target="_blank" rel="noopener" href="https://draveness.me/redis-io-multiplexing/">Redis 和 I&#x2F;O 多路复用</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903651182542856">缓存三大问题及解决方案</a></p>
@@ -279,20 +289,24 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/U87wrGsx0Eop3CbF9mlTwQ">万字图文讲透数据库缓存一致性问题</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DNraZpi_00MeDw7fTjgJlQ">深入浅出分布式缓存的通用方法</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/yGh9hI-bz_yyrIdBFwwyqA">后端缓存的23个关键关注点</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TPJwulKmZmJjGSxLDwiPhQ">浅析 Redis 分布式锁解决方案-InfoQ</a></p>
-<p><a target="_blank" rel="noopener" href="https://susan.net.cn/post/2/2005/">redis分布式锁的8大坑</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6961380552519712798">最强分布式工具Redisson（一）：分布式锁 - 掘金</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040177140">Redis 实战篇：巧用 Bitmap 实现亿级数据统计 - SegmentFault 思否</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aMp0xoGPlY0XmJORzTmUZw">如何判断一个元素在亿级数据中是否存在？</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-O4EzaQS-R9Mv-NBWkQK8w">Redis客户端Lettuce深度分析介绍（上）</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/S0rypQZRQJ8rhRT2Ugtmdg">记一次 Redis 连接问题排查</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/nNEuYw0NlYGhuKKKKoWfcQ">你的Redis真的变慢了吗？性能优化如何做</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mIc6a9mfEGdaNDD3MmfFsg">Redis延迟问题全面排障指南</a></p>
-<h1 id="MQ"><a href="#MQ" class="headerlink" title="MQ"></a>MQ</h1><h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p><a target="_blank" rel="noopener" href="http://www.jasongj.com/2015/03/10/KafkaColumn1/">Kafka设计解析（一）- Kafka背景及架构介绍 | 技术世界</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/KHoFJs4wRSkAThXw7F8acA">美团大规模KV存储挑战与架构实践</a></p>
+<h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TPJwulKmZmJjGSxLDwiPhQ">浅析 Redis 分布式锁解决方案-InfoQ</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/O8o31rRBVL1DwK-JfmurRw">一文讲透Redis分布式锁安全问题</a></p>
+<p><a target="_blank" rel="noopener" href="https://susan.net.cn/post/2/2005/">redis分布式锁的8大坑</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6961380552519712798">最强分布式工具Redisson（一）：分布式锁 - 掘金</a></p>
+<h1 id="MQ"><a href="#MQ" class="headerlink" title="MQ"></a>MQ</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-voak-D8BWAWACJ6NiROSA">关于消息队列的知识总结</a></p>
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8UNtMIllJ03ULZwE9WtVdg">这些年背过的面试题——Kafka篇</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.jasongj.com/2015/03/10/KafkaColumn1/">Kafka设计解析（一）- Kafka背景及架构介绍 | 技术世界</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.jasongj.com/kafka/high_throughput/">Kafka设计解析（六）- Kafka高性能架构之道 | 技术世界</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/51XSHW2opSmakhHmtth8">你可能用错了kafka的重试机制-InfoQ</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3l0YVGSPVfa31HLDN1-S4g">刨根问底 Kafka，面试过程真好使</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&album_id=2147575846151290880">#硬核kafka系列</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HJRLVTNNrRH-u6zPx7R_mA">干货 | 成本低误差小，携程基于 Kafka 的 Serverless 延迟队列的实践</a></p>
 <h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p><a target="_blank" rel="noopener" href="https://colobu.com/2015/03/23/kafka-internals/">Kafka 内幕：源代码High level分析</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/ce0507f41cfbe82baec09b128">消息队列之推还是拉，RocketMQ 和 Kafka 是如何做的？ - InfoQ 写作平台</a></p>
 <h2 id="Rocket-MQ"><a href="#Rocket-MQ" class="headerlink" title="Rocket MQ"></a>Rocket MQ</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/6HviLSsQqdo0B4zwZJB5tQ">ApacheRocketMQ 101</a></p>
@@ -301,17 +315,23 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/OHmS00ax_Yf2p9xRjUeDJg">金融行业消息队列选型及实践</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/EU1eanMiHlG371Lf5_WmIA">消息队列之 MetaQ 和 Kafka 哪个更香！</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/85W-O18pcVKxvFGejFh90Q">RocketMQ 在小米的多场景灾备实践案例</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_9pDfynCTFFeNboKYs9yUA">谈谈 RocketMQ 5.0 分级存储背后一些有挑战的技术优化</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AOJQQh6iWyU_haUFWMylyQ">解读 RocketMQ 5.0 全新的高可用设计</a></p>
 <h1 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qStIOFcynQCiYw-WppAebg">MongoDB 全方位知识图谱</a></p>
 <h1 id="ES"><a href="#ES" class="headerlink" title="ES"></a>ES</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI2NDExNTk5Mg==&mid=2247490796&idx=1&sn=ea9ff9bd3e244ad1eac47e083c54b983">DB与ES混合之应用系统场景分析探讨</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/lTtyNrJRdrHZxWq44cTQ">从MongoDB迁移到ES后，我们减少了80%的服务器 - InfoQ</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1ad810427783">学学Elasticsearch：Term查询和全文查询，一文详解 - 简书</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/luxiaoxun/p/13025019.html">LSM树和Elasticsearch的索引写入机制 - 阿凡卢 - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/uF4sZTxJv0zENlPp3Y31AA">千万级数据查询中CK、ES、RediSearch方案的优化</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/dt_14etV_2ynAmyMa_uyug">这些年背过的面试题——ES篇</a></p>
 <h1 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h1><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015274741">高手如何实践HBase？不容错过的滴滴内部技巧</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/685482">案例篇-HBase 在滴滴出行的应用场景和最佳实践-阿里云开发者社区</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/FNRiU03xy7-JoQdU76ve1g">降本增效创未来——云原生多模数据库Lindorm 2022双十一总结</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/7RxBg1mxdpffcpWp02TJ7w">​深入浅出 ClickHouse 物化视图</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DkT6pGMEOnkentqbOUgTlQ">爱奇艺大数据加速：从Hive到Spark SQL</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/407175099">大数据技术漫谈 ——从Hadoop、Storm、Spark、HBase到Hive、Flink、Lindorm - 字节跳动ADFE团队的文章 - 知乎</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lswlJkyZmnpEhUBdsRooZw">随机漫步的数据：信息论、大数据技术和不切实际的联想</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RG6zOn6rNrbDCzL8ylPZ8w">干货 | 节约60%开发工时，离在线一体化数仓系统在携程旅游的落地实践</a></p>
 <h1 id="network"><a href="#network" class="headerlink" title="network"></a>network</h1><p><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/11564.html">TCP 的那些事儿（上） | 酷 壳 - CoolShell</a></p>
 <p><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/11609.html">TCP 的那些事儿（下） | 酷 壳 - CoolShell</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/90cf4bbfb2c2cc2b475e0efda">TCP 重传、滑动窗口、流量控制、拥塞控制图解 - InfoQ 写作平台</a></p>
@@ -320,31 +340,37 @@
 <p><a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html">扫盲 netcat（网猫）的 N 种用法——从“网络诊断”到“系统入侵” @ 编程随想的博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/06/20/%E5%AE%9E%E6%88%98%E7%93%B6%E9%A2%88%E5%AE%9A%E4%BD%8D-%E6%88%91%E7%9A%84MySQL%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8E%8B%E4%B8%8D%E4%B8%8A%E5%8E%BB/">实战瓶颈定位-我的MySQL为什么压不上去 | plantegg</a></p>
 <p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/06/30/%E5%AE%9E%E6%88%98%E7%93%B6%E9%A2%88%E5%AE%9A%E4%BD%8D-%E6%88%91%E7%9A%84MySQL%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8E%8B%E4%B8%8D%E4%B8%8A%E5%8E%BB--%E5%86%99%E5%9C%BA%E6%99%AF/">实战瓶颈定位-我的MySQL为什么压不上去–写场景 | plantegg</a></p>
-<h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/VBGeI308sbTn8qNY-wASjQ">互联网架构：屡试不爽的架构三马车</a></p>
+<h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/VBGeI308sbTn8qNY-wASjQ">互联网架构：屡试不爽的架构三马车</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/87JWlUoc03UZy2ar3p4NlA">互联网架构三板斧之并发</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hsH7LMBEDGe_df9UbfOvbQ">后台服务架构高性能设计之道</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xmQCKVkqhhTKd1k6GmkZfA">月活 12.8 亿的微信是如何防止崩溃的？</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Qk-T2SDJkWH0Ibew3CWz8g">浅谈系统性能提升的经验和方法</a></p>
+<h2 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xmQCKVkqhhTKd1k6GmkZfA">月活 12.8 亿的微信是如何防止崩溃的？</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/625a2409d41032c89ec07bd21">调度算法20张图 - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/770751">不懂就问：如何正确设计一个订单号？ - V2EX</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/5iS20POTfqLEQviCAcSW">到达率99.9%：闲鱼消息在高速上换引擎（集大成）-InfoQ</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/GymHAbqVRO214qo44jHD">石墨文档Websocket百万长连接技术实践_产品_杜旻翔_InfoQ精选文章</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3F5lwv5LtOqBa7S0Owf4XQ">虽然难用，但12306面临的业务场景复杂度可能是世界之最</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29779732/answer/45791817">端游、手游服务端常用的架构是什么样的？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hMD-IS__4JE5_nQhYPYSTg">四步构建异地多活</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-Hans.md">system-design-primer-zh-tw</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Qk-T2SDJkWH0Ibew3CWz8g">浅谈系统性能提升的经验和方法</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Iqu8CJyWZW8DqXvtHjkbQQ">Java 知识进阶面试之海量数据处理</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/s92d0gISH3YoJI3_-f-bDQ">订单超时怎么处理？我们用这种方案</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/m0c_JQJ_numQlKLSoPosuA">订单导出的再设计：用数据哲学做交易平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jOyj71wWfukcObTYw_gdPg">JAVA中如何高效的实现SQL的like语法?</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/G7Gmldl-bXbdojmczdHRjw">创业之路的故事｜如何设计一个用户系统</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/pHW7VGxA_tpApTwDbqOWQQ">如何写出一篇好的技术方案？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rboO_NGtFL5XiwH_3C0Anw">如何写一份高可读性的软件工程设计文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/CByq89C2DwrJxzXzAcad">抖音世界杯中 RTC 的技术挑战与实现_架构_InfoQ精选文章</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QPYprfHeHBnh38HQBh_K-w">分享一例有意思的灰度设计缺陷，浅谈灰度方案的设计</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/7YQ_Wb9mLdROlm5gIC-9uw">理论篇｜如何避免写出面条代码？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HMLpjcE0UENUTfMK0Z9n8A">领域驱动设计DDD｜从入门到代码实践</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hv3tTOAdD-SiCq2owCdxZQ">如何设计一个海量任务调度系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MiSsqFVzGnxYim4NP6drvQ">3.5万字：一文搞懂“支付系统”</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rLOj5iIt0-at5Lr4qW_nuw">万字：“账户系统”设计深度解析</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/f8DOQadT7rHMf3l1WZFycQ">万字：对账系统从入门到精通</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/w7xUHPCZZuCX_Is1eT5uZQ">这些年背过的面试题——架构设计篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/abnS5dqgZVv1oRwsy_sjEQ">应用性能设计的圣杯：读写扩散的概念与实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/E0X7094kk9My7JTEOELjDg">微信万亿数据仓库架构设计与实现</a></p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/GymHAbqVRO214qo44jHD">石墨文档Websocket百万长连接技术实践_产品_杜旻翔_InfoQ精选文章</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/CByq89C2DwrJxzXzAcad">抖音世界杯中 RTC 的技术挑战与实现_架构_InfoQ精选文章</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aaa5H5mFwEmL24WO3KyucA">Web 实时消息推送的 7 种实现方案</a></p>
 <h2 id="QPS"><a href="#QPS" class="headerlink" title="QPS"></a>QPS</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/huangyingsheng/p/13744422.html">服务端性能优化–最大QPS推算及验证 - huangyingsheng - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://weibo.com/1667773473/LslU6zRcd">QPS和延时的乘积是常量</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/apUVMfAI52uvc7U-iOVvKg">高并发是一种架构思维模式</a></p>
@@ -362,21 +388,38 @@
 </ul>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vCwfI5spW57X-tG8C7a87Q">聊聊服务发现的推拉模型</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/6698c4b668dafb9e3229bc0d9">常用注册中心原理及比较 - InfoQ 写作平台</a></p>
-<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>[Snowflake有什么问题及相关解决方案 - luozhiyun&#96;s Blog](<a target="_blank" rel="noopener" href="https://www.luozhiyun.com/archives/820">https://www.luozhiyun.com/archives/820</a>)</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/KetCuZNb9jR0HSY7Jqh0NA">这些年背过的面试题——SpringCloud篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/i7NCaqiPn8KrPuUdyBCunw">上一任留下的 Eureka，我该如何提升她的性能和稳定性（含数据比对）？</a></p>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p><a target="_blank" rel="noopener" href="https://www.luozhiyun.com/archives/820">Snowflake有什么问题及相关解决方案 - luozhiyuns Blog</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zdy0_2004/article/details/52760404">分布式系统互斥性与幂等性问题的分析与解决</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/7c9c58931e121ffdfc3a14ab9">两天，我把分布式事务搞完了 - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/bj9LZYVL02TwixVTr1e8">如何通过事务消息保障抢购业务的分布式一致性？-InfoQ</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aQq02jLLwBzF8bJZNpqVxA">很短 | 图解 Raft 算法</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/jiangyi/3772035">最终一致性和实时一致性是什么？在架构设计中，我们应该选择哪种方式？_我爱娃哈哈的技术博客_51CTO博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jVKgmbvha6Q-iNxvVzg3nw">这些年背过的面试题——分布式篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/0Io-X0S9AY-s0HeRb_jbag">分布式事务概述与项目实战</a></p>
+<h3 id="共识算法"><a href="#共识算法" class="headerlink" title="共识算法"></a>共识算法</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aQq02jLLwBzF8bJZNpqVxA">很短 | 图解 Raft 算法</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/7bL0KP1gfGXuk1f57C5Twg">共识算法：A Computer Odyssey</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UY9TPMcuf0O7xS0kuXTcVw">共识协议的技术变迁 – 既要“高”容错，又要“易”定序，还要“好”理解</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TygVu-38X5qAnJqESw_05w">Raft 论文导读：探索一种可理解的共识算法</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/us5GJQQZ8bMbEHa25Io0">从Paxos到Raft，分布式一致性算法解析-InfoQ</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/x-AdmN0UN5KT58XWO1BCOA">深入解读Raft算法与etcd工程实现</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.openacid.com/algo/paxos/">可靠分布式系统-paxos的直观解释 - OpenACID Blog</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/jiangyi/3772035">最终一致性和实时一致性是什么？在架构设计中，我们应该选择哪种方式？_我爱娃哈哈的技术博客_51CTO博客</a></p>
 <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hwaggLee/p/4510687.html">Spring 框架用到的 9 个设计模式</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.crazyant.net/2022.html">Mybatis 使用的 9 种设计模式</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/03/19/design-pattern-practice-in-marketing.html">设计模式在外卖营销业务中的实践 - 美团技术团队</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Vt1OpvD-3NL8KxpfBYTArA">观察者模式 vs 发布订阅模式</a></p>
+<h1 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AtPvdNPG3jECO0UZxwhsgw">出了bug怎么办</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5PfaaWBFCw5-MuAnR7ABiQ">技术大牛养成指南，一篇不鸡汤的成功学实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/nKJy66zWiXeWVdYDaXt1gQ">技术人最重要的能力是什么？</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/nUtUu6e_bXHvb_06Pf_05g">阿里毕玄现身说法：程序员成长路线</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XIwfj_AdZqX_vHM4VIq9EA">万字详文阐释程序员修炼之道</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/SleK3P1GJY1ufSj2H6D9fw">阿里云块存储团队软件工程实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2019/03/Misunderstand-Free-and-Open-Source-Software.html">澄清“自由软件、开源软件”相关概念及许可证的误解 @ 编程随想的博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.piglei.com/articles/programming-is-still-hard-after-14-years/">入行 14 年，我还是觉得编程很难 | Piglei</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20270317">技术高手如何炼成 - 知乎</a></p>
+<p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2024/03/05/%E4%BB%8E%E4%B8%80%E9%81%93%E9%9D%A2%E8%AF%95%E9%A2%98%E8%B0%88%E8%B5%B7/">从一道面试题谈起 | plantegg</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rMO28zUBYb0ySEpVQ3DsCA">该重视软件方法了，实现：利润 &#x3D; 需求 - 设计</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AkNuuHjguqm9aT4U4IXDFA">如何成为架构师？</a></p>
 <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d187c7fe51d4577523f23d0">构建安全可靠、最小化的 Docker 镜像 - 掘金</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/97355a6e7ac01bce8532d5ff5">Docker 网络模式详解及容器间网络通信 - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/KCLh8SPcVsQxrW2tTV2w">从零开始入门 K8s：深入剖析 Linux 容器-InfoQ</a></p>
@@ -400,23 +443,17 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/IR0flZGOyul9BHuDYPnljg">通俗直观介绍ChatGPT背后的大语言模型理论知识</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/dr2Bw0hlgS_5jeA0gzQvkQ">十分钟读懂Stable Diffusion运行原理</a></p>
 <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/31f421e0bfa2c182c07a7326f">C++ 借来的资源，如何还的潇洒？ - InfoQ 写作平台</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012999985/article/details/48791641">C++按格式接收输入字符_Jerish的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/c7045d48ccb28872277445ff8">百度C++工程师的那些极限优化（并发篇） - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/SyWjLg3lYx3pIJQfEtik8Q">浅谈协程</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vMlK7oIQH62VV6qHSPHnQQ">实战总结｜抽丝剥茧，记一次神奇的崩溃</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lQoH4UF36_zKrw-Jbp2ylw">C++知识体系总结：语言核心与代码工程</a></p>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p><a target="_blank" rel="noopener" href="https://siye1982.github.io/2016/02/25/linux-list/">Linux常用命令知识积累</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/U4YTv_xcqvkLfslbJMVl7g">一文揭晓，我是如何在 Linux 中查找自如</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/8b0d678eef570078f56a35da9">“攻城狮”实用指南之Linux CPU性能优化 - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/6sC8evIQ7AZBWwJFRi6mww">为啥我的代码库那么大？聊聊Git使用坏习惯</a></p>
-<h2 id="AI助手"><a href="#AI助手" class="headerlink" title="AI助手"></a>AI助手</h2><p>[How to become a prompt engineer - luozhiyun&#96;s Blog](<a target="_blank" rel="noopener" href="https://www.luozhiyun.com/archives/814">https://www.luozhiyun.com/archives/814</a>)</p>
+<p><a target="_blank" rel="noopener" href="https://rants.org/2011/04/open-source-license-flowchart/">Which open source license? – rants.org</a></p>
+<h2 id="AI助手"><a href="#AI助手" class="headerlink" title="AI助手"></a>AI助手</h2><p><a target="_blank" rel="noopener" href="https://www.luozhiyun.com/archives/814">How to become a prompt engineer - luozhiyuns Blog</a></p>
 <p><a target="_blank" rel="noopener" href="https://catcoding.me/p/copilot-for-programming/">Copilot，最好的编程助手 | CatCoding</a></p>
-<h1 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AtPvdNPG3jECO0UZxwhsgw">出了bug怎么办</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5PfaaWBFCw5-MuAnR7ABiQ">技术大牛养成指南，一篇不鸡汤的成功学实践</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/nKJy66zWiXeWVdYDaXt1gQ">技术人最重要的能力是什么？</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/nUtUu6e_bXHvb_06Pf_05g">阿里毕玄现身说法：程序员成长路线</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/XIwfj_AdZqX_vHM4VIq9EA">万字详文阐释程序员修炼之道</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/SleK3P1GJY1ufSj2H6D9fw">阿里云块存储团队软件工程实践</a></p>
-<p><a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2019/03/Misunderstand-Free-and-Open-Source-Software.html">澄清“自由软件、开源软件”相关概念及许可证的误解 @ 编程随想的博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.piglei.com/articles/programming-is-still-hard-after-14-years/">入行 14 年，我还是觉得编程很难 | Piglei</a></p>
 
       </div>
       

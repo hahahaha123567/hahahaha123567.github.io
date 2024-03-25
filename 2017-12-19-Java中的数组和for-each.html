@@ -1,25 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hahahaha123567.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="帮室友debug时发现自己并没有理解的一个知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中的数组和for-each">
@@ -32,219 +18,153 @@
 <meta property="article:author" content="hahahaha123567">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html","path":"2017-12-19-Java中的数组和for-each.html","title":"Java中的数组和for-each"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Java中的数组和for-each | hahahaha123567</title>
-  
-
-
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<link rel="alternate" href="/atom.xml" title="hahahaha123567" type="application/atom+xml">
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">hahahaha123567</p>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-收藏"><a href="/favorite/" rel="section"><i class="fa fa-star fa-fw"></i>收藏</a></li>
-  </ul>
-</nav>
-
-
-
-
-</header>
+    
+    
+      
         
-  
-  <aside class="sidebar">
+          <link rel="shortcut icon" href="/image/avatar.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/image/avatar.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/image/avatar.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>Java中的数组和for-each</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/true" title="hahahaha123567" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/favorite/">star</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
       </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-an-Array"><span class="nav-number">2.</span> <span class="nav-text">Create an Array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#For-each"><span class="nav-number">3.</span> <span class="nav-text">For-each</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Primitive-Type"><span class="nav-number">3.0.1.</span> <span class="nav-text">Primitive Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-of-Reference-Type"><span class="nav-number">3.0.2.</span> <span class="nav-text">Change of Reference Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Assignment-or-Initialization-of-Reference-Type"><span class="nav-number">3.0.3.</span> <span class="nav-text">Assignment or Initialization of Reference Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis"><span class="nav-number">3.0.4.</span> <span class="nav-text">Analysis</span></a></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">hahahaha123567</p>
-  <div class="site-description" itemprop="description">niconiconi</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">66</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">31</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hahahaha123567" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hahahaha123567" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="http://bangumi.tv/user/hahahaha123567" title="Bangumi → http:&#x2F;&#x2F;bangumi.tv&#x2F;user&#x2F;hahahaha123567" rel="noopener me" target="_blank">Bangumi</a>
-      </span>
-  </div>
-
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="sidebar-inner sidebar-blogroll">
-      <div class="links-of-blogroll animated">
-        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          链接
-        </div>
-        <ul class="links-of-blogroll-list">
-            <li class="links-of-blogroll-item">
-              <a href="https://lovelive.ws/" title="https:&#x2F;&#x2F;lovelive.ws&#x2F;" rel="noopener" target="_blank">μ's</a>
-            </li>
-        </ul>
-      </div>
-    </div>
-  </aside>
-
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2018-01-25-Java%E8%80%83%E8%AF%95%E9%94%99%E9%A2%98.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2017-11-04-OpenGL%E4%B8%AD%E7%9A%84%E5%85%89%E7%85%A7%E7%9B%B8%E5%85%B3.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&text=Java中的数组和for-each"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&is_video=false&description=Java中的数组和for-each"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java中的数组和for-each&body=Check out this article: https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&name=Java中的数组和for-each&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&t=Java中的数组和for-each"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="hahahaha123567">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hahahaha123567">
-      <meta itemprop="description" content="niconiconi">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Java中的数组和for-each | hahahaha123567">
-      <meta itemprop="description" content="帮室友debug时发现自己并没有理解的一个知识点">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Java中的数组和for-each
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-12-19 01:41:39" itemprop="dateCreated datePublished" datetime="2017-12-19T01:41:39+08:00">2017-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2018-08-12 21:59:44" itemprop="dateModified" datetime="2018-08-12T21:59:44+08:00">2018-08-12</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Problem"><span class="toc-number">1.</span> <span class="toc-text">Problem</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-an-Array"><span class="toc-number">2.</span> <span class="toc-text">Create an Array</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#For-each"><span class="toc-number">3.</span> <span class="toc-text">For-each</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Primitive-Type"><span class="toc-number">3.0.1.</span> <span class="toc-text">Primitive Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-of-Reference-Type"><span class="toc-number">3.0.2.</span> <span class="toc-text">Change of Reference Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assignment-or-Initialization-of-Reference-Type"><span class="toc-number">3.0.3.</span> <span class="toc-text">Assignment or Initialization of Reference Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">3.0.4.</span> <span class="toc-text">Analysis</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
 </div>
 
-            <div class="post-description">帮室友debug时发现自己并没有理解的一个知识点</div>
-        </div>
-      </header>
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Java中的数组和for-each
+    </h1>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>室友的代码</p>
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">hahahaha123567</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-12-18T17:41:39.000Z" class="dt-published" itemprop="datePublished">2017-12-19</time>
+        
+        (Updated: <time datetime="2018-08-12T13:59:44.000Z" class="dt-updated" itemprop="dateModified">2018-08-12</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>室友的代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="type">int</span> weight;</span><br><span class="line">&#125;</span><br><span class="line">Data[] dataArray = <span class="keyword">new</span> <span class="title class_">Data</span>[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">for</span> (Data data : dataArray) &#123;</span><br><span class="line">    data.weight = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其中的错误涉及了数组和for-each遍历</p>
@@ -278,102 +198,143 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Nico[] array5 = <span class="keyword">new</span> <span class="title class_">Nico</span>[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (Nico value : array5) &#123;</span><br><span class="line">    System.out.println(array5[<span class="number">0</span>] + <span class="string">&quot; &quot;</span> + value);</span><br><span class="line">    <span class="comment">// array[0] -&gt; null</span></span><br><span class="line">    <span class="comment">// value -&gt; null</span></span><br><span class="line"></span><br><span class="line">    value = <span class="keyword">new</span> <span class="title class_">Nico</span>(<span class="number">25252</span>);</span><br><span class="line"></span><br><span class="line">    System.out.println(array5[<span class="number">0</span>] + <span class="string">&quot; &quot;</span> + value);</span><br><span class="line">    <span class="comment">// array[0] -&gt; null</span></span><br><span class="line">    <span class="comment">// value -&gt; Nico@xxxxxxxx</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// null null</span></span><br><span class="line"><span class="comment">// Nico()</span></span><br><span class="line"><span class="comment">// null Nico@15db9742</span></span><br></pre></td></tr></table></figure>
 
 
-    </div>
+  </div>
+</article>
 
-    
-    
-    
 
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"># Java</a>
-          </div>
 
         
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2017-11-04-OpenGL%E4%B8%AD%E7%9A%84%E5%85%89%E7%85%A7%E7%9B%B8%E5%85%B3.html" rel="prev" title="OpenGL中的光照相关">
-                  <i class="fa fa-angle-left"></i> OpenGL中的光照相关
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2018-01-25-Java%E8%80%83%E8%AF%95%E9%94%99%E9%A2%98.html" rel="next" title="Java考试错题">
-                  Java考试错题 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/favorite/">star</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
 
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Problem"><span class="toc-number">1.</span> <span class="toc-text">Problem</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-an-Array"><span class="toc-number">2.</span> <span class="toc-text">Create an Array</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#For-each"><span class="toc-number">3.</span> <span class="toc-text">For-each</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Primitive-Type"><span class="toc-number">3.0.1.</span> <span class="toc-text">Primitive Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change-of-Reference-Type"><span class="toc-number">3.0.2.</span> <span class="toc-text">Change of Reference Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assignment-or-Initialization-of-Reference-Type"><span class="toc-number">3.0.3.</span> <span class="toc-text">Assignment or Initialization of Reference Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">3.0.4.</span> <span class="toc-text">Analysis</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
 
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 2017 – 
-    <span itemprop="copyrightYear">2024</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">hahahaha123567</span>
-  </div>
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-    <span title="站点总字数">197k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="站点阅读时长">2:59</span>
-  </span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&text=Java中的数组和for-each"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&is_video=false&description=Java中的数组和for-each"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java中的数组和for-each&body=Check out this article: https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&title=Java中的数组和for-each"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&name=Java中的数组和for-each&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hahahaha123567.github.io/2017-12-19-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8Cfor-each.html&t=Java中的数组和for-each"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
     </div>
-  </footer>
 
-  
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
   </div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+</div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2024
+    hahahaha123567
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/favorite/">star</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
 
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
+<script src="/js/main.js"></script>
 
+<!-- search -->
 
+<!-- Baidu Analytics -->
 
+<!-- Cloudflare Analytics -->
 
-  
+<!-- Disqus Comments -->
 
-
-
-
+<!-- utterances Comments -->
 
 </body>
 </html>

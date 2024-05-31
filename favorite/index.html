@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台 线程池要设置多大 - 云+社区 - 腾讯云 这些年背过的面试题——多线程篇 GC咱们从头到尾说一次 Java 垃圾回收 JV">
+    <meta name="description" content="Java这些年背过的面试题——Java基础及面试题篇 锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台 线程池要设置多大 - 云+社区 - 腾讯云 这些年背过的面试题——多线程篇 G">
 <meta property="og:type" content="website">
 <meta property="og:title" content="收藏夹">
 <meta property="og:url" content="https://hahahaha123567.github.io/favorite/index.html">
 <meta property="og:site_name" content="hahahaha123567">
-<meta property="og:description" content="Java锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台 线程池要设置多大 - 云+社区 - 腾讯云 这些年背过的面试题——多线程篇 GC咱们从头到尾说一次 Java 垃圾回收 JV">
+<meta property="og:description" content="Java这些年背过的面试题——Java基础及面试题篇 锁Java锁事 从ReentrantLock的实现看AQS的原理及应用 让人恶心的多线程代码，性能怎么优化！ 线程池一文带你吃透线程池 Java线程池实现原理及其在美团业务中的实践 - 美团技术团队 如何设置线程池参数？美团给出了一个回答。 - InfoQ 写作平台 线程池要设置多大 - 云+社区 - 腾讯云 这些年背过的面试题——多线程篇 G">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-05T07:43:23.000Z">
-<meta property="article:modified_time" content="2024-04-15T03:51:19.987Z">
+<meta property="article:modified_time" content="2024-05-16T11:36:47.618Z">
 <meta property="article:author" content="hahahaha123567">
 <meta name="twitter:card" content="summary">
     
@@ -100,7 +100,8 @@
 
   <div class="content" itemprop="articleBody">
       
-          <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/11/15/java-lock.html">Java锁事</a></p>
+          <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UbKYBb9fuYouevfBSlBJ0g">这些年背过的面试题——Java基础及面试题篇</a></p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/11/15/java-lock.html">Java锁事</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html">从ReentrantLock的实现看AQS的原理及应用</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/av2_WntD1sX_e2Y0_FTCnQ">让人恶心的多线程代码，性能怎么优化！</a></p>
 <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/n2cZxqHqaMJM2mh9Tk13Bg">一文带你吃透线程池</a></p>
@@ -141,7 +142,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/cqkZEvmmh7jnNt2K5r_lXg">Spring循环依赖那些事儿（含Spring详细流程图）</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1xIWCoCdQtAPlcZe3zHusQ">探索｜Spring并行初始化加速的思路和实践</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/faEtlyaNHW9AWE6LMTs4Ng">这些年背过的面试题——Spring篇</a></p>
-<h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ssj234/netty-source/433211">Netty源码笔记 · 看云</a></p>
+<h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/52iS3RxIO_to29IG_JoOpw">大白话聊聊Netty</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ssj234/netty-source/433211">Netty源码笔记 · 看云</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/duanxz/tag/netty/">netty - 标签 - duanxz - 博客园</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007282628">源码之下无秘密 ── 做最好的 Netty 源码分析教程 - SegmentFault 思否</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2MzU3Mjc3Ng==&action=getalbum&album_id=2217816582418956300">bin的技术小屋</a></p>
@@ -164,6 +166,7 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fg2Dy0Dbhcrn5QaNydp1WQ">这些年背过的面试题——JVM篇</a></p>
 <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40820574">mysql索引简明教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qHJiTjpvDikFcdl9SRL97Q">深入理解 MySQL 索引底层原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bxqw0Arey3Qia4jjmgmCtQ">MySQL索引你用对了吗？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9tmSxQ-EUzZYibLAMPaFZg">InnoDB一棵B+树可以存放多少行数据？</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/S6I2HL89I0NfTw0I_Lr5PQ">Mysql Replication 简明教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000006158186">MySQL大表优化方案</a></p>
@@ -178,7 +181,8 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/L26rI11OV8hrfJVy5Yu78g">这些年背过的面试题——MySQL篇</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/fnHC-TiutK8HGCNb4IBzkQ">MySQL 上亿大表，如何深度优化？</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/93aae8b4ca45bebf727921b87">MyBatis SQL是如何执行的？ - InfoQ 写作平台</a></p>
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904135964229646">没内鬼，来点干货！SQL优化和诊断</a></p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/OxWbvbRwTNuN0jPwn1vAYg">面试官：聊聊 order by</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904135964229646">没内鬼，来点干货！SQL优化和诊断</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ahxUK5r6LjxwY30QfgsgBA">了解那些“奇葩”SQL写法，快速写出高效率SQL</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/b9251e9e3c28fbfaeb1c30528">MySQL“被动”性能优化汇总！ - InfoQ 写作平台</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44141495/article/details/108744720">一篇明白SQL的执行顺序_sql in执行顺序-CSDN博客</a></p>
@@ -205,11 +209,13 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/nNEuYw0NlYGhuKKKKoWfcQ">你的Redis真的变慢了吗？性能优化如何做</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/mIc6a9mfEGdaNDD3MmfFsg">Redis延迟问题全面排障指南</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/KHoFJs4wRSkAThXw7F8acA">美团大规模KV存储挑战与架构实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/cIVZ6VoNQqF0HFee9psfVQ">一次Redis访问超时的“捉虫”之旅</a></p>
 <h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TPJwulKmZmJjGSxLDwiPhQ">浅析 Redis 分布式锁解决方案-InfoQ</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/O8o31rRBVL1DwK-JfmurRw">一文讲透Redis分布式锁安全问题</a></p>
 <p><a target="_blank" rel="noopener" href="https://susan.net.cn/post/2/2005/">redis分布式锁的8大坑</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6961380552519712798">最强分布式工具Redisson（一）：分布式锁 - 掘金</a></p>
 <h1 id="MQ"><a href="#MQ" class="headerlink" title="MQ"></a>MQ</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-voak-D8BWAWACJ6NiROSA">关于消息队列的知识总结</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/M02YiF9altrsODORb9gZuw">浅谈现代消息队列与云存储</a></p>
 <h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8UNtMIllJ03ULZwE9WtVdg">这些年背过的面试题——Kafka篇</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.jasongj.com/2015/03/10/KafkaColumn1/">Kafka设计解析（一）- Kafka背景及架构介绍 | 技术世界</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.jasongj.com/kafka/high_throughput/">Kafka设计解析（六）- Kafka高性能架构之道 | 技术世界</a></p>
@@ -242,6 +248,7 @@
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/407175099">大数据技术漫谈 ——从Hadoop、Storm、Spark、HBase到Hive、Flink、Lindorm - 字节跳动ADFE团队的文章 - 知乎</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lswlJkyZmnpEhUBdsRooZw">随机漫步的数据：信息论、大数据技术和不切实际的联想</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RG6zOn6rNrbDCzL8ylPZ8w">干货 | 节约60%开发工时，离在线一体化数仓系统在携程旅游的落地实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/BnG0t4icxYcnnMD8hHS8Pg">一个SQL任务的一生</a></p>
 <h1 id="network"><a href="#network" class="headerlink" title="network"></a>network</h1><p><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/11564.html">TCP 的那些事儿（上） | 酷 壳 - CoolShell</a></p>
 <p><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/11609.html">TCP 的那些事儿（下） | 酷 壳 - CoolShell</a></p>
 <p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/90cf4bbfb2c2cc2b475e0efda">TCP 重传、滑动窗口、流量控制、拥塞控制图解 - InfoQ 写作平台</a></p>
@@ -250,6 +257,7 @@
 <p><a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2019/09/Netcat-Tricks.html">扫盲 netcat（网猫）的 N 种用法——从“网络诊断”到“系统入侵” @ 编程随想的博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/06/20/%E5%AE%9E%E6%88%98%E7%93%B6%E9%A2%88%E5%AE%9A%E4%BD%8D-%E6%88%91%E7%9A%84MySQL%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8E%8B%E4%B8%8D%E4%B8%8A%E5%8E%BB/">实战瓶颈定位-我的MySQL为什么压不上去 | plantegg</a></p>
 <p><a target="_blank" rel="noopener" href="https://plantegg.github.io/2023/06/30/%E5%AE%9E%E6%88%98%E7%93%B6%E9%A2%88%E5%AE%9A%E4%BD%8D-%E6%88%91%E7%9A%84MySQL%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8E%8B%E4%B8%8D%E4%B8%8A%E5%8E%BB--%E5%86%99%E5%9C%BA%E6%99%AF/">实战瓶颈定位-我的MySQL为什么压不上去–写场景 | plantegg</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/VSRU_VtR7NDiSnNod-7u1g">一文详解长连接黑洞重现和分析</a></p>
 <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hsH7LMBEDGe_df9UbfOvbQ">后台服务架构高性能设计之道(含宏观和微观的各种性能优化方式)</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/VBGeI308sbTn8qNY-wASjQ">互联网架构：屡试不爽的架构三马车(微服务,消息队列,定时任务在一个项目架构里的设计</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/87JWlUoc03UZy2ar3p4NlA">互联网架构三板斧之并发(一个web请求全链路上的优化)</a></p>
@@ -268,11 +276,15 @@
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rboO_NGtFL5XiwH_3C0Anw">如何写一份高可读性的软件工程设计文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QPYprfHeHBnh38HQBh_K-w">分享一例有意思的灰度设计缺陷，浅谈灰度方案的设计</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HMLpjcE0UENUTfMK0Z9n8A">领域驱动设计DDD｜从入门到代码实践</a></p>
+<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2024/05/09/ddd-practice-trading-system.html">DDD在大众点评交易系统演进中的应用 - 美团技术团队</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hv3tTOAdD-SiCq2owCdxZQ">如何设计一个海量任务调度系统</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MiSsqFVzGnxYim4NP6drvQ">3.5万字：一文搞懂“支付系统”</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rLOj5iIt0-at5Lr4qW_nuw">万字：“账户系统”设计深度解析</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/f8DOQadT7rHMf3l1WZFycQ">万字：对账系统从入门到精通</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/w7xUHPCZZuCX_Is1eT5uZQ">这些年背过的面试题——架构设计篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ZALPGbsvYpKv66POZ4V6dw">这些年背过的面试题——个人项目篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/IEzcsHn6SaoS96F1gTKcJQ">这些年背过的面试题——实战算法篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lFx5fD1PypZCEFFU6N8qKg">图解：多租户系统架构设计</a></p>
 <h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/GymHAbqVRO214qo44jHD">石墨文档Websocket百万长连接技术实践_产品_杜旻翔_InfoQ精选文章</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/CByq89C2DwrJxzXzAcad">抖音世界杯中 RTC 的技术挑战与实现_架构_InfoQ精选文章</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aaa5H5mFwEmL24WO3KyucA">Web 实时消息推送的 7 种实现方案</a></p>
@@ -313,6 +325,7 @@
 <p><a target="_blank" rel="noopener" href="https://www.crazyant.net/2022.html">Mybatis 使用的 9 种设计模式</a></p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/03/19/design-pattern-practice-in-marketing.html">设计模式在外卖营销业务中的实践 - 美团技术团队</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Vt1OpvD-3NL8KxpfBYTArA">观察者模式 vs 发布订阅模式</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Mq4sLh-rI69ldljse7N11w">老房改造系列–如何用一套流程接入所有业务线</a></p>
 <h1 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/T9Dy8mLVVih4Ogx37ue3sg">干货 | 携程中转交通方案拼接性能优化</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AtPvdNPG3jECO0UZxwhsgw">出了bug怎么办</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/5PfaaWBFCw5-MuAnR7ABiQ">技术大牛养成指南，一篇不鸡汤的成功学实践</a></p>
@@ -341,6 +354,7 @@
 <p><a target="_blank" rel="noopener" href="https://colobu.com/2023/04/26/write-the-ping-tool-in-Go/">使用Go实现ping工具</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.luozhiyun.com/archives/797">[长文]从《100 Go Mistakes》我总结了什么？</a></p>
 <p><a target="_blank" rel="noopener" href="https://colobu.com/2023/07/18/cheatsheet-of-100-go-mistakes/">100个Go编程错误小抄</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/PuNu65ggHyB6jxRqhbN_VQ">Golang异步编程方式和技巧</a></p>
 <h1 id="AI"><a href="#AI" class="headerlink" title="AI"></a>AI</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5MDI3MjA5MQ==&mid=2697270253&idx=2&sn=d323c28476904caaeae1195debcec70d">干货 | 携程AI应用的推理性能优化</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/j7Hs9dGt5YLVgUTY-K9B">干货|基于CPU的深度学习推理部署优化实践 - InfoQ</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/0PKOlHjfs3CQWkqTAQ6T">从软件开发到AI领域工程师：模型训练篇 - InfoQ</a></p>

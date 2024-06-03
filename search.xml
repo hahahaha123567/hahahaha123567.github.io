@@ -4,7 +4,26 @@
   
     
     <entry>
-      <title>Files.newOutputStream().write()导致direct memory OOM</title>
+      <title>排查Netty应用的direct memory泄漏</title>
+      <link href="/2024-06-03-%E6%8E%92%E6%9F%A5Netty%E5%BA%94%E7%94%A8%E7%9A%84direct-memory%E6%B3%84%E6%BC%8F.html"/>
+      <url>/2024-06-03-%E6%8E%92%E6%9F%A5Netty%E5%BA%94%E7%94%A8%E7%9A%84direct-memory%E6%B3%84%E6%BC%8F.html</url>
+      
+        <content type="html"><![CDATA[<p>首先要明确, 程序抛出<code>OutOfMemoryError</code>的地方并不一定是导致OOM的原因, 如果其他地方导致了程序OOM之后去申请内存也会抛出<code>OutOfMemoryError</code></p><p><a href="https://projectreactor.io/docs/netty/release/reference/index.html#faq.memory-leaks">Reactor Netty Reference Guide</a></p><blockquote><p>A.4. 如何调试内存泄漏?</p><p>默认情况下, Reactor Netty 使用直接内存,因为在有许多本地 I&#x2F;O 操作(使用套接字)时,这样可以提高性能,因为可以消除拷贝操作。由于分配和释放操作是昂贵的,所以 Reactor Netty 也默认使用池化缓冲区。更多信息请参见<a href="https://github.com/netty/netty/wiki/Reference-counted-objects">Reference counted objects · netty&#x2F;netty Wiki</a>。</p><p>为了能够调试直接内存和池化缓冲区的内存问题,Netty 提供了一种特殊的内存泄漏检测机制。请按照排查缓冲区泄漏的说明启用此机制。除了 Netty 提供的说明,Reactor Netty 还提供了一个特殊的日志记录器(<strong>reactor.netty.channel.LeakDetection</strong>),它有助于识别内存泄漏可能位于 Reactor Netty 内部还是 Reactor Netty 已经将缓冲区所有权转交给应用程序&#x2F;框架。默认情况下,此日志记录器处于禁用状态。要启用它,请提高日志级别到 <strong>DEBUG</strong></p><p>另一种检测内存泄漏的方法是监控 <strong>reactor.netty.bytebuf.allocator.active.heap.memory</strong> 和 <strong>reactor.netty.bytebuf.allocator.active.direct.memory</strong> 指标:</p><p><strong>reactor.netty.bytebuf.allocator.active.heap.memory</strong> 提供了从堆缓冲区池分配的正在使用的缓冲区所消耗的实际字节数。</p><p><strong>reactor.netty.bytebuf.allocator.active.direct.memory</strong> 提供了从直接缓冲区池分配的正在使用的缓冲区所消耗的实际字节数。</p><p>如果上述指标持续增长,则可能存在缓冲区内存泄漏。</p><p>在调试内存泄漏问题时,考虑减少使用的内存(例如 <strong>-XX:MaxDirectMemorySize、-Xms、-Xmx</strong>)。应用程序拥有的内存越少,内存泄漏就会发生得越早。</p></blockquote><p><a href="https://www.cnblogs.com/jingdongkeji/p/17345525.html">长连接Netty服务内存泄漏，看我如何一步步捉“虫”解决 - 京东云技术团队 - 博客园</a></p><blockquote><p>一、Netty的内存泄漏排查其实并不难，Netty提供了比较完整的排查内存泄漏工具</p><p>JVM 选项 <strong>-Dio.netty.leakDetection.level</strong></p><p>本次内存泄漏问题，我们通过本地设置泄漏检测级别为高级，即： <strong>-Dio.netty.leakDetectionLevel&#x3D;advanced</strong> 定位到了具体内存泄漏的代码。</p><p>同时Netty也给出了避免泄漏的最佳实践：</p><ul><li>在 <strong>PARANOID</strong> 泄漏检测级别以及 <strong>SIMPLE</strong> 级别运行单元测试和集成测试。</li><li>在 <strong>SIMPLE</strong> 级别向整个集群推出应用程序之前，请先在相当长的时间内查看是否存在泄漏。</li><li>如果有泄漏，灰度发布中使用 <strong>ADVANCED</strong> 级别，以获得有关泄漏来源的一些提示。</li><li>不要将泄漏的应用程序部署到整个群集。</li></ul><p>二、解决Netty内存泄漏，Netty也提供了指导方案，主要有三种方式</p><ol><li>手动释放，哪里使用了，使用完就手动释放，这个对使用方要求比较高了。</li><li>如果处理过程中不确定ByteBuf是否应该被释放，那交给Netty的__ReferenceCountUtil.release（msg）__来释放，这个方法会判断上下文中是否可以释放，简单方便。</li><li>升级ChannelHandler为SimpleChannelHandler， 在SimpleChannelHandler中，Netty对收到的所有消息都调用了ReferenceCountUtil.release（msg），升级接口，可能对现有API改动会比较大。</li></ol></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Files.newOutputStream().write()使用direct memory</title>
       <link href="/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"/>
       <url>/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html</url>
       

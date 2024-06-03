@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Files.newOutputStream().write()引发的OOM">
+    <meta name="description" content="Files.newOutputStream()的优点如果你使用IDEA写代码的话, 当你写下new FileOutputStream(file)时, IDE会提示你修改为Files.newOutputStream(file.path), 具体的描述在Settings-Editor-Inspections-Java-Performance中  Reports new FileInputStream(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Files.newOutputStream().write()导致direct memory OOM">
+<meta property="og:title" content="Files.newOutputStream().write()使用direct memory">
 <meta property="og:url" content="https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html">
 <meta property="og:site_name" content="hahahaha123567">
-<meta property="og:description" content="Files.newOutputStream().write()引发的OOM">
+<meta property="og:description" content="Files.newOutputStream()的优点如果你使用IDEA写代码的话, 当你写下new FileOutputStream(file)时, IDE会提示你修改为Files.newOutputStream(file.path), 具体的描述在Settings-Editor-Inspections-Java-Performance中  Reports new FileInputStream(">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-31T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-31T06:58:46.617Z">
+<meta property="article:modified_time" content="2024-06-03T11:01:37.226Z">
 <meta property="article:author" content="hahahaha123567">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -37,7 +37,7 @@
       
     
     <!-- title -->
-    <title>Files.newOutputStream().write()导致direct memory OOM</title>
+    <title>Files.newOutputStream().write()使用direct memory</title>
     <!-- async scripts -->
     <!-- Google Analytics -->
 
@@ -86,6 +86,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" aria-label="上一篇" href="/2024-06-03-%E6%8E%92%E6%9F%A5Netty%E5%BA%94%E7%94%A8%E7%9A%84direct-memory%E6%B3%84%E6%BC%8F.html"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" aria-label="下一篇" href="/2024-03-26-%E3%80%8A%E7%8B%AC%E8%A3%81%E8%80%85%E6%89%8B%E5%86%8C%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -101,16 +103,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&text=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&is_video=false&description=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Files.newOutputStream().write()导致direct memory OOM&body=Check out this article: https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&name=Files.newOutputStream().write()导致direct memory OOM&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&t=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&text=Files.newOutputStream().write()使用direct memory"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&is_video=false&description=Files.newOutputStream().write()使用direct memory"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Files.newOutputStream().write()使用direct memory&body=Check out this article: https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&name=Files.newOutputStream().write()使用direct memory&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&t=Files.newOutputStream().write()使用direct memory"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -130,7 +132,7 @@
   <header>
     
     <h1 class="posttitle p-name" itemprop="name headline">
-        Files.newOutputStream().write()导致direct memory OOM
+        Files.newOutputStream().write()使用direct memory
     </h1>
 
 
@@ -144,7 +146,7 @@
       
         <time datetime="2024-05-31T04:00:00.000Z" class="dt-published" itemprop="datePublished">2024-05-31</time>
         
-        (Updated: <time datetime="2024-05-31T06:58:46.617Z" class="dt-updated" itemprop="dateModified">2024-05-31</time>)
+        (Updated: <time datetime="2024-06-03T11:01:37.226Z" class="dt-updated" itemprop="dateModified">2024-06-03</time>)
         
       
     </div>
@@ -240,16 +242,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&text=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&is_video=false&description=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Files.newOutputStream().write()导致direct memory OOM&body=Check out this article: https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&name=Files.newOutputStream().write()导致direct memory OOM&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&t=Files.newOutputStream().write()导致direct memory OOM"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&text=Files.newOutputStream().write()使用direct memory"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&is_video=false&description=Files.newOutputStream().write()使用direct memory"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Files.newOutputStream().write()使用direct memory&body=Check out this article: https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&title=Files.newOutputStream().write()使用direct memory"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&name=Files.newOutputStream().write()使用direct memory&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://hahahaha123567.github.io/2024-05-31-Files.newOutputStream().write()%E5%AF%BC%E8%87%B4direct-memory-OOM.html&t=Files.newOutputStream().write()使用direct memory"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

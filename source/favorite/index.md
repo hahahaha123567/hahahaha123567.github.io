@@ -500,6 +500,12 @@ date: 2022-08-05 15:43:23
 
 [一种快速编程的方法，推荐给大伙。 - V2EX](https://www.v2ex.com/t/1081537)
 
+[Agentic Coding 的边界](https://x.com/tison1096/status/2045492574945976478)
+
+[When Code Is Cheap](https://x.com/tison1096/status/2092934388963275199)
+
+[尽职编程：AI Coding 时代的个体产出差异的来源](https://x.com/jowaywang/status/2093682461737967822)
+
 # v2ex
 
 [全球工单 分享一个新的骗钱手段：利用"闲鱼-支付宝"的某些规则 - V2EX](https://www.v2ex.com/t/937597)

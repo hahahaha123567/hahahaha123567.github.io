@@ -75,13 +75,6 @@ pagination_dir: page
 #theme: next
 theme: cactus
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repository: git@github.com:hahahaha123567/hahahaha123567.github.io.git
-  branch: master
-
 # https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
   symbols: true
